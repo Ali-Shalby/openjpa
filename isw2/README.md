@@ -185,4 +185,3 @@ Durante il progetto:
 4. i dataset generati non vengono corretti manualmente;
 5. le scelte metodologiche vengono documentate e motivate;
 6. il branch `baseline-4.1.1` rimane immutabile;
-7. repository di altri studenti vengono utilizzati soltanto come riferimento implementativo.
