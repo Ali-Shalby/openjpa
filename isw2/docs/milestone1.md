@@ -1,0 +1,348 @@
+# Milestone 1 – Dataset Creation
+
+## 1. Obiettivo
+
+La Milestone 1 richiede la costruzione di un dataset a livello di **classe Java**.
+
+Ogni istanza del dataset finale rappresenterà una classe appartenente a una determinata release OpenJPA.
+
+Il dataset conterrà informazioni riconducibili a:
+
+```text
+Project
+Class
+Release
+Metrics
+NSmells
+Bugginess
+```
+
+La costruzione viene automatizzata attraverso il modulo:
+
+```text
+isw2/analyzer/
+```
+
+---
+
+# 2. Workflow generale
+
+Il workflow seguito è:
+
+```text
+identificazione release
+        ↓
+associazione release → commit
+        ↓
+selezione della porzione iniziale delle release
+        ↓
+identificazione delle classi
+        ↓
+calcolo delle metriche
+        ↓
+calcolo NSmells
+        ↓
+analisi bug / SZZ / Proportion
+        ↓
+Bugginess
+        ↓
+Dataset A
+```
+
+---
+
+# 3. Recupero delle release
+
+Le informazioni sulle release vengono recuperate dal progetto Apache JIRA di OpenJPA.
+
+Sono considerate inizialmente tutte le versioni che soddisfano:
+
+```text
+released = true
+releaseDate presente
+```
+
+Le principali classi implementate sono:
+
+```text
+ReleaseInfo
+JiraReleaseClient
+ReleaseCatalogGenerator
+```
+
+---
+
+# 4. Catalogo RAW
+
+Il primo output generato è:
+
+```text
+isw2/datasets/release_catalog_raw.csv
+```
+
+Colonne:
+
+```text
+ChronologicalIndex
+JiraVersionId
+Version
+ReleaseDate
+GitTag
+GitTagMatched
+```
+
+Risultati:
+
+```text
+Released JIRA versions : 42
+Matching Git tags       : 37/42
+First release           : 0.9.0 (2006-08-26)
+Last release            : 4.1.1 (2025-05-15)
+```
+
+Il catalogo RAW viene mantenuto come output intermedio e non viene modificato manualmente.
+
+---
+
+# 5. Filtro delle release stabili
+
+Nel catalogo JIRA sono presenti anche milestone e beta, tra cui:
+
+```text
+2.0.0-M1
+2.0.0-M2
+2.0.0-M3
+2.0.0-beta
+2.0.0-beta2
+2.0.0-beta3
+```
+
+Per il dataset vengono considerate soltanto versioni nel formato:
+
+```text
+X.Y.Z
+```
+
+Pattern:
+
+```regex
+^\d+\.\d+\.\d+$
+```
+
+Risultato:
+
+```text
+Stable X.Y.Z releases : 36
+Releases with Git tag : 33
+```
+
+---
+
+# 6. Associazione release → commit
+
+In una prima implementazione era stato considerato il tag Git come possibile snapshot della release.
+
+La verifica del catalogo ha però mostrato che alcuni tag storici puntavano a commit temporalmente successivi alla rispettiva `releaseDate`.
+
+È stato quindi scelto il metodo:
+
+```text
+DATE_CUTOFF
+```
+
+Per ogni release viene individuato:
+
+```text
+l'ultimo commit Git non successivo alla ReleaseDate
+```
+
+La ricerca viene effettuata sulla storia raggiungibile dalla baseline:
+
+```text
+4.1.1
+```
+
+Il Git tag rimane nel catalogo esclusivamente come informazione diagnostica.
+
+La proprietà verificata è:
+
+```text
+ReleaseCommitDate <= ReleaseDate
+```
+
+Il controllo è risultato soddisfatto per tutte le 36 release stabili.
+
+Le classi principali utilizzate per questa fase sono:
+
+```text
+GitReleaseResolver
+ResolvedRelease
+DatasetReleaseCatalogGenerator
+```
+
+---
+
+# 7. Catalogo definitivo
+
+Output:
+
+```text
+isw2/datasets/release_catalog.csv
+```
+
+Colonne:
+
+```text
+ChronologicalIndex
+JiraVersionId
+Version
+ReleaseDate
+GitTag
+GitTagMatched
+ReleaseCommit
+ReleaseCommitDate
+ResolutionMethod
+DatasetIncluded
+```
+
+Risultati:
+
+```text
+Released JIRA versions : 42
+Stable X.Y.Z releases  : 36
+Releases with Git tag  : 33
+Release resolution     : DATE_CUTOFF
+```
+
+Tutte le release stabili sono state associate a un commit Git.
+
+---
+
+# 8. Selezione delle release del Dataset A
+
+La parte iniziale della storia del progetto viene utilizzata per la costruzione del dataset.
+
+È stato adottato il primo:
+
+```text
+33%
+```
+
+delle release stabili.
+
+Il numero viene calcolato mediante:
+
+```text
+ceil(numberOfReleases * 0.33)
+```
+
+Per OpenJPA:
+
+```text
+36 * 0.33 = 11.88
+ceil(11.88) = 12
+```
+
+Vengono quindi selezionate **12 release**.
+
+|  # | Versione | Release Date |
+| -: | -------- | ------------ |
+|  1 | 0.9.0    | 2006-08-26   |
+|  2 | 0.9.6    | 2006-11-29   |
+|  3 | 0.9.7    | 2007-04-27   |
+|  4 | 1.0.0    | 2007-08-28   |
+|  5 | 1.0.1    | 2007-11-09   |
+|  6 | 1.0.2    | 2008-02-18   |
+|  7 | 1.1.0    | 2008-05-22   |
+|  8 | 1.0.3    | 2008-07-23   |
+|  9 | 1.2.0    | 2008-08-12   |
+| 10 | 1.2.1    | 2009-03-18   |
+| 11 | 1.2.2    | 2010-01-18   |
+| 12 | 2.0.0    | 2010-04-22   |
+
+Intervallo:
+
+```text
+0.9.0 → 2.0.0
+2006-08-26 → 2010-04-22
+```
+
+La selezione viene registrata nella colonna:
+
+```text
+DatasetIncluded
+```
+
+del catalogo definitivo.
+
+---
+
+# 9. Output disponibili
+
+Attualmente:
+
+```text
+isw2/datasets/release_catalog_raw.csv
+isw2/datasets/release_catalog.csv
+```
+
+Entrambi i file sono generati automaticamente dall'analyzer.
+
+---
+
+# 10. Decisioni metodologiche
+
+Le principali decisioni adottate finora sono:
+
+### Release stabili
+
+Sono considerate release stabili solamente versioni `X.Y.Z`.
+
+### Git tag
+
+Il tag viene utilizzato come informazione diagnostica ma non come sorgente dello snapshot della release.
+
+### Release commit
+
+Il commit rappresentativo viene selezionato tramite `DATE_CUTOFF`.
+
+### Porzione delle release
+
+Viene utilizzato il primo 33% delle release stabili, con arrotondamento tramite `ceil`.
+
+### Dataset
+
+Gli output CSV vengono generati automaticamente e non modificati manualmente.
+
+---
+
+# 11. Stato Milestone 1
+
+## Completato
+
+* [x] Recupero release da JIRA
+* [x] Generazione catalogo RAW
+* [x] Filtro release stabili
+* [x] Verifica tag Git
+* [x] Associazione release → commit
+* [x] Validazione temporale dei commit
+* [x] Generazione catalogo definitivo
+* [x] Selezione delle 12 release
+
+## Prossimo step
+
+* [ ] Identificazione automatica delle classi Java presenti in ciascuna delle 12 release
+* [ ] Definizione delle regole di inclusione/esclusione delle classi
+* [ ] Verifica dei risultati prima del calcolo delle metriche
+
+Successivamente:
+
+* [ ] metriche di classe;
+* [ ] `NSmells`;
+* [ ] ticket bug;
+* [ ] SZZ;
+* [ ] Proportion;
+* [ ] `Bugginess`;
+* [ ] Dataset A.
+
+Il presente documento verrà aggiornato durante l'avanzamento della milestone.
