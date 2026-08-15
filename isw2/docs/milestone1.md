@@ -277,20 +277,214 @@ del catalogo definitivo.
 
 ---
 
-# 9. Output disponibili
+---
 
-Attualmente:
+# 9. Identificazione dei file Java
+
+Dopo aver determinato le 12 revisioni Git da utilizzare per il dataset,
+è stato costruito un inventario di tutti i file Java presenti in ciascuna release.
+
+La raccolta viene effettuata direttamente sull'albero Git tramite:
+
+```text
+git ls-tree -r --name-only <commit>
+```
+
+Questa soluzione permette di analizzare lo snapshot esatto di ogni release
+senza eseguire checkout ripetuti sulla working copy principale.
+
+Il primo output prodotto è:
+
+```text
+isw2/datasets/java_class_inventory_raw.csv
+```
+
+Il catalogo RAW contiene tutti i file `.java` individuati nelle 12 release
+e li classifica in base al loro ruolo.
+
+Le categorie utilizzate sono:
+
+```text
+PRODUCTION
+TEST
+EXAMPLE
+GENERATED
+PARSER_SOURCE
+NON_CLASS
+OTHER
+```
+
+Risultati ottenuti:
+
+```text
+Dataset releases : 12
+Java files       : 25186
+
+PRODUCTION       : 12836
+TEST             : 12281
+EXAMPLE          : 66
+GENERATED        : 0
+PARSER_SOURCE    : 3
+NON_CLASS        : 0
+OTHER            : 0
+```
+
+La classificazione è stata verificata prima della costruzione
+dell'inventario definitivo.
+
+Durante la verifica sono stati individuati due sorgenti collocati sotto
+`src/main/java` ma appartenenti a un modulo di integration testing:
+
+```text
+openjpa-integration/osgi-itests/src/main/java/hellojpa/Main.java
+openjpa-integration/osgi-itests/src/main/java/hellojpa/Message.java
+```
+
+La sola presenza del percorso `src/main/java` non è quindi sufficiente per
+stabilire che un file appartenga al codice production.
+
+I due file sono stati correttamente riclassificati come:
+
+```text
+TEST
+```
+
+Sono stati inoltre individuati tre sorgenti sotto:
+
+```text
+src/main/jjtree
+```
+
+Questi file vengono classificati separatamente come:
+
+```text
+PARSER_SOURCE
+```
+
+e non vengono considerati normali classi production.
+
+Al termine della verifica:
+
+```text
+OTHER : 0
+```
+
+quindi ogni file Java individuato risulta classificato in modo esplicito.
+
+---
+
+# 10. Inventario delle classi production
+
+Per le successive attività della Milestone 1 vengono considerate le classi
+appartenenti al codice production.
+
+Sono pertanto escluse dall'inventario definitivo le categorie:
+
+```text
+TEST
+EXAMPLE
+GENERATED
+PARSER_SOURCE
+NON_CLASS
+OTHER
+```
+
+L'output definitivo è:
+
+```text
+isw2/datasets/java_class_inventory.csv
+```
+
+Ogni osservazione è identificata dalla coppia:
+
+```text
+Release + Class
+```
+
+e contiene:
+
+```text
+ReleaseIndex
+Version
+CommitId
+Class
+```
+
+Il numero totale di osservazioni production è:
+
+```text
+12836
+```
+
+Distribuzione per release:
+
+|  # | Versione | Classi production |
+| -: | -------- | -----------------: |
+|  1 | 0.9.0    |                932 |
+|  2 | 0.9.6    |                949 |
+|  3 | 0.9.7    |                948 |
+|  4 | 1.0.0    |                996 |
+|  5 | 1.0.1    |               1029 |
+|  6 | 1.0.2    |               1058 |
+|  7 | 1.1.0    |               1045 |
+|  8 | 1.0.3    |               1050 |
+|  9 | 1.2.0    |               1051 |
+| 10 | 1.2.1    |               1185 |
+| 11 | 1.2.2    |               1300 |
+| 12 | 2.0.0    |               1293 |
+
+Sono stati verificati i seguenti invarianti:
+
+```text
+Release analizzate       : 12
+Osservazioni production  : 12836
+Chiavi duplicate         : 0
+Valori mancanti          : 0
+Scope esclusi presenti   : 0
+File non Java            : 0
+```
+
+L'inventario definitivo costituisce la base sulla quale verranno calcolate
+le metriche della Milestone 1.
+
+---
+
+# 11. Output disponibili
+
+Attualmente sono disponibili:
 
 ```text
 isw2/datasets/release_catalog_raw.csv
 isw2/datasets/release_catalog.csv
+isw2/datasets/java_class_inventory_raw.csv
+isw2/datasets/java_class_inventory.csv
 ```
 
-Entrambi i file sono generati automaticamente dall'analyzer.
+### `release_catalog_raw.csv`
+
+Catalogo iniziale delle versioni recuperate da JIRA e confronto con i tag Git.
+
+### `release_catalog.csv`
+
+Catalogo definitivo delle release, con associazione release → commit e
+indicazione delle release incluse nel Dataset A.
+
+### `java_class_inventory_raw.csv`
+
+Inventario completo dei file Java presenti nelle 12 release selezionate,
+con classificazione del relativo scope.
+
+### `java_class_inventory.csv`
+
+Inventario definitivo delle sole osservazioni production utilizzate come
+base per le metriche della Milestone 1.
+
+Tutti i file sono generati automaticamente dall'analyzer e non vengono
+modificati manualmente.
 
 ---
 
-# 10. Decisioni metodologiche
+# 12. Decisioni metodologiche
 
 Le principali decisioni adottate finora sono:
 
@@ -300,7 +494,8 @@ Sono considerate release stabili solamente versioni `X.Y.Z`.
 
 ### Git tag
 
-Il tag viene utilizzato come informazione diagnostica ma non come sorgente dello snapshot della release.
+Il tag viene utilizzato come informazione diagnostica ma non come sorgente
+dello snapshot della release.
 
 ### Release commit
 
@@ -308,7 +503,25 @@ Il commit rappresentativo viene selezionato tramite `DATE_CUTOFF`.
 
 ### Porzione delle release
 
-Viene utilizzato il primo 33% delle release stabili, con arrotondamento tramite `ceil`.
+Viene utilizzato il primo 33% delle release stabili, con arrotondamento
+tramite `ceil`.
+
+### Identificazione dei file Java
+
+I file vengono letti direttamente dall'albero Git della revisione tramite
+`git ls-tree`, senza modificare la working copy principale.
+
+### Classi production
+
+Per le successive analisi vengono utilizzate solamente le osservazioni
+classificate come `PRODUCTION`.
+
+Sono esclusi test, esempi, sorgenti generati, sorgenti parser e file che
+non rappresentano classi production.
+
+La classificazione non si basa esclusivamente sulla presenza di
+`src/main/java`, ma considera anche il contesto del modulo e del percorso,
+come nel caso di `osgi-itests`.
 
 ### Dataset
 
@@ -316,33 +529,37 @@ Gli output CSV vengono generati automaticamente e non modificati manualmente.
 
 ---
 
-# 11. Stato Milestone 1
+# 13. Stato Milestone 1
 
 ## Completato
 
 * [x] Recupero release da JIRA
-* [x] Generazione catalogo RAW
+* [x] Generazione catalogo RAW delle release
 * [x] Filtro release stabili
 * [x] Verifica tag Git
 * [x] Associazione release → commit
 * [x] Validazione temporale dei commit
-* [x] Generazione catalogo definitivo
+* [x] Generazione catalogo definitivo delle release
 * [x] Selezione delle 12 release
+* [x] Inventario RAW dei file Java
+* [x] Classificazione dei sorgenti Java
+* [x] Verifica delle regole di inclusione/esclusione
+* [x] Gestione dei sorgenti di integration test
+* [x] Gestione dei `PARSER_SOURCE`
+* [x] Generazione dell'inventario production
+* [x] Validazione delle 12.836 osservazioni production
 
 ## Prossimo step
 
-* [ ] Identificazione automatica delle classi Java presenti in ciascuna delle 12 release
-* [ ] Definizione delle regole di inclusione/esclusione delle classi
-* [ ] Verifica dei risultati prima del calcolo delle metriche
+* [ ] Calcolo delle metriche di classe
 
 Successivamente:
 
-* [ ] metriche di classe;
-* [ ] `NSmells`;
-* [ ] ticket bug;
+* [ ] calcolo di `NSmells`;
+* [ ] recupero e analisi dei ticket bug;
 * [ ] SZZ;
 * [ ] Proportion;
-* [ ] `Bugginess`;
-* [ ] Dataset A.
+* [ ] determinazione della `Bugginess`;
+* [ ] generazione del Dataset A.
 
 Il presente documento verrà aggiornato durante l'avanzamento della milestone.

@@ -146,15 +146,14 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Identificazione delle release stabili
 * [x] Associazione release → commit Git
 * [x] Selezione delle release da utilizzare per il Dataset A
-
+- [x] Identificazione delle classi Java delle release selezionate
+- [x] Definizione delle regole di inclusione/esclusione delle classi
 ### In corso
 
-* [ ] Identificazione delle classi Java delle release selezionate
-* [ ] Definizione delle regole di inclusione/esclusione
-* [ ] Calcolo delle metriche di classe
-* [ ] Calcolo di `NSmells`
-* [ ] Determinazione della `Bugginess`
-* [ ] Generazione del Dataset A
+- [ ] Calcolo delle metriche di classe
+- [ ] Calcolo di `NSmells`
+- [ ] Determinazione della `Bugginess`
+- [ ] Generazione del Dataset A
 
 ### Successivamente
 
