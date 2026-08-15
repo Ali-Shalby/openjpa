@@ -1,4 +1,4 @@
-package it.uniroma2.isw2.openjpa.release;
+package it.uniroma2.isw2.openjpa.inventory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,32 +9,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.time.LocalDate;
 
-public class DatasetReleaseCatalogReader {
+public class ProductionClassInventoryReader {
 
-    public List<DatasetRelease> readIncludedReleases(Path catalog)
-            throws IOException {
+    public List<ProductionClassObservation> read(
+            Path inventory
+    ) throws IOException {
 
-        if (!Files.isRegularFile(catalog)) {
+        if (!Files.isRegularFile(inventory)) {
             throw new IllegalArgumentException(
-                    "Release catalog not found: " + catalog
+                    "Inventory not found: " + inventory
             );
         }
 
-        List<DatasetRelease> releases = new ArrayList<>();
+        List<ProductionClassObservation> observations =
+                new ArrayList<>();
 
         try (BufferedReader reader =
                      Files.newBufferedReader(
-                             catalog,
+                             inventory,
                              StandardCharsets.UTF_8
                      )) {
 
-            String headerLine = reader.readLine();
+            String headerLine =
+                    reader.readLine();
 
             if (headerLine == null) {
                 throw new IOException(
-                        "Empty release catalog: " + catalog
+                        "Empty inventory: " + inventory
                 );
             }
 
@@ -44,10 +46,10 @@ public class DatasetReleaseCatalogReader {
             Map<String, Integer> columns =
                     buildColumnMap(headers);
 
-            requireColumn(columns, "ChronologicalIndex");
+            requireColumn(columns, "ReleaseIndex");
             requireColumn(columns, "Version");
-            requireColumn(columns, "ReleaseCommit");
-            requireColumn(columns, "DatasetIncluded");
+            requireColumn(columns, "CommitId");
+            requireColumn(columns, "Class");
 
             String line;
 
@@ -60,71 +62,36 @@ public class DatasetReleaseCatalogReader {
                 List<String> values =
                         parseCsvLine(line);
 
-                boolean included =
-                        Boolean.parseBoolean(
+                observations.add(
+                        new ProductionClassObservation(
+                                Integer.parseInt(
+                                        get(
+                                                values,
+                                                columns,
+                                                "ReleaseIndex"
+                                        )
+                                ),
                                 get(
                                         values,
                                         columns,
-                                        "DatasetIncluded"
-                                )
-                        );
-
-                if (!included) {
-                    continue;
-                }
-
-                int releaseIndex =
-                        Integer.parseInt(
+                                        "Version"
+                                ),
                                 get(
                                         values,
                                         columns,
-                                        "ChronologicalIndex"
-                                )
-                        );
-
-                String version =
-                        get(
-                                values,
-                                columns,
-                                "Version"
-                        );
-
-                String commitId =
-                        get(
-                                values,
-                                columns,
-                                "ReleaseCommit"
-                        );
-
-                LocalDate releaseDate =
-                        LocalDate.parse(
+                                        "CommitId"
+                                ),
                                 get(
                                         values,
                                         columns,
-                                        "ReleaseDate"
+                                        "Class"
                                 )
-                        );
-
-                releases.add(
-                        new DatasetRelease(
-                                releaseIndex,
-                                version,
-                                commitId,
-                                releaseDate
                         )
                 );
             }
         }
 
-        releases.sort(
-                (left, right) ->
-                        Integer.compare(
-                                left.releaseIndex(),
-                                right.releaseIndex()
-                        )
-        );
-
-        return releases;
+        return observations;
     }
 
     private static Map<String, Integer> buildColumnMap(
@@ -165,7 +132,8 @@ public class DatasetReleaseCatalogReader {
             String name
     ) {
 
-        int index = columns.get(name);
+        int index =
+                columns.get(name);
 
         if (index >= values.size()) {
             throw new IllegalArgumentException(
@@ -176,13 +144,6 @@ public class DatasetReleaseCatalogReader {
         return values.get(index);
     }
 
-    /*
-     * Minimal CSV parser supporting quoted fields
-     * and escaped double quotes ("").
-     *
-     * It is sufficient for catalogs generated by
-     * the ISW2 analyzer itself.
-     */
     private static List<String> parseCsvLine(
             String line
     ) {
