@@ -1,0 +1,22 @@
+OpenJPA Sonar release extraction
+ReleaseIndex=2
+Version=0.9.6
+SnapshotCommit=ca45e3292a7520b58bf31adf2b4ac099ce6416d6
+SonarProjectKey=Ali-Shalby_openjpa-isw2-sonar
+SonarAnalysisKey=fde5d3dd-ea1c-41a3-a3c1-a20a5aa605f1
+SonarAnalysisDate=2026-08-16T13:35:38+0000
+SonarRevision=dcbbb4d4fbd61b10c1c88e849e7446d84c390039
+TotalIssues=7391
+AllCodeSmellIssues=7206
+OpenCodeSmellIssues=6818
+FixedHistoricalCodeSmellIssues=388
+MetricRows=949
+EvidenceRows=6818
+SumNSmells=6818
+ClassesWithSmells=667
+ClassesWithoutSmells=282
+UnmatchedJavaCodeSmells=0
+NonJavaCodeSmells=0
+DuplicateMetricKeys=0
+NegativeCounts=0
+ValidationPassed=True

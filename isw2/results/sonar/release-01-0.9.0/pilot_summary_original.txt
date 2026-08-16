@@ -1,0 +1,18 @@
+OpenJPA Sonar pilot 0.9.0
+ProjectKey=Ali-Shalby_openjpa-isw2-sonar
+TotalIssues=6962
+CodeSmellIssues=6793
+MaintainabilityIssues=6795
+CodeSmellMaintainability=6793
+CodeSmellWithoutMaintainability=0
+MaintainabilityWithoutCodeSmell=2
+MetricRows=932
+EvidenceRows=6793
+SumNSmells=6793
+ClassesWithSmells=664
+ClassesWithoutSmells=268
+UnmatchedJavaCodeSmells=0
+NonJavaCodeSmells=0
+DuplicateMetricKeys=0
+NegativeCounts=0
+ValidationPassed=True

@@ -853,7 +853,233 @@ di non includere tali revisioni nelle metriche di modifica del sorgente.
 
 ---
 
-# 13. Output disponibili
+
+# 13. Calcolo di NSmells
+
+Dopo la validazione delle metriche di classe è stata calcolata la metrica:
+
+```text
+NSmells
+```
+
+per ciascuna osservazione:
+
+```text
+(ReleaseIndex, Class)
+```
+
+`NSmells` rappresenta il numero di issue SonarQube Cloud di tipo:
+
+```text
+CODE_SMELL
+```
+
+associate alla classe nello snapshot della specifica release.
+
+Per evitare di includere issue storiche non più presenti nel codice della
+release corrente, vengono considerate esclusivamente issue con:
+
+```text
+issueStatus = OPEN
+type        = CODE_SMELL
+```
+
+Le issue `FIXED` vengono quindi escluse dal conteggio di `NSmells`, in quanto
+rappresentano smell rilevati in analisi precedenti ma non più presenti nello
+snapshot corrente.
+
+## 13.1 Snapshot per SonarQube Cloud
+
+Per ogni release selezionata viene costruito uno snapshot ausiliario contenente
+esclusivamente le classi Java production già presenti nell'inventario
+definitivo.
+
+L'associazione tra i file dello snapshot e le osservazioni del dataset viene
+mantenuta tramite:
+
+```text
+source-map.csv
+```
+
+che contiene, per ogni file analizzato:
+
+```text
+ReleaseIndex
+Version
+CommitId
+OriginalClassPath
+SonarPath
+```
+
+In questo modo ogni issue Sonar può essere ricondotta in modo deterministico
+alla corrispondente osservazione:
+
+```text
+(ReleaseIndex, Class)
+```
+
+del dataset.
+
+## 13.2 Estrazione e mapping degli smell
+
+Per ogni release vengono recuperate le issue di maintainability nello stato
+corrente e vengono selezionate quelle di tipo `CODE_SMELL`.
+
+Ogni issue viene associata alla classe tramite il relativo `SonarPath`.
+
+Per ogni classe viene quindi calcolato:
+
+```text
+NSmells =
+    numero di CODE_SMELL OPEN associati alla classe
+```
+
+Le classi senza smell vengono mantenute nel dataset con:
+
+```text
+NSmells = 0
+```
+
+Per ciascuna release vengono prodotti:
+
+```text
+isw2/results/sonar/release-XX-<version>/smell_metrics.csv
+isw2/results/sonar/release-XX-<version>/sonar_smell_evidence.csv
+isw2/results/sonar/release-XX-<version>/summary.txt
+```
+
+`smell_metrics.csv` contiene una riga per classe, mentre
+`sonar_smell_evidence.csv` mantiene l'evidenza delle singole issue utilizzate
+nel conteggio.
+
+## 13.3 Validazione per release
+
+Il calcolo è stato prima verificato su una release pilota e successivamente
+esteso alle 12 release selezionate.
+
+Per ogni release sono stati verificati i seguenti invarianti:
+
+```text
+numero righe metriche = numero classi production
+EvidenceRows = Sum(NSmells)
+UnmatchedJavaCodeSmells = 0
+NonJavaCodeSmells = 0
+DuplicateMetricKeys = 0
+NegativeCounts = 0
+NonOpenEvidence = 0
+ValidationPassed = True
+```
+
+Il controllo aggregato sulle 12 release ha prodotto:
+
+```text
+Release analizzate       : 12
+Osservazioni              : 12836
+Evidence Sonar            : 94308
+Sum(NSmells)              : 94308
+Release mancanti          : 0
+Mismatch evidence         : 0
+Smell Java non associati  : 0
+Chiavi duplicate          : 0
+NSmells negativi          : 0
+Evidence non OPEN         : 0
+Validazioni fallite       : 0
+```
+
+Il numero di osservazioni coincide esattamente con l'inventario production:
+
+```text
+12836
+```
+
+## 13.4 Aggregazione dei risultati Sonar
+
+I risultati delle 12 release vengono aggregati nel file:
+
+```text
+isw2/datasets/sonar_smell_metrics.csv
+```
+
+con colonne:
+
+```text
+ReleaseIndex
+Version
+CommitId
+Class
+NSmells
+```
+
+Il file aggregato contiene:
+
+```text
+Righe totali       : 12836
+Release            : 12
+Chiavi duplicate   : 0
+NSmells negativi   : 0
+Sum(NSmells)       : 94308
+```
+
+Le chiavi:
+
+```text
+(ReleaseIndex, Class)
+```
+
+coincidono esattamente con quelle presenti in `class_metrics.csv`.
+
+Sono inoltre stati verificati:
+
+```text
+classi mancanti in Sonar : 0
+classi extra in Sonar    : 0
+Version mismatch         : 0
+CommitId mismatch        : 0
+```
+
+## 13.5 Join con le metriche di classe
+
+`NSmells` viene aggiunto alle metriche di classe mediante una join 1:1 sulla
+chiave:
+
+```text
+(ReleaseIndex, Class)
+```
+
+Il risultato viene salvato in:
+
+```text
+isw2/datasets/class_metrics_with_smells.csv
+```
+
+senza modificare il file originale:
+
+```text
+isw2/datasets/class_metrics.csv
+```
+
+La join finale ha prodotto:
+
+```text
+Input metric rows : 12836
+Sonar rows        : 12836
+Merged rows       : 12836
+Missing matches   : 0
+Metadata mismatch : 0
+Extra Sonar rows  : 0
+```
+
+Il file `class_metrics_with_smells.csv` mantiene quindi tutte le metriche
+precedentemente calcolate e aggiunge la colonna:
+
+```text
+NSmells
+```
+
+per tutte le 12.836 osservazioni.
+
+
+# 14. Output disponibili
 
 Sono attualmente disponibili:
 
@@ -863,33 +1089,47 @@ isw2/datasets/release_catalog.csv
 isw2/datasets/java_class_inventory_raw.csv
 isw2/datasets/java_class_inventory.csv
 isw2/datasets/class_metrics.csv
+isw2/datasets/sonar_smell_metrics.csv
+isw2/datasets/class_metrics_with_smells.csv
 ```
 
 Sono inoltre prodotti output diagnostici sotto:
 
 ```text
 isw2/results/metrics/
+isw2/results/sonar/
 ```
 
-tra cui i risultati dei pilot e gli eventuali failure report.
+Per ciascuna release analizzata da Sonar vengono mantenuti:
 
-Tutti i dataset vengono generati automaticamente dall'analyzer e non vengono
-modificati manualmente.
+```text
+smell_metrics.csv
+sonar_smell_evidence.csv
+summary.txt
+```
 
-`class_metrics.csv` non rappresenta ancora il Dataset A finale, poiché
-devono essere aggiunti:
+Tutti i dataset vengono generati automaticamente dall'analyzer o dagli script
+di estrazione e validazione e non vengono modificati manualmente.
+
+`class_metrics.csv` viene mantenuto come output delle sole metriche di classe.
+
+`class_metrics_with_smells.csv` rappresenta invece l'output intermedio
+aggiornato con:
+
+```text
+NSmells
+```
+
+ma non costituisce ancora il Dataset A finale, poiché devono essere aggiunti:
 
 ```text
 NFIX
-NSmells
 Bugginess
 ```
 
 e, nella costruzione del dataset finale, l'identificativo del progetto.
 
----
-
-# 14. Decisioni metodologiche
+# 15. Decisioni metodologiche
 
 Le principali decisioni adottate finora sono:
 
@@ -963,6 +1203,23 @@ Il path completo presente nella colonna `Class` viene mantenuto come
 identificatore della classe. Non viene aggiunta una colonna ridondante
 contenente soltanto il simple name.
 
+### NSmells
+
+`NSmells` rappresenta il numero di `CODE_SMELL` presenti nella classe nello
+snapshot della specifica release.
+
+Vengono considerate esclusivamente issue Sonar nello stato:
+
+```text
+OPEN
+```
+
+Le issue `FIXED` vengono escluse dal valore della release corrente, poiché
+rappresentano smell storici non più presenti nello snapshot analizzato.
+
+La tracciabilità delle singole issue viene comunque mantenuta negli output
+di evidence prodotti per release.
+
 ### NFIX
 
 `NFIX` viene rinviato alla fase di identificazione dei bug e dei fix commit,
@@ -975,7 +1232,7 @@ manualmente.
 
 ---
 
-# 15. Stato Milestone 1
+# 16. Stato Milestone 1
 
 ## Completato
 
@@ -1001,19 +1258,25 @@ manualmente.
 * [x] Pilot delle metriche sulla release `0.9.0`
 * [x] Generazione FULL delle metriche
 * [x] Validazione delle 12.836 righe di `class_metrics.csv`
+* [x] Pilot del calcolo `NSmells`
+* [x] Estrazione `NSmells` sulle 12 release
+* [x] Validazione delle 12.836 osservazioni Sonar
+* [x] Aggregazione in `sonar_smell_metrics.csv`
+* [x] Join 1:1 con `class_metrics.csv`
+* [x] Generazione di `class_metrics_with_smells.csv`
 
 ## Prossimo step
 
-* [ ] Calcolo di `NSmells`
+* [ ] Recupero e analisi dei ticket bug
+* [ ] Identificazione dei fix commit
+* [ ] Calcolo di `NFIX`
+* [ ] SZZ
 
 Successivamente:
 
-* [ ] recupero e analisi dei ticket bug;
-* [ ] identificazione dei fix commit;
-* [ ] calcolo di `NFIX`;
-* [ ] SZZ;
 * [ ] Proportion;
 * [ ] determinazione della `Bugginess`;
+* [ ] assemblaggio e validazione finale;
 * [ ] generazione del Dataset A.
 
 Il presente documento verrà aggiornato durante l'avanzamento della milestone.

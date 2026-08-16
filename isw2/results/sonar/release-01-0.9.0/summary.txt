@@ -1,0 +1,17 @@
+OpenJPA Sonar release extraction
+ReleaseIndex=1
+Version=0.9.0
+SnapshotCommit=dc1f0bf2046cf08d9484a287dee02ff058961ca4
+ExtractionMode=OriginalPilot
+MetricRows=932
+EvidenceRows=6793
+SumNSmells=6793
+ClassesWithSmells=664
+ClassesWithoutSmells=268
+UnmatchedJavaCodeSmells=0
+NonJavaCodeSmells=0
+DuplicateMetricKeys=0
+NegativeCounts=0
+NonOpenEvidence=0
+ValidationPassed=True
+OriginalPilotSummary=pilot_summary_original.txt
