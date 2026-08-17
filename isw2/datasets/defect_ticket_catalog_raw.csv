@@ -1,0 +1,1133 @@
+IssueId,IssueKey,Summary,Status,Resolution,CreatedDate,ResolutionDate,AffectedVersions,FixVersions
+12347016,OPENJPA-3,properties tests fail on windows,Closed,Fixed,2006-08-01T03:05:09Z,2006-08-01T05:02:19Z,,
+12347347,OPENJPA-7,Link to wiki is incorrect in site,Closed,Fixed,2006-08-05T02:50:06Z,2006-08-05T04:06:52Z,,
+12347611,OPENJPA-9,PCEnhancer not processing multiple PU's defined within a single persistence.xml file,Closed,Fixed,2006-08-09T15:03:51Z,2007-11-16T01:16:46Z,,1.1.0
+12347935,OPENJPA-13,GenerationType.IDENTITY problem with MS SQL Server,Closed,Fixed,2006-08-14T22:09:30Z,2006-10-04T21:42:45Z,,
+12348082,OPENJPA-14,PCEnhancer ant task requires openjpa jars to be on the system classpath or passed into ant with '-lib',Closed,Fixed,2006-08-16T17:44:33Z,2006-08-24T18:21:44Z,,
+12348106,OPENJPA-15,EJBQL grammar needs to be updated to relfect JPA specification,Closed,Fixed,2006-08-16T22:46:57Z,2006-08-30T18:13:58Z,,
+12348107,OPENJPA-16,NPE in createQuery for EJB QL with nested correlated subqueries,Closed,Fixed,2006-08-16T23:01:18Z,2007-03-01T02:20:03Z,,0.9.7
+12348111,OPENJPA-20,Query can return embeddable class,Closed,Fixed,2006-08-16T23:11:59Z,2008-07-28T17:52:14Z,,1.2.0|1.3.0
+12348112,OPENJPA-21,Time is missing from list of mutable classes.,Closed,Fixed,2006-08-16T23:13:38Z,2007-01-31T02:34:24Z,,0.9.7
+12348116,OPENJPA-22,"locate & substring queries fail both db2 & derby, cannot use parameter markers in expression ?-?",Closed,Fixed,2006-08-16T23:32:39Z,2007-03-10T00:36:42Z,,0.9.7
+12348117,OPENJPA-23,-418 sqlexception using DB2 and EJB QL with SQRT or MOD,Closed,Fixed,2006-08-16T23:35:59Z,2007-03-01T12:10:24Z,,0.9.7
+12348334,OPENJPA-24,Allow OpenJPA to be extensible,Closed,Fixed,2006-08-21T13:27:35Z,2007-03-01T02:20:03Z,,0.9.7
+12348347,OPENJPA-25,"Incorrect SQL generated for queries involving more than one AbstractSchemaNames, generated SQL FROM clause is missing 'Table alias'",Closed,Fixed,2006-08-21T18:12:55Z,2007-03-01T02:20:03Z,,0.9.7
+12348353,OPENJPA-28,groupby clause of a subquery incorrectly duplicated in the main query in the generated SQL,Closed,Fixed,2006-08-21T19:10:27Z,2008-08-01T23:44:49Z,,1.2.0|1.3.0
+12348515,OPENJPA-31,Named query with @NamedNativeQuery  annotation does not work,Closed,Fixed,2006-08-23T22:41:32Z,2006-09-27T08:31:05Z,,
+12348518,OPENJPA-32,Unnecessary dependencies in poms,Closed,Fixed,2006-08-23T22:59:13Z,2006-08-24T07:32:44Z,,
+12348645,OPENJPA-34,Problem detecting parent's access type with runtime enhancement.,Closed,Fixed,2006-08-25T15:57:25Z,2006-10-04T16:12:12Z,,
+12348773,OPENJPA-35,In-memory Delete operation fails with active DataCache,Closed,Fixed,2006-08-28T23:36:05Z,2007-03-10T15:18:10Z,0.9.0|0.9.6,0.9.7
+12349362,OPENJPA-41,transforming classes doesn't work,Closed,Fixed,2006-09-07T06:06:25Z,2007-03-01T02:20:03Z,,0.9.7
+12349437,OPENJPA-42,Simple orm.xml file causes exception (NPE),Closed,Fixed,2006-09-07T22:26:45Z,2006-09-10T23:22:50Z,,
+12349669,OPENJPA-44,metadata-complete element in orm.xml is ignored,Closed,Fixed,2006-09-11T23:08:07Z,2008-07-28T22:50:04Z,,1.2.0
+12350202,OPENJPA-46,"true, false not case insensitive, gets null pointer exception",Closed,Fixed,2006-09-18T23:59:46Z,2007-03-08T14:32:33Z,,
+12350208,OPENJPA-48, parsing error - cast of subselect does not work,Closed,Fixed,2006-09-19T00:47:31Z,2007-03-01T02:20:04Z,,0.9.7
+12350211,OPENJPA-50,"bad sql pushdown, cast changes datatype",Closed,Fixed,2006-09-19T01:08:52Z,2007-03-01T02:20:04Z,,0.9.7
+12350212,OPENJPA-51,"bad sql pushdown, sub select is missing from clause",Closed,Fixed,2006-09-19T01:12:45Z,2008-07-14T04:10:09Z,1.0.0|1.0.1|1.0.2|1.0.3|1.0.4|1.1.0|1.2.0,1.0.3|1.2.0
+12350214,OPENJPA-53," bad sql pushdown for nested subselects, missing nested subselect",Closed,Fixed,2006-09-19T01:20:21Z,2007-03-01T02:20:04Z,,0.9.7
+12350215,OPENJPA-54,"bad sql pushdown, should use all syntax",Closed,Fixed,2006-09-19T01:25:34Z,2007-03-01T02:20:04Z,,0.9.7
+12350360,OPENJPA-56,"in derby concat with input parameter needs a cast, otherwise becomes long varchar and some operations do not work",Closed,Fixed,2006-09-20T16:55:36Z,2007-03-01T02:20:04Z,,0.9.7
+12350572,OPENJPA-58,The snapshots at http://people.apache.org/repo/m2-snapshot-repository/ are out of date,Closed,Fixed,2006-09-23T12:03:37Z,2006-09-23T18:44:06Z,,
+12350944,OPENJPA-59,Eager fetching not occuring for ToOne relationships during detachment,Closed,Fixed,2006-09-25T13:22:47Z,2006-09-26T17:40:47Z,,
+12351917,OPENJPA-60,Specifying the wrong persistence implementation in persistence.xml leads to misleading error message,Closed,Fixed,2006-09-27T18:49:25Z,2007-02-06T03:03:38Z,,0.9.7
+12351985,OPENJPA-61,Missing usage of TransactionSynchronizationRegistry,Closed,Fixed,2006-09-28T13:29:24Z,2007-06-26T18:26:17Z,,1.0.0
+12352341,OPENJPA-62,Ejbql join queries show invalid null Entities when run in a new persistence context where no entity instances exist.,Closed,Fixed,2006-10-04T01:33:57Z,2007-03-01T02:20:04Z,,0.9.7
+12353882,OPENJPA-67,Bug with creating a named Sequence Generator for DB2,Closed,Fixed,2006-10-24T18:38:32Z,2006-10-27T16:18:12Z,,
+12354098,OPENJPA-68,PCClassFileTransformer.isEnhanced() fails because PersistenceCapable package name is wrong,Closed,Fixed,2006-10-27T06:10:34Z,2006-10-27T17:03:30Z,,
+12354323,OPENJPA-70,Data caching + external modifications could result in stale data getting stuck in cache,Closed,Fixed,2006-10-30T23:21:11Z,2006-10-30T23:37:08Z,,
+12354330,OPENJPA-71,Caching primitive array types consumes excessive memory,Closed,Fixed,2006-10-31T01:06:29Z,2007-03-08T09:34:49Z,0.9.0|0.9.6,0.9.7
+12354404,OPENJPA-73,PersistenceProviderImpl.createContainerEntityManagerFactory() doesn't work if you supply jdbc specific properties,Closed,Fixed,2006-10-31T22:19:17Z,2006-11-06T18:26:15Z,,
+12354515,OPENJPA-74,Trying to create a named query that is defined in an orm.xml file causes a NullPointerException,Closed,Fixed,2006-11-02T02:48Z,2006-11-03T21:10:49Z,,
+12354865,OPENJPA-75,error message for missing query id var needs improvement,Closed,Fixed,2006-11-06T19:18:52Z,2008-08-01T20:05:52Z,,1.3.0
+12354902,OPENJPA-76,"add-was-interfaces ant task throws exception on a ""non-clean"" build.",Closed,Fixed,2006-11-07T04:35:48Z,2006-11-07T08:02:24Z,,
+12355182,OPENJPA-77,"Problems in default setting in DB2Dictionary , also missing support for DB2 z/OS platforms",Closed,Fixed,2006-11-09T17:55:44Z,2006-12-29T15:23:15Z,,0.9.7
+12355510,OPENJPA-80,Bad Escaping for LIKE in MySQL,Closed,Fixed,2006-11-13T20:01:09Z,2007-03-06T09:34:16Z,,0.9.7
+12355776,OPENJPA-83,Bad SQL for Subselect BETWEEN,Closed,Fixed,2006-11-15T19:50:09Z,2007-05-02T21:54:45Z,,1.0.0
+12356226,OPENJPA-86,"""uuid-hex"" generator does not make affect in orm.xml",Closed,Fixed,2006-11-21T01:42:51Z,2007-08-07T23:13:06Z,0.9.6,1.0.0
+12358746,OPENJPA-90,"""ON DELETE SET NULL"" is getting overridden if the foreign column is ""NOT NULL""",Closed,Fixed,2006-12-15T11:06:12Z,2006-12-15T18:03:41Z,,
+12359284,OPENJPA-91,java.lang.VerifyError on websphere after application reload,Closed,Fixed,2006-12-22T12:07:13Z,2008-09-18T18:31:42Z,,
+12360119,OPENJPA-98,Java deadlock when insert in t1 and find in t2 when using IBM JVM 1.5.0,Closed,Fixed,2007-01-09T20:28:59Z,2007-02-05T17:34:50Z,,0.9.7
+12360237,OPENJPA-100,<jar-file> entries failing to be processed for persistence unit rooted in an EAR,Closed,Fixed,2007-01-10T23:06:27Z,2007-01-10T23:07:35Z,,0.9.7
+12360647,OPENJPA-102,"JTA transaction rollback, nonexistant instances, transactional persistence context => failures during afterCompletion() and close()",Closed,Fixed,2007-01-17T04:07:30Z,2007-01-17T22:17:18Z,,0.9.7
+12360675,OPENJPA-103,Default Listeners not being processed correctly,Closed,Fixed,2007-01-17T17:08:31Z,2007-01-17T22:50:03Z,,0.9.7
+12360697,OPENJPA-104,OpenJPA does not detach instances on rollback(),Closed,Fixed,2007-01-17T20:23:12Z,2007-01-17T22:17:38Z,,0.9.7
+12361222,OPENJPA-107,@SqlResultSetMappings fails in mapping tool with java.lang.ArrayStoreException,Closed,Fixed,2007-01-25T00:49:50Z,2007-01-25T19:10:59Z,,0.9.7
+12361225,OPENJPA-109,"every NativeQuery using SqlResultSetMapping fails at runtime with There is no query result mapping for ""null"" with name ""xxx"" when the entity is persisted in a different method than the method doing the query.  ",Closed,Fixed,2007-01-25T01:02:11Z,2007-01-26T23:56:26Z,,0.9.7
+12361226,OPENJPA-110,Every NamedNativeQuery using ResultSetMapping fails at runtime with class cast exception when try to iterate over list<Some Entity>,Closed,Fixed,2007-01-25T01:05:15Z,2007-03-01T02:20:05Z,,0.9.7
+12361228,OPENJPA-112,Native queries and named parameters: poor error message,Closed,Fixed,2007-01-25T01:38:08Z,2008-06-19T00:40:53Z,,1.2.0
+12361229,OPENJPA-113,"when you specify columm table=""empbean""  in the xml file entity id or basic type when empbean is the default table name, the mapping tool generates extra foreign key field (eg.EmpBean_empid) in the table produced.",Closed,Fixed,2007-01-25T02:04:02Z,2007-10-24T18:10:19Z,,1.0.1|1.1.0
+12361497,OPENJPA-115,Bottleneck(s) with using OpenJPA in a Container-managed environment,Closed,Fixed,2007-01-29T19:20:46Z,2007-02-01T22:57:42Z,,0.9.7
+12361513,OPENJPA-116,EntityManager.getDelegate should throw an IllegalStateException ,Closed,Fixed,2007-01-29T22:28:58Z,2007-01-30T19:45:05Z,,0.9.7
+12361655,OPENJPA-118,AutoDetach property has no effect,Closed,Fixed,2007-01-31T16:05:53Z,2007-01-31T22:27:36Z,,0.9.7
+12361701,OPENJPA-119,EntityManager.clear() should not implicitly invoke the flush operation,Closed,Fixed,2007-01-31T23:58:33Z,2007-02-02T21:17:27Z,,0.9.7
+12361710,OPENJPA-121,Table name defaults to the class name instead of the entity name,Closed,Fixed,2007-02-01T02:42:25Z,2007-03-07T02:04:18Z,,0.9.7
+12361713,OPENJPA-122,EntityManager does not throw exceptions after close() in required cases,Closed,Fixed,2007-02-01T05:34:40Z,2007-02-01T20:06:51Z,,0.9.7
+12361715,OPENJPA-123,Test framework should allow tests that are expected to fail to be checked in,Closed,Fixed,2007-02-01T07:05:16Z,2009-11-12T08:23:51Z,,2.0.0-M1|2.0.0-M2|2.0.0-M3|2.0.0-beta
+12362259,OPENJPA-132,java.lang.NoSuchMethodError for entity with ID of type java.sql.Date,Closed,Fixed,2007-02-07T22:40:38Z,2007-03-20T19:02:16Z,,0.9.7
+12362260,OPENJPA-133,Can't find non-public callback methods with superclass or interface parameters,Closed,Fixed,2007-02-07T22:52:36Z,2007-02-08T18:44:25Z,,0.9.7
+12362266,OPENJPA-134,Extra unneeded SQL joins for OneToMany relationship with fetch type EAGER,Closed,Fixed,2007-02-08T01:47:21Z,2007-04-11T16:26:31Z,,0.9.7
+12362387,OPENJPA-139,PersistenceException merging an entity with a Calendar field. ,Closed,Fixed,2007-02-09T00:19:03Z,2007-02-27T19:36:16Z,,0.9.7
+12362454,OPENJPA-140,Wrong package name in test classes,Closed,Fixed,2007-02-09T19:38:27Z,2007-02-09T21:52:40Z,,0.9.7
+12362662,OPENJPA-142,Entity name is ignored when specified in the orm.xml file,Closed,Fixed,2007-02-13T07:58:54Z,2007-03-10T11:15:38Z,0.9.0|0.9.6,0.9.7
+12362705,OPENJPA-143,Problems with Single Table Inheritance Strategy (and Discriminator Type of Integer),Closed,Fixed,2007-02-13T17:19:09Z,2007-08-16T21:13:13Z,,1.0.0
+12362708,OPENJPA-144,JDBCConfigurationImpl does not support JNDI lookup for non-jta-data-source.  ,Closed,Fixed,2007-02-13T17:25:13Z,2007-02-16T16:22:26Z,,0.9.7
+12362779,OPENJPA-146,Entity enhancement fails while using EmbeddedId on a MappedSuperclass,Closed,Fixed,2007-02-14T12:00:07Z,2007-02-20T16:35:16Z,,0.9.7
+12362833,OPENJPA-148,"Parsing exception while using an ""exploded"" archive",Closed,Fixed,2007-02-14T21:45:24Z,2007-05-22T16:28:45Z,,1.0.0
+12362925,OPENJPA-150,@Column in @AttributeOverride not honoring table attribute that maps to a secondary table in mappedsuperclass entity,Closed,Fixed,2007-02-15T14:38:15Z,2007-02-20T17:38:06Z,,0.9.7
+12363186,OPENJPA-154,OptimisticLockException working with  Savepoints,Closed,Fixed,2007-02-20T01:41:05Z,2007-02-20T02:03:26Z,,0.9.7
+12363190,OPENJPA-155, java.lang.ArrayIndexOutOfBoundsException during commit,Closed,Fixed,2007-02-20T04:53:33Z,2007-02-20T09:01:18Z,,0.9.7
+12363281,OPENJPA-157,NullPointerException when running query with null parameter,Closed,Fixed,2007-02-21T03:48:49Z,2007-02-21T04:07:31Z,,0.9.7
+12364095,OPENJPA-162,@OrderBy on @OneToMany does not allow ordering by @Id value,Closed,Fixed,2007-03-05T04:10:24Z,2007-03-05T20:14:49Z,0.9.6,0.9.7
+12364581,OPENJPA-165,QueryImpl.setFirstResult does not take already set maxResults into account,Closed,Fixed,2007-03-09T18:06:32Z,2007-08-07T23:47:12Z,0.9.7,1.0.0
+12364867,OPENJPA-173,JOIN in subselect generates bad SQL,Closed,Fixed,2007-03-14T00:38:17Z,2007-05-02T21:44:46Z,0.9.6,
+12365277,OPENJPA-174,error when find()'ing an abstract class,Closed,Fixed,2007-03-19T17:31:41Z,2007-03-19T21:47:59Z,0.9.6,0.9.7
+12365310,OPENJPA-175,Eager selects by PagingResultObjectProvider may not use the FetchBatchSize,Closed,Fixed,2007-03-19T23:57:25Z,2007-03-24T00:42:32Z,0.9.0|0.9.6,0.9.7
+12365447,OPENJPA-177,When using NOT NULL constraint on foreign key it is not possible to use CascadeType.ALL and GeneratedId,Closed,Fixed,2007-03-21T11:19:43Z,2007-07-31T19:53:09Z,0.9.6,1.0.0
+12365607,OPENJPA-179,Schemas defined in orm.xml are only applied when a name is also specified. ,Closed,Fixed,2007-03-22T19:49:39Z,2007-04-03T02:59:48Z,0.9.6|0.9.7,0.9.7
+12365700,OPENJPA-180,Batch Update support needed for OpenJPA performance,Closed,Fixed,2007-03-23T21:03:20Z,2008-09-18T16:46:38Z,0.9.0|0.9.6|0.9.7|1.0.0|1.1.0,
+12365816,OPENJPA-181,ClassCastException when executing bulk delete on an entity that owns a OneToOne with a Cascade.DELETE when DataCache is on,Closed,Fixed,2007-03-26T15:26:49Z,2007-03-27T19:25:48Z,0.9.7,0.9.7
+12365962,OPENJPA-185,optional attribute is not overriden by xml descriptor,Closed,Fixed,2007-03-28T03:25:31Z,2007-04-02T21:15:09Z,0.9.0|0.9.6,0.9.7
+12365984,OPENJPA-186,Build failure of OpenJPA sources from trunk,Closed,Fixed,2007-03-28T07:50:10Z,2007-03-29T08:34:25Z,0.9.7,0.9.7
+12366605,OPENJPA-199,bulk update gets parsing exception trying to update an attribute of an embedded class,Closed,Fixed,2007-04-04T23:34:51Z,2007-07-01T21:13:09Z,0.9.7,1.0.0
+12366607,OPENJPA-200,"cannot use enum type as input parameter for a query, and you cannot specify an Enum type as a literal, this also means that there is no way to update an enum type using jpaql bulk update",Closed,Fixed,2007-04-05T00:13:13Z,2007-11-17T06:38:50Z,0.9.7,
+12366611,OPENJPA-202,"after invoking LRS processing in a client by calling an @LRS annotated relationship, the next em.clear()/em.close() gets org.apache.openjpa.persistence.InvalidStateException: You cannot transfer large result set fields from one object or field to another",Closed,Fixed,2007-04-05T00:56:04Z,2007-04-06T19:19:32Z,0.9.7,0.9.7
+12366626,OPENJPA-203,Pessimistic Lock Manager not locking the rows ,Closed,Fixed,2007-04-05T08:55:45Z,2007-08-07T18:08:40Z,0.9.0|0.9.6,1.0.0
+12366739,OPENJPA-207,failure when composite ID has another composite ID as a field ,Closed,Fixed,2007-04-06T20:56:44Z,2009-05-01T01:02:45Z,0.9.6,2.0.0-M2
+12366747,OPENJPA-208,NoResultException and NonUniqueResultException are not thrown when expected,Closed,Fixed,2007-04-06T22:25:55Z,2007-04-09T17:06:36Z,0.9.6,0.9.7
+12366750,OPENJPA-209,Query returning 2 entities w/unidir 1-1 relationship gets openjpa.persistence.ArgumentException: Address with the same id already exists in the L1 cache.,Closed,Fixed,2007-04-06T22:52:53Z,2008-06-24T16:33:38Z,0.9.7,1.2.0
+12366751,OPENJPA-210,Query returning 2 entities w/1-1 relationship returns wrong types in the result list,Closed,Fixed,2007-04-06T23:27:29Z,2008-07-11T14:33:47Z,0.9.7,1.0.4|1.2.0
+12366995,OPENJPA-214,Need to support floating point primary keys,Closed,Fixed,2007-04-11T15:42:36Z,2007-04-11T20:26:14Z,0.9.7,0.9.7
+12367383,OPENJPA-218,pcNewInstance and ApplicationId,Closed,Fixed,2007-04-17T14:39:12Z,2009-04-02T20:08:31Z,0.9.6|0.9.7,2.0.0-M2
+12367409,OPENJPA-219,Reflection: negative caching would be beneficial in redeployment scenarios,Closed,Fixed,2007-04-17T20:31:32Z,2007-04-24T23:38:07Z,0.9.0|0.9.6|0.9.7,1.0.0
+12367411,OPENJPA-220,Examples of using ElementJoinColumn show the wrong usage,Closed,Fixed,2007-04-17T20:58:25Z,2008-07-26T20:58:54Z,0.9.7,1.2.0
+12367509,OPENJPA-222,FOR READ ONLY clause getting generated for subselects,Closed,Fixed,2007-04-18T17:01:42Z,2007-08-07T22:30Z,0.9.7,
+12368005,OPENJPA-228,Could not locate metadata for the class using alias,Closed,Fixed,2007-04-25T06:59:35Z,2007-04-25T09:21:09Z,0.9.6|0.9.7,
+12368016,OPENJPA-229,OpenJPA fails with MappedSuperclasses and Entities with the same short names,Closed,Fixed,2007-04-25T09:22:09Z,2007-04-26T19:59:25Z,0.9.0|0.9.6|0.9.7,1.0.0
+12368224,OPENJPA-230,Handle guaranteed delivery of Data Cache events on normal JVM termination using TCPRemoteCommitProvider,Closed,Fixed,2007-04-27T20:50:34Z,2007-05-29T08:19:07Z,0.9.0|0.9.6|0.9.7,1.0.0
+12368352,OPENJPA-231,Incorrect handling of cascading bidirectional collections during merge/attach,Closed,Fixed,2007-05-01T01:07:29Z,2008-05-12T05:43:18Z,0.9.7,1.1.0
+12368469,OPENJPA-233,Top level POM declares a compile-time dependency on JUnit,Closed,Fixed,2007-05-02T14:50:42Z,2007-05-17T01:38:26Z,0.9.7,1.0.0
+12368804,OPENJPA-237,Value.setAliases does not copy alias strings,Closed,Fixed,2007-05-07T23:10:24Z,2007-05-21T16:36:05Z,0.9.7,1.0.0
+12369742,OPENJPA-241,Extra SQL on lazy CMR load,Closed,Fixed,2007-05-19T12:41:43Z,2008-07-22T18:01:31Z,1.0.0,1.2.0
+12370109,OPENJPA-244,Java 2 Security enablement,Closed,Fixed,2007-05-24T02:48:54Z,2007-08-10T13:05:33Z,1.0.0,1.0.0
+12370345,OPENJPA-245,Attach NEW and auto-increment identity,Closed,Fixed,2007-05-27T14:03:51Z,2008-01-29T06:44:06Z,0.9.6|0.9.7,1.0.3|1.1.0
+12370634,OPENJPA-248,ForeignKey cascade delete action not working,Closed,Fixed,2007-05-31T19:29:03Z,2007-05-31T21:26:56Z,0.9.7,1.0.0
+12371051,OPENJPA-251,"org.apache.openjpa.enhance.Reflection.getDeclaredMethod() has undefined behavior, leading to VM-dependent crashes",Closed,Fixed,2007-06-06T16:29:11Z,2008-01-31T00:02:24Z,0.9.7,1.0.2|1.1.0
+12371293,OPENJPA-255,Inconsistent behavior during merge with cascade=none,Closed,Fixed,2007-06-08T22:39:24Z,2008-05-12T05:43:13Z,0.9.7|1.0.0,1.1.0
+12371316,OPENJPA-256,java.lang.ClassNotFoundException: org.apache.openjpa.util.CacheMap in a jetty spring environment,Closed,Fixed,2007-06-09T12:08:13Z,2007-08-21T15:22:31Z,,1.0.0
+12371488,OPENJPA-257,Getter/Setter type inconsistency in Entity IdClass,Closed,Fixed,2007-06-12T17:27:22Z,2007-07-19T21:06:32Z,1.0.0,1.0.0
+12371491,OPENJPA-258,MetaDataInheritanceComparator is not transitive; C > B > A > C leads to out-of-memory crash in PCEnhancer,Closed,Fixed,2007-06-12T18:21:43Z,2008-01-31T08:04:57Z,0.9.6,1.0.2|1.1.0
+12371987,OPENJPA-261,UnsupportedOperationException occurred in BrokerImpl.java,Closed,Fixed,2007-06-19T22:02:35Z,2007-07-20T16:26:01Z,0.9.7,
+12372533,OPENJPA-269,Informix doesn't support subselects or using table aliases in a delete statement. ,Closed,Fixed,2007-06-27T18:26:33Z,2007-06-27T18:39:17Z,,1.0.0
+12372693,OPENJPA-271,DB2 missing JDBC driver 2 support,Closed,Fixed,2007-06-29T15:18:40Z,2007-08-07T17:02:25Z,1.0.0,1.0.0
+12372712,OPENJPA-272,@GenerateValue (AUTO) doesn't work with Property level access,Closed,Fixed,2007-06-29T18:53:18Z,2007-08-06T00:00:08Z,0.9.7,1.0.0
+12372784,OPENJPA-274,"JPQL queries cannot access version fields, including bulk updates",Closed,Fixed,2007-07-01T20:25:59Z,2007-07-06T14:51:48Z,0.9.0|0.9.6|0.9.7,1.0.0
+12373103,OPENJPA-278,OpenJPAQuery.getDataStoreActions() returns an empty String array,Closed,Fixed,2007-07-05T20:49:46Z,2007-07-05T20:51:02Z,0.9.0|0.9.6|0.9.7,1.0.0
+12373206,OPENJPA-280,Enhancement failure for inherited fields introduced with change 532137,Closed,Fixed,2007-07-06T20:49:25Z,2007-07-13T20:03:34Z,1.0.0,1.0.0
+12373309,OPENJPA-281,EAGER not the default fetch type without the @Basic annotation,Closed,Fixed,2007-07-09T14:09:24Z,2007-08-05T23:51:23Z,0.9.7,1.0.0
+12373321,OPENJPA-282,Postgresql does not support deferred unique constraints.,Closed,Fixed,2007-07-09T15:59:41Z,2007-08-28T21:51:18Z,,1.0.1|1.1.0
+12373559,OPENJPA-283,Build not successful executing mvn package,Closed,Fixed,2007-07-11T23:02:46Z,2007-07-12T16:54:40Z,,
+12373898,OPENJPA-284,TableJDBCSeq for GeneratedValue.TABLE did not handle initialValue correctly,Closed,Fixed,2007-07-16T14:11:03Z,2007-08-07T17:00:59Z,1.0.0,1.0.0
+12373956,OPENJPA-285,Multiple deploy/undeploy leaks memory in PCRegistry,Closed,Fixed,2007-07-17T06:29:30Z,2007-08-01T22:03:50Z,1.0.0,1.0.0
+12374144,OPENJPA-286,Can't merge detached One-To-Many child instance. The entities were implement by an internal Hash container.,Closed,Fixed,2007-07-19T10:11:12Z,2008-07-16T04:50:43Z,0.9.7|1.0.0|1.1.0,1.2.0
+12374203,OPENJPA-287,Generated methods on superclasses are not visible to subclasses,Closed,Fixed,2007-07-19T20:23:13Z,2007-07-19T20:56:01Z,0.9.7,1.0.0
+12374259,OPENJPA-288,Change the _exception variblae in the PreparedStatementManagerImpl from private to protected,Closed,Fixed,2007-07-20T14:01Z,2007-07-20T18:18:26Z,1.0.0,
+12374560,OPENJPA-295,ArrayIndexOutofBoundsException when under load and within a managed Transaction,Closed,Fixed,2007-07-25T16:15:24Z,2007-08-08T17:50:31Z,0.9.6,1.0.1|1.1.0
+12374571,OPENJPA-296,UUID algorithm generating non-unique values sometimes,Closed,Fixed,2007-07-25T17:59Z,2007-07-25T18:01:13Z,0.9.0|0.9.6|0.9.7,1.0.0
+12374998,OPENJPA-303,MappingTools not honoring @Temporal for Date & Calender entity attributes,Closed,Fixed,2007-07-30T20:51:47Z,2007-07-31T20:10:59Z,0.9.7|1.0.0,
+12375048,OPENJPA-304,Problems with DepthFirstAnalysis and the IBM JDK,Closed,Fixed,2007-07-31T15:33:10Z,2007-07-31T16:02:02Z,0.9.7,1.0.0
+12375463,OPENJPA-308,Postgres: bytea vs. oid handling in PreparedStatement.setNull() calls,Closed,Fixed,2007-08-07T00:15:35Z,2007-08-07T16:55:55Z,0.9.0|0.9.6|0.9.7,1.0.0
+12375701,OPENJPA-311,Problem loading classes with OSGi classloaders,Closed,Fixed,2007-08-09T19:51:37Z,2007-08-10T17:34:35Z,0.9.0|0.9.6|0.9.7|1.0.0,1.0.0
+12375716,OPENJPA-312,derby fails with duplicate primary key(s) in group by list,Closed,Fixed,2007-08-10T01:43:10Z,2007-08-16T13:59:39Z,1.0.0,1.0.0
+12375808,OPENJPA-313,list of objects returned by query partially correct,Closed,Fixed,2007-08-10T23:14:33Z,2007-08-16T14:49:14Z,,1.0.0
+12375989,OPENJPA-314,Unenhanced complex id in MappedSuperclass causes NPE,Closed,Fixed,2007-08-14T17:34:24Z,2007-08-20T23:19:14Z,,1.0.0
+12375994,OPENJPA-315,Unenhanced generated id field of a primitive wrapper type causes NPE,Closed,Fixed,2007-08-14T19:04:10Z,2007-08-29T01:26:28Z,,1.0.0
+12376197,OPENJPA-320,Do not use System Tables (SYS*) with DB2,Closed,Fixed,2007-08-16T20:39:23Z,2007-08-17T12:40:42Z,0.9.7,1.0.0
+12376279,OPENJPA-321,DB2 ABS Casting problem,Closed,Fixed,2007-08-17T22:00Z,2007-08-21T03:26:29Z,0.9.7,1.0.0
+12376423,OPENJPA-323,Cleanup some message text,Closed,Fixed,2007-08-20T16:07:15Z,2007-08-20T16:52:29Z,1.0.0,1.0.0
+12376553,OPENJPA-325,"Uncommitted, flushed data can leak into data cache",Closed,Fixed,2007-08-22T00:03:33Z,2007-08-22T02:16:47Z,0.9.0|0.9.6|0.9.7,1.0.0
+12376559,OPENJPA-326,NPE if a discriminator column is specified without discriminator type in orm.xml,Closed,Fixed,2007-08-22T03:58:36Z,2007-09-24T15:56:49Z,0.9.7,1.0.1|1.1.0
+12376633,OPENJPA-327,"EntityListener that modify property value of a entity, causes invalid state exception",Closed,Fixed,2007-08-22T21:04:15Z,2009-07-21T03:22:27Z,1.0.0,
+12376639,OPENJPA-329,Generic interface may cause the openjpa Reflection code to pickup the wrong getter method,Closed,Fixed,2007-08-22T22:10:41Z,2008-01-31T00:01:38Z,,1.0.2|1.1.0
+12376745,OPENJPA-331,Allow BigInteger and other Basic types as Primary Keys,Closed,Fixed,2007-08-23T21:08:21Z,2008-01-31T00:13:48Z,0.9.7|1.0.0,1.0.2|1.1.0
+12376846,OPENJPA-335,Logic in getters for entities with property access causes the PCEnhancer to hang,Closed,Fixed,2007-08-24T20:58:28Z,2007-09-13T23:24:24Z,1.0.0,1.0.1|1.1.0
+12376942,OPENJPA-339,Java 2 security Access denied in File.toURL() call,Closed,Fixed,2007-08-27T17:21:57Z,2007-09-17T22:25:31Z,0.9.7,1.0.1|1.1.0
+12377008,OPENJPA-340,@UniqueConstraint and corresponding XML ignored,Closed,Fixed,2007-08-28T15:40:33Z,2008-07-16T02:47:18Z,,1.2.0
+12377093,OPENJPA-343,Do not call setRollbackOnly on inactive Transactions,Closed,Fixed,2007-08-29T13:15:21Z,2007-09-04T13:23:10Z,0.9.7|1.0.0,1.0.1|1.1.0
+12377170,OPENJPA-345,"""openjpa"" maven module has unnecessary dependencies on other openjpa modules",Resolved,Fixed,2007-08-30T16:23:44Z,2021-04-04T08:46:49Z,0.9.0|0.9.6|0.9.7|1.0.0,
+12377181,OPENJPA-346,PCEnhancerAgent backwards-compatibility setting overly-enables enhancement,Closed,Fixed,2007-08-30T18:38Z,2007-08-30T18:48:59Z,1.0.0,1.0.1|1.1.0
+12377191,OPENJPA-347,Performance Issue with Lazy Loaded Foreign Keys,Closed,Fixed,2007-08-30T21:18:44Z,2007-08-31T20:11:34Z,1.0.0,1.0.1|1.1.0
+12377533,OPENJPA-349,No object inserted if entity only contain ID attribute and set to IDENTITY,Closed,Fixed,2007-09-05T09:09:50Z,2008-07-16T03:57:05Z,1.0.0,1.2.0
+12377703,OPENJPA-353,Character discriminators are not converted correctly if storeCharsAsNumbers = true,Closed,Fixed,2007-09-06T21:48:15Z,2007-09-18T15:31:04Z,1.0.0,1.0.1|1.1.0
+12377707,OPENJPA-354,DB2 casts might not incorporate VARCHAR lengths often enough,Closed,Fixed,2007-09-06T22:29:52Z,2009-03-24T13:03:09Z,0.9.0|0.9.6|0.9.7|1.0.0,1.1.0
+12377735,OPENJPA-355,OpenJPA Log4J factory incorrectly handles logging level,Closed,Fixed,2007-09-07T07:41:06Z,2007-09-07T18:11:17Z,1.0.0,1.0.1|1.1.0
+12377780,OPENJPA-356,DB2 requires CASTs when parameters appear in SELECT clause,Closed,Fixed,2007-09-07T19:26:39Z,2007-09-07T19:27:22Z,0.9.0|0.9.6|0.9.7|1.0.0,1.0.1|1.1.0
+12377791,OPENJPA-357,Use case where FetchGroup A includes FecthGroup B is not honoured by fetch operations,Closed,Fixed,2007-09-07T22:56:25Z,2007-09-20T18:41:19Z,0.9.7|1.0.0,1.0.1|1.1.0
+12377792,OPENJPA-358,Recursion Depth for Field f should be calculated w.r.t active fetch groups and not all fetch groups,Closed,Fixed,2007-09-07T23:01:44Z,2007-09-20T18:41:32Z,0.9.7|1.0.0,1.0.1|1.1.0
+12377801,OPENJPA-359,OptimisticLockException NOT thrown for entity using Timestamp Version when update from concurrent persistence contexts,Closed,Fixed,2007-09-08T05:03:51Z,2008-02-26T16:53:39Z,1.0.0,1.1.0
+12377828,OPENJPA-360,SQL FOR UPDATE OF incorrectly generated for DB2/NT SQL0816,Closed,Fixed,2007-09-08T19:35:26Z,2007-09-18T16:12:47Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12377845,OPENJPA-361,Incorrect GREG_OFFSET offset or inconsistent usage in UUIDGenerator,Closed,Fixed,2007-09-09T14:06:10Z,2007-09-11T13:30:01Z,1.0.0,1.0.1|1.1.0
+12377850,OPENJPA-363,NPE when enhancing with Maven 1.0.2,Closed,Fixed,2007-09-09T20:43:38Z,2007-09-09T21:14:34Z,0.9.0|0.9.6|0.9.7|1.0.0,
+12377993,OPENJPA-364,maven build order is incorrect,Closed,Fixed,2007-09-11T18:57:37Z,2008-04-28T13:23:47Z,1.1.0,1.1.0
+12378020,OPENJPA-365,Unexpected behavior on finding a Composite Key entity with a single value.,Closed,Fixed,2007-09-12T01:58:22Z,2008-07-16T03:59:57Z,,1.2.0
+12378057,OPENJPA-366,InternalException thrown in BrokerImpl.endOperation,Closed,Fixed,2007-09-12T14:27:11Z,2008-01-31T00:45:29Z,1.0.0,1.0.2|1.1.0
+12378065,OPENJPA-367,PCEnhancer does not find meta data for entities using pure XML annotation,Closed,Fixed,2007-09-12T16:30:38Z,2007-10-30T16:04:19Z,1.0.0,1.0.1|1.0.2|1.1.0
+12378162,OPENJPA-368,Multithreaded client fails randomly on EntityManager.persist() with out transaction context.,Closed,Fixed,2007-09-13T14:04:52Z,2007-10-03T00:15:33Z,0.9.7|1.0.0,1.0.1|1.1.0
+12378298,OPENJPA-369,AccessDeclaredMembers RuntimePermission requires by Solaris JDK with security enabled,Closed,Fixed,2007-09-14T15:45:57Z,2007-10-15T17:45:09Z,1.0.0,1.0.1|1.1.0
+12378578,OPENJPA-375,DB2 autoCommit(true) causes Result Set prematurely closed in WebContainer JEE environment.,Closed,Fixed,2007-09-18T17:39:17Z,2007-09-21T22:47:25Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12378786,OPENJPA-378,"DB2 SQL incorrectly generating ""FETCH FIRST n ROWS ONLY"" in subselects",Closed,Fixed,2007-09-20T19:07:08Z,2007-09-21T22:43:36Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12378834,OPENJPA-379,StoreException when using a third party connection pool against Sybase ,Closed,Fixed,2007-09-21T05:18:25Z,2007-09-21T05:57:01Z,0.9.0|0.9.6|0.9.7|1.0.0,1.1.0
+12378883,OPENJPA-380,Connecting to database when an unused emf is closed ,Closed,Fixed,2007-09-21T18:48:12Z,2007-09-21T21:54:01Z,0.9.0|0.9.6|0.9.7|1.0.0,1.0.1|1.1.0
+12378997,OPENJPA-382,Overriding column names for Byte[] attributes causes exception.,Closed,Fixed,2007-09-24T16:12:04Z,2011-02-25T16:32:58Z,,1.0.1|1.1.0
+12379111,OPENJPA-385,"IndexOutOfBounds exception when parsing "".class"" files",Closed,Fixed,2007-09-26T14:04:52Z,2007-09-27T19:20:29Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12379198,OPENJPA-386,org.apache.openjpa.meta.ClassMetaData.validateAppIdClass() does not take @MappedSuperclass into account,Closed,Fixed,2007-09-27T14:26:06Z,2009-08-27T20:07:52Z,0.9.7|1.0.0|1.0.2|1.1.0|1.2.1,1.2.0|1.3.0|2.0.0-M3
+12379251,OPENJPA-387,"Getting ""java.lang.ClassNotFoundException"" when loading datacache plug-in which is a class outside of OpenJPA package.",Closed,Fixed,2007-09-28T01:24:51Z,2007-10-01T21:46:38Z,1.0.0,1.0.1|1.1.0
+12379307,OPENJPA-388,MappingToolTask can't find persistence meta data. ,Closed,Fixed,2007-09-28T16:51:47Z,2007-10-30T15:29:13Z,1.0.0,1.0.1|1.1.0
+12379432,OPENJPA-389,em.getTransaction().commit() is not issuing database commit for NativeQuery requesting updates,Closed,Fixed,2007-10-01T19:49:53Z,2007-10-01T23:21:58Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12379672,OPENJPA-392,Some columnDefinition annotation properties incorrectly used as column name instead of type,Closed,Fixed,2007-10-04T14:40:31Z,2008-05-01T13:54:26Z,0.9.0|0.9.6|0.9.7|1.0.0,1.1.0
+12379817,OPENJPA-393,@Column(nullable=false) setting not taken into account for String field values,Closed,Fixed,2007-10-06T23:09:41Z,2008-07-29T18:42:52Z,1.0.0,1.2.0
+12379819,OPENJPA-394,DB2 CAST VARCHAR type missing LENGTH,Closed,Fixed,2007-10-07T00:41:41Z,2007-10-07T05:48:14Z,1.0.1,1.0.1
+12379868,OPENJPA-395,Accessing short Foreign Key metadata fields as ints causes problems on iSeries,Closed,Fixed,2007-10-08T14:03:55Z,2007-10-08T14:53:14Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12379870,OPENJPA-396,Cloning Calendar proxies doesn't detach from StateManager,Closed,Fixed,2007-10-08T14:14:22Z,2007-10-09T14:29:38Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12379875,OPENJPA-397,schematool ant task always requires files,Closed,Fixed,2007-10-08T15:18:08Z,2007-10-08T17:18:55Z,1.0.0,1.0.1|1.1.0
+12380120,OPENJPA-399,openjpa did not handle multiple schema names with same table name,Closed,Fixed,2007-10-10T22:48:18Z,2007-12-13T15:10:08Z,1.0.1,1.0.1|1.1.0
+12380246,OPENJPA-401,UnsatisfiedLinkError in MappingToolTask when using DB2 JDBC driver ,Closed,Fixed,2007-10-12T15:35:41Z,2008-02-05T19:08:23Z,1.0.0,1.0.1|1.0.2|1.1.0
+12380369,OPENJPA-402,Unable to detect an valid Entity's meta data when the entity's .class file size is large.,Closed,Fixed,2007-10-13T03:16:01Z,2007-10-15T16:57:58Z,1.0.1|1.1.0,1.0.1|1.1.0
+12380475,OPENJPA-403,LoadFetchGroup patch (OPENJPA-370) introduces NPE,Closed,Fixed,2007-10-15T19:48:38Z,2007-10-18T15:33:58Z,1.0.1|1.1.0,1.0.1|1.1.0
+12380561,OPENJPA-405,need extract space in the message text,Closed,Fixed,2007-10-16T20:48:53Z,2007-10-16T21:55:55Z,,1.0.1|1.1.0
+12380652,OPENJPA-409,Quick message updates,Closed,Fixed,2007-10-18T01:28:47Z,2007-10-18T01:46:43Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12380777,OPENJPA-410,"Change ""connecting to dictionary"" message from Info to Trace",Closed,Fixed,2007-10-19T13:25:13Z,2007-10-29T20:14:30Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12380988,OPENJPA-413,Fix some message text in the localizer.properties files,Closed,Fixed,2007-10-23T15:31:17Z,2007-10-30T15:29:52Z,1.0.0,1.0.1|1.1.0
+12381075,OPENJPA-415,Garbage collection of AbstractResultList instance closes active connection,Closed,Fixed,2007-10-24T15:58:01Z,2007-10-26T13:55:52Z,1.0.1|1.1.0,1.0.1|1.1.0
+12381084,OPENJPA-416,Unclear exception if an unknown external value is used,Closed,Fixed,2007-10-24T18:07:27Z,2007-10-24T18:09:34Z,0.9.6|0.9.7|1.0.0,1.0.1|1.1.0
+12381214,OPENJPA-419,Merging graphs that include managed instances fails,Closed,Fixed,2007-10-26T05:24:37Z,2008-02-04T19:20:10Z,0.9.0|0.9.6|0.9.7|1.0.0,1.0.2|1.1.0
+12381222,OPENJPA-420,JPQL constructor query close the <SELECT DISTINCT> feature? ,Closed,Fixed,2007-10-26T07:46:48Z,2008-01-31T19:43:16Z,1.0.0,1.0.2|1.1.0
+12381285,OPENJPA-421,OpenJPA generates bad SQL before configuration fully populated,Closed,Fixed,2007-10-27T00:35:24Z,2007-10-29T20:13:42Z,1.0.0|1.0.1|1.1.0,1.0.1|1.1.0
+12381307,OPENJPA-422,"Calendar objects contained in a detached Entity still have a ""live"" StateManagerImpl",Closed,Fixed,2007-10-27T19:51:26Z,2007-10-27T20:20:33Z,1.0.0,1.0.1|1.1.0
+12381324,OPENJPA-423,Deadlock victim exception getting sequence value with SQLServer,Closed,Fixed,2007-10-28T13:58:06Z,2007-10-29T15:48:45Z,0.9.6|0.9.7|1.0.0,1.0.1|1.1.0
+12381369,OPENJPA-424,Since 29.10.2007 maven tests fails with OutOfMem,Closed,Fixed,2007-10-29T12:24:21Z,2008-08-01T23:36:32Z,1.0.0,
+12381492,OPENJPA-425,Mutation of compound ID values are not reflected in embedded ID instance in some circumstances,Closed,Fixed,2007-10-30T21:32:11Z,2008-08-02T14:17:31Z,1.0.0,1.3.0
+12381620,OPENJPA-427,"PostgresDictionary should set ""63"" as ""maxAutoAssignNameLength"".",Closed,Fixed,2007-11-01T13:58:20Z,2007-11-15T18:16:34Z,1.0.0|1.1.0,1.1.0
+12381637,OPENJPA-428,"Bad error message regarding ""openjpa.Id""",Closed,Fixed,2007-11-01T17:39:40Z,2012-08-08T18:04:01Z,1.0.0,
+12381666,OPENJPA-429,Recent changes have caused problems building with IBM JDK,Resolved,Fixed,2007-11-02T00:47:49Z,2012-01-12T21:58:39Z,1.1.0,1.1.0
+12381890,OPENJPA-434,Setting a null value for a primitive type field in a query results in hang,Closed,Fixed,2007-11-06T06:28:07Z,2008-08-02T14:27:12Z,1.0.0,1.3.0
+12382100,OPENJPA-437,EntityManagerFactory is not thread-safe,Closed,Fixed,2007-11-08T14:23:02Z,2008-01-25T21:52:10Z,1.0.0|1.0.1|1.0.2|1.1.0,1.0.2|1.1.0
+12382161,OPENJPA-438,The manual refers to FetchPlan (a JDO interface) while the OpenJPA interface is FetchConfiguration,Closed,Fixed,2007-11-09T03:14:47Z,2008-08-02T14:11:34Z,1.0.0,1.3.0
+12382245,OPENJPA-439,Performance degradation in multi-transaction operations,Closed,Fixed,2007-11-10T00:43:44Z,2007-11-12T17:58:02Z,0.9.0|0.9.6|0.9.7|1.0.0|1.0.1|1.0.2|1.1.0,1.1.0
+12382247,OPENJPA-440,Calendar instance doesn't appear to detach properly (or proxying of it is in error?),Closed,Fixed,2007-11-10T01:28:06Z,2007-12-18T23:42:24Z,1.0.0|1.1.0,1.1.0
+12382539,OPENJPA-442,JIRA-407 introduced backward compatibility problem in QueryImpl,Closed,Fixed,2007-11-14T18:54:23Z,2008-04-20T19:08:13Z,1.1.0|1.2.0,1.2.0
+12382601,OPENJPA-443,Calendar Objects are loaded with the current milliseconds,Closed,Fixed,2007-11-15T18:18:53Z,2007-12-18T23:40:56Z,1.1.0,
+12382814,OPENJPA-446,Problem when setting String fields of detached objects,Closed,Fixed,2007-11-19T19:50:59Z,2007-11-20T16:35:20Z,1.0.1,1.0.2|1.1.0
+12382839,OPENJPA-447,Query pagination broken for non-DB2 databases,Closed,Fixed,2007-11-20T03:04:33Z,2008-02-07T01:44:37Z,1.1.0,1.0.2|1.1.0
+12383213,OPENJPA-452,"Error in the XML equivalent in the ""secondary table field mapping"" example",Closed,Fixed,2007-11-26T11:48:09Z,2008-01-02T17:48:46Z,,1.0.2|1.1.0
+12383365,OPENJPA-455,Incorrect MySQL DDL Generation for integer types,Closed,Fixed,2007-11-27T23:44:28Z,2008-01-30T06:30:46Z,1.0.0|1.0.1,1.1.0
+12383584,OPENJPA-456,Missed to validate the column name length for Join Column,Closed,Fixed,2007-11-30T05:11:14Z,2008-04-20T19:00:07Z,1.1.0,1.1.0|1.2.0
+12383754,OPENJPA-457,ClassCastException in Filters.convert,Closed,Fixed,2007-12-02T23:29:51Z,2008-08-02T14:06:51Z,0.9.7|1.0.0|1.0.1,1.3.0
+12383824,OPENJPA-458,OpenJPA doesn't throw standard JPA exceptions,Closed,Fixed,2007-12-03T21:47:17Z,2008-07-16T02:37:09Z,1.0.1,1.2.0
+12383999,OPENJPA-459,Problem with bulk updates in mySQL,Closed,Fixed,2007-12-05T16:38:29Z,2009-11-12T06:39:24Z,1.0.0,2.0.0-beta
+12384032,OPENJPA-460,"Can't convert to: Time, InformixDictionary needs timeTypeName set to ""DATETIME HOUR TO SECOND""",Closed,Fixed,2007-12-05T23:21:59Z,2007-12-05T23:48:40Z,1.1.0,1.1.0
+12384082,OPENJPA-462,OptimisticException is thrown instead of OptimisticLockException,Closed,Fixed,2007-12-06T14:56:33Z,2008-07-16T02:37:34Z,0.9.7,1.2.0
+12384438,OPENJPA-464,Performance improvement with Statement Batching support,Closed,Fixed,2007-12-11T22:03:56Z,2008-02-07T22:53:46Z,1.1.0,1.1.0
+12384540,OPENJPA-466,Primary key constraint violated using (Oracle) sequence to generate ID in multithreaded app,Closed,Fixed,2007-12-13T02:40:28Z,2009-10-31T21:13:01Z,1.0.0|1.0.1|1.1.0|1.2.0,1.0.4|1.2.2|1.3.0|2.0.0-M3
+12384952,OPENJPA-470,Custom sequences specified via @SequenceGenerator must have parentheses at the end of the class name,Closed,Fixed,2007-12-19T11:35:27Z,2008-07-16T05:32:09Z,0.9.0|0.9.6|0.9.7|1.0.0|1.0.1,1.2.0
+12384980,OPENJPA-471,iSeries DB2 problem with using @GeneratedValue(strategy=GenerationType.IDENTITY),Closed,Fixed,2007-12-19T18:04:27Z,2008-01-10T07:06:37Z,1.0.1,1.0.2|1.1.0
+12384986,OPENJPA-472,iSeries DB2 problem with using @GeneratedValue(strategy=GenerationType.SEQUENCE ...) ,Closed,Fixed,2007-12-19T18:40Z,2008-01-10T07:07:52Z,1.0.1,1.0.2|1.1.0
+12385784,OPENJPA-478,"Contradictory text in manual section 10.2.6. JPQL GROUP BY, HAVING",Closed,Fixed,2008-01-08T16:24:08Z,2011-03-19T19:40:22Z,1.2.2|2.1.0,2.2.0
+12385941,OPENJPA-481,"Queries against managed interfaces do not work in ""mixed interface"" configuration",Closed,Fixed,2008-01-10T02:35:18Z,2008-08-01T19:33:28Z,1.1.0,
+12386057,OPENJPA-484,"H2Dictionary has 'useGetObjectForBlobs' set to true, which should be false",Closed,Fixed,2008-01-11T15:31:07Z,2008-02-20T22:48:42Z,1.0.1|1.1.0,1.1.0
+12386206,OPENJPA-485,Generates syntactically wrong SQL query for JPQL that uses ORDER BY on TABLE_PER_CLASS inheritance hierarchy,Closed,Fixed,2008-01-14T18:06:43Z,2008-08-01T19:31:08Z,,1.2.0|1.3.0
+12386336,OPENJPA-489,DB2Dictionary casts string data to VARCHAR(1000) regardless of data length,Closed,Fixed,2008-01-16T01:55:24Z,2008-01-16T03:51:58Z,1.0.0|1.0.1,1.1.0
+12386357,OPENJPA-493,openjpa.jdbc.Schema property set causes wrong SQL queries when reading OPENJPA_SEQUENCE_TABLE,Closed,Fixed,2008-01-16T09:01:29Z,2008-09-30T17:50:19Z,1.0.0|1.0.1,1.0.3|1.2.0
+12386359,OPENJPA-494,Single Table Inheritance Strategy causes errors when reading entities from the database (discriminator problem),Closed,Fixed,2008-01-16T09:31:52Z,2008-07-17T12:50:03Z,1.0.0|1.0.1|1.1.0,1.2.0
+12386431,OPENJPA-495,Merging multiple sorted results missing ordering clauses ,Closed,Fixed,2008-01-16T21:40:45Z,2008-06-19T12:05:45Z,,
+12386583,OPENJPA-497,Incorect handling of temporal parameters in queries,Closed,Fixed,2008-01-18T08:11:05Z,2008-08-02T14:00:01Z,1.0.1,1.3.0
+12386661,OPENJPA-498,OpenJPA 1.1.0-SNAPSHOT attempts to mutate unmodifiable map in Glassfish,Closed,Fixed,2008-01-19T00:52:23Z,2008-01-21T18:51:19Z,1.1.0,1.1.0
+12387171,OPENJPA-504,Duplicate order numbers in relationshiptable for the same List field,Closed,Fixed,2008-01-25T16:00:42Z,2008-05-13T12:48:08Z,,1.1.0|1.2.0
+12387408,OPENJPA-505,CLONE -Incorrect Oracle DDL Generation for integer types since OPENJPA-455 ,Closed,Fixed,2008-01-29T21:23:41Z,2008-01-31T00:41:46Z,1.1.0,1.1.0
+12387565,OPENJPA-506,PreRemove method callback is never called; PreUpdate is always called,Closed,Fixed,2008-01-31T18:41:15Z,2008-02-01T16:08:40Z,1.1.0,1.0.2|1.1.0
+12387668,OPENJPA-508,JPQL EXISTS clauses do not handle subclasses properly,Closed,Fixed,2008-02-01T20:45:49Z,2008-02-02T06:43:33Z,1.0.0|1.0.1,1.0.2|1.1.0
+12387914,OPENJPA-509,MappedSuperClass-Entity-Embedded domain model fails during insert ,Closed,Fixed,2008-02-05T21:27:58Z,2008-06-19T12:15:55Z,,1.1.0
+12387935,OPENJPA-511,Unable to execute native queries which start with the WITH keyword. ,Closed,Fixed,2008-02-06T05:12:03Z,2008-02-07T16:17:57Z,1.0.1,1.0.2|1.1.0
+12388149,OPENJPA-512,Maven build fails if -Dmaven.test.skip=true,Closed,Fixed,2008-02-08T00:43:47Z,2008-02-19T18:07:13Z,0.9.0|0.9.6|0.9.7|1.0.0|1.0.1,1.0.3|1.1.0
+12388710,OPENJPA-516,Exceptions when persisting Entities with fields map to NVARCHAR columns,Closed,Fixed,2008-02-14T21:01:12Z,2008-02-14T21:46:26Z,1.0.0|1.0.1|1.0.2,1.1.0
+12388826,OPENJPA-518,openJpa jar is being locked causing future deployments on an app server to fail,Closed,Fixed,2008-02-15T23:05:38Z,2008-02-20T15:02:55Z,1.0.1,1.0.3|1.1.0
+12389607,OPENJPA-524,NullPointerException when persisting a subclass and @Id field is declared in the abstract superclass.,Closed,Fixed,2008-02-26T18:23:09Z,2008-06-19T12:19:28Z,1.0.2,
+12389721,OPENJPA-525,Inserts new entity with NULL value for Clob column actually inserts empty string,Closed,Fixed,2008-02-27T19:20:04Z,2009-09-27T07:01:34Z,1.0.0|1.0.2|1.1.0|1.2.1|2.0.0,1.2.0|1.3.0|2.0.0-M3
+12389723,OPENJPA-526,Insert text more than 4K bytes to Clob column causes SQLException: Exhausted Resultset,Closed,Fixed,2008-02-27T19:28:05Z,2010-09-20T12:36:31Z,1.0.0|1.0.2|1.1.0|1.2.0,2.1.0
+12389807,OPENJPA-527,Merge of new one-to-many list only persists last element.,Closed,Fixed,2008-02-28T17:57:29Z,2008-06-17T20:17:48Z,1.0.2,1.0.3
+12389926,OPENJPA-528,FK columns which contain reserved workds are renamed incorrectly.,Closed,Fixed,2008-02-29T22:09:19Z,2008-03-24T15:13:12Z,,
+12390015,OPENJPA-530,Statement batching incorrectly re-arranged order of SQL statements organized by update managers,Closed,Fixed,2008-03-03T01:19:26Z,2008-03-07T04:10:19Z,1.1.0,1.1.0
+12390281,OPENJPA-532,SchemaTool performs no function if no pu is found.,Closed,Fixed,2008-03-05T19:54:44Z,2008-03-07T04:08:39Z,1.1.0,1.1.0
+12390340,OPENJPA-533,Bulk update can`t set null embedded object,Closed,Fixed,2008-03-06T12:00:08Z,2008-06-18T23:29:59Z,1.0.0,1.2.0
+12390765,OPENJPA-535,Javadoc spelling errors in SchemaFactory and Localizer,Closed,Fixed,2008-03-11T16:16:57Z,2008-03-11T20:05:19Z,1.0.2,1.0.3|1.1.0
+12390908,OPENJPA-536,getMetaData() causes OutOfMemoryError under some cases,Closed,Fixed,2008-03-13T03:14:29Z,2008-04-27T22:47:54Z,1.0.2|1.0.3,0.9.7-r547073|1.0.4|1.1.0
+12391600,OPENJPA-537,openjpa-parent pom should not overwrite central repository setting,Closed,Fixed,2008-03-17T10:24:39Z,2008-03-21T14:39:41Z,1.0.0|1.0.1|1.0.2,1.0.3|1.1.0
+12391913,OPENJPA-539,"Can't create a table with a field of java type ""Map"" in Derby.",Closed,Fixed,2008-03-19T20:31:23Z,2008-03-21T18:38:54Z,1.1.0,1.1.0
+12391919,OPENJPA-540,"Classloading issue with WAS, Spring, and OpenJPA",Closed,Fixed,2008-03-19T21:18:25Z,2008-03-25T01:50:27Z,1.0.0|1.0.1|1.0.2|1.0.3|1.1.0,1.0.3|1.1.0
+12392192,OPENJPA-542,OracleDictionary.getEmptyClob uses its classloader instead of the current classloader. ,Closed,Fixed,2008-03-24T18:14:07Z,2008-03-24T18:46:27Z,1.0.0|1.0.1|1.0.2,1.0.3|1.1.0
+12392195,OPENJPA-543,Unclosed prepared statements in SQLStoreQuery.executeUpdate.,Closed,Fixed,2008-03-24T18:38:47Z,2008-03-24T18:45:50Z,1.0.0|1.0.1|1.0.2,1.0.3|1.1.0
+12392499,OPENJPA-547,INNER JOIN Fetch query incorrectly generates  LEFT join SQL,Closed,Fixed,2008-03-27T21:43:02Z,2008-04-11T01:27Z,,1.0.3|1.1.0
+12392850,OPENJPA-550,Incorrect example code factory.createEntityManager(PersistenceContextType.EXTENDED),Closed,Fixed,2008-04-01T16:39:25Z,2008-08-01T23:59:27Z,1.0.2,1.3.0
+12392960,OPENJPA-552,Do not recognize Connection* properties in persistence.xml in appl server container,Closed,Fixed,2008-04-02T18:10:17Z,2008-04-04T19:49:56Z,1.0.2|1.0.3|1.1.0,1.0.3|1.1.0
+12392967,OPENJPA-554,The GetMapValue class should have/supply an alias for ORDER-BY clauses.,Closed,Fixed,2008-04-02T19:47:11Z,2008-04-07T16:27:09Z,1.0.2,1.0.3
+12393093,OPENJPA-557,Primary key sequences broken with postgres schemas,Closed,Fixed,2008-04-04T07:13:41Z,2008-12-24T00:23:45Z,1.0.2,1.3.0|2.0.0-M2
+12393154,OPENJPA-559,java.rmi.MarshalException due to mismatched serialization UIDs of: Source (RepId RMI:org.apache.openjpa.kernel.DetachedStateManager,Closed,Fixed,2008-04-04T19:26:50Z,2008-04-04T19:48:58Z,1.0.3|1.1.0,1.0.3|1.1.0
+12393460,OPENJPA-562,NPE when trying to invoke FieldMetada.getOrders() when a PersistenCollection field is being loaded.,Closed,Fixed,2008-04-08T21:35:42Z,2008-04-08T22:36:41Z,1.1.0,1.1.0
+12393479,OPENJPA-565,Duplicate @NamedQuery terminates subsequent @NameQuery definitions in @NamedQueries ,Closed,Fixed,2008-04-09T03:38:10Z,2008-04-11T14:44:54Z,1.0.2|1.0.3|1.1.0,1.0.3|1.1.0|1.2.0
+12393501,OPENJPA-566,OpenJPA not supporting count(*) syntax,Closed,Fixed,2008-04-09T08:54:02Z,2008-06-19T01:12:50Z,1.0.2,
+12393637,OPENJPA-567,@OrderColumn generates duplicate order numbers.,Closed,Fixed,2008-04-10T10:11:25Z,2008-04-27T22:50:36Z,1.0.2,1.1.0|1.2.0
+12393768,OPENJPA-568,"Delete, re-insert and setting relationship in the same transaction results in ",Closed,Fixed,2008-04-11T16:28:38Z,2008-04-18T15:12:48Z,1.1.0,1.1.0
+12394155,OPENJPA-573,JPQL: The combination LIKE ESCAPE does not accept parameters,Closed,Fixed,2008-04-16T22:20:14Z,2009-04-01T15:17:22Z,1.0.2|1.1.0,1.0.4|1.1.0|1.2.0
+12394163,OPENJPA-574,Cached object in DataCache not evicted due to StatementBatching not reporting OptimisticException ,Closed,Fixed,2008-04-17T00:54:53Z,2008-05-28T19:59Z,1.1.0|1.2.0,1.2.0
+12394312,OPENJPA-576,Recursively embedded entities generate an extra and reduntant SQL call to the database.,Closed,Fixed,2008-04-18T15:29:37Z,2008-04-27T22:51:11Z,,1.1.0
+12394345,OPENJPA-577,OpenJPA doesn't create LoggingConnectionDecorator instance if log trace is not enabled,Closed,Fixed,2008-04-18T21:15:27Z,2008-04-27T22:51:33Z,1.1.0,1.1.0
+12394469,OPENJPA-579,JDO Projection query with for a complex object with a clob field fails,Closed,Fixed,2008-04-21T19:42:01Z,2008-05-03T03:17:18Z,1.1.0,1.1.0
+12394586,OPENJPA-580,Need a better algorithm to find DBDictionary classname in DBDictionaryFactory,Closed,Fixed,2008-04-23T02:38:36Z,2008-11-05T22:33:10Z,,1.2.0|1.3.0|2.0.0-M2
+12394613,OPENJPA-581,JNDI lookup failures are not generating useful messages,Closed,Fixed,2008-04-23T13:54:45Z,2008-06-19T01:42:22Z,1.0.3|1.1.0|1.2.0,1.2.0
+12395152,OPENJPA-585,Got EntityExistsException when invoking EntityManager.merge() to persist a new entity bean with generated id  and enhanced at deployment time ,Closed,Fixed,2008-05-01T18:59:59Z,2008-05-03T03:17:19Z,1.1.0,1.1.0
+12395166,OPENJPA-586,Binding Query parameter fails validation for Externalized field,Closed,Fixed,2008-05-01T21:58:50Z,2008-06-09T21:49:52Z,,1.2.0
+12395211,OPENJPA-587,Sybase queries that select columns from derived tables fail OOTB,Closed,Fixed,2008-05-02T17:19:24Z,2008-05-03T03:17:16Z,1.1.0,1.1.0
+12395219,OPENJPA-588,Test for checking the absolute index of field metadata fails,Closed,Fixed,2008-05-02T19:52:27Z,2008-05-03T03:17:17Z,,1.1.0
+12395269,OPENJPA-589,Can not retrieve M-to-M data when DataCache is on,Closed,Fixed,2008-05-04T06:10:48Z,2008-05-12T22:51:31Z,,1.1.0|1.2.0
+12395270,OPENJPA-590,The push-down sql for JPQL has unpredictable ordering in the set clause for update statement,Closed,Fixed,2008-05-04T06:37Z,2008-05-05T20:52:53Z,,1.2.0
+12395643,OPENJPA-594,Incorrect schema separator used for Informix tables,Closed,Fixed,2008-05-08T17:38:52Z,2008-05-08T23:39:51Z,1.0.1|1.0.2,1.0.4|1.1.0|1.2.0
+12395647,OPENJPA-595,"An error occurred while parsing the query filter ""SELECT t FROM PessimisticA t WHERE t.id = ?1"". Error message: No field named ""id"" in class ""t""",Closed,Fixed,2008-05-08T19:05:03Z,2008-05-08T21:36:17Z,1.2.0,1.1.0|1.2.0
+12395662,OPENJPA-596,ClassCastException during in-memory update with Informix IDS 10.0 ,Closed,Fixed,2008-05-08T21:21:05Z,2008-05-22T16:02:42Z,,1.2.0
+12395679,OPENJPA-597,JPQL delete query with an alias for tablename and without any further clauses gives an error on MySQL,Closed,Fixed,2008-05-09T03:03:56Z,2008-05-16T20:55:32Z,1.1.0,1.1.0
+12396006,OPENJPA-602,NullPointerException at org.apache.openjpa.jdbc.meta.strats.RelationToManyInverseKeyFieldStrategy.map,Closed,Fixed,2008-05-14T09:51:23Z,2008-06-19T16:26:32Z,1.1.0,1.2.0
+12396441,OPENJPA-605,Informix will throw an exception when a unique index is explictily created on the primary key columns,Closed,Fixed,2008-05-20T19:08:31Z,2008-05-21T07:46:07Z,,1.0.4|1.2.0
+12396467,OPENJPA-606,InformixDictionary default setting beaks many testcases,Closed,Fixed,2008-05-21T01:33:46Z,2008-06-04T19:44:06Z,1.2.0,1.0.4|1.2.0
+12396602,OPENJPA-607,"Extraneous ""( )"" on DISTINCT, ALL, ANY results in  SQL syntax errors on some database systems",Closed,Fixed,2008-05-22T07:03:30Z,2008-05-22T15:58:20Z,,1.2.0
+12396785,OPENJPA-612,Add support for calculating update value in QueryImpl.updateInMemory,Closed,Fixed,2008-05-25T22:38:54Z,2008-05-28T22:27:21Z,,1.2.0
+12396945,OPENJPA-614,SqlServer does not support Timestamp precision in nano second,Closed,Fixed,2008-05-28T00:53:25Z,2008-05-28T00:56:10Z,,1.2.0
+12397037,OPENJPA-617,Use of hardcoded DB platform strings should be avoided,Closed,Fixed,2008-05-29T01:29:12Z,2008-05-29T04:00:44Z,,1.2.0
+12397095,OPENJPA-618,openJPA threw exception when parsing entity metadata in JBoss,Closed,Fixed,2008-05-29T18:22:53Z,2008-06-06T21:06:02Z,1.1.0,
+12397311,OPENJPA-619,Typos in the manual,Closed,Fixed,2008-06-02T19:37:06Z,2008-07-28T17:10:47Z,1.1.0,1.2.0
+12397505,OPENJPA-622,"Informix -lock timieout, cursor not open problem for NonJTA datasource transaction RESOURCE_LOCAL in JEE",Closed,Fixed,2008-06-04T19:47:01Z,2008-06-04T20:00:25Z,1.0.3|1.1.0|1.2.0,1.0.4|1.2.0
+12397581,OPENJPA-625,Error when removing embeddable entities from a persistent collection,Closed,Fixed,2008-06-05T14:00:16Z,2008-06-19T16:48:56Z,1.1.0,1.2.0
+12397816,OPENJPA-628,Issue Found With Recursive One-To_Many Relations in 1.1.0,Closed,Fixed,2008-06-09T16:04:49Z,2008-08-05T17:44:23Z,1.1.0,1.2.0
+12397825,OPENJPA-629,When creating foreign keys the schema name is not trimmed for WS before checking DB,Closed,Fixed,2008-06-09T16:51:19Z,2008-06-09T17:56:19Z,1.2.0,1.0.4|1.2.0
+12397845,OPENJPA-630,Honor batchlimit=1 in statement batching support.,Closed,Fixed,2008-06-09T21:49Z,2008-06-09T22:07:57Z,1.0.2|1.1.0,1.2.0
+12397984,OPENJPA-632,setFirstResult and setMaxResults not working for Oracle.,Closed,Fixed,2008-06-10T21:29:32Z,2008-06-10T21:33:19Z,1.0.1|1.0.2,1.0.3
+12398017,OPENJPA-634,SQLException not reported from Batched statement,Closed,Fixed,2008-06-11T02:37:29Z,2008-07-02T14:18:46Z,1.2.0,1.2.0
+12398364,OPENJPA-637,Significant performance degradation when data cache is enabled,Closed,Fixed,2008-06-16T20:25:06Z,2008-06-30T18:37:11Z,1.2.0,1.2.0
+12398823,OPENJPA-640,ClassNotFoundException for InstrumentationFactory upon startup,Closed,Fixed,2008-06-23T10:41:36Z,2010-07-16T19:40:15Z,1.0.2|1.1.0|1.2.0,2.0.0-beta3
+12398930,OPENJPA-642,Sybase create foreign key on delete set null failed with syntax error,Closed,Fixed,2008-06-24T16:43:55Z,2008-06-25T15:47:42Z,,1.2.0
+12399110,OPENJPA-644,Handle databaseProductVersion string from newer jcc driver for DB2 ISeries,Closed,Fixed,2008-06-26T19:28:12Z,2008-06-26T19:46:33Z,1.2.0,1.0.4|1.2.0
+12399111,OPENJPA-645,Date millisecond precision lost for Informix IDS and SQLServer,Closed,Fixed,2008-06-26T20:01:07Z,2008-06-26T20:22:32Z,1.0.3|1.1.0,1.0.4|1.2.0|1.3.0|2.0.0-M1
+12399184,OPENJPA-646,JDK problems with defineClass and enum class types,Closed,Fixed,2008-06-27T16:42:30Z,2008-09-08T20:12:56Z,1.2.0,1.2.1|1.3.0
+12399304,OPENJPA-647,Dynamic update to DataCacheTimeout property is not updated in the ClassMetadata,Closed,Fixed,2008-06-30T18:34:26Z,2008-07-02T19:51:32Z,1.1.0,1.2.0
+12399467,OPENJPA-650,Document openjpa.RuntimeUnenhancedClasses=unsupported/warn configuration property,Closed,Fixed,2008-07-02T17:40:44Z,2008-09-17T23:24:18Z,1.0.2|1.0.3|1.1.0|1.2.0,1.0.4|1.2.1|1.3.0
+12399726,OPENJPA-653,Concurrency issue with query cache enabled,Closed,Fixed,2008-07-07T14:14:56Z,2008-07-07T19:44:59Z,1.2.0,1.2.0
+12399810,OPENJPA-654,Missing dictionary properties in OpenJPA docs,Closed,Fixed,2008-07-08T12:39:17Z,2008-07-14T13:59:46Z,1.1.0,1.2.0
+12400050,OPENJPA-656,Incorrect connection URL causes NPE when using JDBC Driver,Closed,Fixed,2008-07-10T19:06:33Z,2008-07-11T13:55:47Z,1.2.0,1.2.0
+12400074,OPENJPA-657,"Compile error: ""The method getTextContent() is undefined for the type Node""",Closed,Fixed,2008-07-10T23:36:28Z,2008-07-10T23:57:21Z,,1.2.0
+12400230,OPENJPA-659,No state snapshot is available on @Embedded class when using runtime enhancement via spring-tomcat-weaver ,Closed,Fixed,2008-07-14T17:33:02Z,2008-07-14T20:49:42Z,1.1.0,1.2.0
+12400364,OPENJPA-660,ClassCastException when using OneToMany Relation and collection is subclass using Discriminator with SINGLE_TABLE strategy.,Closed,Fixed,2008-07-16T10:09:58Z,2008-07-25T20:50:29Z,1.0.0|1.0.1|1.0.2|1.0.3|1.0.4|1.1.0|1.2.0,1.2.0
+12400506,OPENJPA-662,Version field returns null when explicitly projected in SELECT clause,Closed,Fixed,2008-07-17T18:59:43Z,2008-07-23T14:04:08Z,,2.0.0-M1
+12400918,OPENJPA-664,"OpenJPA should prohibit when the name of a schema components such as Table, Column, Constraint exceeds maximum permissible length for the database platform ",Closed,Fixed,2008-07-24T15:16:11Z,2008-07-24T18:47:18Z,,1.2.0
+12400929,OPENJPA-665,OpenJPA allows commit where fields with @Column(nullable=false) set to null ,Closed,Fixed,2008-07-24T17:42:49Z,2008-08-05T13:55:43Z,,1.2.0
+12401185,OPENJPA-668,Test failures with IBM JDK (xml parsing),Closed,Fixed,2008-07-28T20:13:04Z,2008-07-28T22:41Z,1.2.0,1.2.0
+12401190,OPENJPA-669,NativeSequences can be incremented within the business transaction,Closed,Fixed,2008-07-28T21:11:05Z,2008-07-28T21:24:52Z,0.9.6|0.9.7|1.0.0|1.0.1|1.0.2|1.0.3|1.1.0,1.2.0
+12401267,OPENJPA-670,Discriminator column is missing from table when inheritance is used without annotation,Closed,Fixed,2008-07-29T21:05:48Z,2008-07-31T15:37:36Z,1.2.0|1.3.0,1.2.0|1.3.0
+12401748,OPENJPA-674,javaagent enhancer (PCEnhancerAgent) ignores persistence units after the first in persistence.xml,Closed,Fixed,2008-08-06T01:02:49Z,2008-08-06T01:33:39Z,,1.2.0|1.3.0
+12401793,OPENJPA-676,Connection used for NativeSequences is not closed,Closed,Fixed,2008-08-06T15:29:48Z,2009-03-03T01:49:53Z,1.2.0|1.3.0,1.2.1
+12401800,OPENJPA-677,Single Table Inheritance Strategy causes entity identity issues,Closed,Fixed,2008-08-06T16:14:28Z,2011-09-21T15:09:07Z,1.1.0|1.2.0|1.2.1|1.3.0,1.2.3|1.3.0|2.0.0-M1
+12401913,OPENJPA-678,EntityManager.createQuery() does not throw IllegalArgumentException,Closed,Fixed,2008-08-07T18:31:23Z,2008-08-15T19:05:34Z,1.1.0,0.9.7|1.2.0|1.3.0
+12401930,OPENJPA-679,java.lang.ArrayIndexOutOfBoundsException may occur when a relation field is annotated as a primary key and a foreign key,Closed,Fixed,2008-08-07T21:32:30Z,2009-03-24T00:51:39Z,,1.2.1|1.3.0
+12401950,OPENJPA-680,Flush followed by refresh on a new instance returns an instance with all fields but id cleared,Closed,Fixed,2008-08-08T01:12:24Z,2010-03-03T18:33:10Z,1.2.0|1.2.1|1.3.0,1.2.0|1.2.2|1.3.0|2.0.0-M1
+12402031,OPENJPA-685,Problem enhancing test cases with Maven 2.0.9 ,Closed,Fixed,2008-08-08T20:04:46Z,2008-09-22T20:10:27Z,,1.0.4|1.2.1|1.3.0
+12402066,OPENJPA-692,Bi-directional One-to-Many mapping with a JoinTable fails for Update or Delete operation,Closed,Fixed,2008-08-09T19:13:09Z,2008-08-25T14:06:06Z,,1.3.0
+12402261,OPENJPA-693,Can not persist Parent-Child mapping when child refers to parent via parent's primary identity (and not parent's object reference) and parent uses database sequence for its own identity,Closed,Fixed,2008-08-13T01:08:41Z,2008-08-25T14:40:18Z,,1.3.0
+12402649,OPENJPA-695,Link to latest manuals in OpenJPA website is broken,Closed,Fixed,2008-08-19T17:32:40Z,2008-09-11T18:21:47Z,1.2.0,1.3.0
+12402799,OPENJPA-696,Cache TransactionSynchronizationRegistry per EMF (vs JVM),Closed,Fixed,2008-08-21T15:25:40Z,2013-07-10T02:16:01Z,1.0.0|1.0.1|1.0.2|1.0.3|1.1.0|1.2.0,2.3.0
+12402836,OPENJPA-697,@VersionColumns annotation throws exception when multiple columns are specified,Closed,Fixed,2008-08-22T03:47:58Z,2009-09-12T04:46:46Z,2.0.0,1.3.0
+12402882,OPENJPA-698,Callable SQL statement  are not logged,Closed,Fixed,2008-08-22T15:41:50Z,2008-08-25T14:03:03Z,,1.3.0
+12402891,OPENJPA-699,"SQLWarnings not handled properly with WarningAction set to ""handle""",Closed,Fixed,2008-08-22T17:24:33Z,2008-08-27T16:47:11Z,1.0.0,2.0.0-M1
+12402892,OPENJPA-700,DB2 lastGeneratedKeyQuery should use new syntax for db2UDBV82OrLater,Closed,Fixed,2008-08-22T17:40:14Z,2008-08-22T17:50:34Z,1.3.0,1.3.0
+12402997,OPENJPA-702,MappingTool fails requires appropriate DESCSTAT parm value on DB2 for z/OS,Closed,Fixed,2008-08-25T15:38:14Z,2008-08-25T20:14:59Z,1.3.0,1.2.1|1.3.0
+12403029,OPENJPA-705,Embedded fields in Secondary table generates wrong foreign key,Closed,Fixed,2008-08-25T22:00:14Z,2008-08-26T13:32:15Z,,1.3.0
+12403562,OPENJPA-710,Unordered collection field adds ORDER BY clause,Closed,Fixed,2008-09-02T21:14:24Z,2008-09-03T00:29:07Z,1.0.0|1.0.1|1.0.2|1.0.3|1.0.4|1.1.0|1.2.0|1.2.1|1.3.0,1.0.4|1.2.0|1.2.1|1.3.0
+12403595,OPENJPA-711,PDF manual lacks images,Closed,Fixed,2008-09-03T08:26:10Z,2008-09-16T19:45:24Z,1.2.0|1.3.0,1.0.4|1.2.1|1.3.0
+12403621,OPENJPA-712,"Not correctly parsing the ""having"" clause with aggregate functions (ie. max, min, etc)",Closed,Fixed,2008-09-03T16:32:14Z,2008-09-06T03:50:01Z,1.2.1|1.3.0,1.2.3|1.3.0
+12403673,OPENJPA-713,openjpa-1.2.0.jar file is 11 MB,Closed,Fixed,2008-09-04T11:46:45Z,2008-09-17T08:50:59Z,1.0.3|1.2.0,1.0.4|1.2.1|1.3.0
+12403675,OPENJPA-714,"""Encountered unmanaged object in persistent field"" error while merging object tree",Closed,Fixed,2008-09-04T12:37:58Z,2010-01-12T19:35:01Z,1.1.0|1.2.0,1.2.2|1.3.0|2.0.0-beta
+12403677,OPENJPA-715,"OpenJpa does not generate IDs properly. ""duplicate key value in a unique or primary key constraint"" while merging object tree.",Closed,Fixed,2008-09-04T13:07:03Z,2008-09-18T15:41:09Z,1.0.0|1.1.0|1.2.0,1.0.4|1.2.1|1.3.0
+12404089,OPENJPA-719,GeneralException in PCEnhancer during class transform in Turkish locale AppServer setting,Closed,Fixed,2008-09-10T15:36:30Z,2008-09-25T14:13:08Z,1.0.3|1.0.4|1.1.0|1.2.0|1.2.1|1.3.0,1.2.1|1.3.0
+12404303,OPENJPA-724,Corrections for the manual,Closed,Fixed,2008-09-13T17:08:06Z,2008-09-17T16:22:34Z,1.2.0|1.3.0,1.0.4|1.2.1|1.3.0
+12404526,OPENJPA-727,Image mapping-table.png missing in HTML manual,Closed,Fixed,2008-09-17T10:42:04Z,2008-09-17T15:57:45Z,,1.0.4|1.2.1|1.3.0
+12404757,OPENJPA-731,Bug on FetchType.EAGER when QuerySQLCache is turned on,Closed,Fixed,2008-09-19T17:24:32Z,2008-09-26T03:09:55Z,1.2.0|1.2.1,1.2.1|1.3.0
+12405004,OPENJPA-732,Updates to entities via Lifecycle callback methods ,Closed,Fixed,2008-09-23T19:51:21Z,2008-10-29T19:06:12Z,1.2.1|1.3.0,1.2.2|2.0.0-M2
+12405163,OPENJPA-733,Entity contains pseudo-attached embeddable after detach,Closed,Fixed,2008-09-25T17:29:55Z,2008-10-06T17:40:20Z,1.2.0,1.2.1|1.3.0
+12405967,OPENJPA-740,"In MySQL use LONGBLOB, MEDIUMBLOB etc.. when needed, cause BLOB only holds 64kb of data.",Closed,Fixed,2008-10-07T22:15:36Z,2010-03-08T21:50:15Z,1.2.0|1.2.1|1.2.2|1.3.0|2.0.0-M3|2.0.0-beta|2.0.0-beta2,1.3.0|2.0.0-beta3
+12406176,OPENJPA-743,OptimisticLockException persisting collection containing Lob fields with Oracle,Closed,Fixed,2008-10-10T13:52:39Z,2008-10-11T04:21:21Z,1.2.0,
+12406339,OPENJPA-745,Sybase by default silently truncates a string which is longer than the column length without raising an exception ,Closed,Fixed,2008-10-13T22:36:20Z,2008-10-22T23:34:32Z,1.2.0,1.2.1|1.3.0
+12406615,OPENJPA-748,Disable QuerySQLCache by default,Closed,Fixed,2008-10-16T16:18:39Z,2010-01-18T20:05:30Z,1.2.0|1.3.0,2.0.0-beta
+12406711,OPENJPA-750,OptimisticLockException is thrown when numeric truncation occurs on Sybase,Closed,Fixed,2008-10-17T20:26:28Z,2008-10-23T14:51:24Z,1.3.0,1.3.0
+12407114,OPENJPA-751,Typos in the manual,Closed,Fixed,2008-10-23T20:01:40Z,2008-10-29T18:40:50Z,1.3.0,1.3.0|2.0.0-M2
+12407285,OPENJPA-753,missing snapshot builds,Closed,Fixed,2008-10-27T16:07:37Z,2008-11-22T20:25:44Z,1.2.1|1.3.0,
+12407487,OPENJPA-755,"OpenJPA thows EntityExistsException trying persist a preexisting, detached entity",Closed,Fixed,2008-10-30T05:19:16Z,2008-11-14T00:11:03Z,,1.2.1|1.3.0|2.0.0-M2
+12407802,OPENJPA-761,SchemaTool failed with a NPE in ForeignKey.join,Closed,Fixed,2008-11-04T18:02:13Z,2008-11-04T21:58:35Z,1.0.4|1.1.0|1.2.1|1.3.0|2.0.0-M2,1.3.0|2.0.0-M2
+12407809,OPENJPA-762,Batch execution fails for Oracle when batch limit set to -1 (unlimited batch size),Closed,Fixed,2008-11-04T20:05:46Z,2008-11-04T21:07:28Z,1.2.0,1.2.1|1.3.0|2.0.0-M2
+12408184,OPENJPA-764,Query parsing error with IN expression and String functions such as UPPER(),Closed,Fixed,2008-11-10T20:57:22Z,2008-11-10T21:36:55Z,,2.0.0-M2
+12408793,OPENJPA-774,Executing native queries with Firebird,Closed,Fixed,2008-11-19T03:40:32Z,2010-03-03T15:42:03Z,1.1.0|1.2.0|1.3.0|2.0.0-M2,1.3.0|2.0.0-beta3
+12408961,OPENJPA-777,Exception is thrown during retrieval of an entity which contains a persistent collection of embeddable,Closed,Fixed,2008-11-21T00:49:22Z,2008-12-18T15:52:33Z,1.2.0|1.2.1|1.3.0|2.0.0-M2,1.2.1|1.3.0|2.0.0-M2
+12409239,OPENJPA-787,slices query.getSingleResult is broken,Closed,Fixed,2008-11-26T03:15:07Z,2008-12-20T06:56:35Z,2.0.0-M2,2.0.0-M2
+12409284,OPENJPA-789,possible NPE,Closed,Fixed,2008-11-26T17:42:11Z,2009-10-20T05:13:32Z,2.0.0-M2,2.0.0-M3
+12409296,OPENJPA-792,An entity persist may fail when @MappedSupercalss is specified. ,Closed,Fixed,2008-11-26T19:15:40Z,2008-12-09T19:53:24Z,2.0.0-M2,1.3.0|2.0.0-M2
+12409358,OPENJPA-794,issues with closing/opening entity manager (slices) (can't seem to be able to create multiple entityManagers ),Closed,Fixed,2008-11-27T00:16:43Z,2008-12-20T07:01:34Z,2.0.0-M1,2.0.0-M1
+12409401,OPENJPA-795,"enhancer throws an exception when parsing column name ""first.name"" because it thinks 'first' is a table name",Closed,Fixed,2008-11-27T16:41:30Z,2008-12-09T18:56:29Z,1.2.0,1.3.0|2.0.0-M2
+12409467,OPENJPA-797,slices does not work with QueryCompilationCache,Closed,Fixed,2008-11-29T01:38:48Z,2010-03-15T21:30:34Z,2.0.0-M2,
+12409470,OPENJPA-798,slices does can not work with sequences properly (no adding objects?),Closed,Fixed,2008-11-29T03:38:26Z,2009-02-26T17:19:52Z,2.0.0-M2,2.0.0-M2
+12409520,OPENJPA-799,"slices: can not handle multiple projections in one query ( select count(*), max(fieldA) .......)",Closed,Fixed,2008-12-01T00:06:47Z,2008-12-20T06:57:30Z,2.0.0-M1,2.0.0-M1
+12409567,OPENJPA-801,slices: basic query is failing on sort..  not sure why,Closed,Fixed,2008-12-01T18:18:19Z,2008-12-10T12:33:15Z,2.0.0-M1,2.0.0-M1
+12409788,OPENJPA-811,"With Oracle, OpenJPA allows setting non-nullable field to null",Closed,Fixed,2008-12-03T18:44:59Z,2009-03-17T16:21:45Z,1.2.0|2.0.0-M2,1.2.1|1.3.0|2.0.0-M2
+12409867,OPENJPA-812,slices: aggregate queries fail if any slice has empty results,Closed,Fixed,2008-12-04T02:27Z,2008-12-09T19:25:15Z,2.0.0-M1,2.0.0-M1
+12410006,OPENJPA-815,Exception is thrown when retrieving an entity which contains an embeddable and the embeddable contains a toMany relation ,Closed,Fixed,2008-12-04T20:19:14Z,2008-12-04T23:52:12Z,,1.3.0|2.0.0-M2
+12410112,OPENJPA-818,TCK module should use Geronimo JPA 2.0 EA jar,Closed,Fixed,2008-12-05T21:22:08Z,2008-12-05T21:25:04Z,2.0.0-M2,2.0.0-M2
+12410224,OPENJPA-819,NPE when no metadata is defined for a persistent class,Closed,Fixed,2008-12-08T21:58:21Z,2008-12-18T20:41:09Z,2.0.0-M2,2.0.0-M2
+12410312,OPENJPA-820,"slices: a simple query is failing (unique, but totally sending wrong parameters to SQL)",Closed,Fixed,2008-12-09T23:02:36Z,2010-03-15T21:30:35Z,2.0.0-M2,
+12410326,OPENJPA-821,slices: DistributedStoreQuery$UpdateExecutor calls executeDelete by mistake,Closed,Fixed,2008-12-10T01:15:05Z,2008-12-10T12:36:52Z,2.0.0-M1,2.0.0-M1
+12410435,OPENJPA-824,org.apache.openjpa.lib.util.ParseException when try to get property descriptor for property: CacheMarshallers,Closed,Fixed,2008-12-11T04:09:15Z,2008-12-16T04:44:05Z,,2.0.0-M1
+12410528,OPENJPA-825,slices: hangs with multithreaded true,Closed,Fixed,2008-12-11T23:40:42Z,2009-09-12T04:47:23Z,2.0.0-M2,2.0.0-M1
+12410754,OPENJPA-828,Externalizer fails with ClassCastException with runtime enhancement,Closed,Fixed,2008-12-16T01:26:35Z,2013-04-10T20:52:16Z,,1.2.3|2.0.0-M1|2.0.0-M2
+12411004,OPENJPA-834,State field mapped to XML column has incorrect value when loaded from database,Closed,Fixed,2008-12-18T21:10:21Z,2009-01-26T19:57:49Z,1.3.0|2.0.0-M2,1.3.0|2.0.0-M2
+12411017,OPENJPA-835,Loading nested toMany EAGER relation resuled in PersistenceException,Closed,Fixed,2008-12-18T23:07:23Z,2008-12-19T02:24:33Z,1.2.0|1.2.1|1.3.0|2.0.0-M2,1.2.1|1.3.0|2.0.0-M2
+12411045,OPENJPA-836,after em.clear the datacache is inconsistent,Closed,Fixed,2008-12-19T12:03:53Z,2009-01-14T23:25:45Z,1.2.0|1.3.0,1.3.0|2.0.0-M2
+12411068,OPENJPA-838,fix parameter setting problem when QuerySQLCache is on,Closed,Fixed,2008-12-19T18:51:31Z,2009-01-29T16:44:49Z,1.2.0,1.2.1|1.3.0|2.0.0-M2
+12411187,OPENJPA-843,Unnecessary version update on inverse-side of a 1-m relationship,Closed,Fixed,2008-12-22T19:16:01Z,2009-01-12T22:43:12Z,2.0.0-M2,1.2.1|1.3.0|2.0.0-M2
+12411253,OPENJPA-844,The OpenJPA web site must post the privacy policy,Closed,Fixed,2008-12-23T16:47:54Z,2010-03-08T15:22:22Z,,
+12411263,OPENJPA-845,Ordering across slice fails when ordering terms are not included in projection items,Closed,Fixed,2008-12-23T19:25:03Z,2009-02-26T17:13:35Z,,2.0.0-M1
+12411523,OPENJPA-847,Retrieving database generated keys gets never enabled,Closed,Fixed,2008-12-31T10:18:29Z,2009-05-31T09:57:15Z,2.0.0-M2,1.3.0|2.0.0-M2
+12411987,OPENJPA-853,Informix cursor not open problem if synchronizeMapping set true,Closed,Fixed,2009-01-09T00:08:37Z,2009-01-10T00:51:15Z,1.2.0,1.2.1|1.3.0|2.0.0-M2
+12412382,OPENJPA-859,OpenJPA requires all persistent fields to be specified on an XML defined entity,Closed,Fixed,2009-01-14T15:17:26Z,2009-12-10T19:33:15Z,2.0.0-M2,2.0.0-beta
+12412498,OPENJPA-860,Unhelpful log messages are shown during deployment,Closed,Fixed,2009-01-15T15:48:42Z,2009-01-23T21:41:41Z,1.2.0,1.3.0
+12412683,OPENJPA-862,Wrong id-parameter used for prepared statement when fetching a collection,Closed,Fixed,2009-01-17T22:52:25Z,2009-05-01T10:18:05Z,1.2.0,1.2.1
+12412762,OPENJPA-863,Unexpected mere-cascade behavior when cascade.all/merge specified on both sides of relationships !!!,Closed,Fixed,2009-01-19T18:07:33Z,2009-01-23T18:27:04Z,1.2.0|2.0.0-M2,1.3.0|2.0.0-M2
+12412951,OPENJPA-864,Subquery problems with SYNTAX_DATABASE (Oracle),Closed,Fixed,2009-01-21T23:30:21Z,2009-01-23T14:49:25Z,1.0.3|1.2.0,1.0.4|1.2.1|1.3.0|2.0.0-M2
+12413092,OPENJPA-866,DBDictionary.maxTableNameLength is not checked when using SynchronizeMappings,Closed,Fixed,2009-01-23T14:53:51Z,2009-03-12T21:32:55Z,1.2.0|1.3.0|2.0.0-M2,1.3.0|2.0.0-M2
+12413100,OPENJPA-867,Unexpected Behaviour of DBDictionary.indexOf() method,Closed,Fixed,2009-01-23T15:37:26Z,2011-08-29T20:13:10Z,1.2.0|2.0.0-M2,2.2.0
+12413221,OPENJPA-872,Compound custom id in bidirectional many-to-one,Closed,Fixed,2009-01-26T07:12:42Z,2009-01-26T16:25:55Z,1.2.0,1.2.1|1.3.0|2.0.0-M2
+12413299,OPENJPA-873,@MappedSuperClass Cause Null Pointer Exception in Class With IdClass,Closed,Fixed,2009-01-26T19:05:24Z,2009-02-04T17:30:10Z,1.2.0,1.0.4|1.2.2|1.3.0|2.0.0-M2
+12413618,OPENJPA-883,Documentation is out of date for some MySQLDictionary properties,Closed,Fixed,2009-01-30T13:43:54Z,2009-04-02T19:10:24Z,1.2.0|1.2.1|1.3.0|2.0.0-M1|2.0.0-M2,1.3.0|2.0.0-M2
+12413623,OPENJPA-884,Logging oversight in DB2Dictionary,Closed,Fixed,2009-01-30T14:38:47Z,2009-03-01T20:10:43Z,1.2.0|1.2.1|1.3.0|2.0.0-M1|2.0.0-M2,1.3.0|2.0.0-M2
+12413662,OPENJPA-886,Certain query failing after svn:739123,Closed,Fixed,2009-01-30T22:18:30Z,2009-02-23T15:00:42Z,2.0.0-M2,2.0.0-M1|2.0.0-M2
+12413724,OPENJPA-887,Assertion oversight in TestLibService,Closed,Fixed,2009-02-01T15:01:58Z,2009-03-28T14:58:55Z,1.3.0|2.0.0-M1|2.0.0-M2,1.3.0|2.0.0-M2
+12413816,OPENJPA-890,Typos and inconsistent method signature styles in the user manual,Closed,Fixed,2009-02-02T21:31:16Z,2009-07-29T20:36:32Z,1.0.3|1.1.0|1.2.0|2.0.0-M1|2.0.0-M2,2.0.0-M3
+12414006,OPENJPA-896,Several source files include Windows EoL chars,Closed,Fixed,2009-02-04T16:39:44Z,2009-03-22T23:57:02Z,1.0.3|1.1.0|1.2.0,1.0.4|1.2.2|1.3.0|2.0.0-M2
+12414027,OPENJPA-898,hints don't work for NamedNativeQuery,Closed,Fixed,2009-02-04T19:16:01Z,2009-03-01T21:06:55Z,1.2.0,1.3.0|2.0.0-M2
+12414319,OPENJPA-912,Potential NPE in setInverseRelation,Closed,Fixed,2009-02-08T01:33:18Z,2009-02-23T16:50:46Z,1.2.0|1.2.1|1.3.0|2.0.0-M1|2.0.0-M2,1.2.1|1.3.0|2.0.0-M2
+12414352,OPENJPA-913,A deadlock issue happens when DirtyListener is used,Closed,Fixed,2009-02-09T06:51:26Z,2009-03-16T09:37:21Z,1.2.0,1.2.0|2.0.0-M2
+12414419,OPENJPA-916,DistributedTemplate is incorrectly setting some attributes on the statements,Closed,Fixed,2009-02-09T19:46:22Z,2009-03-01T21:07:18Z,1.1.0|1.2.0|1.3.0|2.0.0-M2,2.0.0-M2
+12414494,OPENJPA-917,stored procedures throw InvalidStateException when using getSingleResult() or getResultList(),Closed,Fixed,2009-02-10T14:59:13Z,2009-02-12T19:08:22Z,1.2.0,1.0.4|1.2.1|1.3.0|2.0.0-M2
+12414883,OPENJPA-922,setByteArrayInputStream being used in stead of setBytes,Closed,Fixed,2009-02-16T16:38:58Z,2015-09-01T22:01:47Z,1.2.0|2.0.0-M2,2.0.0-M3
+12415018,OPENJPA-925,Bidirectional OneToOne relation incorrectly set in loadEagerJoin,Closed,Fixed,2009-02-18T06:43:03Z,2009-02-19T18:14:13Z,1.2.0|1.2.1|1.3.0|2.0.0-M1|2.0.0-M2,1.2.1|1.3.0|2.0.0-M2
+12415069,OPENJPA-927,Fix definition of javax.persistence.query.timeout property,Closed,Fixed,2009-02-18T16:18:45Z,2009-03-06T18:20:20Z,2.0.0-M2,2.0.0-M2
+12415255,OPENJPA-932,Runtime enhancer doesn't work propery if there is a trailing persistence.xml file on the classpath.,Closed,Fixed,2009-02-20T19:50:11Z,2009-06-16T17:46:16Z,1.2.0|2.0.0-M1|2.0.0-M2,1.3.0|2.0.0-M3
+12415270,OPENJPA-933,Database version detection in MySQLDictionary is not reliable,Closed,Fixed,2009-02-21T08:24:36Z,2009-04-18T12:59:58Z,1.2.0|1.3.0|2.0.0-M2,1.3.0|2.0.0-M2
+12415276,OPENJPA-934,Oversight in TestSequenceGenerator,Closed,Fixed,2009-02-21T09:38:42Z,2009-06-11T18:58:57Z,2.0.0-M2,2.0.0-M3
+12415279,OPENJPA-935,Removing entities with Embedded field issue multiple delete statements,Closed,Fixed,2009-02-21T11:59:39Z,2010-03-15T21:29:36Z,1.2.0,1.2.0|2.0.0-M2
+12415537,OPENJPA-940,Using table-generator in XML descriptor results in ClassCastException,Closed,Fixed,2009-02-25T07:58:07Z,2011-02-17T04:12:03Z,1.2.0|2.0.0-M2,2.1.1
+12415697,OPENJPA-944,FetchAttribute.recursionDepth = -1 does not load properly self referenced entities in a complex relation,Closed,Fixed,2009-02-26T18:58:03Z,2010-01-18T21:36:05Z,1.0.0|1.0.1|1.0.2|1.0.3|1.1.0|1.2.0,2.0.0-beta
+12415888,OPENJPA-947,Overly verbose TestCases,Closed,Fixed,2009-03-01T22:35:34Z,2009-04-01T15:18:21Z,1.0.3|1.1.0|1.2.0,1.3.0|2.0.0-M2
+12416018,OPENJPA-951,Javadoc jar file does not contain legal files,Closed,Fixed,2009-03-03T17:01:44Z,2009-03-31T12:09:31Z,1.0.4|1.2.1|1.3.0|2.0.0-M2,1.0.4|1.2.1|1.3.0|2.0.0-M2
+12416213,OPENJPA-955,MethodQL parameter passing broken,Closed,Fixed,2009-03-05T16:38:40Z,2009-03-06T23:55:13Z,1.2.0,2.0.0-M1|2.0.0-M2
+12416339,OPENJPA-965,Open up FinderCacheImpl for non-JDBC or JDBC-like  implementation of preparing statement/query execution,Closed,Fixed,2009-03-06T23:04:25Z,2009-03-10T04:31:39Z,2.0.0-M2,2.0.0-M2
+12416552,OPENJPA-970,"SchemaToolTask does not have ""dropTables"" argument",Closed,Fixed,2009-03-10T16:32:15Z,2009-03-17T21:10:18Z,1.2.0,1.3.0|2.0.0-M2
+12416593,OPENJPA-973,Allow DB2 JCC driver to work with Informix database,Closed,Fixed,2009-03-10T23:31:59Z,2009-08-17T18:33:46Z,,1.3.0|2.0.0-M3
+12416999,OPENJPA-981,@Replicated is only recognized for root instance but not the instanes reachable from the root during persist() operation.,Closed,Fixed,2009-03-16T20:24:46Z,2009-03-18T14:04:17Z,,2.0.0-M2
+12417325,OPENJPA-992,Failed to throw EntityExistException on duplicated persist in DB2,Closed,Fixed,2009-03-19T21:50:04Z,2009-03-22T02:04:10Z,1.2.2|1.3.0|2.0.0-M2,2.0.0-M2
+12417380,OPENJPA-993,PCEnhancer can't execute if a non-OpenJPA PU is found,Closed,Fixed,2009-03-20T13:23:07Z,2009-12-21T17:14:31Z,1.2.0|1.2.1,1.3.0|2.0.0-beta
+12419407,OPENJPA-999,Missing sql-warning in the localizer.properties,Closed,Fixed,2009-03-25T17:36:22Z,2009-03-25T17:55:36Z,2.0.0-M2,2.0.0-M2
+12421510,OPENJPA-1001,java.lang.IndexOutOfBoundsException when executing attached test case,Closed,Fixed,2009-03-29T20:03:01Z,2010-02-11T23:14:42Z,1.2.1,1.2.3|1.3.0|2.0.0-beta2
+12421534,OPENJPA-1002,Select range doesn't work on Oracle JDBC driver,Closed,Fixed,2009-03-30T08:25Z,2009-09-16T14:31:48Z,1.1.0|1.2.1|1.3.0|2.0.0-M2,1.2.0|2.0.0-M3
+12421561,OPENJPA-1004,Derived Identity fails when parent id is auto-generated,Closed,Fixed,2009-03-30T16:06:33Z,2009-04-02T20:07:53Z,1.2.2|2.0.0-M2,2.0.0-M2
+12421572,OPENJPA-1006,Disabling QueryCaching at runtime does not work,Closed,Fixed,2009-03-30T17:25:25Z,2009-04-17T00:30:40Z,1.2.1|2.0.0-M2,1.2.0|2.0.0-M2
+12421989,OPENJPA-1020,eager fetching of PersistentCollection of a primitive type fails,Closed,Fixed,2009-04-03T17:18:23Z,2010-03-09T14:36:29Z,1.2.1|2.0.0-M2,2.0.0-beta
+12422203,OPENJPA-1025,AbstractResultList.subList throws UnsupportedOperationException,Closed,Fixed,2009-04-07T07:13:37Z,2009-04-30T15:45:38Z,1.2.1|1.3.0|2.0.0-M2,1.0.4|1.2.2|1.3.0|2.0.0-beta
+12422304,OPENJPA-1028,ClassCastException during findBy when embeddable is involved,Closed,Fixed,2009-04-07T21:49:01Z,2009-04-10T23:20:23Z,2.0.0-M2,2.0.0-M2
+12422393,OPENJPA-1029,SQLServerDictionary causes NumberFormatException if MS SQL Server JDBC driver is used,Closed,Fixed,2009-04-08T18:47:28Z,2009-04-30T16:32:42Z,2.0.0-M2,1.0.4|1.2.2|1.3.0|2.0.0-M2
+12422506,OPENJPA-1031,Update docs that refer to OpenJPAEntityManager.getExtent(..),Closed,Fixed,2009-04-09T19:18:53Z,2009-05-07T13:43:38Z,,2.0.0-M2
+12422851,OPENJPA-1039,Dynamic query predicates must not treat AND OR operators as associative,Closed,Fixed,2009-04-15T08:33:30Z,2009-05-08T00:09:27Z,,2.0.0-M1
+12422962,OPENJPA-1041,OrderBy on nested embeddables is not working,Closed,Fixed,2009-04-15T23:22:05Z,2009-05-01T20:20:46Z,2.0.0-M2,2.0.0-M2
+12423380,OPENJPA-1043,JPQL queries do not support queries on a MappedSuperclass,Closed,Fixed,2009-04-21T15:39:05Z,2009-08-28T01:45:28Z,1.2.1|1.3.0|2.0.0-M2,2.0.0-M3
+12423526,OPENJPA-1046,Unique Constraint on MappedSupperClass causes NullPointerException,Closed,Fixed,2009-04-22T23:39:31Z,2009-11-12T08:16:53Z,,2.0.0-beta
+12423531,OPENJPA-1049,Query against a MappedSuperclass is not supported,Closed,Fixed,2009-04-22T23:57:50Z,2009-08-28T01:44:09Z,1.2.1|1.3.0|2.0.0-M2,2.0.0-M3
+12424056,OPENJPA-1051,[patch] Mappingtool doesn't check name conflicts if MappingDefaultsImpl is called with multiple columns.,Closed,Fixed,2009-04-28T16:13:17Z,2009-05-13T22:57:54Z,1.0.0|2.0.0-M2,1.2.0|2.0.0-M2
+12424125,OPENJPA-1053,Updating an entity by setting an embeddable to it does not work properly if the embeddable has a cascade delete relationship with another entity,Closed,Fixed,2009-04-29T04:56Z,2009-05-01T20:22Z,2.0.0-M2,2.0.0-M2
+12424186,OPENJPA-1054,Large result sets do not work with MySQL,Closed,Fixed,2009-04-29T16:41:12Z,2009-05-28T20:46:04Z,,1.3.0|2.0.0-M2
+12424543,OPENJPA-1060,Attempting to returning a list over RMI/IIOP results in serialization exception,Closed,Fixed,2009-05-04T19:18:41Z,2009-05-05T13:50:57Z,2.0.0-M2,2.0.0-M2
+12424625,OPENJPA-1061,Entities extending from a Mapped Superclass that defines the ID fields share the same ObjectID type parameter,Closed,Fixed,2009-05-05T18:26:31Z,2009-06-30T03:12:19Z,1.2.0|1.2.1,1.0.4|1.2.2|1.3.0|2.0.0-M3
+12424648,OPENJPA-1065,Prepared Query Cache does not work with DataCache ,Closed,Fixed,2009-05-05T22:53:57Z,2009-08-27T16:58:06Z,2.0.0-M2,2.0.0-M3
+12424719,OPENJPA-1067,SetQueryTimeout(x) where x != 0 causes SQLException with DB2 on Z/OS,Closed,Fixed,2009-05-06T15:58:41Z,2009-05-27T21:06:44Z,1.0.3|1.2.1|1.3.0|2.0.0-M2,1.0.4|1.2.2|1.3.0|2.0.0-M2
+12424800,OPENJPA-1070,Restore support for composite foreign keys on MySQL,Closed,Fixed,2009-05-07T10:28:46Z,2009-05-09T17:05:30Z,1.2.1|2.0.0-M2,2.0.0-M2
+12424829,OPENJPA-1072,Nested embeddable with a relationship to an Entity with a generated id doesn't persist the relationship,Closed,Fixed,2009-05-07T16:48:12Z,2009-05-08T15:17Z,2.0.0-M2,2.0.0-M2
+12424940,OPENJPA-1074,OrderColumn does not maintain index upon inter-list element removal - Phase 1,Closed,Fixed,2009-05-08T15:16:54Z,2010-03-23T01:21:02Z,2.0.0-M2,2.0.0-M3
+12425591,OPENJPA-1088,Build updates for openjpa-examples and openjpa-integration/examples,Closed,Fixed,2009-05-15T14:25:44Z,2009-05-15T21:21:45Z,1.3.0|2.0.0-M2,1.3.0|2.0.0-M2
+12425610,OPENJPA-1091,ReverseMappingTool fails for openjpa-examples/reversemapping sample,Closed,Fixed,2009-05-15T17:32:28Z,2010-04-15T19:43:49Z,1.2.1|2.0.0-M2,1.2.3|1.3.0|2.0.0
+12426020,OPENJPA-1097,"Detachment processing of our proxied mutable types (Date, Timestamp, etc) needs to be consistent",Closed,Fixed,2009-05-21T13:45:28Z,2010-03-22T19:04:02Z,1.2.2|1.3.0|2.0.0-M1,1.3.0|2.0.0-beta3
+12426042,OPENJPA-1099,<xmp> tag in Javadoc comments causes Javadoc corruption,Closed,Fixed,2009-05-21T18:42:01Z,2009-05-22T14:19:46Z,1.1.0|1.2.0|1.2.1,2.0.0-M2
+12426109,OPENJPA-1100,"@Version-Annotation on Column with unsupported type (e.g. BigDecimal) is silently ignored, but should raise an error",Closed,Fixed,2009-05-22T13:12:16Z,2009-08-28T01:40:03Z,1.2.1|1.3.0|2.0.0-M2,2.0.0-M3
+12427028,OPENJPA-1116,Annotation Strategy not working,Closed,Fixed,2009-06-03T13:38:56Z,2009-09-23T19:25:27Z,1.3.0|2.0.0-M2,1.3.0|2.0.0-M3
+12427049,OPENJPA-1117,Missing AgentClass attribute in openjpa-all-xxx.jar manifest.mf,Closed,Fixed,2009-06-03T18:45:49Z,2009-06-19T17:45:06Z,2.0.0,2.0.0-M3
+12427147,OPENJPA-1119,NPE in InstrumentationFactory,Closed,Fixed,2009-06-04T20:03:19Z,2009-06-22T19:16:40Z,2.0.0,2.0.0-M3
+12427192,OPENJPA-1120,idEquals() broken in BigDecimalId and BigIntegerId,Closed,Fixed,2009-06-05T09:17:41Z,2009-09-14T19:54:19Z,1.0.3|1.1.0|1.2.1|1.3.0|2.0.0,1.3.0|2.0.0-M3
+12427202,OPENJPA-1121,Enums cause a ClassNotFoundException in the MappingTool,Closed,Fixed,2009-06-05T11:17:40Z,2010-03-08T18:31:01Z,1.2.1,1.3.0|2.0.0-M3
+12427229,OPENJPA-1125,A message is logged about dynamically loading the class enhancer even though I'm using the -javaagent,Closed,Fixed,2009-06-05T16:29:44Z,2009-06-10T14:56:02Z,2.0.0,2.0.0-M3
+12427276,OPENJPA-1127,Typos in user manual and log messages,Closed,Fixed,2009-06-06T08:54:55Z,2009-06-06T09:28:42Z,1.2.1|2.0.0,2.0.0-M3
+12427388,OPENJPA-1129,"""openjpa.FetchPlan.ReadLockMode is not a supported query hint...."" WARNING message is logged when creating a named query.",Closed,Fixed,2009-06-08T18:41:49Z,2009-10-20T04:27:15Z,2.0.0,2.0.0-M2|2.0.0-M3
+12427582,OPENJPA-1132,Dropping constraints fails on MySQL,Closed,Fixed,2009-06-10T17:57:38Z,2009-06-13T15:06:58Z,1.3.0|2.0.0,2.0.0-M3
+12427606,OPENJPA-1133,DBDictionary.getPlaceholderValueString returns 0 for boolean which fails in PostgreSQL database.,Closed,Fixed,2009-06-11T02:02:45Z,2009-06-16T16:18:21Z,2.0.0,1.2.0|2.0.0-M3
+12427677,OPENJPA-1135,Overrides are not applied when embeddables are defined in XML,Closed,Fixed,2009-06-11T19:13:47Z,2009-09-09T19:37:25Z,2.0.0,2.0.0-M3
+12428151,OPENJPA-1139,checkstyle results in velocity errors in build output,Closed,Fixed,2009-06-17T17:41:49Z,2009-06-17T18:30:31Z,2.0.0,2.0.0-M3
+12428375,OPENJPA-1141,NPE  at org.apache.openjpa.jdbc.meta.MappingInfo.mergeJoinColumn(MappingInfo.java:1400),Closed,Fixed,2009-06-19T15:35:19Z,2010-01-08T00:07:29Z,1.2.0,1.2.2|1.3.0|2.0.0-beta
+12428598,OPENJPA-1142,OptimisticLockException thrown on Query.getResultList() when Pessimistic Lock is applied,Closed,Fixed,2009-06-22T18:51:46Z,2010-03-03T23:37:52Z,2.0.0-M3,2.0.0-beta
+12429397,OPENJPA-1155,BrokerImpl.detachAllInternal() does not detach newly loaded entities,Closed,Fixed,2009-07-02T15:41:31Z,2010-03-03T18:10:19Z,2.0.0,2.0.0-M3
+12429404,OPENJPA-1156,Path length issues on Windows ,Closed,Fixed,2009-07-02T16:53:33Z,2009-07-21T02:41:39Z,1.2.2|1.3.0|2.0.0,1.2.2|1.3.0|2.0.0-M3
+12429508,OPENJPA-1158,Incorrect handling of long values in AbstractResult,Closed,Fixed,2009-07-03T20:17:02Z,2009-09-14T20:07:46Z,2.0.0,1.3.0|2.0.0-M3
+12429521,OPENJPA-1159,Bad error message for find of an Entity with compound primary key if parameter of wrong class,Closed,Fixed,2009-07-04T03:53:14Z,2009-08-27T23:32:22Z,2.0.0-M2,2.0.0-M3
+12429621,OPENJPA-1160,Failed transactions must generate more focussed (and accurate) message for the cause,Resolved,Fixed,2009-07-06T15:50:54Z,2013-03-28T15:30:41Z,,2.0.0
+12429818,OPENJPA-1163,Data consistency issues while modifying collections.,Closed,Fixed,2009-07-08T15:31:56Z,2009-08-03T21:07:10Z,,1.2.0|2.0.0-M3
+12429844,OPENJPA-1165,Two unique constraints in a table try to share the same constraint name,Closed,Fixed,2009-07-08T19:03:07Z,2009-10-21T19:39:22Z,1.2.1|1.3.0,1.3.0
+12429866,OPENJPA-1168,NPE in UUIDGenerator.initializeForType1(),Closed,Fixed,2009-07-08T22:00:13Z,2009-07-14T17:57:45Z,,1.3.0|2.0.0-M3
+12430079,OPENJPA-1174,OpenJPA performs differently with orm.xml and annotations,Closed,Fixed,2009-07-10T17:02:49Z,2009-08-25T13:05:37Z,2.0.0,1.2.0|2.0.0-M3
+12430939,OPENJPA-1184,Inverse relations not set for MapKey field when using parallel eager select,Closed,Fixed,2009-07-20T15:55:45Z,2009-09-11T20:08:59Z,1.2.1,1.3.0|2.0.0-M3
+12430947,OPENJPA-1185,Subquery overhaul,Closed,Fixed,2009-07-20T16:47:38Z,2010-02-07T00:09Z,2.0.0-M3,1.3.0|2.0.0-beta
+12431056,OPENJPA-1189,Column names do not contain delimiters when obtained from DatabaseMetaData,Closed,Fixed,2009-07-21T17:55:55Z,2010-03-24T18:19:17Z,2.0.0-beta,2.0.0-beta
+12431515,OPENJPA-1197,NativeQueries fail with MySQL ,Closed,Fixed,2009-07-27T15:38:41Z,2009-07-27T17:08:15Z,1.0.3|1.2.1,1.0.4|1.2.2|1.3.0|2.0.0-beta
+12431612,OPENJPA-1200,Incorrect Entity is returned if ElementClassCriteria is not selected.,Closed,Fixed,2009-07-28T17:45:50Z,2009-08-21T20:37:54Z,2.0.0-M2,1.2.0|2.0.0-M3
+12431617,OPENJPA-1201,"""Mapped by"" field not set when contained in superclass ",Closed,Fixed,2009-07-28T18:17:29Z,2009-09-14T14:52:29Z,1.2.0|1.2.1,1.3.0|2.0.0-M3
+12431654,OPENJPA-1203,JPA2 - createEMF should return null for unhandled PUs,Closed,Fixed,2009-07-29T01:43:33Z,2009-10-05T21:07:07Z,2.0.0,2.0.0-M3
+12431662,OPENJPA-1204,Argument type mismatch when an EmbeddedId contains an Emun type ,Closed,Fixed,2009-07-29T05:40:52Z,2009-07-29T19:59:13Z,,2.0.0-M3
+12431715,OPENJPA-1205,"Cannot retrieve Map<PersistenceCapable, PersistenceCapable> fields when DataCache is on",Closed,Fixed,2009-07-29T17:04Z,2010-03-23T01:06:27Z,1.2.1,2.0.0-M3
+12431718,OPENJPA-1206,Bean validation call to provider not Java 2 Enabled,Closed,Fixed,2009-07-29T17:10:27Z,2009-08-01T14:30:17Z,2.0.0|2.0.0-M2,2.0.0-M3
+12431808,OPENJPA-1211,Enable string navigation in a From expression.,Closed,Fixed,2009-07-30T14:35:03Z,2009-07-31T22:01:24Z,2.0.0-M2,2.0.0-M3
+12431899,OPENJPA-1217,Ensure comparisons do not contain two parameters with Derby (ie SELECT ... WHERE ? = ?),Closed,Fixed,2009-07-31T13:52:08Z,2009-08-27T22:09:20Z,2.0.0-M2,2.0.0-M3
+12431940,OPENJPA-1218,Cache.evict(Clazz) should remove subclasses as well,Closed,Fixed,2009-07-31T21:44:50Z,2009-07-31T22:54:45Z,2.0.0|2.0.0-M1|2.0.0-M2,2.0.0-M3
+12432086,OPENJPA-1221,Change openjpa-integration module pom's to reflect proper artifact-id,Closed,Fixed,2009-08-03T20:14Z,2009-08-17T15:44:30Z,2.0.0,2.0.0-M3
+12432116,OPENJPA-1224,OpenJPA MySQL BigDecimal ignoring Precision/Scale column Annotation when generating tables ,Closed,Fixed,2009-08-04T01:57:53Z,2009-12-22T16:39:22Z,1.2.1,1.3.0|2.0.0-beta
+12432220,OPENJPA-1226,Can not merge entity with nested embeddable,Resolved,Fixed,2009-08-05T00:12:48Z,2013-04-10T19:57:57Z,,1.2.3|2.0.0-M3
+12432298,OPENJPA-1227,SQL generation error when using data cache,Closed,Fixed,2009-08-05T16:26:53Z,2009-09-14T15:58:08Z,1.2.1,1.3.0|2.0.0-M3
+12432427,OPENJPA-1230,javax.persistence.validation.mode property in createEMF map failed to create emf,Closed,Fixed,2009-08-06T17:28:27Z,2009-08-11T01:35:17Z,2.0.0-M3,2.0.0-M3
+12432553,OPENJPA-1232,Keys in an EmbeddedCollection are returned as PCData objects when DataCache is enabled,Closed,Fixed,2009-08-07T19:34:36Z,2009-08-07T21:32:29Z,2.0.0-M2,2.0.0-M3
+12432636,OPENJPA-1234,Make AllowFailure configurable,Closed,Fixed,2009-08-09T20:38:17Z,2010-03-04T16:11:09Z,,2.0.0-beta3
+12432817,OPENJPA-1239,Explicit access type set incorrectly within collection of embeddable with nested embeddable,Closed,Fixed,2009-08-11T19:53:29Z,2009-09-09T19:35:29Z,2.0.0-M3,2.0.0-M3
+12432914,OPENJPA-1242,Unable to cascade delete an entity in an embeddable,Closed,Fixed,2009-08-12T21:41:39Z,2009-08-13T16:02:24Z,2.0.0-M2,2.0.0-M3
+12432986,OPENJPA-1243,migrate Informix functionality from 1.2 to 1.0.x,Closed,Fixed,2009-08-13T13:05:38Z,2009-08-13T15:04:44Z,1.0.4,1.0.4
+12432995,OPENJPA-1244,Activation profiles should be more inclusive,Closed,Fixed,2009-08-13T14:42:08Z,2009-08-13T15:03:49Z,1.0.3,1.0.4
+12433149,OPENJPA-1248,LOB streaming does not work as expected,Closed,Fixed,2009-08-15T11:04:05Z,2010-03-21T10:27:23Z,1.1.0|1.2.0|1.2.1|1.2.2|1.3.0,1.3.0|2.0.0-beta3
+12433250,OPENJPA-1250,@ElementCollection with eagar fetch of a List<String> collection is causing a ClassCastException on a em.find(entity).,Closed,Fixed,2009-08-17T16:44:47Z,2009-08-17T18:53:48Z,2.0.0-M2,2.0.0-M3
+12433473,OPENJPA-1253,JoinColumn annotation not allowed in conjunction with *ToMany annotation,Closed,Fixed,2009-08-19T15:18:05Z,2009-09-28T16:22:11Z,2.0.0-M1|2.0.0-M2|2.0.0-M3,2.0.0-M3
+12433510,OPENJPA-1256,get java.lang.ClassCastException when IdClass contains an Enum Field,Closed,Fixed,2009-08-19T21:04:55Z,2009-08-20T18:28:23Z,2.0.0-M2,2.0.0-M3
+12433797,OPENJPA-1260,Wrong sequence is generated for custom native sequence generator from getIdGenerator.,Closed,Fixed,2009-08-23T12:25:28Z,2009-09-11T15:07:08Z,1.3.0|2.0.0,1.2.0|1.3.0|2.0.0-M3
+12433905,OPENJPA-1263,TestReaderLob.testUpdateWithNull() fails on MySQL,Closed,Fixed,2009-08-25T04:33:08Z,2009-12-12T16:42:11Z,1.1.0|1.2.0|1.2.1|1.3.0,1.3.0|2.0.0-beta
+12434240,OPENJPA-1269,The table attribute in the MapKeyColumn annotation is not honored,Closed,Fixed,2009-08-28T04:25:27Z,2009-08-28T04:29:39Z,2.0.0-M2,2.0.0-M3
+12434547,OPENJPA-1279,Query results are not inserted into StoreCache properly,Closed,Fixed,2009-09-01T19:47:30Z,2009-09-16T14:48:29Z,2.0.0-M2,2.0.0-M3
+12434574,OPENJPA-1281,Reparameter is not working properly for some sql if PreparedQueryCache is on,Closed,Fixed,2009-09-02T01:44:19Z,2009-09-02T15:31:10Z,2.0.0-M2,2.0.0-M3
+12434675,OPENJPA-1283,Incorrect SQL for JPQL query selecting Map value from an elementCollection of a Map and the map the value is an embeddable,Closed,Fixed,2009-09-02T21:14:46Z,2009-09-03T00:55:40Z,2.0.0-M2,2.0.0-M3
+12434676,OPENJPA-1284,Fix missing 1.0 schema license headers,Closed,Fixed,2009-09-02T21:19:57Z,2009-10-06T16:43:32Z,1.0.3|1.1.0|1.2.1|1.3.0|2.0.0-M3,1.3.0|2.0.0-M3
+12434783,OPENJPA-1286,Relationships in mapped superclass must be unidirectional,Closed,Fixed,2009-09-03T21:49:58Z,2009-09-09T21:28:06Z,2.0.0-M2,2.0.0-M3
+12435247,OPENJPA-1289,Oracle driver throws exception due to incorrect mapping of XMLType column,Closed,Fixed,2009-09-09T19:49:55Z,2010-01-27T16:02:17Z,1.2.2|2.0.0-M3,1.2.3|1.3.0|2.0.0-beta
+12435457,OPENJPA-1293,JUnit test failure when using Derby 10.5.3.0,Closed,Fixed,2009-09-11T18:58Z,2010-01-20T20:48:57Z,2.0.0-M3,2.0.0-beta
+12435480,OPENJPA-1294,Nested JDBC calls fail for certain database,Closed,Fixed,2009-09-11T21:59:51Z,2009-11-12T06:38:54Z,2.0.0-M3,2.0.0-beta
+12435487,OPENJPA-1295,Query with Escape '\' fails in MySQL,Closed,Fixed,2009-09-11T23:10:43Z,2009-09-11T23:17:10Z,1.0.3|1.1.0|1.2.1|1.3.0|2.0.0-M2,2.0.0-M3
+12435743,OPENJPA-1302,Ehcache product derivation isn't detected when running in WebSphere,Closed,Fixed,2009-09-15T18:48:53Z,2009-09-15T19:45:43Z,1.0.3|1.1.0|1.2.1|2.0.0-M2,2.0.0-M3
+12435837,OPENJPA-1303,Reserved words are not mapped correctly in table definition,Closed,Fixed,2009-09-16T15:15:49Z,2021-03-30T18:59:34Z,2.0.0,3.2.0
+12436067,OPENJPA-1308,shouldn't always use CAST with UPPER and LOWER for DB2,Closed,Fixed,2009-09-18T14:23:43Z,2009-10-23T17:41:58Z,1.0.3|1.2.1|2.0.0-M2|2.0.0-M3,1.0.4|1.2.2|1.3.0|2.0.0-beta
+12436236,OPENJPA-1321,Documentation inaccuracies,Closed,Fixed,2009-09-21T18:43:05Z,2009-10-10T19:59:25Z,1.2.1,1.3.0|2.0.0-beta
+12436419,OPENJPA-1325,Resolution of XML-based embeddable metadata fails during enhancement,Closed,Fixed,2009-09-23T14:19:06Z,2010-01-18T19:59:27Z,2.0.0-M3,2.0.0-M3
+12436426,OPENJPA-1326,ReverseMappingTool and SchemaTool failing for Sybase,Closed,Fixed,2009-09-23T15:42:32Z,2009-12-11T19:08:29Z,1.2.1,1.2.2|1.3.0|2.0.0-beta
+12436629,OPENJPA-1328,Move cacheable class configuration to ClassMetaData,Closed,Fixed,2009-09-25T18:38:22Z,2009-11-13T01:37:54Z,1.2.0|1.2.1,1.0.4|1.2.2|1.3.0|2.0.0-beta
+12437036,OPENJPA-1333,Oracle driver returns incorrect update count on batched insert,Closed,Fixed,2009-10-01T16:06:32Z,2009-10-02T16:22:48Z,2.0.0-M3,2.0.0-M3
+12437130,OPENJPA-1335,Alternating manual delim id tests fail,Closed,Fixed,2009-10-02T16:19:55Z,2010-03-24T17:37:36Z,2.0.0-M2,2.0.0-M3
+12437409,OPENJPA-1338,Allow comparison for VALUE(e) that maps to basic type,Closed,Fixed,2009-10-06T16:10:54Z,2009-10-06T16:33:35Z,2.0.0,2.0.0-M3
+12437651,OPENJPA-1341,PostRemove not invoked after database record was deleted,Closed,Fixed,2009-10-08T21:55:02Z,2009-10-20T04:02:58Z,2.0.0,2.0.0-beta
+12437810,OPENJPA-1343,Incorrect example of openjpa.Sequence property,Closed,Fixed,2009-10-11T11:26:12Z,2011-07-21T21:52:52Z,2.0.0,2.2.0
+12437821,OPENJPA-1344,Query [get|set]LockMode & Em getLockMode not throwing correct exceptions,Closed,Fixed,2009-10-12T00:51:17Z,2009-10-12T20:40:53Z,2.0.0-M2|2.0.0-M3,2.0.0-beta
+12438038,OPENJPA-1349,Compatibility options are not set appropriately for spec level when emf is created by JEE container,Closed,Fixed,2009-10-14T03:23:13Z,2009-10-14T04:02:41Z,2.0.0-beta,2.0.0-beta
+12438100,OPENJPA-1350,Race condition in the MetaDataRepository,Closed,Fixed,2009-10-14T15:58:10Z,2010-02-25T21:07:27Z,1.0.3|1.2.1|2.0.0-M3,1.2.3|1.3.0|2.0.0-beta
+12438142,OPENJPA-1351,java.lang.ClassCastException: javax.naming.Reference incompatible with javax.sql.DataSource,Closed,Fixed,2009-10-14T23:30:39Z,2009-10-16T15:23:25Z,2.0.0-M3,2.0.0-beta
+12438171,OPENJPA-1352,Merge fails if an entity has an element collection which is contructed using Arrays.asList,Closed,Fixed,2009-10-15T06:50:33Z,2009-10-16T15:28:02Z,2.0.0-M3,2.0.0-beta
+12438475,OPENJPA-1354,Configuring DBCP connection pool with connection properties breaks when user/pasword is specifed and javax.* configuration is set to DBCP Driver,Closed,Fixed,2009-10-19T18:29:36Z,2009-11-12T04:43:05Z,,2.0.0-beta
+12438580,OPENJPA-1355,Recent snaphot versions of openjpa have problem with postgresPreparedStatementImpl constructor making Postgres impossible to use,Closed,Fixed,2009-10-20T15:13:28Z,2009-11-12T04:42:10Z,2.0.0-beta,2.0.0-beta
+12438938,OPENJPA-1360,"ReverseMappingTool omits nullable, length, etc. when ClassMapping.setEmbedded(true) is called",Closed,Fixed,2009-10-23T15:53:05Z,2010-03-08T21:48:27Z,1.2.2,1.3.0|2.0.0-beta3
+12439523,OPENJPA-1367,H2 Database Engine does support cross join,Closed,Fixed,2009-10-30T13:00:06Z,2010-02-08T19:30:17Z,1.2.1|2.0.0-M1|2.0.0-M2|2.0.0-M3|2.0.0-beta,1.3.0|2.0.0-beta2
+12439572,OPENJPA-1370,"JPA2 missing implementation for createNamedQuery(String name, Class<T> resultClass)",Closed,Fixed,2009-10-30T20:40:25Z,2009-11-02T17:33:40Z,2.0.0-M3,2.0.0-beta
+12439580,OPENJPA-1371,Insert is called instead of Update when merge() with derived Identity,Closed,Fixed,2009-10-30T22:51:47Z,2010-03-24T17:47:55Z,2.0.0-M3,2.0.0-M3
+12439611,OPENJPA-1372,Generating identifiers by using sequence table may fail during sequence table initialization,Closed,Fixed,2009-10-31T21:26:20Z,2010-09-07T22:49:56Z,1.2.1|2.0.0-M3,2.0.2|2.1.0
+12439892,OPENJPA-1375,OutOfMemory runs in container environment in a long stress run,Closed,Fixed,2009-11-04T21:56:14Z,2009-11-06T15:48:39Z,1.3.0|2.0.0-M3,1.3.0|2.0.0-beta
+12439900,OPENJPA-1376,@SequenceGenerator allocationSize incorrect implementation,Closed,Fixed,2009-11-04T23:49:17Z,2011-03-13T09:57:14Z,1.2.1|2.0.0-M3|2.1.0,1.2.3|1.3.0|2.0.2|2.1.2|2.2.0
+12440071,OPENJPA-1377,JPA property to enum conversion failure,Closed,Fixed,2009-11-06T22:43:57Z,2009-11-19T21:45:17Z,2.0.0-M3,2.0.0-beta
+12440211,OPENJPA-1379,Locking problem when using timestamp QueryCache eviction policy.,Closed,Fixed,2009-11-09T20:47:12Z,2009-11-09T22:10:48Z,2.0.0-M3,2.0.0-beta
+12440367,OPENJPA-1380,Query not getting evicted from QueryCache,Closed,Fixed,2009-11-11T00:54:42Z,2009-11-12T21:50:38Z,1.2.1,1.3.0|2.0.0-beta
+12440421,OPENJPA-1381,IllegalStateException on query method call after named query is created twice.,Closed,Fixed,2009-11-11T15:53:47Z,2010-01-18T19:50:34Z,2.0.0,2.0.0-beta
+12440500,OPENJPA-1383,tests rely on US date formatting without setting the correct Locale,Closed,Fixed,2009-11-12T15:02:32Z,2009-11-14T22:37:15Z,2.0.0-M2,2.0.0-beta
+12440529,OPENJPA-1384,ClassNotFoundException for custom DBDictionary used by EJB,Closed,Fixed,2009-11-12T18:43:45Z,2010-01-08T00:07:30Z,1.2.1,1.2.2|1.3.0|2.0.0-beta
+12440555,OPENJPA-1385,Parameter in having clause of Criteria query not recognized,Closed,Fixed,2009-11-12T22:35:25Z,2009-11-12T23:11:12Z,2.0.0-M3,2.0.0-beta
+12440584,OPENJPA-1386,Metamodel Generator does not handle field types that can hide another,Closed,Fixed,2009-11-13T05:46:22Z,2009-11-16T09:37:07Z,2.0.0-M3,2.0.0-beta
+12440619,OPENJPA-1387,Unique colums automatically defined as non-nullable,Resolved,Fixed,2009-11-13T14:50:35Z,2013-01-23T23:41:40Z,1.2.3|2.0.0-M3,1.2.3|2.0.0-beta
+12440838,OPENJPA-1388,JPQL named parameter using a reserved word resulting in ArgumentException,Closed,Fixed,2009-11-16T18:14:02Z,2009-11-17T23:36:03Z,1.3.0,1.3.0|2.0.0-beta
+12440961,OPENJPA-1390,Criteria API untyped join(String attr) implies any attribute not a singular attribute,Closed,Fixed,2009-11-17T18:07:30Z,2009-11-30T18:13:22Z,2.0.0-M3,2.0.0-beta
+12440971,OPENJPA-1391,Handle generic/unspecified  type arguments for persistent fields during metamodel generation,Closed,Fixed,2009-11-17T20:43:52Z,2009-11-30T18:13:38Z,2.0.0-M3,2.0.0-beta
+12440993,OPENJPA-1392,CriteriaBuilder.size() must return Integer as value,Closed,Fixed,2009-11-18T00:18:12Z,2009-11-30T18:12:56Z,2.0.0-M3,2.0.0-beta
+12440994,OPENJPA-1393,CriteriaBuilder.countDistinct() does not return correct result,Closed,Fixed,2009-11-18T00:19:39Z,2009-11-30T18:12:22Z,2.0.0-M3,2.0.0-beta
+12441056,OPENJPA-1394,Pessimistic Lock not honour when ORDER BY clause is used,Closed,Fixed,2009-11-18T15:38:01Z,2009-11-19T23:39:15Z,2.0.0-M3,2.0.0-beta
+12441146,OPENJPA-1396,metadata-complete in the orm file does not override @Transition annotation ,Closed,Fixed,2009-11-19T05:58:51Z,2009-11-19T15:15:05Z,2.0.0-M3,2.0.0-beta
+12441180,OPENJPA-1397,"NULL in columns part of an @IdClass composite key leads to ""disappearing"" (null) returned objects",Closed,Fixed,2009-11-19T13:43:43Z,2009-12-18T13:22:10Z,1.2.1|2.0.0-M3,1.2.2|1.3.0|2.0.0-beta
+12441523,OPENJPA-1400,Unable to persist a relationship to a detached Entity ,Closed,Fixed,2009-11-23T22:19:10Z,2009-12-08T15:02:14Z,1.2.1|2.0.0-M3,1.2.2|1.3.0|2.0.0-beta
+12441721,OPENJPA-1401,Inheritance using Join Strategy may fail in cross join JPQL,Closed,Fixed,2009-11-25T22:55:41Z,2009-12-18T17:47:50Z,2.0.0-M3,1.3.0|2.0.0-beta
+12442107,OPENJPA-1406,(In)Compatibility section in OpenJPA doc needs some work...,Closed,Fixed,2009-12-01T15:46:28Z,2010-03-22T21:54:59Z,2.0.0,1.3.0|2.0.0-beta3
+12442119,OPENJPA-1407,ClassCastException at DataCacheStoreManager.loadAll,Closed,Fixed,2009-12-01T17:34:14Z,2009-12-16T17:45:54Z,1.1.0,1.2.0
+12442150,OPENJPA-1409,Improve type preservation for currentDate/Time  expression in queries,Closed,Fixed,2009-12-01T21:35:55Z,2010-01-18T18:52:39Z,,2.0.0-beta
+12442243,OPENJPA-1410,Class linkage exception when creating an EMF with OpenJPA M3,Closed,Fixed,2009-12-02T18:13:44Z,2010-03-22T12:41:53Z,2.0.0-M3|2.0.0-beta|2.0.0-beta2,2.0.0-beta3
+12442403,OPENJPA-1413,NPE when update using CASE statement on Derby,Closed,Fixed,2009-12-03T23:14:33Z,2009-12-03T23:47:50Z,2.0.0-M3,1.3.0|2.0.0-beta
+12442739,OPENJPA-1419,Access path metadata set incorrectly for fetch joins in Criteria Query,Closed,Fixed,2009-12-08T15:35:41Z,2010-01-18T19:50:34Z,2.0.0-beta,2.0.0-beta
+12442758,OPENJPA-1421,Reduce lock contention in JDBCStoreManager,Closed,Fixed,2009-12-08T18:45:41Z,2009-12-08T18:59:38Z,1.2.2|1.3.0,1.2.2|1.3.0
+12443011,OPENJPA-1424,Out of bounds exception using fetch plan,Closed,Fixed,2009-12-10T18:33:30Z,2010-05-03T19:27:30Z,1.2.1,1.2.3|1.3.0|2.0.1|2.1.0
+12443051,OPENJPA-1425,Literal value in projection can not be parameterized for all databases,Closed,Fixed,2009-12-11T00:36:47Z,2010-01-18T19:50:34Z,,2.0.0-beta
+12443432,OPENJPA-1431,@Temporal annotation overrides the @Column annotation when using in conjunction with @ElementCollection,Closed,Fixed,2009-12-15T18:44:55Z,2009-12-15T23:50:03Z,2.0.0-M3,2.0.0-beta
+12443492,OPENJPA-1432,openjpa.Compatibility property for JPA 2.0 behavior may be overwritten if this property is an argument to createEntityManagerFactory,Closed,Fixed,2009-12-16T04:26:54Z,2010-03-09T14:47:54Z,2.0.0-M3,2.0.0-beta
+12443551,OPENJPA-1435,Multi-1xm relation of same type in entity yields extra null in result collection,Closed,Fixed,2009-12-16T16:55:31Z,2009-12-16T20:36:27Z,2.0.0-M3,2.0.0-beta
+12443825,OPENJPA-1438,Fail to remove an entity which has derived identity,Closed,Fixed,2009-12-19T00:28:23Z,2010-03-09T18:08:56Z,2.0.0,2.0.0-beta3
+12443865,OPENJPA-1439,Metamodel instantiation fails on InputStream properties,Closed,Fixed,2009-12-20T17:10:38Z,2009-12-23T15:40:29Z,2.0.0,2.0.0-beta
+12443939,OPENJPA-1441,"NPE when enhancing a Serializable, versioned class",Closed,Fixed,2009-12-21T20:38:31Z,2009-12-22T15:13:32Z,1.2.2|1.3.0|2.0.0-beta,1.2.2|1.3.0|2.0.0-beta
+12444057,OPENJPA-1442,"java.sql.Date, java.math.BigDecimal, or java.math.BigInteger types as derived primary keys are not Enhanced correctly",Closed,Fixed,2009-12-23T03:12:35Z,2009-12-23T22:38:23Z,2.0.0-M3,2.0.0-beta
+12444071,OPENJPA-1444,Criteria Query with fetch joins does not return correct DISTINCT result,Closed,Fixed,2009-12-23T07:56:42Z,2010-01-18T19:50:34Z,2.0.0-beta,2.0.0-beta
+12444086,OPENJPA-1445,Support Enum as external value,Closed,Fixed,2009-12-23T11:21:05Z,2010-01-18T19:50:34Z,2.0.0-beta,2.0.0-beta
+12444508,OPENJPA-1452,OpenJPA 2.0.0-M3 attempts to mutate unmodifiable map in Glassfish,Closed,Fixed,2010-01-02T18:53:10Z,2010-01-08T18:23:49Z,2.0.0-M3,2.0.0-beta
+12444812,OPENJPA-1454,InstrumentationFactory crashes the tomcat WebappClassLoader by injecting org.apache.openjpa classes into the SystemClassLoader,Resolved,Fixed,2010-01-06T17:32:40Z,2010-11-02T21:18:56Z,2.0.0-M3,2.1.0
+12444936,OPENJPA-1455,SynchronizeMapping ALTER TABLE ADD COLUMN fails with column already exist exception,Closed,Fixed,2010-01-07T16:57:53Z,2010-03-22T18:53:48Z,2.0.0,2.0.0-beta3
+12445426,OPENJPA-1457,Remove Java.net maven repostiory from tck pom.xml,Closed,Fixed,2010-01-13T19:00:31Z,2010-01-14T20:31:12Z,1.0.4|1.2.2|1.3.0,1.0.4|1.2.2|1.3.0
+12445430,OPENJPA-1458,Named parameters are not handled by OpenJPA correctly,Closed,Fixed,2010-01-13T19:21:11Z,2010-03-09T18:12:04Z,2.0.0-M3,2.0.0-beta3
+12445570,OPENJPA-1460,Fix scope visibility of orm.xml when it is packaged in both ear file and war file,Closed,Fixed,2010-01-14T23:29:42Z,2010-03-09T14:57:01Z,2.0.0-M3|2.0.0-beta,2.0.0-beta2
+12445588,OPENJPA-1461,Incorrect Oracle CREATE TABLE DDL for XML column,Closed,Fixed,2010-01-15T02:50:30Z,2010-01-15T05:20:08Z,2.0.0-M3,2.0.0-beta
+12445648,OPENJPA-1463,JPQL new operator arguments should be more flexible in matching constructor arguments,Closed,Fixed,2010-01-15T17:38:20Z,2010-01-15T17:40:08Z,,2.0.0-beta
+12445657,OPENJPA-1464,PreparedQuery fails with enum query parameter,Closed,Fixed,2010-01-15T19:10:48Z,2010-01-18T19:50:34Z,,2.0.0-beta
+12445849,OPENJPA-1467,java.lang.IllegalMonitorStateException in ConcurrentDataCache.writeUnlock(),Closed,Fixed,2010-01-18T19:26:40Z,2010-01-18T19:34:59Z,2.0.0-M1|2.0.0-M2|2.0.0-M3,2.0.0-beta
+12446255,OPENJPA-1477,Multithreaded attempt to set Query parameter occassionally fails,Closed,Fixed,2010-01-21T19:36:52Z,2010-03-15T21:29:37Z,,2.0.0-beta3
+12446308,OPENJPA-1478,OpenJPA is no longer available as an OSGi bundle,Closed,Fixed,2010-01-22T12:35:29Z,2010-01-22T16:53:07Z,2.0.0-M3,1.3.0|2.0.0-beta
+12446709,OPENJPA-1482,NoSuchMethodError when calling setVersion on an enhanced property access Entity,Closed,Fixed,2010-01-26T18:04:15Z,2010-03-04T19:12:06Z,1.2.2|1.3.0|2.0.0-M3|2.0.0-beta,1.2.3|1.3.0|2.0.0-beta3
+12446713,OPENJPA-1483,count (Distinct e) in JPQL gives wrong result when the id field is a compound primary key,Closed,Fixed,2010-01-26T18:36:06Z,2010-02-09T18:30:11Z,2.0.0-beta,1.2.3|1.3.0|2.0.0-beta2
+12446828,OPENJPA-1485,isLoaded util method does not behave per spec for collection attributes and basic type,Closed,Fixed,2010-01-27T16:14:45Z,2010-02-19T15:25:45Z,2.0.0-beta,2.0.0-beta2
+12446928,OPENJPA-1486,Lazy fetched embeddable should not be materialized in the query result,Closed,Fixed,2010-01-28T16:55:12Z,2010-03-09T18:11:22Z,2.0.0-beta|2.0.0-beta2,2.0.0-beta3
+12454958,OPENJPA-1491,org.apache.openjpa.kernel.Bootstrap uses the application classloader to load OpenJPA internals,Closed,Fixed,2010-02-01T17:15:35Z,2010-03-12T21:01:18Z,2.0.0-beta,2.0.0-beta3
+12455142,OPENJPA-1494,Criteria query IN predicate generates incorrect SQL ,Closed,Fixed,2010-02-03T06:17:15Z,2010-02-05T19:13:45Z,2.0.0-beta,2.0.0-beta2
+12455320,OPENJPA-1495,org.apache.openjpa.persistence.ArgumentException: A JDBC Driver or DataSource class name must be specified in the ConnectionDriverName property,Closed,Fixed,2010-02-04T15:50:46Z,2010-05-24T16:40:03Z,,
+12455387,OPENJPA-1496,Fail to set temporal parameter,Closed,Fixed,2010-02-05T06:00:56Z,2010-02-09T18:40:26Z,2.0.0-beta,2.0.0-beta2
+12455690,OPENJPA-1500,DataCache types and excludedTypes are case sensitive,Closed,Fixed,2010-02-08T22:10:26Z,2010-03-04T16:07:59Z,1.0.3|1.2.2,1.2.3|1.3.0|2.0.0-beta3
+12455695,OPENJPA-1501,EntityManager.find may return multiple instances of Entities with String identities if id value has trailing spaces.,Closed,Fixed,2010-02-08T22:40:45Z,2010-07-15T20:59:51Z,1.2.2|1.3.0|2.0.0,1.3.0|2.0.2|2.1.0
+12455804,OPENJPA-1503,Metamodel class loading fails with security manager,Closed,Fixed,2010-02-09T18:43:32Z,2010-03-15T21:29:37Z,,2.0.0-beta3
+12455923,OPENJPA-1504,Validation junits should not rely on Hibernate Impl,Closed,Fixed,2010-02-10T17:37:06Z,2010-02-10T21:30:53Z,2.0.0-beta,2.0.0-beta2
+12456026,OPENJPA-1506,ConfigurationImpl.equals fails using a OpenJPA derived provider,Closed,Fixed,2010-02-11T16:17:30Z,2010-03-02T15:46:03Z,2.0.0-beta2,2.0.0-beta3
+12456100,OPENJPA-1507,NPE with a non-JDBC store manager,Closed,Fixed,2010-02-12T03:20:55Z,2010-02-12T22:37:33Z,2.0.0-beta,2.0.0-beta2
+12456207,OPENJPA-1509,Enum field types cannot be modified in an in-memory JPQL bulk update statement,Closed,Fixed,2010-02-13T00:07:54Z,2010-02-13T00:09:44Z,2.0.0-M3|2.0.0-beta,2.0.0-beta2
+12456225,OPENJPA-1510,Documentation corrections,Closed,Fixed,2010-02-13T13:43:55Z,2010-04-05T08:11:52Z,2.0.0-beta,2.0.0
+12456460,OPENJPA-1515,CacheStatistics should be disabled by default,Closed,Fixed,2010-02-16T18:00:17Z,2010-02-16T20:03:35Z,2.0.0-beta,2.0.0-beta
+12456593,OPENJPA-1518,Remove WARN messages for uncacheable finder select statements,Closed,Fixed,2010-02-17T22:37:46Z,2010-03-09T15:27:34Z,2.0.0-beta,2.0.0-beta2
+12456798,OPENJPA-1524,ManagedRuntime does not work for OSGi,Closed,Fixed,2010-02-19T16:50:12Z,2010-03-22T19:15:39Z,2.0.0-beta,2.0.0-beta3
+12457126,OPENJPA-1527,AssociationOverride does not work when applying to the map key of the element collection via orm.xml,Closed,Fixed,2010-02-23T09:13:51Z,2010-02-24T17:46:44Z,2.1.0,2.0.0-beta
+12457255,OPENJPA-1533,JPA2 select math mix with aggregate reports syntax error,Closed,Fixed,2010-02-24T06:49:59Z,2010-02-24T09:00:19Z,2.0.0-beta,2.0.0-beta2
+12457344,OPENJPA-1535,Inconsistency in exceptions thrown from MetaDataRepository.resolve(),Closed,Fixed,2010-02-24T21:34:26Z,2010-02-25T17:31:07Z,1.0.3|1.1.0|1.2.2|2.0.0-beta,1.3.0|2.0.0-beta3
+12457359,OPENJPA-1536,SQL with outer join cannot handle null columns when inheritance is involved,Closed,Fixed,2010-02-24T22:55:52Z,2010-02-25T05:08:20Z,2.0.0-beta|2.0.0-beta2,2.0.0-beta3
+12457460,OPENJPA-1538,Move hard coded text in OpenJPAVersion.java to localizer.properties,Closed,Fixed,2010-02-25T17:08:06Z,2010-02-26T17:05:18Z,2.0.0-beta2,2.0.0-beta3
+12457487,OPENJPA-1542,Support openjpa.DataCache Types and ExcludedTypes configuration,Closed,Fixed,2010-02-25T21:25:07Z,2010-02-26T15:25:47Z,2.0.0-beta,2.0.0-beta3
+12457492,OPENJPA-1543,Need to change fragmented messages that are combined by PreparedQueryImpl and PreparedQueryCacheImpl to complete messages,Closed,Fixed,2010-02-25T22:11:04Z,2010-03-03T17:43:02Z,2.0.0-beta2,2.0.0-beta3
+12457751,OPENJPA-1544,Remove WebSphere version number from org/apache/ee/localizer.properties,Closed,Fixed,2010-03-01T16:15:57Z,2010-03-01T16:24:58Z,2.0.0-beta2,2.0.0-beta3
+12457858,OPENJPA-1546,OpenJPA doesn't work as internal JPA inside web applicaion in JBoss AS,Closed,Fixed,2010-03-02T13:35:35Z,2010-03-02T16:55:47Z,2.0.0-beta2,2.0.0-beta3
+12457889,OPENJPA-1547,NOT IN with MEMBER OF returns syntax error,Closed,Fixed,2010-03-02T17:28:06Z,2010-03-09T18:10:44Z,1.2.2|2.0.0|2.0.0-beta2,2.0.0-beta3
+12458202,OPENJPA-1550,"When batchLimit=-1 or >1 and an exception is caused, the params and failedObject are missing from the resultant exception.",Closed,Fixed,2010-03-05T03:32:48Z,2010-03-25T03:57:10Z,1.2.2|1.3.0|2.0.0-beta2,1.2.3|1.3.0|2.0.0|2.1.0
+12458565,OPENJPA-1556,Exception thrown on first use of @Strategy in @Embeddable classes,Closed,Fixed,2010-03-09T18:20:13Z,2010-03-10T22:43:03Z,2.0.0-beta2,2.0.0-beta3
+12458577,OPENJPA-1558,Many side of a MxO relationship contains null reference if One side is loaded first.,Closed,Fixed,2010-03-09T20:32:49Z,2010-03-11T02:47:43Z,1.2.3|1.3.0|2.0.0,1.3.0|2.0.0-beta3
+12458596,OPENJPA-1559,DataCacheManager initialization isn't thread safe.,Closed,Fixed,2010-03-09T23:15:32Z,2010-04-10T17:41:35Z,2.0.0,2.0.0
+12458836,OPENJPA-1562,EntityManager:Refresh on Removed entity does not trigger IllegalArgumentException,Closed,Fixed,2010-03-11T17:52:56Z,2010-03-24T17:34:06Z,2.0.0-beta2,2.0.0-beta3
+12458864,OPENJPA-1565,QueryTimeOut and LockTimeOut exceptions are not raised correctly,Closed,Fixed,2010-03-11T22:51:41Z,2010-03-22T20:11:05Z,2.0.0-M1|2.0.0-M2|2.0.0-M3|2.0.0-beta|2.0.0-beta2,2.0.0-beta3
+12458969,OPENJPA-1568,Make createConnectionFactory() in JDBCConfigurationImpl public,Closed,Fixed,2010-03-12T18:44:43Z,2010-03-16T06:34:53Z,2.0.0,2.0.0-beta3
+12459006,OPENJPA-1569,@Strategy triggers an InvalidStateException for fields which are declared as Java interfaces,Closed,Fixed,2010-03-13T04:30:43Z,2013-04-10T19:46:07Z,1.2.2|2.0.0-beta2,1.2.3|2.0.0
+12459020,OPENJPA-1570,Exception using @Strategy in @MappedSuperclass or @Embeddable classes,Closed,Fixed,2010-03-13T14:12:21Z,2010-03-16T20:18:49Z,2.0.0-beta2,2.0.0-beta3
+12459108,OPENJPA-1571,The change in the element collection is not persisted to the database during merging a detached entity,Closed,Fixed,2010-03-15T08:17:22Z,2010-03-21T00:10:46Z,2.0.0-beta2,2.0.0-beta3
+12459149,OPENJPA-1573,Incorrect SQL for HAVING = entity variable,Closed,Fixed,2010-03-15T14:27:27Z,2010-03-16T06:31:37Z,2.0.0-beta2,2.0.0-beta3
+12459182,OPENJPA-1575,Query parameter on externalized field breaks Prepared Query Cache,Closed,Fixed,2010-03-15T20:07:26Z,2010-03-15T21:26:35Z,2.0.0-beta2,2.0.0-beta3
+12459251,OPENJPA-1576,maven plugin broken as of 3/16/2010 2:30 AM PST using openjpa-2.0.0-SNAPSHOT ,Closed,Fixed,2010-03-16T09:51:39Z,2010-03-16T21:47:24Z,2.0.0,2.0.0-beta3
+12459253,OPENJPA-1577,Using @Strategy in Queries not working properly,Closed,Fixed,2010-03-16T09:54:07Z,2010-03-22T18:56:21Z,2.0.0-beta2,2.0.0-beta3
+12459264,OPENJPA-1578,CacheStoreMode.REFRESH is not recognized,Closed,Fixed,2010-03-16T14:29Z,2010-03-22T18:15:51Z,2.0.0-beta2,2.0.0-beta3
+12459395,OPENJPA-1580,Using firstResult and maxResults in queries is not working properly,Closed,Fixed,2010-03-17T16:35:18Z,2010-03-19T15:19:38Z,2.0.0-beta2,2.0.0-beta3
+12459524,OPENJPA-1581,getCache() should throw IllegalStateException if the EMF has been closed. ,Closed,Fixed,2010-03-18T14:29:48Z,2010-03-22T17:26:32Z,,2.0.0-beta3
+12459537,OPENJPA-1583,Update by query fails on entities using Timestamp as Version field,Closed,Fixed,2010-03-18T16:55:14Z,2013-04-10T21:11:25Z,,1.2.3|2.0.0-beta3
+12459550,OPENJPA-1584,PreparedQuery gives wrong result if query has subquery and parameters are used in both main select and subselect,Closed,Fixed,2010-03-18T17:57:12Z,2010-07-24T16:23:37Z,2.0.0,2.1.0
+12459770,OPENJPA-1588,modify 925451 revision for setProperty processing for enums,Closed,Fixed,2010-03-20T22:46:28Z,2010-03-21T00:20:33Z,2.0.0,2.0.0-beta3
+12459850,OPENJPA-1590,Agent enhancer doesn't work with Tomcat,Closed,Fixed,2010-03-22T12:38:48Z,2015-04-05T06:21:09Z,2.0.0-M3|2.1.1|2.2.0,2.4.0
+12460029,OPENJPA-1596,Index name too long for DB2 zOS,Closed,Fixed,2010-03-23T18:39:47Z,2010-03-23T19:29:59Z,2.0.0-beta2,2.0.0-beta3
+12460114,OPENJPA-1597,Need Compatibility setting for new OPENJPA-1097 Proxies and DetachedStateField behavior,Closed,Fixed,2010-03-24T15:04:41Z,2010-04-05T16:24:57Z,2.0.0-beta3,1.3.0|2.0.0
+12460186,OPENJPA-1599,Cache mode properties passes in to em.find and lock methods are not transient,Closed,Fixed,2010-03-25T03:13:04Z,2010-04-10T21:26:09Z,2.0.0|2.0.0-beta2|2.0.0-beta3,2.0.0
+12460578,OPENJPA-1602,Query with lock mode set to PESSIMISTIC_WRITE does not have for update clause attached to the sql when runs twice,Closed,Fixed,2010-03-29T18:04:45Z,2010-04-07T16:26:40Z,2.0.0,2.0.0
+12460738,OPENJPA-1604,"Setting PessimisticLockManager fails to append ""for update clause"" to the select statement",Closed,Fixed,2010-03-30T20:44:32Z,2010-04-10T17:41:04Z,2.0.0,2.0.0
+12460829,OPENJPA-1605,ReverseMappingTool (SchemaGenerator) bug,Closed,Fixed,2010-03-31T15:51:46Z,2010-04-15T19:47:35Z,2.0.0-beta3,2.0.0
+12460960,OPENJPA-1608,PESSIMISTIC_WRITE is not working in Informix,Closed,Fixed,2010-04-01T17:26:18Z,2010-04-05T16:00:40Z,2.0.0,2.0.0
+12460975,OPENJPA-1609,PessimisticLockException instead of LockTimeoutException thrown on DB2V9 for ZOS,Closed,Fixed,2010-04-01T22:21:46Z,2010-04-07T20:04:34Z,2.0.0,2.0.0|2.1.0
+12461098,OPENJPA-1611,Wrong PersistentAttributeType returned for @Embedded types,Closed,Fixed,2010-04-03T16:40:20Z,2010-04-11T13:30:15Z,2.0.0,2.0.0
+12461329,OPENJPA-1613,Exception thrown when enhancing a (property access) class that has an abstract @MappedSuperclass with no annotated properties,Resolved,Fixed,2010-04-06T23:28:33Z,2011-01-12T22:38:14Z,2.0.0-beta2|2.0.0-beta3,2.1.0
+12461547,OPENJPA-1618,Exception during factory creation due to javax.persistence.transactionType,Closed,Fixed,2010-04-08T16:41:26Z,2010-04-08T19:50:59Z,2.0.0-beta3,2.0.0
+12461714,OPENJPA-1625,Inconsistent creation of StateManagerImpl in BrokerImpl,Closed,Fixed,2010-04-10T15:08:23Z,2010-04-10T21:27:59Z,2.0.0,2.0.0
+12461787,OPENJPA-1626,ParseException when specified name of QueryCache,Closed,Fixed,2010-04-12T03:09:16Z,2010-07-14T20:16:52Z,1.1.0,2.1.0
+12461804,OPENJPA-1627,ORderBy with @ElementJoinColumn and EmbeddedId uses wrong columns in SQL,Closed,Fixed,2010-04-12T10:21:13Z,2011-01-12T22:41:26Z,2.0.0-beta3,2.1.0
+12461981,OPENJPA-1630,NPE in MetaDataRepository when preloading is enabled under heavy stress.,Closed,Fixed,2010-04-13T19:33:41Z,2010-04-15T16:43:08Z,1.2.2|2.0.0|2.0.0-beta3|2.0.1|2.1.0,2.0.0
+12461982,OPENJPA-1631,MetaDataRepository preload doesn't load JAXB meta data,Closed,Fixed,2010-04-13T19:48:10Z,2010-04-15T16:41:03Z,1.2.2|2.0.0-beta3,2.0.0
+12462443,OPENJPA-1634,Loading JAXB meta data when using MetaDataRepository preloading isn't thead safe.,Closed,Fixed,2010-04-19T15:24:16Z,2010-05-01T19:01:34Z,2.0.0|2.1.0,2.1.0
+12463123,OPENJPA-1641,SybaseDictionary should try both JDBC column names and Sybase specific column names,Closed,Fixed,2010-04-27T16:20:37Z,2010-06-14T17:53:10Z,,1.2.3|1.3.0|2.0.1|2.1.0
+12463425,OPENJPA-1644,Null field values after calling EntityManager.remove(),Closed,Fixed,2010-04-30T10:48:18Z,2013-04-10T21:12:45Z,1.2.2|2.0.0,1.2.3|2.1.0
+12463567,OPENJPA-1646,DataCacheManager initialization still isn't thread safe.,Closed,Fixed,2010-05-03T15:46:27Z,2010-05-03T15:56:45Z,1.2.2|2.0.0,2.1.0
+12463706,OPENJPA-1648,Slice thread pool breaks down under high concurrency ,Resolved,Fixed,2010-05-04T21:19Z,2011-01-12T23:03:06Z,,2.1.0
+12463708,OPENJPA-1650,Adding a slice dynamically should be done via persistence unit only,Closed,Fixed,2010-05-04T21:32:32Z,2011-09-21T15:09:07Z,,2.1.2|2.2.0
+12463784,OPENJPA-1651,Unique colums automatically defined as non-nullable (part 2),Closed,Fixed,2010-05-05T15:46:35Z,2011-12-12T16:59:27Z,,2.2.0
+12464147,OPENJPA-1657,Postgres connection throws NPE with null properties,Closed,Fixed,2010-05-10T15:45:45Z,2011-04-27T21:26:06Z,,2.1.1|2.2.0
+12464287,OPENJPA-1662,Type support has regressed in OpenJPA 2.0,Resolved,Fixed,2010-05-11T19:47:06Z,2011-01-12T23:03:07Z,,2.0.2|2.1.0
+12464360,OPENJPA-1665,Problems when using auto incrementing colums that start at zero ,Closed,Fixed,2010-05-12T16:08:24Z,2011-03-23T14:26:50Z,2.0.0,1.2.3|1.3.0|2.0.2|2.1.0
+12464618,OPENJPA-1667,Incorrect column type for LOB streaming in MySQL,Closed,Fixed,2010-05-16T11:56:06Z,2010-05-26T09:58:11Z,1.3.0|2.0.0,1.3.0|2.1.0
+12464706,OPENJPA-1668,User's ''DBDictionary.sequenceSQL' setting not being honored on zOS ,Closed,Fixed,2010-05-17T18:08:44Z,2010-08-12T22:07:52Z,1.0.3|1.2.2|2.0.0,1.2.3|1.3.0|2.0.1|2.1.0
+12464903,OPENJPA-1670,PCRegistry memory leak when using MetaDataRepository preloading.,Closed,Fixed,2010-05-19T15:48:53Z,2010-05-19T18:42:29Z,1.2.2|2.0.0,2.1.0
+12465795,OPENJPA-1676,PCClassFileTransformer.transform causing NPE when class name is null,Closed,Fixed,2010-05-31T15:44:29Z,2010-07-13T15:11:30Z,2.0.0|2.1.0,2.1.0
+12465979,OPENJPA-1678,SQL Parameter values may contain sensitive information and should not be logged by default.,Closed,Fixed,2010-06-02T16:35:27Z,2010-07-15T21:03:52Z,1.0.3|1.1.0|1.2.2|2.0.0|2.1.0,1.0.4|1.2.3|1.3.0|2.0.1|2.1.0
+12465997,OPENJPA-1679,Index name too long for DB2 zOS when schema is present,Closed,Fixed,2010-06-02T19:22:44Z,2010-06-02T19:25:55Z,2.0.0,2.0.1
+12466193,OPENJPA-1682,TestSimpleXmlEntity.testId failed with invalid DB2 create table SQL statement,Closed,Fixed,2010-06-04T16:08:28Z,2012-08-16T22:13:01Z,2.1.0,1.2.3|2.0.2|2.1.0
+12466260,OPENJPA-1683,Why string encoding of OpenJPA Identity instances for LongId differes from other built-in identity types?,Closed,Fixed,2010-06-05T17:03:15Z,2011-01-12T22:46:42Z,,2.1.0
+12466359,OPENJPA-1685,Comma delimited validation groups defined in persistence.xml do not handle whitespace,Closed,Fixed,2010-06-07T15:22:17Z,2010-06-08T16:44:54Z,2.0.0,2.1.0
+12466413,OPENJPA-1686,Persistence of Dynamic and Generic Type,Closed,Fixed,2010-06-08T01:49:27Z,2011-09-21T15:09:08Z,,2.1.2|2.2.0
+12466563,OPENJPA-1689,The mapping tool does not remove user created sequences on PostgreSQL,Closed,Fixed,2010-06-09T13:37:29Z,2010-06-24T21:17:09Z,2.0.0,2.1.0
+12466570,OPENJPA-1690,DistinctResultList is not Serializable,Closed,Fixed,2010-06-09T14:30:40Z,2010-06-09T21:23:20Z,2.0.0,2.0.1|2.1.0
+12466672,OPENJPA-1691,Oracle XMLType column failed to insert/update when xml contains more than 4000 characters,Closed,Fixed,2010-06-10T17:31:33Z,2011-07-27T18:39:32Z,1.2.2|2.0.0|2.0.1,1.2.3|1.3.0|2.0.2|2.1.0
+12466693,OPENJPA-1692,Add post creation callback to BrokerFactory,Closed,Fixed,2010-06-10T21:59:46Z,2010-10-11T16:18:18Z,2.0.0|2.1.0,2.1.0
+12466780,OPENJPA-1695,OutOfMemoryError from CacheMarshallerImpl.setInputUrlFromResourceLocation.,Closed,Fixed,2010-06-11T21:43:25Z,2010-06-15T18:25:51Z,1.1.0|2.0.0|2.1.0,1.2.0|2.1.0
+12466801,OPENJPA-1696,Type discriminator for polymorphic queries limited to Single Table inheritance,Closed,Fixed,2010-06-12T02:27:48Z,2010-07-24T16:25:54Z,2.0.0,2.1.0
+12466817,OPENJPA-1697,A EnumValueHandler strategy along with XmlType annotation incorrectly mapped to  XmlType  in create table DDL,Closed,Fixed,2010-06-12T15:18:05Z,2010-06-22T19:36:45Z,2.1.0,2.1.0
+12467032,OPENJPA-1701,Calling em.refresh(...) causes a WARNING message to be logged,Closed,Fixed,2010-06-15T20:44:56Z,2010-06-24T20:44:21Z,2.1.0,2.1.0
+12467292,OPENJPA-1702,UnsupportedOperationException caused in BrokerImpl during transaction commit processing.,Resolved,Fixed,2010-06-18T01:18:20Z,2014-02-05T22:34:41Z,1.2.0|2.0.0,2.1.0
+12467493,OPENJPA-1704,PCEnhancer incorrectly generates readExternal ,Closed,Fixed,2010-06-21T15:26:03Z,2010-07-19T21:23:48Z,1.2.2|2.0.0|2.1.0,1.2.3|2.0.1|2.1.0
+12468078,OPENJPA-1710,OpenJPA generates ABSTIME for a TIMESTAMP field for Postgres 8.4,Closed,Fixed,2010-06-28T18:36:52Z,2011-04-27T17:33:11Z,2.0.0,2.1.0
+12468262,OPENJPA-1713,OutOfMemory caused by EntityManagerImpl.push/popFetchPlan processing,Closed,Fixed,2010-06-30T15:29:06Z,2010-08-09T21:32:15Z,1.1.0|1.2.2|2.0.0,2.0.1|2.1.0
+12468294,OPENJPA-1714,Consider openjpa.Optimistic setting when calculating the default lock mode to apply to a named query,Closed,Fixed,2010-06-30T20:55:25Z,2010-08-16T21:25:23Z,2.0.0,2.0.1
+12468723,OPENJPA-1718,Multiple @OneToMany relations with common supertype are incorrectly fetched when using InheritanceType.JOINED ,Closed,Fixed,2010-07-07T15:01:17Z,2010-07-13T12:40:26Z,2.0.0,
+12468724,OPENJPA-1719,Prepared SQL cache ordering problem with subqueries. ,Closed,Fixed,2010-07-07T15:03:37Z,2010-07-26T15:42:27Z,2.0.0,2.0.1|2.1.0
+12469087,OPENJPA-1722,Problem serializing DistinctResultList when EntityManager is closed,Closed,Fixed,2010-07-12T18:02:30Z,2010-08-16T21:19:53Z,2.0.0,2.0.1|2.1.0
+12469241,OPENJPA-1725,Schemaname wrongly included in DBDictionary.checkNameLength after Tablename correctly truncated,Closed,Fixed,2010-07-14T09:24:35Z,2011-05-11T20:57:08Z,1.2.2|1.3.0|2.0.0|2.1.0,2.1.1|2.2.0
+12469301,OPENJPA-1726,Clean up OpenJPA test case failures for PostgreSQL,Closed,Fixed,2010-07-14T22:46:28Z,2010-07-27T16:31:44Z,2.1.0,2.1.0
+12469473,OPENJPA-1727,QueryCache TIMESTAMP eviction policy doesn't evict a timed out query if it returns zero results.,Closed,Fixed,2010-07-16T17:48:34Z,2010-08-09T18:09:59Z,2.0.0|2.1.0,2.1.0
+12469803,OPENJPA-1736,Mappings with foreign keys as identity fields sometimes not resolved correctly,Closed,Fixed,2010-07-21T10:55:59Z,2010-08-21T15:52:22Z,2.0.0,2.1.0
+12469812,OPENJPA-1737,The openjpa-2.0.0.jar does not have its MANIFEST.MF has the first entry,Closed,Fixed,2010-07-21T12:17:23Z,2010-07-21T19:01:09Z,2.0.0,1.3.0|2.0.1|2.1.0
+12469847,OPENJPA-1738,Prepared SQL query does not handle collection-valued parameter of persistence-capable  objects,Closed,Fixed,2010-07-21T18:52:14Z,2010-07-24T16:04:48Z,2.0.0|2.0.1|2.1.0,2.1.0
+12469858,OPENJPA-1740,Type expression for entites using Joined table strategy is not working properly,Closed,Fixed,2010-07-21T21:21:40Z,2010-07-23T20:40:04Z,2.1.0,2.1.0
+12469865,OPENJPA-1742,Recover if connectionFactory on EntityManagerFactory is invalid but cf on EntityManager is valid. ,Closed,Fixed,2010-07-21T22:57:15Z,2010-07-23T20:37:36Z,2.0.0,2.0.1|2.1.0
+12469879,OPENJPA-1743,Tool configuration does not support EMF anchors,Closed,Fixed,2010-07-22T01:11:03Z,2010-10-12T18:32:31Z,1.2.2|1.3.0|2.0.0|2.1.0,2.1.0
+12470042,OPENJPA-1746,NullPointerException when a null value is set in the properties map passed to Entity.createEntityManagerFactory,Closed,Fixed,2010-07-23T20:06:07Z,2011-09-21T15:09:07Z,1.2.2,2.1.2|2.2.0
+12470345,OPENJPA-1749,Throw exception if using datacache / synchronize mappings and specifying datasource name at EM creation.,Closed,Fixed,2010-07-28T14:18:38Z,2010-07-28T22:08:27Z,2.0.0,2.0.1|2.1.0
+12470453,OPENJPA-1751,New openbooks and image-gallery samples are not in the binary assembly,Closed,Fixed,2010-07-29T15:25:12Z,2010-07-30T17:38:24Z,2.1.0,2.1.0
+12470490,OPENJPA-1752,TestPessimisticLocks JUNIT test produced inconsistent behavior with various backends,Closed,Fixed,2010-07-30T04:33:45Z,2010-08-20T00:29Z,2.0.1|2.1.0,2.1.0
+12470528,OPENJPA-1753,TestMixedLockManagerLockPermutation: Timing issue determines the pass/no-pass of the test case,Closed,Fixed,2010-07-30T16:27:56Z,2010-08-13T19:23:44Z,2.1.0,2.0.1|2.1.0
+12470597,OPENJPA-1756,"When a localized message is not found for a given key, OpenJPA should output the log arguments",Closed,Fixed,2010-08-01T21:59:53Z,2010-08-01T23:23:51Z,,
+12470664,OPENJPA-1757,Em.refresh(..) not refreshing from the DB when shared-cache-mode is set to ALL,Closed,Fixed,2010-08-02T18:15:45Z,2010-08-09T17:46:56Z,2.0.0|2.1.0,2.1.0
+12471141,OPENJPA-1762,javax.persistence.lock.scope EXTENDED doesn't properly lock join tables,Closed,Fixed,2010-08-09T19:42:31Z,2010-11-11T17:03:29Z,2.0.1|2.1.0,
+12471448,OPENJPA-1765,TableGenerator doesn't properly utilize all keys when under heavy stress.,Closed,Fixed,2010-08-12T18:23:20Z,2010-09-13T21:58:59Z,2.0.0|2.1.0,2.0.2|2.1.0
+12471582,OPENJPA-1768,StackOverflowError when finding an Entity with an Eager ManyToMany relationship.,Closed,Fixed,2010-08-13T19:48:39Z,2011-06-27T20:59:16Z,2.0.0|2.1.0,2.2.0
+12471945,OPENJPA-1769,Broker getObjectId(...) doesn't return a proper object id for an Entity that is detached and has no DetachedStateManager,Closed,Fixed,2010-08-18T21:22:42Z,2010-08-18T22:00:06Z,2.0.0|2.1.0,2.1.0
+12472005,OPENJPA-1770,Inconsistent behaviour when fetching an Entity that has a null embeddable and the DataCache is enabled,Closed,Fixed,2010-08-19T14:31:33Z,2010-08-19T21:39:37Z,2.0.0|2.1.0,2.1.0
+12473570,OPENJPA-1784,Map value updates not flushed,Closed,Fixed,2010-09-08T13:31:29Z,2010-09-10T15:36:48Z,2.0.1,2.1.0
+12473823,OPENJPA-1787,Bean validation fails merging a new entity,Closed,Fixed,2010-09-10T16:23:51Z,2011-03-16T18:52:14Z,2.0.1|2.1.0|2.2.0,2.1.1|2.2.0
+12473829,OPENJPA-1788,Problem in Firebird 2.1  with sequence creation,Closed,Fixed,2010-09-10T17:23:17Z,2010-09-10T22:45:23Z,2.0.0|2.0.1|2.0.2,2.1.0
+12473961,OPENJPA-1790,java.lang.VerifyError thrown when trying to commit entity.,Resolved,Fixed,2010-09-13T08:30:21Z,2010-09-23T02:21:05Z,2.0.1,2.0.2|2.1.0
+12474032,OPENJPA-1793,@EmbeddedId class having only one field java.sql.Data,Closed,Fixed,2010-09-14T06:16:17Z,2010-10-26T20:15:44Z,2.0.2|2.1.0,2.0.2|2.1.0
+12474154,OPENJPA-1794,Result of aggregate function MAX is 0 on empty table (instead of NULL).,Closed,Fixed,2010-09-15T09:07:35Z,2013-10-17T22:32:15Z,2.0.0,2.0.2|2.1.2|2.2.1.1|2.2.3|2.3.0
+12474312,OPENJPA-1800,Duplicate column created for sybase,Closed,Fixed,2010-09-16T19:36:03Z,2010-09-21T21:15:25Z,2.0.0,2.1.0
+12474323,OPENJPA-1801,CacheStatistics misses are improperly calculated.,Closed,Fixed,2010-09-16T21:11:56Z,2010-10-05T21:14:04Z,2.0.1|2.1.0,2.1.0
+12474490,OPENJPA-1804,NPE in MappingInfo.java line 1514,Resolved,Fixed,2010-09-18T19:54:09Z,2011-01-12T23:03:10Z,2.0.1,2.1.0
+12474682,OPENJPA-1808,Can NOT find meta class & can NOT insert record in the table,Closed,Fixed,2010-09-21T09:56:13Z,2010-10-25T06:31:16Z,2.0.1,
+12474715,OPENJPA-1809,Refresh of versioned entity locked with pessimistic locking throws incorrect exception,Closed,Fixed,2010-09-21T16:17:04Z,2010-09-21T20:31:13Z,2.0.0|2.0.1|2.1.0,2.1.0
+12474721,OPENJPA-1810,ClassCastException when using QueryCache and Criteria API,Closed,Fixed,2010-09-21T16:41:47Z,2010-11-04T21:06:13Z,2.0.1|2.1.0,2.1.0
+12474858,OPENJPA-1811,Dynamic load of enhancer agent on Mac OS X fails,Closed,Fixed,2010-09-22T19:54:20Z,2010-09-22T20:41:46Z,2.0.0,2.1.0
+12475061,OPENJPA-1814,JPQL fails with Group By and Having aggregate_expression IN (subquery),Closed,Fixed,2010-09-24T18:15:08Z,2011-01-12T23:11:36Z,1.2.2|2.1.0,1.2.3|1.3.0|2.0.2|2.1.0
+12475398,OPENJPA-1818,SQL-Syntax errors with h2,Resolved,Fixed,2010-09-29T10:39:37Z,2011-01-12T23:03:10Z,2.0.0,2.1.0
+12475495,OPENJPA-1819,ORDER BY will append additional column to the SELECT clause which may potentialy cause ORA-00979 error,Closed,Fixed,2010-09-30T09:57:24Z,2013-10-18T15:08:15Z,2.0.1|2.0.2,2.1.0|2.3.0
+12476792,OPENJPA-1828,"Query with expression IN (collection_valued_input_parameter) should report syntax error, correct usange is  IN collection_valued_input_parameter",Closed,Fixed,2010-10-07T18:26:32Z,2010-10-20T05:11:15Z,2.1.0,2.1.0
+12477048,OPENJPA-1830,Deserialization of EMF causes connectionPassword to be overwritten with Value.INVISIBLE,Closed,Fixed,2010-10-11T18:05:46Z,2010-10-11T21:47:12Z,2.0.0,2.1.0
+12477175,OPENJPA-1831,DataSourceFactory manipulates queryTimeout which is already in milliseconds,Closed,Fixed,2010-10-12T19:13:14Z,2010-10-15T15:19:30Z,2.0.0,2.1.0
+12477366,OPENJPA-1832,Numeric is not a fixed size type for Sybase,Closed,Fixed,2010-10-14T15:12:18Z,2010-10-14T15:55:06Z,2.1.0,2.1.0
+12477478,OPENJPA-1835,dummy is not a valid column name for Sybase,Closed,Fixed,2010-10-15T14:59:37Z,2010-10-19T17:54:38Z,2.1.0,2.1.0
+12477514,OPENJPA-1837,ElementCollection contains Embeddable with blob value fails in Oracle,Closed,Fixed,2010-10-15T22:17:50Z,2010-10-20T22:01:15Z,2.0.1,2.0.1
+12477545,OPENJPA-1838,Sybase can create Foriegn Keys,Closed,Fixed,2010-10-16T18:52:09Z,2010-10-16T18:53:08Z,2.1.0,2.1.0
+12477643,OPENJPA-1840,QueryTimeoutException not thrown with Sybase,Closed,Fixed,2010-10-18T15:03:53Z,2010-10-18T15:13:16Z,2.1.0,2.1.0
+12477846,OPENJPA-1845,the prepared query cache doesn't currently work correclty with 'SELECT IN' statements,Closed,Fixed,2010-10-20T10:27:48Z,2011-05-24T14:37:49Z,2.0.1,2.1.1|2.2.0
+12478171,OPENJPA-1853,iSeries DB2 problem with using @GeneratedValue(strategy=GenerationType.IDENTITY),Resolved,Fixed,2010-10-24T10:27:20Z,2010-11-03T14:00:05Z,2.0.0|2.0.1,2.1.0
+12478387,OPENJPA-1856,Executing bulk updates should evict stale data from the DataCache,Closed,Fixed,2010-10-26T19:32:38Z,2011-01-10T19:12:34Z,2.0.0|2.1.0|2.2.0,2.1.0|2.2.0
+12478474,OPENJPA-1857,Wrong exception is thrown when JoinColumn annotation is not incorrectly specified,Closed,Fixed,2010-10-27T16:17:33Z,2010-10-27T20:58:43Z,2.1.0,2.1.0
+12478835,OPENJPA-1866,org.apache.openjpa.persistence.AnnotationPersistenceMetaDataSerializer missing break on Switch,Resolved,Fixed,2010-11-01T20:04:37Z,2010-11-19T20:22:32Z,2.0.1|2.1.0,2.1.0
+12478886,OPENJPA-1867,ClassCastException when using DataCache,Closed,Fixed,2010-11-02T13:45:27Z,2010-11-02T14:25:08Z,2.1.0,2.1.0
+12479005,OPENJPA-1870,Blob types override column definition from @Column annotation with MySQL,Closed,Fixed,2010-11-03T16:01:39Z,2010-11-05T15:20Z,2.0.2,2.1.0
+12479138,OPENJPA-1873,EntityManager#merge sometimes passes wrong entity values to @PostLoad EntityListeners ,Closed,Fixed,2010-11-04T19:57:14Z,2011-12-08T14:59:07Z,2.0.0|2.0.1|2.0.2,2.2.0
+12479205,OPENJPA-1874,Handle Oracle specific XML column type with @Lob annotation,Closed,Fixed,2010-11-05T14:30:22Z,2010-11-08T22:41Z,1.2.2|2.0.0|2.0.1,1.2.3|2.0.2|2.1.0
+12479325,OPENJPA-1876,Slow JDBC tests,Closed,Fixed,2010-11-07T17:56:40Z,2011-01-24T20:49:23Z,2.1.0,2.2.0
+12479394,OPENJPA-1877,Treat Oracle XMLType columns as XML,Closed,Fixed,2010-11-08T17:19:08Z,2010-11-08T22:40:46Z,2.0.1,1.3.0|2.0.2|2.1.0
+12479591,OPENJPA-1881,"Create ""completion"" message for the Enhancement processing",Closed,Fixed,2010-11-10T14:12:38Z,2010-11-11T17:31:45Z,2.1.0,2.1.0
+12479608,OPENJPA-1882,NPE in DataCacheStoreManager when all types aren't cached,Closed,Fixed,2010-11-10T17:23:25Z,2010-11-10T18:35:47Z,2.1.0,2.1.0
+12479818,OPENJPA-1884,CacheStoreMode.REFRESH is not recognized for entity manager refresh operation,Closed,Fixed,2010-11-12T18:48:36Z,2011-03-31T21:05:32Z,2.1.0,2.1.1
+12479974,OPENJPA-1886,Query trace may contain sensitive information and should not be logged by default.,Closed,Fixed,2010-11-15T16:24:06Z,2010-11-16T22:19:21Z,2.0.2|2.1.0,2.1.0
+12480255,OPENJPA-1890,NPE is thrown when an Embeddable object is set more than once to a managed entity,Resolved,Fixed,2010-11-17T20:57:25Z,2011-01-12T23:03:14Z,2.0.1,2.0.2|2.1.0
+12480408,OPENJPA-1892,NullPointerException thrown by the BrokerImpl.find() if requesting an entity which is marked by the @Cacheable(false) annotation,Resolved,Fixed,2010-11-19T09:09:47Z,2010-11-19T19:52:19Z,2.0.0|2.1.0,2.1.0
+12480591,OPENJPA-1893,Missing join clause in query with collection-table with two join-columns,Closed,Fixed,2010-11-22T16:33:50Z,2010-11-22T21:50:25Z,2.0.1,2.1.0
+12480601,OPENJPA-1894,Performance Improvement for SelectImpl,Closed,Fixed,2010-11-22T18:19:41Z,2010-11-22T18:31:46Z,2.1.0,2.1.0
+12480685,OPENJPA-1896,OpenJPA cannot store POJOs if a corresponding record already exists,Closed,Fixed,2010-11-23T16:32:43Z,2011-01-10T22:11:27Z,2.0.1|2.1.0|2.2.0,2.1.0|2.2.0
+12480699,OPENJPA-1897,Sybase reserved words may not be used as column names,Closed,Fixed,2010-11-23T17:29:49Z,2010-11-23T20:08:45Z,2.0.1,2.1.0
+12491555,OPENJPA-1898,"TestQueryMultiThreaded fails with OOME ""unable to create new native thread""",Closed,Fixed,2010-11-29T16:37:32Z,2010-11-30T20:19:44Z,2.0.1,2.1.0|2.2.0
+12491561,OPENJPA-1899,Evict from L2 of a object causes secondary objects to never be loaded in graph,Closed,Fixed,2010-11-29T17:12:53Z,2011-03-31T21:09:15Z,2.0.0,2.1.1
+12491624,OPENJPA-1900,ClassCastException when serializing an entity if DetachedStateField=true,Closed,Fixed,2010-11-30T09:20:13Z,2010-12-17T12:20:45Z,2.0.1|2.1.0|2.2.0,2.1.0|2.2.0
+12491654,OPENJPA-1901,QueryCacheStoreQuery$CachedObjectId that is not Serializable,Closed,Fixed,2010-11-30T16:29:30Z,2012-02-06T23:38:30Z,2.0.0|2.0.1,2.0.2|2.1.2|2.2.0|2.3.0
+12491683,OPENJPA-1902,SQLServer reserved words may not be used as identifiers,Closed,Fixed,2010-11-30T19:03:25Z,2010-11-30T19:13:11Z,,2.1.0|2.2.0
+12492529,OPENJPA-1903,Some queries only work the first time they are executed,Closed,Fixed,2010-12-06T19:05:34Z,2012-02-03T19:28:54Z,2.0.1,2.2.0
+12492771,OPENJPA-1904,"OptimisticLockException during refresh(*,PESSIMISTIC_*) with eagar fetch on relationship fields",Closed,Fixed,2010-12-08T22:20:38Z,2010-12-10T22:08:25Z,2.0.2|2.1.0|2.2.0,2.1.0|2.2.0
+12492980,OPENJPA-1905,jar-file validation should be deferred until after OpenJPA is confirmed to be the application's chosen provider,Closed,Fixed,2010-12-10T21:37:42Z,2011-01-25T20:24:17Z,1.2.0|1.2.1|1.2.2|2.0.0|2.0.1,1.2.3|2.0.2|2.1.0|2.2.0
+12493125,OPENJPA-1906,Issue info / warning message when connection retain mode is always,Closed,Fixed,2010-12-13T22:28:40Z,2011-01-13T19:34:12Z,2.2.0,2.1.0|2.2.0
+12494363,OPENJPA-1909,enhance unit tests with the correct persistence.xml,Closed,Fixed,2010-12-31T12:50:58Z,2011-01-07T15:31:09Z,2.0.0|2.0.1|2.1.0,2.1.0|2.2.0
+12494449,OPENJPA-1910,openjpa uses application ClassLoader for resolving BrokerFactory (revisited),Closed,Fixed,2011-01-02T16:51:28Z,2011-01-11T19:30:39Z,2.0.1|2.1.0|2.2.0,2.1.0|2.2.0
+12494510,OPENJPA-1911,InvalidStateException is thrown when merge an entity with derived identiy,Closed,Fixed,2011-01-03T18:51:17Z,2011-02-15T21:01:01Z,1.0.4|1.2.2|2.0.1|2.1.0|2.2.0,1.2.3|1.3.0|2.0.2|2.1.0|2.2.0
+12494520,OPENJPA-1912,enhancer generates invalid code if fetch-groups is activated,Closed,Fixed,2011-01-03T19:48:09Z,2011-02-16T02:12:52Z,2.0.0|2.0.1|2.1.0,2.2.0
+12494606,OPENJPA-1915,missing license header,Closed,Fixed,2011-01-04T15:07:36Z,2011-01-04T15:36:44Z,2.2.0,2.2.0
+12494845,OPENJPA-1918,MetaDataRepository.preload() ignores class loader returned by PersistenceUnitInfo.getClassLoader(),Closed,Fixed,2011-01-06T14:11:24Z,2011-01-06T22:11:38Z,2.0.1|2.1.0|2.2.0,2.1.0|2.2.0
+12495627,OPENJPA-1923,Allow flexible (non-standard) syntax for collection-valued parameters in IN() expresseion of  JPQL query,Closed,Fixed,2011-01-14T21:52:32Z,2011-01-31T17:00:38Z,,2.1.0|2.2.0
+12496199,OPENJPA-1928,Resolving factory method does not allow method overriding,Closed,Fixed,2011-01-20T23:43:52Z,2011-03-22T18:24:25Z,1.2.1|2.0.1,2.2.0
+12497153,OPENJPA-1932,Documentation corrections,Closed,Fixed,2011-01-30T10:38:57Z,2012-01-05T10:54:39Z,2.1.0,2.2.0
+12497418,OPENJPA-1935,Informix lock exceptions are not mapped properly by OpenJPA,Closed,Fixed,2011-02-02T04:13:07Z,2011-02-15T21:26:24Z,2.1.0|2.2.0,2.1.0|2.2.0
+12498188,OPENJPA-1938,Typo of time data type in SQLServerdictionary for MSSQL 2008,Closed,Fixed,2011-02-10T03:06:42Z,2011-02-10T20:55:39Z,2.1.0|2.2.0,2.1.0|2.2.0
+12498581,OPENJPA-1939,index identifier max length for DB2 v9 is 128. ,Closed,Fixed,2011-02-14T22:30:03Z,2011-02-21T19:46:33Z,1.2.2|2.0.1|2.1.0,2.1.1|2.2.0
+12498801,OPENJPA-1940,ReverseMapping tool does not find primary keys with Oracle,Closed,Fixed,2011-02-16T19:42:31Z,2011-02-21T21:35:21Z,2.1.0,2.1.1|2.2.0
+12498950,OPENJPA-1943,Query timeout hint not honored consistently when pessimistic lock is issued to database requires multi-statements locking scheme,Closed,Fixed,2011-02-17T21:01Z,2011-02-18T19:38:49Z,2.0.1|2.1.0|2.2.0,2.1.1|2.2.0
+12499043,OPENJPA-1944,Extra select statements executed when version column is null. ,Closed,Fixed,2011-02-18T14:37:08Z,2011-03-22T21:07:57Z,1.2.2|2.1.0,2.1.1|2.2.0
+12499589,OPENJPA-1951,"missing key ""cant-set-value"" in localizer properties org.apache.openjpa.jdbc.meta.strats",Closed,Fixed,2011-02-24T12:38:36Z,2011-02-24T14:47:42Z,2.0.1,2.0.2|2.1.0|2.2.0
+12500194,OPENJPA-1954,ArrayIndexOutOfBoundsException when querying on a version field that is in a MappedSuperclass,Resolved,Fixed,2011-03-02T16:22:48Z,2013-10-17T22:33:54Z,1.2.2|2.0.0|2.1.0|2.2.0,2.1.2|2.2.0
+12500828,OPENJPA-1957,XML overriding column names for ArrayList attributes causes exception.,Closed,Fixed,2011-03-09T00:11:37Z,2011-03-09T22:48:56Z,1.2.2|2.0.1|2.1.0,1.2.3|2.0.2|2.1.1|2.2.0
+12501250,OPENJPA-1958,IndexOutOfBoundsException in BatchingPreparedStatementManagerImpl,Closed,Fixed,2011-03-12T16:11:16Z,2011-03-12T18:46:46Z,1.2.2|2.0.1|2.1.0|2.2.0,2.1.1|2.2.0
+12501261,OPENJPA-1959,RuntimeExceptionTranslator should be transient in DelegatingQuery,Closed,Fixed,2011-03-12T19:04:01Z,2011-03-12T19:15:51Z,1.2.2|2.0.1|2.1.0|2.2.0,2.1.1|2.2.0
+12501521,OPENJPA-1960,openjpa.InitializeEagerly breaks bean-validation integration,Closed,Fixed,2011-03-15T23:19:03Z,2011-03-22T20:51:19Z,2.1.0|2.2.0,2.2.0
+12502386,OPENJPA-1965,ClassCastException when using JAXB and MetaModel annotation processor,Closed,Fixed,2011-03-25T14:46:25Z,2011-03-25T14:54:15Z,2.0.0|2.1.0|2.2.0,2.1.1|2.2.0
+12502735,OPENJPA-1968,SQLServerDictionery not using DATETIME2 for jdbc driver other than MS JDBC driver,Closed,Fixed,2011-03-29T16:23:57Z,2011-04-05T21:09:01Z,2.1.0|2.1.1|2.2.0,2.1.1|2.2.0
+12502905,OPENJPA-1969,SQLServer / DataDirect SQLCode=HYT00 not handled,Closed,Fixed,2011-03-30T17:39:19Z,2011-04-05T21:08:24Z,2.1.0|2.1.1|2.2.0,2.1.1|2.2.0
+12503044,OPENJPA-1970,CPU spinning forever at TreeMap.get in Schema.java ,Closed,Fixed,2011-03-31T15:59:55Z,2011-03-31T18:35:35Z,1.1.0,1.2.0
+12503268,OPENJPA-1974,StackOverflowError when performing multiple subquery in collection field with eager fetch,Closed,Fixed,2011-04-04T10:20:01Z,2011-04-05T16:39:37Z,2.1.0|2.2.0,2.2.0
+12503677,OPENJPA-1975,Only obtain default schema name when needed (DB2),Closed,Fixed,2011-04-07T20:57:51Z,2011-04-11T17:52:05Z,2.0.1|2.1.0,2.2.0
+12504099,OPENJPA-1979,Regression for non-standard joins with constant column values ,Closed,Fixed,2011-04-12T20:33:39Z,2013-03-28T15:26:20Z,2.0.0|2.0.0-M1,2.3.0
+12504246,OPENJPA-1980,cascade merge tries to insert null into id column in a 4 entity structure (no DetachedStateField),Resolved,Fixed,2011-04-14T09:47:55Z,2013-08-27T02:28:55Z,2.1.0,2.2.0
+12504273,OPENJPA-1981,Improper cleanup in SchemaGenerator,Closed,Fixed,2011-04-14T14:31:04Z,2011-04-19T18:56:58Z,2.1.0,2.2.0
+12504706,OPENJPA-1983,"Merge of lazily fetched fields, and merge of managed entities deviates from spec",Resolved,Fixed,2011-04-19T19:51:26Z,2013-10-28T21:21:49Z,2.1.0|2.2.0,2.0.2|2.1.2|2.2.0
+12505086,OPENJPA-1984,Incorrect ViolationContraint getRootBean when removing bean with embedded entity validation,Closed,Fixed,2011-04-24T21:11:58Z,2011-04-27T18:48:49Z,2.1.0|2.1.1|2.2.0,2.2.0
+12505188,OPENJPA-1985,ClassCastException in max(Timestamp) function on PostgreSQL,Closed,Fixed,2011-04-26T12:42:28Z,2011-04-27T20:56:28Z,2.1.0,2.1.1|2.2.0
+12505332,OPENJPA-1986,Extra queries being generated when cascading a persist,Closed,Fixed,2011-04-27T16:44:53Z,2011-04-27T19:22:52Z,2.0.1|2.1.0|2.2.0,2.1.1|2.2.0
+12505419,OPENJPA-1987,Postgres / Ingres does not support null table for getImportedKeys,Closed,Fixed,2011-04-28T13:44:10Z,2011-04-28T14:06:36Z,2.2.0,2.2.0
+12505432,OPENJPA-1988,openjpa does not process persistence unit default <cascade-persist>,Closed,Fixed,2011-04-28T15:46:18Z,2014-11-03T21:23:09Z,2.2.0|2.3.0,2.2.1.1|2.2.3|2.4.0
+12505434,OPENJPA-1989,*ToOne relationships specified as LAZY in xml aren't honored,Closed,Fixed,2011-04-28T15:55:27Z,2011-05-11T16:27:27Z,2.1.0|2.2.0,2.1.1|2.2.0
+12506151,OPENJPA-1992,java.lang.ArrayIndexOutOfBoundsException if positional parameter are not started from 1,Closed,Fixed,2011-05-04T09:40:59Z,2011-05-09T13:46:27Z,2.1.0,2.2.0
+12506220,OPENJPA-1993,Deadlock Potential with ORM XML Processing,Resolved,Fixed,2011-05-04T20:12:30Z,2018-08-15T20:46:45Z,1.0.0|1.0.1|1.0.2|1.0.3|1.0.4|1.2.0|1.2.1|1.2.2|2.0.0|2.0.1|2.1.0,1.2.3|2.0.2|2.1.2|2.2.0|2.3.0|2.4.4|3.1.0
+12506318,OPENJPA-1994,Index is a reserved word for MySQL ,Closed,Fixed,2011-05-05T18:00:55Z,2011-05-05T19:51:21Z,,2.2.0
+12506673,OPENJPA-1995,JPQL Queries do not support mixing positional and named parameters,Closed,Fixed,2011-05-10T02:40:36Z,2011-05-10T13:32:08Z,,
+12506760,OPENJPA-1996,OpenJPA Samples fail on MacOS X,Closed,Fixed,2011-05-10T19:37:34Z,2011-07-11T15:22:45Z,2.1.0,1.2.3|2.0.2|2.1.1|2.2.0
+12507216,OPENJPA-2000,"Wrong PostgreSQL data type for REAL - ""float8"", must be ""float4""",Closed,Fixed,2011-05-14T11:40:49Z,2011-07-21T21:58:57Z,2.1.0,2.2.0
+12508229,OPENJPA-2005,PostgresDictionary.isOwnedSequence needs a null check,Closed,Fixed,2011-05-24T18:24:18Z,2011-05-26T13:29:25Z,2.1.0,2.2.0
+12508321,OPENJPA-2006,Sequence generated ids may fail to get assigned when flushing a graph with bi-directional relationships,Closed,Fixed,2011-05-25T14:59:59Z,2012-02-03T17:07:54Z,1.2.2|2.1.0|2.2.0,1.2.3|2.0.2|2.1.2|2.2.0
+12508346,OPENJPA-2007,"Setting query hint ""openjpa.FetchPlan.Isolation"" results in misleading warning",Closed,Fixed,2011-05-25T19:51:51Z,2011-05-26T17:58:25Z,2.0.0|2.0.1|2.1.0|2.2.0,2.2.0
+12509380,OPENJPA-2008,OpenJPA does not work with native queries in a distributed (Slice) environment,Closed,Fixed,2011-06-06T19:13:50Z,2011-08-08T18:40:56Z,2.1.0,2.2.0
+12509605,OPENJPA-2009,OpenJPA trunk won't compile if folder %m2_home%/org/apache/openjpa/openjpa-all/2.2.0-SNAPSHOT does not exist,Resolved,Fixed,2011-06-08T15:31:08Z,2022-05-18T05:38:19Z,,
+12509634,OPENJPA-2010,Duplicate meta data warning logged due to parsing the same location twice,Closed,Fixed,2011-06-08T20:10:10Z,2011-07-27T19:09:48Z,2.0.1|2.1.0,2.0.2|2.1.2|2.2.0
+12509650,OPENJPA-2011,Prevent reparsing annotation metadata for queries,Closed,Fixed,2011-06-08T22:06:43Z,2011-07-27T21:32:54Z,2.0.1|2.1.0,2.0.2|2.1.2|2.2.0
+12509670,OPENJPA-2013,columnDefinition for TEXT types ends up in wrong sql statement,Closed,Fixed,2011-06-09T06:52:36Z,2011-06-09T14:58:27Z,2.1.0,2.2.0
+12509757,OPENJPA-2015,ClassCastException when base entity class has InheritanceType.SINGLE_TABLE base with multiple entity subclasses,Closed,Fixed,2011-06-09T20:04:21Z,2011-06-09T20:12:41Z,1.2.2|1.2.3,1.2.3
+12510474,OPENJPA-2018,Cannot bind String[] to ParameterExpression for path.in(parameter),Closed,Fixed,2011-06-15T17:08:54Z,2013-10-28T18:49:32Z,2.1.0,2.3.0
+12511536,OPENJPA-2022,Reversemappingtooltask with oracle is failing like in OPENJPA-1940 previous bug,Closed,Fixed,2011-06-25T18:55:20Z,2014-02-17T20:39:17Z,2.1.0|2.1.1|2.2.0,2.4.0
+12512342,OPENJPA-2025,"Byte[] and Char[] should be treated as SingularAttributes, not lists by the metamodel generator",Closed,Fixed,2011-06-30T16:09:40Z,2011-07-06T19:24:22Z,2.1.0,2.2.0
+12513018,OPENJPA-2027,Metamodel genereated at runtime expects ListAttribute for all arrays - not just PersistentCollections. ,Closed,Fixed,2011-07-06T18:03:24Z,2011-07-06T19:24:06Z,2.1.0,2.2.0
+12514992,OPENJPA-2034,Update H2 Database sql error codes as per the changes in v1.3.154,Closed,Fixed,2011-07-22T06:33:55Z,2011-07-22T19:21:28Z,2.1.0,2.2.0
+12515578,OPENJPA-2036,"DynamicEnhancer should look for tools.jar in java.home/lib for all JDKs, not just the IBM SDK.",Closed,Fixed,2011-07-27T21:22:06Z,2011-07-28T15:04:10Z,2.1.0,2.2.0
+12518481,OPENJPA-2038,Do not include schema name when calculating table name length by default. ,Closed,Fixed,2011-08-10T17:10:27Z,2011-08-10T21:33:24Z,2.1.1,2.1.2
+12518519,OPENJPA-2039,FKs for EAGER fields that are not in the current fetchplan aren't selected,Closed,Fixed,2011-08-10T22:03:53Z,2011-08-16T19:07:01Z,2.1.1|2.2.0,2.2.0
+12520095,OPENJPA-2044,Invalid header in MetaModel classes generated by AnnotationProcessor,Closed,Fixed,2011-08-25T11:30:52Z,2012-02-02T19:35:48Z,2.0.1|2.1.1|2.2.0,2.2.0
+12521063,OPENJPA-2045,NAME is a valid column name for H2 databases.,Closed,Fixed,2011-09-01T14:03:16Z,2011-09-15T13:29:44Z,2.1.0|2.2.0,2.2.0
+12523252,OPENJPA-2051,Entities in a relationship are not properly cascaded after a EntityManager.flush is executed.,Closed,Fixed,2011-09-15T21:12:58Z,2012-06-01T17:47:35Z,2.0.0|2.1.1|2.2.0,1.2.3|2.0.2|2.1.2|2.2.0
+12525194,OPENJPA-2053,OpenJPA service is not properly registered for tracking by OSGi persistence tracker,Closed,Fixed,2011-09-29T14:58:38Z,2012-03-28T15:30:40Z,2.0.0,2.2.0
+12525346,OPENJPA-2055,IPv6 addresses not supported in UUIDGenerator,Resolved,Fixed,2011-09-30T18:26:06Z,2014-02-05T22:28:08Z,2.1.0,2.1.1|2.2.0
+12525645,OPENJPA-2056,Postgres V9.1 issue with LIKE clause and Escape Strings,Closed,Fixed,2011-10-04T10:41:39Z,2011-10-09T11:17:35Z,2.0.0|2.0.1|2.1.1,2.2.0
+12527104,OPENJPA-2059,Missing localizer.properties for org.apache.openjpa.persistence.util.SourceCode,Closed,Fixed,2011-10-13T21:30:20Z,2011-10-25T19:44:35Z,2.1.2|2.2.0,2.2.0
+12527112,OPENJPA-2060,AnnotationProcess failed to generate metadata for List<String>[] attribute in entity,Resolved,Fixed,2011-10-13T21:54Z,2014-09-25T17:39:45Z,2.2.0,2.1.2|2.2.0
+12528728,OPENJPA-2065,"JPA 2.0 Spec. Violation? EntityManager#createNamedQuery(String, Class) bombs with non-entity Class parameter",Closed,Fixed,2011-10-25T18:01:35Z,2011-11-05T16:53:45Z,2.1.0|2.1.1|2.2.0,2.2.0
+12528797,OPENJPA-2066,Edge case in openJPA-1227. openJPA fails to create a join and thus returns wrong data when a collection is selected from superclass and another field is selected from subclass twoor more levels down the hierarchy.,Closed,Fixed,2011-10-26T00:39:57Z,2011-11-06T15:38:33Z,1.1.0|2.1.1|2.2.0,1.2.0|2.2.0
+12529315,OPENJPA-2067,"A 'length' of '-1' passed to PreparedStatement.setBinaryStream can cause an exception on some, but not all, JDBC drivers.",Closed,Fixed,2011-10-28T20:45:42Z,2012-06-01T17:59:47Z,1.2.3|2.0.2|2.1.2|2.2.0,1.2.3|2.0.2|2.1.2|2.2.1|2.3.0
+12530384,OPENJPA-2069,Natvie sequence problems uncovered after OPENJPA-1376,Closed,Fixed,2011-11-04T21:33:04Z,2011-11-14T15:44:50Z,2.1.2|2.2.0,2.2.0
+12530585,OPENJPA-2070,Error processing while populating Metamodel classes needs improvement,Closed,Fixed,2011-11-07T15:36:17Z,2011-11-11T13:54:59Z,2.2.0,2.2.0
+12530781,OPENJPA-2071,NPE during ResultPacker interface processing,Closed,Fixed,2011-11-08T23:06:13Z,2011-11-09T19:04:23Z,2.2.0,2.2.0
+12530831,OPENJPA-2072,InvalidStateException deleting an instance with a timestamp in its primary key,Closed,Fixed,2011-11-09T08:12:15Z,2012-06-01T17:37:08Z,1.2.1|1.2.2|1.2.3,1.2.3|2.0.2|2.1.2|2.2.1|2.3.0
+12531097,OPENJPA-2073,MappingTools requires live connection to DB2 server to retrieve default schema name,Closed,Fixed,2011-11-11T07:34:56Z,2011-11-12T17:17:26Z,2.2.0,2.2.0
+12531801,OPENJPA-2076,Minor fix-ups to messages,Closed,Fixed,2011-11-17T14:45:56Z,2012-02-06T15:58:30Z,2.2.0,2.2.0
+12532202,OPENJPA-2077,Pom references to org.codehaus.mojo openjpa-maven-plugin cause problems,Closed,Fixed,2011-11-21T19:37:57Z,2011-11-26T23:07:52Z,2.2.0,2.2.0
+12533177,OPENJPA-2083,Unmapped fields silently treated as transient,Closed,Fixed,2011-11-29T19:26:18Z,2012-01-03T18:46:37Z,2.1.1,2.2.0
+12534172,OPENJPA-2088,openjpa-maven-plugin IT tests try to resolve unbuilt repository,Resolved,Fixed,2011-12-07T12:00:58Z,2011-12-07T16:06:51Z,2.0.2,2.0.2
+12535036,OPENJPA-2094,Metadata processing needs to support jar:file URLs that address Jar directories,Closed,Fixed,2011-12-13T21:24:47Z,2013-12-02T20:38:34Z,,2.2.0|2.2.1|2.2.2|2.3.0|2.4.0
+12535520,OPENJPA-2095,Unhandled exception thrown from within an Externalizer method causes incorrect/incomplete SQL to be generated/executed.,Closed,Fixed,2011-12-16T22:22:46Z,2012-06-01T16:07:35Z,1.2.3|2.0.2|2.1.2|2.2.0,1.2.3|2.0.2|2.1.2|2.2.1|2.3.0
+12535862,OPENJPA-2097,GRAVE: Unable to inject field : [protected javax.persistence.EntityManager,Closed,Fixed,2011-12-20T16:07:59Z,2011-12-20T16:22:21Z,2.1.1,
+12536413,OPENJPA-2100,openjpa-maven-plugin fails to create SQL for entities which contain enums,Closed,Fixed,2011-12-27T10:31:55Z,2011-12-27T11:16:17Z,2.2.0,2.2.0
+12536421,OPENJPA-2101,PersistenceProductDerivation overwrites the RemoteCommitProvider configuration,Closed,Fixed,2011-12-27T15:05:17Z,2012-01-05T14:33:59Z,2.1.1|2.2.0,2.2.0
+12536471,OPENJPA-2102,URLs which contains spaces are not properly handled by OpenJPA.,Closed,Fixed,2011-12-28T04:57:17Z,2012-05-31T13:48:39Z,2.0.1|2.1.2|2.2.0,2.1.2|2.3.0
+12537245,OPENJPA-2104,BindParameter is not a valid query parameter as processed in DBDictionary's setUnknown(),Closed,Fixed,2012-01-04T21:39:33Z,2012-01-05T15:32:21Z,2.2.0,2.2.0
+12537336,OPENJPA-2105,Document changes no longer being uploaded,Closed,Fixed,2012-01-05T14:55:41Z,2012-02-02T18:03:44Z,2.2.0,2.2.0
+12538078,OPENJPA-2107,ManagedCache conflict due adding an entity 2 times in the same query.,Closed,Fixed,2012-01-11T17:53:59Z,2012-06-01T17:50:06Z,2.0.1|2.1.0|2.2.0,1.2.3|2.0.2|2.1.2|2.2.0
+12538690,OPENJPA-2110,Abstract entity causes standard openjpa collection proxies to be injected even if custom collections are used.,Closed,Fixed,2012-01-17T20:04:35Z,2012-04-11T13:42:20Z,1.2.2|2.1.1,2.3.0
+12538772,OPENJPA-2112,NPE during eager-fetching of simple m:n (ManyToMany) relation,Closed,Fixed,2012-01-18T10:28:43Z,2012-01-18T15:46:41Z,2.1.1,
+12539944,OPENJPA-2117,XML overriding column names for 1xM attributes causes exception.,Closed,Fixed,2012-01-26T18:19:22Z,2013-04-10T20:48:55Z,1.2.3|2.0.2|2.1.1|2.2.0,1.2.3|2.2.0
+12540446,OPENJPA-2118,Prepared SQL query does not handle collection-valued parameter where collection is empty,Closed,Fixed,2012-01-30T22:14:15Z,2012-05-31T01:49:06Z,2.0.0|2.1.0|2.2.0,2.0.2|2.1.2|2.2.1|2.3.0
+12540917,OPENJPA-2119,Update org.apache.openjpa.persistence.util.SourceCode,Closed,Fixed,2012-02-02T13:10:58Z,2012-02-09T15:26:52Z,2.2.0,2.2.0
+12541722,OPENJPA-2122,VerifyError with Java 7 when using javaagent or dynamic container enhancement,Closed,Fixed,2012-02-08T00:47:33Z,2012-02-08T01:00:32Z,2.2.0,2.2.0
+12541862,OPENJPA-2123,Minor performance improvements for Connection and ResultSet processing,Closed,Fixed,2012-02-08T19:27:43Z,2012-10-09T18:15:18Z,2.2.1|2.3.0,2.2.1|2.3.0
+12542018,OPENJPA-2124,Use of XMLValueHandler results in a NullPointerException when classloader does not provide package support,Resolved,Fixed,2012-02-09T20:00:47Z,2012-02-10T15:56:26Z,2.0.0|2.0.1|2.1.0|2.3.0,2.2.0
+12542592,OPENJPA-2131,Missing IN or OUT parameter exception with OracleDictionary,Closed,Fixed,2012-02-14T20:23:53Z,2012-04-05T14:07:01Z,2.1.1,2.0.2|2.1.2|2.2.1.1|2.2.3|2.3.0
+12542594,OPENJPA-2132,Traversal of a OneToMany relationship returns an empty list when InheritanceType.JOINED or SINGLE_TABLE is used.,Closed,Fixed,2012-02-14T20:48:29Z,2012-10-09T18:17:16Z,2.0.1|2.1.1|2.2.0,2.1.2|2.2.1|2.3.0
+12542708,OPENJPA-2133,OpenJPA doesn't find custom mappings with an applicable class loader,Closed,Fixed,2012-02-15T16:16:04Z,2012-05-07T14:51:44Z,2.1.1,1.2.3|2.0.2|2.1.2|2.2.1|2.3.0
+12543556,OPENJPA-2136,NPE when using LiteAutoDetach ,Closed,Fixed,2012-02-21T20:18:25Z,2012-02-21T21:28Z,2.0.0|2.1.1|2.2.0|2.3.0,2.2.1|2.3.0
+12543759,OPENJPA-2140,Locking tests issue many warnings about the use of a duplicate pu name,Closed,Fixed,2012-02-22T22:44:28Z,2012-02-22T22:48:19Z,2.3.0,2.3.0
+12544008,OPENJPA-2142,Merge of a new object does not handle Entity Id field,Closed,Fixed,2012-02-24T15:44:24Z,2012-05-08T14:25:49Z,2.2.1|2.3.0,2.2.1|2.3.0
+12544299,OPENJPA-2145,Missing ASM depending jar in binary zip,Closed,Fixed,2012-02-27T19:22:14Z,2012-02-27T22:01:28Z,2.2.0|2.2.1|2.3.0,2.2.1|2.3.0
+12544327,OPENJPA-2146,StateManager for Embeddable may throw Exception while initializing,Closed,Fixed,2012-02-27T22:17:52Z,2012-05-03T15:06:50Z,2.0.0|2.0.1|2.0.2|2.1.0|2.1.1|2.1.2|2.2.0|2.2.1,2.0.2|2.1.2|2.2.1|2.3.0
+12545137,OPENJPA-2149,Criteria.function adds wrong casts to parameters making it unsuable,Closed,Fixed,2012-03-05T07:50:18Z,2012-08-24T02:34:53Z,2.0.1|2.0.2|2.1.1,2.0.2|2.1.2|2.2.1|2.3.0
+12545916,OPENJPA-2153,NoSuchMethodException of DBCPDriverDataSource.newInstance(),Closed,Fixed,2012-03-09T21:57:55Z,2012-03-12T14:19:20Z,2.2.0|2.3.0,2.2.1|2.3.0
+12546055,OPENJPA-2154,test-dynamic-enhancer profile failed for module more than one level deep,Closed,Fixed,2012-03-12T05:00:38Z,2012-03-12T14:18:41Z,2.2.0|2.3.0,2.2.1|2.3.0
+12546817,OPENJPA-2156,Fix bug in org.apache.openjpa.persistence.util.SourceCode to correctly generate imports.,Closed,Fixed,2012-03-16T16:41:09Z,2012-03-16T16:46:28Z,2.2.0|2.3.0,2.2.1|2.3.0
+12547441,OPENJPA-2158,LiteAutoDetach + DetachProxyFields=false can lead to Broker concurrency exceptions,Closed,Fixed,2012-03-21T18:58:44Z,2012-03-21T19:08:49Z,2.1.1|2.2.0|2.3.0,2.2.1|2.3.0
+12548006,OPENJPA-2161,Make some members of StateManagerImpl protected to allow for greater extensability,Closed,Fixed,2012-03-25T14:50:11Z,2012-05-02T15:58:13Z,2.2.0|2.3.0,2.2.1|2.3.0
+12548387,OPENJPA-2163,Lifecycle event callback occurs more often than expect,Closed,Fixed,2012-03-27T20:56:55Z,2012-04-01T14:42:17Z,2.0.1|2.1.2|2.2.1|2.3.0,2.2.1|2.3.0
+12550430,OPENJPA-2170,Multiple INSERT of the same row in batch update manager,Closed,Fixed,2012-04-10T19:29:11Z,2012-04-11T19:09:19Z,2.2.0|2.3.0,2.3.0
+12550858,OPENJPA-2172,openjpa-all jar is missing slf4j runtime dependency,Closed,Fixed,2012-04-13T18:32:50Z,2013-04-16T15:02:08Z,2.2.0|2.2.1|2.3.0,2.2.2|2.3.0
+12551298,OPENJPA-2174,Result set mapping was not looked up when retrieving column data from a NamedNativeQuery,Closed,Fixed,2012-04-17T20:40:17Z,2012-05-31T13:41:38Z,2.1.0|2.2.0,2.1.2|2.2.1|2.3.0
+12552847,OPENJPA-2178,PostgresDictionary ,Closed,Fixed,2012-04-26T12:40:39Z,2012-04-26T15:11:20Z,2.2.0,2.3.0
+12553120,OPENJPA-2180,OpenJPA build broken in java7 / jdk-1.7,Closed,Fixed,2012-04-27T11:35:04Z,2013-10-29T08:13:38Z,2.2.0,2.3.0
+12553160,OPENJPA-2182,DB dictionaries do not properly process reserved words for column names,Closed,Fixed,2012-04-27T15:46:14Z,2021-03-30T18:54:18Z,2.3.0,3.2.0
+12554482,OPENJPA-2187,metamodel generation with default package creates invalid class,Closed,Fixed,2012-05-09T12:57:07Z,2012-05-11T18:41:48Z,2.2.0,2.3.0
+12555011,OPENJPA-2191,QueryCache don't allow for misconfigurations,Closed,Fixed,2012-05-12T09:49:13Z,2012-05-12T12:52:17Z,2.0.0|2.1.0|2.2.0|2.3.0,2.3.0
+12555891,OPENJPA-2195,Native Query with specified result class can throw NPE when return data contains a null-valued column,Closed,Fixed,2012-05-15T20:52:56Z,2013-08-05T18:50:43Z,2.0.0|2.0.1|2.1.0|2.1.1|2.2.0,
+12555953,OPENJPA-2196,Create Sequence Postgres 9.1,Closed,Fixed,2012-05-16T04:41:22Z,2012-07-25T18:40:33Z,2.2.0,2.2.1.1|2.2.2|2.3.0
+12556135,OPENJPA-2197,MethodComparator in AnnotationPersistenceMetaDataParser should also compare parameters,Closed,Fixed,2012-05-16T22:10:22Z,2012-05-17T07:58:07Z,2.2.0,2.3.0
+12556252,OPENJPA-2199,Constraint violation exception when removing relationship using (orphanRemoval = true),Closed,Fixed,2012-05-17T16:23:16Z,2012-07-26T18:43:46Z,2.0.0|2.1.0|2.2.0|2.3.0,2.0.2|2.1.2|2.2.1|2.3.0
+12558784,OPENJPA-2204,NPE in JDBCStoreManager with Trace turned on,Closed,Fixed,2012-05-31T13:47:38Z,2012-06-05T02:23:38Z,2.2.1|2.3.0,2.3.0
+12560527,OPENJPA-2212,Exception caught from before_completion synchronization operation,Closed,Fixed,2012-06-13T16:24:13Z,2012-06-14T15:54:02Z,1.0.3,
+12595074,OPENJPA-2215,OpenJPA site reports unreleased version to be available,Closed,Fixed,2012-06-19T09:23:29Z,2012-06-19T14:45:09Z,2.2.0,
+12596262,OPENJPA-2221,Use of AbstractValueHandler map() causes exception on find(),Closed,Fixed,2012-06-28T14:47:38Z,2013-10-18T13:49:06Z,2.1.0,2.1.1|2.3.0
+12598075,OPENJPA-2227,OpenJPA doesn't find custom SequenceGenerators,Closed,Fixed,2012-07-09T19:24:05Z,2012-08-24T00:20:59Z,2.0.0|2.1.0|2.2.0,2.1.2|2.2.1|2.3.0
+12598245,OPENJPA-2228,QuerySQLCache broken for Entities with @EmbeddedId,Closed,Fixed,2012-07-10T18:48:54Z,2012-07-17T22:00:22Z,2.2.0|2.3.0,2.3.0
+12598564,OPENJPA-2229,Persistence entities not recognized when deploying on JBoss AS 7.1,Closed,Fixed,2012-07-12T14:19:25Z,2012-08-03T15:20:49Z,2.2.0|2.2.1|2.3.0,2.3.0
+12598746,OPENJPA-2230,Event Listener detection didn't work with MappedSuperClasses or Entity heirarchies,Closed,Fixed,2012-07-13T19:21:56Z,2012-08-23T13:40:13Z,2.2.1|2.3.0,2.2.1|2.3.0
+12599130,OPENJPA-2233,Failed to invoke pcGetIDOwningClass method on embeddable entity with ID annotation,Closed,Fixed,2012-07-17T15:39:50Z,2013-12-17T02:33:45Z,2.0.1|2.1.0|2.2.0|2.3.0,2.0.2|2.1.2|2.2.1.1|2.2.2|2.4.0
+12599438,OPENJPA-2234,EntityManager instance creation needs TX activity,Closed,Fixed,2012-07-19T10:06:09Z,2012-10-16T21:32:56Z,2.0.1,2.3.0
+12599487,OPENJPA-2235,"""READ_UNCOMMITTED"" setting for the fetch plan isolation level is ignored in DB2Dictionary",Closed,Fixed,2012-07-19T15:55:22Z,2013-04-10T16:04:36Z,2.1.1|2.2.0|2.3.0,2.1.2|2.2.1.1|2.2.2|2.3.0
+12599542,OPENJPA-2236,Trace of connection info can cause class transform/enhancement to fail,Closed,Fixed,2012-07-19T22:03:20Z,2013-04-10T21:13:54Z,2.2.1|2.3.0,1.2.3|2.2.1|2.3.0
+12599852,OPENJPA-2238,IllegalAccessError when trying to proxy a default scoped Class,Closed,Fixed,2012-07-23T14:41:17Z,2012-07-23T15:35:27Z,2.2.0|2.3.0,2.3.0
+12600145,OPENJPA-2240,JVMVRFY012 when using openjpa together with hyperjaxb3,Closed,Fixed,2012-07-25T10:32:53Z,2013-04-10T16:03:52Z,2.2.0|2.2.1|2.3.0,2.2.2|2.3.0
+12601129,OPENJPA-2244,Nested classpath ignored in mapping tool ant task,Closed,Fixed,2012-08-01T21:43:18Z,2013-04-10T15:05:01Z,2.0.1|2.1.1|2.2.0,2.0.2|2.1.2|2.2.1.1|2.2.2|2.3.0
+12601211,OPENJPA-2245,NotSerializableException when using a remote QueryCache and the Criteria API,Closed,Fixed,2012-08-02T12:41:30Z,2016-08-19T18:57:40Z,2.2.0|2.3.0,2.2.3|2.3.0|2.4.2
+12601384,OPENJPA-2247,JoinColumn annotation is ignored when mapping a unidirectional owned OneToOne that is in a SecondaryTable,Closed,Fixed,2012-08-03T15:29:58Z,2012-10-09T18:18:12Z,2.0.1|2.1.2|2.2.1|2.3.0,2.0.2|2.1.2|2.2.1|2.3.0
+12604028,OPENJPA-2253,Memory leak in Audit feature,Closed,Fixed,2012-08-20T10:08:44Z,2013-10-29T08:03:22Z,2.2.0|2.3.0,2.3.0
+12605631,OPENJPA-2255,Couldn't load the referencedColumn definition when create the JoinTable,Closed,Fixed,2012-08-31T01:15:52Z,2012-09-11T15:16:35Z,2.1.1,2.3.0
+12605972,OPENJPA-2257,Concurreny in org.apache.openjpa.persistence.EntityManagerImpl.getProperties leads to NullPointer and ConcurrentModificationException,Closed,Fixed,2012-09-03T10:28:41Z,2012-09-05T20:11:23Z,2.1.2,2.1.2|2.2.1.1|2.2.2|2.3.0
+12606896,OPENJPA-2260,Parenthesis-augmented parameters are improperly processed at EM level,Closed,Fixed,2012-09-10T15:50:58Z,2012-09-13T15:13:14Z,2.1.0|2.1.1|2.2.0,2.1.2|2.2.1|2.3.0
+12606907,OPENJPA-2261,Query SQL Cache issue with NULL parameters,Closed,Fixed,2012-09-10T16:50:51Z,2012-09-13T15:13:40Z,2.1.0|2.1.1|2.2.0,2.1.2|2.2.1|2.3.0
+12609165,OPENJPA-2267,native query select with null result causes NullPointerException,Closed,Fixed,2012-09-26T02:29:02Z,2012-09-27T21:06:31Z,2.2.0|2.3.0,2.3.0
+12609437,OPENJPA-2269,Duplicate key exception in sequence table on multithreaded initialization,Closed,Fixed,2012-09-27T18:49:01Z,2012-10-09T12:10:05Z,2.2.0|2.3.0,2.3.0
+12609885,OPENJPA-2271,Old <ciManagement/> info on root POM,Closed,Fixed,2012-10-02T08:48:35Z,2012-10-02T13:09:01Z,,2.3.0
+12613027,OPENJPA-2282,ESCAPE '\' is appended to the like clause unexpectedly,Closed,Fixed,2012-10-22T19:07:06Z,2012-11-28T16:00:14Z,2.3.0,2.3.0
+12613539,OPENJPA-2284,NPE occurs when <cascade-persist/> is added to a <persistence-unit-defaults> in an orm.,Closed,Fixed,2012-10-25T19:07:19Z,2013-04-10T15:03:26Z,2.0.1|2.2.1|2.3.0,2.0.2|2.1.2|2.2.1.1|2.2.2|2.3.0
+12613632,OPENJPA-2286,"SELECT COUNT with date litteral,used more than once, provokes ArgumentException: Attempt to compare incompatible types class java.util.Date and class org.apache.openjpa.jdbc.sql.Raw",Closed,Fixed,2012-10-26T10:50:54Z,2016-09-08T22:23:41Z,2.2.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12613873,OPENJPA-2287,OpenJPA makes fields null,Closed,Fixed,2012-10-29T11:03:29Z,2015-04-16T20:35:32Z,2.2.0,2.4.0
+12613904,OPENJPA-2288,MetaDataRepository should be able to filter classes from other app ClassLoaders in JEE Env,Closed,Fixed,2012-10-29T14:54:53Z,2012-11-30T22:21:09Z,2.1.1|2.2.0,2.1.2|2.2.1.1|2.2.2|2.3.0
+12614256,OPENJPA-2289,Additional SQL alias generated for query with subquery causes incorrect # of rows returned - Oracle only,Closed,Fixed,2012-10-31T18:40:55Z,2013-04-10T14:51:36Z,2.0.1|2.1.1|2.2.0|2.3.0,2.0.2|2.1.2|2.2.1.1|2.2.2|2.3.0
+12616445,OPENJPA-2298,VerifyError/Stack underflow due to extra 'return' statements generated by PCEnhancer.,Closed,Fixed,2012-11-16T17:18:32Z,2013-04-10T14:49:30Z,2.2.0|2.3.0,2.2.1.1|2.2.2|2.3.0
+12617576,OPENJPA-2300,AnnotationProcessor shows warnings when executed on Java 7 sources,Resolved,Fixed,2012-11-26T09:04:08Z,2016-08-23T08:04:16Z,2.2.1,3.0.0
+12623423,OPENJPA-2304,Thread deadlock in CriteriaBuilder,Closed,Fixed,2012-12-11T18:14Z,2013-01-10T21:16:44Z,2.2.1.1,2.1.2|2.2.1.1|2.2.2|2.3.0
+12623450,OPENJPA-2306,Broken link,Closed,Fixed,2012-12-11T20:29:38Z,2012-12-11T20:50:24Z,,
+12623452,OPENJPA-2307,Download page must not advertise snapshot builds,Closed,Fixed,2012-12-11T20:35:13Z,2012-12-17T17:32:49Z,,
+12623454,OPENJPA-2308,Remove superseded releases from main Apache mirrors,Closed,Fixed,2012-12-11T20:45:52Z,2012-12-11T21:36:38Z,2.1.0|2.1.1|2.2.0,
+12626144,OPENJPA-2318,Left outer join is not generated when specifien using Criteria API,Closed,Fixed,2013-01-05T00:50:14Z,2013-08-16T18:26:15Z,2.1.1,2.2.1.1|2.2.3|2.3.0
+12626461,OPENJPA-2320,CriteriaBuilder predicate construction deadlocks in multi-core VM due to static initializer,Closed,Fixed,2013-01-08T02:38:28Z,2013-01-10T21:16:32Z,,2.1.2|2.2.1.1|2.2.2|2.3.0
+12627027,OPENJPA-2321,Synchronizing logging output stream causes deadlock when used some JDK LogManger derivative ,Closed,Fixed,2013-01-10T21:14:08Z,2013-01-10T21:16:57Z,,2.1.2|2.2.1.1|2.2.2|2.3.0
+12628714,OPENJPA-2325,MappedSuperClass without an @Id causes wrong identity type for the inherited types,Closed,Fixed,2013-01-22T13:59:10Z,2013-01-22T14:37:36Z,2.3.0,2.3.0
+12628822,OPENJPA-2326,Updates in TCK execution configuration,Closed,Fixed,2013-01-22T23:31:16Z,2013-04-10T14:40:34Z,2.3.0,2.0.2|2.1.2|2.2.1.1|2.2.2|2.3.0
+12630095,OPENJPA-2328,NPE caused by one too many calls on the iterator inside the library.,Closed,Fixed,2013-01-31T08:44:50Z,2013-02-19T22:55:32Z,2.1.1|2.2.0|2.2.1,2.3.0
+12631234,OPENJPA-2330,Stackoverflow due to endless recursive calls,Closed,Fixed,2013-02-07T11:03:23Z,2013-11-05T18:03:29Z,2.2.0|2.2.1,2.1.2|2.2.1.1|2.2.3|2.3.0
+12632301,OPENJPA-2334,OpenJPA must support processing puRoot & jar-file URLs as jar-formatted InputStreams,Closed,Fixed,2013-02-13T23:02:14Z,2013-02-24T19:59:53Z,2.2.2|2.3.0,2.2.2|2.3.0
+12633067,OPENJPA-2335,Constrained foreign key column value setting needs to be flexible ,Closed,Fixed,2013-02-19T20:27:56Z,2013-11-18T05:42:17Z,,2.3.0
+12633087,OPENJPA-2336,Relax Join column name comparison based on database dictionary schema case setting ,Closed,Fixed,2013-02-19T22:29:21Z,2013-03-28T15:22:01Z,,2.3.0
+12633817,OPENJPA-2339,OpenJPA Ant enhancer task generates .class files with missing stackmap frame,Resolved,Fixed,2013-02-24T21:47:59Z,2013-03-05T19:53:52Z,2.2.0|2.2.1,2.2.1
+12634436,OPENJPA-2341,OpenJPA ignores custom field strategies globally defined in persistence.xml,Resolved,Fixed,2013-02-27T16:24:14Z,2015-10-06T08:02:16Z,2.2.0,2.4.1
+12634822,OPENJPA-2343,Version field returns null when explicity projected from a JOIN in SELECT clause,Closed,Fixed,2013-03-01T14:56:12Z,2013-10-17T22:30:57Z,2.2.1|2.3.0,2.1.2|2.2.1.1|2.2.3|2.3.0
+12638102,OPENJPA-2355,CONCAT() function must support more than two arguments,Closed,Fixed,2013-03-20T22:50:42Z,2013-03-28T15:21:15Z,,2.3.0
+12638547,OPENJPA-2357,@..ToMany(optional=false) throws InvalidStateException: [...] the metadata for this field specifies that nulls are illegal.,Closed,Fixed,2013-03-22T17:31:42Z,2013-03-26T12:44:24Z,2.2.0|2.2.1,2.3.0
+12642602,OPENJPA-2369,duplicate call to getUnloadedInternal function,Closed,Fixed,2013-04-15T20:02:39Z,2014-02-05T22:20:41Z,2.2.1|2.2.3,2.3.0
+12644134,OPENJPA-2374,Avoid OID creation in BrokerImpl.isDetached when lookup is not required.,Closed,Fixed,2013-04-23T15:00:34Z,2014-02-05T22:19:50Z,2.2.1|2.3.0,2.3.0
+12644570,OPENJPA-2377,Metamodel.managedType returns wrong result for Embeddable,Closed,Fixed,2013-04-25T10:15:48Z,2013-05-14T16:28:19Z,,2.3.0
+12646130,OPENJPA-2378,TestHandlerStrategy.testIssue_OPENJPA2328 failed with Oracle,Closed,Fixed,2013-05-05T16:45:16Z,2013-08-05T19:22:38Z,2.3.0,2.3.0
+12647764,OPENJPA-2381,Update serp to 1.15.1,Closed,Fixed,2013-05-15T15:13:41Z,2014-11-24T19:43:01Z,2.2.2,2.2.3|2.4.0
+12648936,OPENJPA-2384,Rendering criteria query to JPQL-like string ignores multiple GROUP BY clauses,Closed,Fixed,2013-05-22T17:39:50Z,2013-05-22T17:42:01Z,,2.3.0
+12649901,OPENJPA-2390,HSQLDB SELECT NEXT VALUE FOR Sequence will skip 1 sequence value if allocation size is 1,Closed,Fixed,2013-05-29T12:40:07Z,2013-06-24T17:11:55Z,2.2.1,2.3.0
+12650354,OPENJPA-2391,HSQLDB v2.2.9,Closed,Fixed,2013-05-31T15:16:49Z,2013-06-24T17:33:03Z,,2.3.0
+12652902,OPENJPA-2400,Support MariaDB,Closed,Fixed,2013-06-14T15:29:15Z,2013-10-07T17:51:44Z,2.2.3,2.3.0
+12654693,OPENJPA-2405,EntityManager.merge does not work for entity that is managed by another EntityManager,Closed,Fixed,2013-06-25T09:38:19Z,2013-07-01T17:04:14Z,2.2.3,2.3.0
+12657213,OPENJPA-2409,allow the openjpa-maven-plugin to use a persistence.xml from resources and not only from files,Closed,Fixed,2013-07-11T08:11:36Z,2013-10-18T14:37:40Z,2.2.2,2.3.0
+12659627,OPENJPA-2414,FinderCache does not consider active Fetch Groups/FetchPlan added Fields,Closed,Fixed,2013-07-24T18:10:08Z,2013-10-29T16:23:53Z,2.2.3|2.3.0,2.1.2|2.2.1.1|2.2.3|2.3.0
+12662235,OPENJPA-2418,Cannot build 2.2.x due to NullPointerException in maven-checkstyle-plugin,Closed,Fixed,2013-08-06T22:33:48Z,2013-08-07T18:02:49Z,2.0.2|2.1.2|2.2.3|2.3.0,2.2.3|2.3.0
+12663617,OPENJPA-2421,Slices: Can't setting up FinderTargetPolicy,Closed,Fixed,2013-08-14T10:46:03Z,2013-08-16T18:17:28Z,2.2.2|2.3.0,2.3.0
+12665556,OPENJPA-2423,Isolation level is not working properly on DB2 for JPQL queries with nested sub-queries.,Closed,Fixed,2013-08-26T17:56:29Z,2013-11-05T18:35:02Z,2.1.1|2.2.1.1|2.2.2|2.3.0,2.1.2|2.2.1.1|2.2.3|2.3.0
+12666733,OPENJPA-2425,SELECT fields with @ExternalValues defined returns datastore values instead of unmapped fields,Closed,Fixed,2013-09-03T19:19:09Z,2013-10-17T22:29:09Z,2.1.2|2.2.1.1|2.2.3|2.3.0,2.1.2|2.2.1.1|2.2.3|2.3.0
+12670908,OPENJPA-2432,MySQL dictionary can't be found from a valid connection,Closed,Fixed,2013-09-27T12:05:21Z,2013-09-27T16:07:50Z,,2.3.0
+12672937,OPENJPA-2435,Version field in a projection always returned as an Integer.,Closed,Fixed,2013-10-09T01:02:08Z,2013-10-18T15:07:22Z,2.1.0|2.2.1.1|2.2.2|2.3.0,2.1.2|2.2.1.1|2.2.3|2.3.0
+12673459,OPENJPA-2437,transactional listeners added too late to observe begin event,Closed,Fixed,2013-10-11T16:09:54Z,2013-10-29T07:58:31Z,,2.2.1.1|2.2.3|2.3.0
+12674126,OPENJPA-2440,foreign key drop leaks jdbc connections,Closed,Fixed,2013-10-16T13:53:08Z,2013-10-18T21:28:43Z,2.3.0,2.3.0
+12674821,OPENJPA-2441,TestNullSafeConcurrentHashMap fails when running on Oracle Java 8 ,Closed,Fixed,2013-10-21T16:08:53Z,2014-02-20T16:34:21Z,2.4.0,2.4.0
+12674871,OPENJPA-2442,java.lang.VerifyError in TestProxyManager when loading a dynamically created custom proxy class on Oracle Java 8,Closed,Fixed,2013-10-21T18:59:35Z,2014-04-11T13:33:47Z,2.4.0,2.4.0
+12675132,OPENJPA-2443,InvalidStateException while merging a new Entity with a GeneratedValue id,Closed,Fixed,2013-10-22T21:28:47Z,2013-10-24T13:43:22Z,2.3.0|2.4.0,2.3.0|2.4.0
+12675569,OPENJPA-2444,ReverseMappingTool creates orm.xml files in the current working directory,Closed,Fixed,2013-10-24T21:30:53Z,2013-10-25T13:57:41Z,2.3.0,2.3.0|2.4.0
+12679798,OPENJPA-2456,Fresh checkout from svn won't compile tests due to OutOfMemoryError: Java heap space,Closed,Fixed,2013-11-18T19:32:20Z,2013-11-18T21:02:30Z,,2.4.0
+12682710,OPENJPA-2463,Wrong logging level on message issued by the fix to OPENJPA-2233,Closed,Fixed,2013-12-04T15:53:46Z,2013-12-17T02:44:58Z,2.0.1|2.1.2|2.2.1.1|2.2.2,2.4.0
+12685900,OPENJPA-2467,No setter was found for method like tStart,Closed,Fixed,2013-12-20T21:52:46Z,2014-02-05T21:19Z,2.2.2,2.4.0
+12688907,OPENJPA-2470,DataCacheManagerImpl infinite loop for checking if classes are cachable,Closed,Fixed,2014-01-15T01:10:23Z,2015-10-12T22:10:01Z,2.0.1|2.1.1|2.2.2,2.2.3|2.4.0
+12689595,OPENJPA-2472,Concurrency issue in ClassMetaData.getPkAndNonPersistentManagedFmdIndexes(),Closed,Fixed,2014-01-17T23:22:59Z,2016-01-22T20:11:59Z,2.2.2|2.3.0,2.2.1.1|2.2.3|2.4.0
+12692355,OPENJPA-2475,A query with LEFT FETCH JOIN returns incorrect results.,Closed,Fixed,2014-01-30T18:30:11Z,2014-05-05T17:53:29Z,2.1.1|2.2.1.1|2.2.2|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12693951,OPENJPA-2476,"OptimisticLockEx due to rounding of a Timestamp (either by OJ, or the DB)",Closed,Fixed,2014-02-07T17:58:42Z,2014-05-05T17:56:40Z,2.1.0|2.2.0|2.2.1.1|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12694802,OPENJPA-2478,Erroneous message from the enhancer when a Mapped Superclass contains an @Id.,Closed,Fixed,2014-02-12T18:16:55Z,2014-05-05T17:57:56Z,2.1.2|2.2.1.1|2.2.2|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12699402,OPENJPA-2480,Update the website with 2.3.0 release information,Closed,Fixed,2014-03-07T12:19:44Z,2014-05-15T17:25:52Z,,2.3.0
+12700809,OPENJPA-2482,java.sql.SQLException when processing a query result,Closed,Fixed,2014-03-11T20:41:17Z,2014-06-16T20:46:29Z,2.1.1|2.2.2|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12708310,OPENJPA-2494,A default Schema defined in a PU default (<persistence-unit-defaults>) in an orm.xml file is not being honored.,Closed,Fixed,2014-04-14T16:42:42Z,2014-09-22T23:07:16Z,2.2.1.1|2.2.3|2.3.0|2.4.0,2.2.3|2.4.0
+12713350,OPENJPA-2502,NPE in QueryKey.createKey using criteria with QueryCache enabled,Closed,Fixed,2014-05-09T17:25:08Z,2014-09-22T19:11:48Z,2.2.1|2.2.2|2.3.0|2.4.0,2.2.1.1|2.2.3|2.4.0
+12714792,OPENJPA-2505,OpenJPA PersistenceException: LongId cannot be cast to MyEntityClass… @OneToMany in combination with FetchType.EAGER,Closed,Fixed,2014-05-16T15:55:17Z,2014-09-23T15:57:09Z,2.1.0|2.2.2|2.3.0|2.4.0,2.2.3|2.4.0
+12716383,OPENJPA-2506,StoreCache interface doesn't work for many ID types,Closed,Fixed,2014-05-23T17:56:26Z,2014-06-17T18:31:56Z,2.0.1|2.1.1|2.2.2|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12716905,OPENJPA-2507,Weird EmptyStackException in CriteriaQueryImpl,Closed,Fixed,2014-05-27T20:57:04Z,2014-07-09T16:15:09Z,2.2.0|2.3.0|2.4.0,2.4.0
+12717267,OPENJPA-2508,LEFT JOIN FETCH not honored when data cache is enabled,Closed,Fixed,2014-05-29T14:07:08Z,2014-09-22T19:06:52Z,2.2.1.1|2.2.2|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12717862,OPENJPA-2510,NullPointerException in OpenJPAConfigurationImpl#getDataCacheMode,Closed,Fixed,2014-06-02T07:59:21Z,2014-06-02T08:09:20Z,2.4.0,
+12726142,OPENJPA-2515,Fix 2.3.x binary downloads,Closed,Fixed,2014-07-08T18:07:46Z,2014-07-09T13:24:17Z,2.3.0|2.4.0,2.4.0
+12727288,OPENJPA-2517,Incorrect the time unit of query timeout value.,Closed,Fixed,2014-07-15T08:50:03Z,2015-10-12T20:51:56Z,2.2.0|2.2.1|2.2.2|2.3.0,2.2.3|2.4.1
+12736206,OPENJPA-2525,Use of JoinColumn(.. referencedColumnName= ..) targets to another joinColumn key exposed as an attribute will cause a ConstrainViolation exception on persist,Closed,Fixed,2014-08-22T23:58:59Z,2014-09-23T18:35:04Z,2.2.2,2.2.3|2.4.0
+12746303,OPENJPA-2533,Table name defined in XML mapping file is not used when executing a named query.,Closed,Fixed,2014-10-07T00:28:08Z,2015-01-28T19:40:57Z,2.2.2|2.3.0|2.4.0,2.2.3|2.4.0
+12746427,OPENJPA-2534,A boolean is not converted correct when using the hint 'UseLiteralInSQL'.,Closed,Fixed,2014-10-07T15:50:18Z,2015-01-12T22:49:09Z,2.1.2|2.2.1.1|2.2.3|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12747887,OPENJPA-2536,FetchGroup is not returning lazy fields.,Closed,Fixed,2014-10-14T00:00:43Z,2015-01-28T04:58:59Z,2.1.2|2.2.1.1|2.2.3|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.2|2.4.0
+12750258,OPENJPA-2539,JPQL interpret wrongly for inner join table (without mapped relation),Closed,Fixed,2014-10-24T02:39:01Z,2015-08-26T21:50:39Z,2.1.0,2.1.2|2.2.1.1|2.2.3|2.4.1
+12754473,OPENJPA-2542,Using custom openjpa.BrokerFactory not working in OSGi due to ClassLoader,Closed,Fixed,2014-11-11T14:51:15Z,2014-12-10T14:12:09Z,2.3.0|2.4.0,2.4.0
+12757745,OPENJPA-2547,"When two threads attempt to get a Pessimistic Lock, one thread gets a 'false' lock.",Closed,Fixed,2014-11-25T16:58:25Z,2015-01-14T22:49:37Z,2.1.2|2.2.1.1|2.2.2|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.2|2.4.0
+12758123,OPENJPA-2548,Download links for current releases are broken,Closed,Fixed,2014-11-27T03:34:38Z,2014-12-16T23:16:57Z,,
+12760787,OPENJPA-2551,Standard SQL boolean mapping impossible,Closed,Fixed,2014-12-10T15:48:47Z,2015-04-05T08:01:41Z,2.2.1|2.2.2|2.3.0,2.4.0
+12765122,OPENJPA-2555,Timestamp precision from manual schema not respected,Resolved,Fixed,2015-01-06T14:58:50Z,2019-04-06T12:41:10Z,2.2.2|2.3.0,3.1.0
+12766612,OPENJPA-2557,FinderCache contains incorrectly cached query with a NULL for a Primary Key.,Closed,Fixed,2015-01-10T02:02:11Z,2015-02-27T03:15:47Z,2.1.2|2.2.1.1|2.2.2|2.3.0|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12771750,OPENJPA-2567,TINY/MEDIUM/LONG TEXT fields for MySQL and MariaDB are not supported,Resolved,Fixed,2015-02-02T15:35:48Z,2018-09-03T12:01:49Z,2.3.0,2.4.4|3.1.0
+12777706,OPENJPA-2571,Criteria Builder query generates extra alias when using multiselect.,Closed,Fixed,2015-02-25T23:42:29Z,2015-05-04T17:00:17Z,2.2.3|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.0
+12782204,OPENJPA-2573,"org.apache.openjpa.persistence.InvalidStateException: Attempt to set column ""X to two different values... on trunk/2.4.0",Closed,Fixed,2015-03-16T14:15:18Z,2015-03-16T21:57:43Z,,2.4.0
+12818810,OPENJPA-2576,fix broken JavaDoc,Closed,Fixed,2015-04-07T06:09:40Z,2015-04-16T21:24:32Z,2.3.0,2.4.0
+12827195,OPENJPA-2582,openjpa bundle module leaks jest dependencies,Resolved,Fixed,2015-05-05T09:00:30Z,2015-05-05T09:43:13Z,2.4.0,2.4.1
+12830023,OPENJPA-2586,Incorrect relationship data returned when QueryCache and FetchPlans are used.,Closed,Fixed,2015-05-15T00:04:10Z,2015-10-12T20:44:01Z,2.1.2|2.2.1.1|2.2.2|2.4.1,2.0.2|2.1.2|2.2.1.1|2.2.3|2.4.1
+12835928,OPENJPA-2596,schema-delta generation (sqlAction=refresh) drops columns if they have an alternative typeName,Resolved,Fixed,2015-06-06T14:45:37Z,2015-06-07T06:55:24Z,2.4.0,2.4.1
+12841234,OPENJPA-2597,HsqlDictionary considers NUMERIC/DECIMAL as a fixedSizeTypeNameSet,Resolved,Fixed,2015-06-29T04:09:57Z,2015-06-29T04:25:31Z,,2.4.1
+12841422,OPENJPA-2600,finally remove NullSafeConcurrentHashMap and SizedConcurrentHashMap,Resolved,Fixed,2015-06-29T19:29:02Z,2015-06-30T12:06:17Z,2.4.0,2.4.1
+12846325,OPENJPA-2601,'hint' element in orm:xml is ignored,Resolved,Fixed,2015-07-20T18:20:43Z,2015-07-21T11:26:16Z,2.3.0|2.4.0,2.4.1
+12852374,OPENJPA-2603,Merging an unmanaged entity multiple (3) times leads to an exception.,Closed,Fixed,2015-08-05T20:32:24Z,2015-10-19T02:12:26Z,2.1.2|2.2.1.1|2.2.3|2.4.1,2.1.2|2.2.1.1|2.2.3|2.4.1
+12854226,OPENJPA-2605,DelegatingConnection.unwrap() doesn't adhere to java.sql.Wrapper.unwrap() contract,Closed,Fixed,2015-08-11T18:36:24Z,2015-11-09T18:57:03Z,2.2.2|2.4.0,2.2.3|2.4.1
+12902522,OPENJPA-2609,Sporadic ClassCastException occurs under heavy load when QuerySQLCache is enabled.,Closed,Fixed,2015-10-05T21:56:59Z,2015-10-19T02:11:33Z,2.2.3|2.4.0,2.1.2|2.2.1.1|2.2.3|2.4.1
+12913703,OPENJPA-2614,First rollback after application start does not work under certain circumstances,Closed,Fixed,2015-11-17T14:11:47Z,2021-06-16T18:01:58Z,2.4.0,3.2.1
+12915363,OPENJPA-2616,Update Commons Collections to 3.2.2,Resolved,Fixed,2015-11-23T15:31:01Z,2016-02-15T08:11:06Z,1.0.0|1.0.1|1.0.2|1.0.3|1.0.4|1.1.0|1.2.0|1.2.1|1.2.2|1.2.3|2.0.0|2.0.1|2.1.0|2.1.1|2.2.0|2.2.1|2.2.2|2.3.0|2.4.0,2.4.1
+12916621,OPENJPA-2617,"blacklist org.codehaus.groovy.runtime.,org.apache.commons.collections.functors.,org.apache.xalan in our custom ObjectInputStreams",Resolved,Fixed,2015-11-27T12:10:54Z,2015-11-27T12:15:48Z,2.4.0,2.4.1
+12935076,OPENJPA-2626,isEnhanced doesn't support java 8 bytecode,Resolved,Fixed,2016-01-29T10:36:04Z,2016-01-29T10:37:30Z,2.4.0,2.4.1
+12936155,OPENJPA-2628,Please delete old releases from mirroring system,Closed,Fixed,2016-02-02T22:37:04Z,2016-09-15T14:34:12Z,1.2.3|2.3.0,
+12938647,OPENJPA-2631,ClassCastException occurs when an equals comparison query is executed on an entity with an @EmbeddedId that contains more than one field.,Closed,Fixed,2016-02-11T23:28:57Z,2016-06-24T03:44:49Z,2.1.2|2.2.3|2.4.1,2.1.2|2.2.1.1|2.2.3|2.4.2
+12946975,OPENJPA-2632,select new not working if result class is not in same classloader,Closed,Fixed,2016-03-04T13:42:04Z,2016-03-14T21:58:08Z,2.4.1,2.4.2
+12954855,OPENJPA-2636,"Custom plugins (e.g. JDBCListener, DBDictionary) can cause Classloader leaks.",Closed,Fixed,2016-03-31T04:10:03Z,2016-04-11T15:54:38Z,2.2.3|2.4.2,2.2.3|2.4.2
+12956186,OPENJPA-2638,mysql master/slave replication configuration with openjpa DataSource,Closed,Fixed,2016-04-05T15:37:31Z,2016-04-11T05:47:21Z,2.2.2,
+12958112,OPENJPA-2640,Cannot use custom DBDictionary with Maven plugin,Closed,Fixed,2016-04-12T13:21:49Z,2016-05-13T06:50:40Z,2.4.1,2.4.2
+12980275,OPENJPA-2645,Doc Build for most branch releases are broken,Closed,Fixed,2016-06-17T18:36:45Z,2019-03-20T16:43:32Z,1.1.0|1.2.3|1.3.0|2.0.1|2.1.2|2.2.2|2.3.0,2.2.3
+12981420,OPENJPA-2646,Sporadic NullPointerException occurs under heavy load when QuerySQLCache is enabled.,Resolved,Fixed,2016-06-21T17:20:03Z,2018-05-14T22:27:19Z,2.2.3|2.4.1,2.2.3|2.4.3|3.0.0
+12986113,OPENJPA-2648,hsqldb @Id long create table as interger instead of bigint,Closed,Fixed,2016-07-01T09:19:58Z,2021-04-04T13:17:48Z,2.4.1,3.2.0
+12989655,OPENJPA-2650,"When SchemaFactory and useSchemaName=false is set, a schema name is incorrectly used.",Closed,Fixed,2016-07-15T03:23:37Z,2016-08-18T07:06:56Z,2.2.3|2.3.0|2.4.2,2.2.3|2.4.0|2.4.2
+12995760,OPENJPA-2651,IDs of entities are incorrectly assigned when @SqlResultSetMapping is used with inheritance and a ManyToOne relationship.,Closed,Fixed,2016-08-08T21:13:08Z,2016-08-15T18:18:13Z,2.2.2|2.3.0|2.4.1,2.2.3|2.4.0|2.4.2
+12998751,OPENJPA-2658,TestQueryTimeout test is broken,Resolved,Fixed,2016-08-21T13:06:43Z,2016-08-22T13:51:30Z,2.4.1,3.0.0
+13011101,OPENJPA-2672,ConfigurationImpl.loadGlobals() has java.util.ConcurrentModificationException vulnerability,Closed,Fixed,2016-10-10T16:42:39Z,2016-11-06T20:38:42Z,2.2.3|2.4.1,2.2.3|2.4.2|3.0.0
+13011662,OPENJPA-2673,Table is not created in openjpa 3.0.0-SNAPSHOT and OSGi,Resolved,Fixed,2016-10-12T13:10:11Z,2019-04-02T05:55:32Z,,3.1.0
+13013140,OPENJPA-2674,JarFile is not closed,Closed,Fixed,2016-10-18T11:48:15Z,2016-11-05T11:33:48Z,2.4.1,2.4.2|3.0.0
+13013777,OPENJPA-2675,Missing check for null parameter in equals(),Closed,Fixed,2016-10-20T07:49:18Z,2016-11-05T11:30:59Z,2.4.1,2.4.2|3.0.0
+13013779,OPENJPA-2676,openjpa relies on default locale,Closed,Fixed,2016-10-20T07:55:47Z,2016-11-08T18:19:29Z,2.4.1,2.4.2|3.0.0
+13028389,OPENJPA-2684,Persistence entities not recognized in Wildfly 10 if in a JAR,Closed,Fixed,2016-12-15T14:25:07Z,2016-12-15T14:34:58Z,2.3.0|2.4.1,2.4.2|3.0.0
+13046596,OPENJPA-2689,Calling setFixedCHAR on newer Oracle JDBC drivers fails with an IllegalAccessException,Resolved,Fixed,2017-02-27T10:07:10Z,2017-03-02T08:14:11Z,2.4.2|3.0.0,2.4.3|3.0.0
+13049689,OPENJPA-2690,Update OSGi Import-Package to support Oracle CLOB/BLOB,Resolved,Fixed,2017-03-09T18:02:29Z,2018-06-06T16:18:01Z,2.4.2,2.4.3|3.0.0
+13049729,OPENJPA-2691,OracleDictionary should use non Deprecated method of empty_lob,Resolved,Fixed,2017-03-09T19:49:36Z,2018-06-06T16:26:44Z,2.4.2,2.4.3|3.0.0
+13068265,OPENJPA-2698,Query cache incorrectly handles parameters for BETWEEN expressions,Resolved,Fixed,2017-05-01T22:41:02Z,2017-05-03T06:46:30Z,2.2.2,2.4.3|3.0.0
+13085509,OPENJPA-2704,The openjpa.jdbc.Schema no longer overrides orm.xml default,Resolved,Fixed,2017-07-07T13:20:03Z,2018-07-02T21:09:08Z,2.2.2,2.2.3|2.4.4|3.1.0
+13087231,OPENJPA-2705,ArrayOutOfBoundsException occurs with an @EmbeddedId,Resolved,Fixed,2017-07-14T15:41:06Z,2017-07-20T20:15:06Z,2.1.1,2.1.2|2.2.3
+13089058,OPENJPA-2707,OpenJPA Trunk Build Failure: org/apache/karaf/tooling/features/GenerateDescriptorMojo : Unsupported major.minor version 52.0,Closed,Fixed,2017-07-21T14:38:11Z,2017-07-27T20:29:24Z,3.0.0,
+13128235,OPENJPA-2725,fix ConcurrentModificationException during unrefed dependents cleanup,Resolved,Fixed,2018-01-03T13:45:05Z,2018-01-03T15:38:37Z,2.2.3|2.4.2,2.4.3|3.0.0
+13148406,OPENJPA-2731,Problems with Boolean Representation with Postgres,Closed,Fixed,2018-03-27T20:25:25Z,2021-04-06T20:34:05Z,2.2.2,2.2.3|3.2.0
+13150873,OPENJPA-2733,Subquery parameters are incorrectly assigned,Resolved,Fixed,2018-04-09T00:34:55Z,2019-02-14T14:14:13Z,2.4.2,3.1.0
+13169066,OPENJPA-2742,SchemaTool fails with MySQL,Resolved,Fixed,2018-06-29T05:36:42Z,2018-07-02T06:11:19Z,2.4.3|3.0.0,2.4.4|3.1.0
+13171751,OPENJPA-2743,AttributeConverter fails to enhance,Resolved,Fixed,2018-07-12T15:19:47Z,2019-07-29T15:40:54Z,2.4.2,3.1.1
+13179257,OPENJPA-2746,OpenJPA Karaf feature is not complete,Resolved,Fixed,2018-08-16T05:23:46Z,2018-08-16T06:35:44Z,,3.1.0
+13197602,OPENJPA-2756,PostgreSQL requires escaping of search strings in all versions,Resolved,Fixed,2018-11-10T19:46:56Z,2018-11-10T19:53:54Z,3.0.0,3.1.0
+13197604,OPENJPA-2757,upgrade to xbean-asm7 to support Java11,Resolved,Fixed,2018-11-10T20:15:20Z,2018-11-10T20:33:48Z,3.0.0,3.1.0
+13203088,OPENJPA-2761,problem inserting more than 4000 charcters in oracle XMLTYPE column,Resolved,Fixed,2018-12-07T16:46:30Z,2019-01-14T11:56:20Z,2.2.1|2.4.3|3.0.0,3.1.0
+13207236,OPENJPA-2764,Map path expression tests behave random,Resolved,Fixed,2019-01-02T08:57:54Z,2019-01-02T08:59:26Z,3.0.0,3.1.0
+13208761,OPENJPA-2768,XMLStore SAXParser doesn't distinguish between element and extent,Resolved,Fixed,2019-01-10T11:28:22Z,2019-01-10T12:29:05Z,3.0.0,3.1.0
+13211132,OPENJPA-2770,false boolean literal doesn't work,Resolved,Fixed,2019-01-22T23:30:15Z,2019-01-23T09:22:06Z,2.4.2|2.4.3|3.0.0,3.1.0
+13213471,OPENJPA-2771,"It seems like h2 'unlimited' is not ""LIMIT 0"" but rather ""LIMIT -1""",Resolved,Fixed,2019-02-02T09:21:53Z,2019-02-02T11:10:34Z,3.0.0,3.1.0
+13213478,OPENJPA-2772,list of h2 reserved words is incomplete,Resolved,Fixed,2019-02-02T12:15:54Z,2019-02-02T12:49:11Z,3.0.0,3.1.0
+13218858,OPENJPA-2777,Indices specified using javax.persistence.Index annotation are not being created,Resolved,Fixed,2019-03-01T10:40:48Z,2019-03-05T13:45:36Z,3.0.0,3.1.0
+13222843,OPENJPA-2780,ReverseMappingTool does not generate @Enumerated annotation,Resolved,Fixed,2019-03-20T13:26:29Z,2019-03-24T02:30:23Z,2.4.2|2.4.3|3.0.0,2.4.4|3.1.0
+13223173,OPENJPA-2781,OpenJPA need internet connection to read the persistence.xml,Resolved,Fixed,2019-03-21T19:36:51Z,2019-03-24T13:33:13Z,,2.4.4|3.1.0
+13227117,OPENJPA-2785,Queries invoked by Spring data that have parameters fail,Resolved,Fixed,2019-04-10T08:23:18Z,2019-04-10T14:08:21Z,3.1.0,3.1.0
+13228776,OPENJPA-2788,Anonymous parameters are not being picked when adding via CriteriaBuilder,Closed,Fixed,2019-04-18T07:46:06Z,2020-12-14T13:18:46Z,3.1.0,3.2.0
+13240239,OPENJPA-2789,JDBC connection not closed when running named query in explicitly opened connection,Closed,Fixed,2019-06-18T16:33:58Z,2021-04-18T21:11:02Z,2.4.3,3.2.0
+13241314,OPENJPA-2791,Parsing persistence.xml throws premature end of file error,Closed,Fixed,2019-06-24T17:58:11Z,2019-06-26T08:11:21Z,2.4.3,2.4.4|3.1.0
+13253665,OPENJPA-2795,generate foreign key indexes for Oracle,Closed,Fixed,2019-08-29T09:45:43Z,2020-09-04T10:00:50Z,2.4.3|3.1.0,3.2.0
+13275175,OPENJPA-2799,Karaf features contains mistake on the commons-collections4 location,Resolved,Fixed,2019-12-18T07:31:13Z,2019-12-25T05:15:08Z,3.1.0,3.1.1
+13281596,OPENJPA-2802,block containers that can wifi signals /no boxing signal,Resolved,Fixed,2020-01-26T16:18:33Z,2020-01-26T17:11:32Z,3.1.0,1.3.0
+13288239,OPENJPA-2807,javax.persistence.Index#columnList should strip spaces,Closed,Fixed,2020-02-28T10:01:17Z,2020-04-25T18:16:06Z,3.1.1,3.1.2
+13300132,OPENJPA-2810,Major version is returned instead of minor,Closed,Fixed,2020-04-22T02:13:52Z,2020-04-22T02:15:30Z,3.1.1,3.1.2
+13318915,OPENJPA-2821,Subclassing enhancer must use AsmAdapter,Closed,Fixed,2020-07-23T11:53:56Z,2020-07-23T12:39:59Z,3.1.2,3.2.0
+13326284,OPENJPA-2827,Broken download page,Resolved,Fixed,2020-09-07T09:59:06Z,2020-09-08T09:58Z,,
+13327639,OPENJPA-2828,org.apache.openjpa.kernel.conf.Specification.equals() : returns true even if different,Closed,Fixed,2020-09-15T09:58:35Z,2020-09-22T13:12:15Z,3.1.2,3.2.0
+13327695,OPENJPA-2829,javax script execution does not ignore empty lines,Closed,Fixed,2020-09-15T14:57:05Z,2020-09-15T14:57:59Z,,3.2.0
+13327700,OPENJPA-2830,"javax.persistence.sql-load-script-source does not support "";"" in strings",Closed,Fixed,2020-09-15T15:53:10Z,2020-09-15T15:57:35Z,,3.2.0
+13329774,OPENJPA-2832,DROP COLUMN does not use delimiters and always add double quotes,Closed,Fixed,2020-09-28T15:50:25Z,2020-09-30T10:25:14Z,,3.2.0
+13330140,OPENJPA-2834,Performance issue while deploying in Wildfly EAP with OpenJPA-3.1.1,Closed,Fixed,2020-09-30T09:53:55Z,2020-09-30T10:18Z,3.1.1,3.2.0
+13343379,OPENJPA-2842,openjpa.Log=log4j vs log4j2 - reintroduce log4j support and add explicit log4j2 support,Closed,Fixed,2020-11-30T18:53:01Z,2020-12-13T11:22:50Z,3.1.2,3.2.0
+13343524,OPENJPA-2843,try to get rid of com.ibm dependency,Closed,Fixed,2020-12-01T11:11:30Z,2020-12-12T13:59:03Z,3.1.2,3.2.0
+13347111,OPENJPA-2846,Enhancement does not work with JDK 16,Closed,Fixed,2020-12-21T09:36:35Z,2020-12-22T15:44:28Z,3.1.2,3.2.0
+13362330,OPENJPA-2848,Duplicate DROP SEQUENCE statements generated by MappingTool/SchemaTool,Resolved,Fixed,2021-03-04T15:15:54Z,2021-03-28T18:00:08Z,3.1.2,
+13368188,OPENJPA-2849,"select(max) etc of LocalDate, LocalDateTime etc leads to ClassCastException",Closed,Fixed,2021-03-28T12:26:01Z,2021-03-30T12:41:44Z,3.1.2,3.2.0
+13368546,OPENJPA-2850,[MSSQL] BLOB column type is not supported,Closed,Fixed,2021-03-30T07:19:27Z,2021-03-31T07:43:35Z,3.1.2,3.2.0
+13368675,OPENJPA-2851,argument CURRENT_DATE cannot handle java.time.LocalDateTime entity fields,Closed,Fixed,2021-03-30T15:13:25Z,2021-04-01T20:01:05Z,3.1.2,3.2.0
+13369137,OPENJPA-2854,fix OffsetTime handling for PostgreSQL,Closed,Fixed,2021-04-01T15:01:37Z,2021-04-01T19:13:30Z,3.1.2,3.2.0
+13369194,OPENJPA-2855,primary keys do no respect naming rules ,Closed,Fixed,2021-04-01T19:18:21Z,2021-04-01T19:21:35Z,3.2.0,3.2.0
+13369393,OPENJPA-2856,[MariaDB] improve TIME handling,Closed,Fixed,2021-04-03T06:41:38Z,2021-04-03T07:31:20Z,3.1.2,3.2.0
+13369411,OPENJPA-2857,[MariaDB] locking in some cases gets handled via sqlState 70100,Closed,Fixed,2021-04-03T14:08:01Z,2021-04-03T14:13:42Z,3.1.2,3.2.0
+13369444,OPENJPA-2858,update dbcp2 to 2.8.0,Closed,Fixed,2021-04-03T20:42:43Z,2021-04-03T20:58:46Z,3.1.2,3.2.0
+13369478,OPENJPA-2859,[HSQLDB] HSQLDictionary wrongly maps double to NUMERIC without precision,Closed,Fixed,2021-04-04T11:50:14Z,2021-04-04T11:52:47Z,3.1.2,3.2.0
+13369612,OPENJPA-2860,[Postgres] use setQueryTimeout for PostgreSQL >= 10,Closed,Fixed,2021-04-05T16:16:29Z,2021-04-05T17:45:53Z,3.1.2,3.2.0
+13369821,OPENJPA-2861,select sum(CASE x WHEN x THEN 1 ELSE 0 ) returns String instead of Long.,Closed,Fixed,2021-04-06T14:51:18Z,2021-04-06T20:33:33Z,3.1.2,3.2.0
+13369867,OPENJPA-2862,select SUM doesn't return spec defined types,Closed,Fixed,2021-04-06T20:28:56Z,2021-04-06T20:30:16Z,3.1.2,3.2.0
+13370336,OPENJPA-2863,java.time.LocalDateTime in Oracle gets rounded to just 3 digits,Closed,Fixed,2021-04-08T09:41:12Z,2021-04-08T12:58:01Z,3.1.2,3.2.0
+13370381,OPENJPA-2864,respect the Columns precision when persisting a java.sql.Timestamp value,Closed,Fixed,2021-04-08T12:53:45Z,2021-04-08T12:58:19Z,3.1.2,3.2.0
+13370640,OPENJPA-2865,[Oracle] use native java.time JDBC features,Closed,Fixed,2021-04-09T12:26:11Z,2021-04-18T16:37:44Z,3.1.2,3.2.0
+13370796,OPENJPA-2866,[Oracle] add GenerationType#IDENTITY support for Oracle,Closed,Fixed,2021-04-10T10:25:45Z,2021-04-18T09:24:19Z,3.1.2,3.2.0
+13377427,OPENJPA-2871,upgrade to xbean-4.20 to remove transitive ASM dependency,Closed,Fixed,2021-05-08T11:56:14Z,2021-05-08T12:03:53Z,3.2.0,3.2.0
+13383264,OPENJPA-2876,running 'refresh' schema action creates wrong SQL output,Closed,Fixed,2021-06-10T18:54:23Z,2021-06-16T11:02:05Z,3.0.0,3.2.1
+13389149,OPENJPA-2877,[JPA-2.1] implement AttributeConverter ,Closed,Fixed,2021-07-12T13:50:32Z,2021-10-27T11:33:38Z,,3.2.1
+13406236,OPENJPA-2882,Exception passing javax.persistence.* String values to createEntityManager(Map),Closed,Fixed,2021-10-12T22:04:20Z,2021-10-21T06:10:15Z,2.2.3,3.2.1
+13407779,OPENJPA-2883,UseTriggersForAutoAssign in Oracle seems to be broken,Closed,Fixed,2021-10-21T13:46:08Z,2021-10-22T17:20:31Z,3.2.0,3.2.1
+13413196,OPENJPA-2889,commons-pool2 bundle version defined in karaf features repository is not aligned with the actual version used by openjpa,Closed,Fixed,2021-11-22T15:06:21Z,2021-12-05T17:58:53Z,3.2.0,3.2.1
+13414503,OPENJPA-2891,@Generated annotation cannot be disabled for static metamodel,Closed,Fixed,2021-11-30T09:29:45Z,2021-12-01T07:15:48Z,3.2.0,3.2.1
+13418216,OPENJPA-2896,Automatic module name is not set for bundles,Closed,Fixed,2021-12-17T10:35:38Z,2021-12-23T15:53:07Z,,3.2.1
+13427435,OPENJPA-2898,Cannot resolve the name 'orm:versionType',Closed,Fixed,2022-02-09T09:40:41Z,2025-03-14T09:38:42Z,3.2.1|3.2.2,4.1.0
+13533336,OPENJPA-2907,OpenJPA DOAP has a parsing error,Resolved,Fixed,2023-04-20T07:33:18Z,2023-04-20T08:02:24Z,3.2.2,
+13551137,OPENJPA-2915,commons-dbcp2 2.10.0 breaks OpenJPA because of changed configuration methods,Resolved,Fixed,2023-09-18T19:59:10Z,2023-10-11T14:10:23Z,3.2.2,3.2.3|4.0.0
+13560226,OPENJPA-2918,Support for Java 21,Closed,Fixed,2023-12-01T14:29:27Z,2023-12-02T07:28:32Z,,
+13580595,OPENJPA-2921,upgrade bundle and karaf plugins to fix java17 build,Closed,Fixed,2024-05-27T16:53:44Z,2024-05-27T16:54:37Z,4.0.0,4.0.1
+13585390,OPENJPA-2923,PCEnhancer creates deprecated call to new Long(long),Closed,Fixed,2024-07-11T03:54:34Z,2024-07-15T05:48:01Z,4.0.0,4.0.1
+13590180,OPENJPA-2925,Accessing a non-recursive relation of an instance that has been loaded via a recursive relation may produce wrong result,Closed,Fixed,2024-08-27T15:31:43Z,2025-04-23T07:27:42Z,3.2.2|4.0.0,4.1.1
+13593524,OPENJPA-2928,Missing orm and persistence xml v3 schemas for offline processing,Closed,Fixed,2024-09-27T14:54:37Z,2024-09-30T15:33:57Z,4.0.1,4.1.0
+13602968,OPENJPA-2930,UUID ID Generator Strategy ,Closed,Fixed,2024-12-22T12:22:25Z,2025-02-22T04:03:15Z,4.0.1,4.1.0
+13605078,OPENJPA-2932,Implement numeric JPA 3.1 JPQL functions and equivalent Criteria API,Closed,Fixed,2025-01-15T14:27:10Z,2025-02-02T14:37:48Z,4.0.1,4.1.0
+13605430,OPENJPA-2933,Implement new date JPA 3.1 JPQL functions and equivalent Criteria API,Closed,Fixed,2025-01-17T18:52:23Z,2025-02-18T07:18:14Z,4.0.1,4.1.0
+13614695,OPENJPA-2936,Usage of JPA @Index without name prevents creating schema and queries,Closed,Fixed,2025-04-09T13:31:31Z,2025-05-01T06:44:32Z,4.0.1|4.1.0,4.1.1
+13621174,OPENJPA-2937,UUID Generator,Resolved,Fixed,2025-06-18T03:47:04Z,2025-07-09T06:51:45Z,4.1.1,
+13621211,OPENJPA-2938,Certain combination of ConnectionProperties can lead to NPE,Resolved,Fixed,2025-06-18T10:02:32Z,2025-07-04T05:30:02Z,4.1.1,4.1.2
+13622051,OPENJPA-2939,Fix metamodel generation and XML/Json conversion when entity has an UUID property,Resolved,Fixed,2025-06-28T14:09:03Z,2025-07-04T12:10:17Z,4.1.1,4.1.2
+13623411,OPENJPA-2942,Java8TimeTypesTest is broken at CI (H2) ,Resolved,Fixed,2025-07-15T04:43:30Z,2025-07-18T05:05:59Z,4.1.1,4.1.2

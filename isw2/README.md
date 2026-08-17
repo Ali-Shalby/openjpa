@@ -145,15 +145,21 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Generazione del catalogo RAW delle release
 * [x] Identificazione delle release stabili
 * [x] Associazione release → commit Git
-* [x] Selezione delle release da utilizzare per il Dataset A
-- [x] Identificazione delle classi Java delle release selezionate
-- [x] Definizione delle regole di inclusione/esclusione delle classi
+* [x] Selezione delle 12 release del Dataset A
+* [x] Identificazione e classificazione delle classi Java production
+* [x] Generazione e validazione delle metriche di classe
+* [x] Calcolo e validazione di `NSmells`
+* [x] Recupero e validazione dei defect ticket JIRA
+* [x] Identificazione dei fix commit production
+* [x] Calcolo e validazione di `NFIX`
+* [x] Pilot e FULL SZZ
+* [x] Validazione delle evidence SZZ e dei bug-introducing commit
+
 ### In corso
 
-- [ ] Calcolo delle metriche di classe
-- [ ] Calcolo di `NSmells`
-- [ ] Determinazione della `Bugginess`
-- [ ] Generazione del Dataset A
+* [ ] Proportion
+* [ ] Determinazione della `Bugginess`
+* [ ] Assemblaggio e validazione finale del Dataset A
 
 ### Successivamente
 
@@ -162,6 +168,31 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [ ] Selezione delle due classi OpenJPA
 * [ ] Software Testing – De Angelis
 * [ ] Milestone 4 – Automated Refactoring
+
+## Output principali della Milestone 1
+
+Tra gli output già generati e validati:
+
+```text
+isw2/datasets/release_catalog.csv
+isw2/datasets/java_class_inventory.csv
+isw2/datasets/class_metrics.csv
+isw2/datasets/sonar_smell_metrics.csv
+isw2/datasets/class_metrics_with_smells.csv
+isw2/datasets/defect_ticket_catalog_raw.csv
+isw2/datasets/fix_commit_catalog.csv
+isw2/datasets/nfix_metrics.csv
+isw2/datasets/szz_evidence.csv
+```
+
+L'audit dei fix analizzati da SZZ è disponibile in:
+
+```text
+isw2/results/szz/szz_fix_audit.csv
+```
+
+Il Dataset A finale non è ancora assemblato: il prossimo blocco riguarda
+`Proportion` e il labeling di `Bugginess`.
 
 ---
 

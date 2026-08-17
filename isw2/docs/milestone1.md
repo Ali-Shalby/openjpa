@@ -490,9 +490,16 @@ WEIGHTED_AGE_WEEKS
 IGNORED_ZERO_LOC_REVS
 ```
 
-`NFIX` non viene ancora calcolato in questa fase, poiché dipende
-dall'identificazione dei defect ticket e dei relativi fix commit.
-La metrica verrà aggiunta successivamente durante l'analisi JIRA/SZZ.
+`NFIX` non viene calcolato insieme alle altre metriche in questo primo
+passaggio, poiché dipende dall'identificazione dei defect ticket e dei relativi
+fix commit. Il valore viene calcolato successivamente e mantenuto nel dataset
+separato:
+
+```text
+isw2/datasets/nfix_metrics.csv
+```
+
+prima dell'assemblaggio finale del Dataset A.
 
 ## 11.1 LOC
 
@@ -1078,8 +1085,422 @@ NSmells
 
 per tutte le 12.836 osservazioni.
 
+# 14. Defect ticket e fix commit
 
-# 14. Output disponibili
+Dopo il completamento delle metriche di classe e di `NSmells` è stata avviata
+la parte di analisi dei defect necessaria per `NFIX`, SZZ e il successivo
+labeling.
+
+## 14.1 Catalogo RAW dei defect ticket
+
+I ticket vengono recuperati dal progetto Apache JIRA di OpenJPA.
+
+Sono considerati esclusivamente ticket che soddisfano i criteri:
+
+```text
+Issue Type  = Bug
+Status      = Closed oppure Resolved
+Resolution  = Fixed
+```
+
+L'output RAW è:
+
+```text
+isw2/datasets/defect_ticket_catalog_raw.csv
+```
+
+Risultati:
+
+```text
+Defect ticket validi          : 1132
+Senza Affected Version/s      : 189
+Senza Fix Version/s           : 71
+Senza Resolution Date         : 0
+IssueKey duplicate            : 0
+```
+
+Le informazioni mancanti in JIRA vengono mantenute come tali e non vengono
+ricostruite artificialmente in questa fase.
+
+## 14.2 Associazione ticket → fix commit
+
+Per ciascun defect ticket viene ricercata la relativa chiave:
+
+```text
+OPENJPA-<numero>
+```
+
+nella storia Git raggiungibile dalla baseline del progetto.
+
+Il matching utilizza la chiave JIRA esatta e considera solamente ticket già
+presenti nel catalogo dei defect validati.
+
+La prima ricerca ha prodotto:
+
+```text
+Candidate mappings              : 1658
+Ticket con almeno un candidato  : 987
+Commit candidati distinti       : 1626
+```
+
+I candidati vengono successivamente filtrati mantenendo solamente commit che
+modificano almeno una classe Java classificata come:
+
+```text
+PRODUCTION
+```
+
+La classificazione dei file riutilizza lo stesso criterio già adottato per
+l'inventario delle classi, tramite:
+
+```text
+JavaClassScopeClassifier
+```
+
+L'estrazione del classificatore dalla logica dell'inventario è stata verificata
+rigenerando `java_class_inventory_raw.csv`: il file prima e dopo il refactoring
+ha prodotto lo stesso SHA-256, confermando l'equivalenza completa della
+classificazione.
+
+Il catalogo definitivo dei fix è:
+
+```text
+isw2/datasets/fix_commit_catalog.csv
+```
+
+Risultati:
+
+```text
+Defect JIRA validi              : 1132
+Candidate mappings RAW          : 1658
+Fix mappings production         : 1222
+Defect rappresentati            : 873
+Fix commit distinti             : 1196
+
+Duplicate mappings              : 0
+Mappings senza ticket           : 0
+Mappings senza production Java  : 0
+Merge mappings                  : 0
+Revert mappings                 : 0
+IssueKey assente dal subject    : 0
+```
+
+Tutti i 1.222 mapping production contengono la relativa chiave JIRA
+direttamente nel subject del commit.
+
+## 14.3 Controllo temporale JIRA/Git
+
+La relazione temporale tra ticket e fix commit viene mantenuta come
+informazione diagnostica, ma non utilizzata come filtro automatico.
+
+Distribuzione:
+
+```text
+Before ticket creation  : 5
+Inside ticket lifecycle : 1102
+After ticket resolution : 115
+```
+
+I controlli hanno mostrato che alcuni casi esterni all'intervallo
+`CreatedDate → ResolutionDate` sono comunque associazioni JIRA/Git plausibili
+o molto vicine temporalmente. Le date JIRA non vengono quindi usate per
+eliminare automaticamente un fix commit già validato tramite chiave del ticket
+e modifica a codice production.
+
+---
+
+# 15. Calcolo di NFIX
+
+`NFIX` misura il numero cumulativo di **defect fixing distinti** che hanno
+interessato una classe fino alla release osservata.
+
+La definizione operativa adottata è:
+
+```text
+NFIX(class, release) =
+    numero di IssueKey JIRA distinti
+    associati a fix commit presenti nella storia della classe
+    fino al commit della release
+```
+
+Di conseguenza, se lo stesso defect viene corretto attraverso più commit che
+modificano la stessa classe, il defect contribuisce una sola unità:
+
+```text
+OPENJPA-X -> fix A -> Foo.java
+OPENJPA-X -> fix B -> Foo.java
+
+NFIX(Foo.java) += 1
+```
+
+mentre defect differenti contribuiscono separatamente.
+
+## 15.1 Ricostruzione della storia della classe
+
+Per ogni osservazione:
+
+```text
+(ReleaseIndex, Class)
+```
+
+la storia della classe viene ricostruita tramite:
+
+```text
+git -c diff.renameLimit=0 log <releaseCommit>
+    --follow
+    --no-merges
+    --format=%H
+    -- <Class>
+```
+
+`--follow` mantiene la continuità attraverso rename e move.
+
+I commit della storia vengono intersecati con il catalogo dei fix commit; il
+conteggio finale utilizza gli `IssueKey` distinti, non il numero di commit.
+
+## 15.2 Pilot e validazione
+
+Il calcolo è stato prima verificato sulla release:
+
+```text
+0.9.0
+```
+
+Risultati del pilot:
+
+```text
+NFIX observations       : 932
+Observations NFIX > 0   : 5
+Sum(NFIX)               : 5
+Maximum NFIX            : 1
+Duplicate keys          : 0
+Negative NFIX           : 0
+```
+
+Per le cinque classi positive è stata eseguita una verifica indipendente delle
+evidence Git/JIRA.
+
+Risultato:
+
+```text
+Positive classes : 5
+NFIX mismatches   : 0
+```
+
+## 15.3 FULL NFIX
+
+Il calcolo è stato quindi esteso a tutte le osservazioni production.
+
+Output:
+
+```text
+isw2/datasets/nfix_metrics.csv
+```
+
+Risultati:
+
+```text
+NFIX observations       : 12836
+Observations NFIX > 0   : 3328
+Observations NFIX = 0   : 9508
+Sum(NFIX)               : 7523
+Maximum NFIX            : 48
+Duplicate keys          : 0
+Negative NFIX           : 0
+```
+
+Sono presenti tutte le 12 release e la distribuzione delle righe per release
+coincide esattamente con `java_class_inventory.csv`.
+
+Per le classi che persistono con lo stesso path nelle release successive è
+stata inoltre verificata la proprietà cumulativa:
+
+```text
+diminuzioni di NFIX : 0
+```
+
+Il massimo osservato è:
+
+```text
+NFIX = 48
+```
+
+per:
+
+```text
+openjpa-jdbc/src/main/java/org/apache/openjpa/jdbc/sql/DBDictionary.java
+```
+
+Il valore cresce progressivamente nella storia della classe e non deriva da un
+singolo salto anomalo.
+
+---
+
+# 16. SZZ
+
+Dopo la validazione del catalogo dei fix commit è stato applicato SZZ per
+risalire ai commit candidati che hanno introdotto le linee successivamente
+corrette.
+
+## 16.1 Procedura
+
+Per ogni fix commit production:
+
+```text
+fix commit
+    ↓
+parent commit
+    ↓
+git diff --find-renames --unified=0
+    ↓
+linee eliminate/modificate nei file Java PRODUCTION
+    ↓
+git blame sul parent
+    ↓
+bug-introducing commit
+```
+
+Le linee considerate sono quelle preesistenti che il fix elimina o modifica.
+
+Un fix che aggiunge esclusivamente nuovo codice può quindi produrre
+legittimamente:
+
+```text
+NO_EVIDENCE
+```
+
+poiché non esiste una linea precedente sulla quale applicare il blame.
+
+L'implementazione principale utilizza:
+
+```text
+SzzEvidence
+SzzAnalyzer
+SzzCatalogGenerator
+```
+
+## 16.2 Pilot SZZ
+
+Il pilot è stato eseguito su:
+
+```text
+OPENJPA-14
+```
+
+con fix commit:
+
+```text
+dcb47f0fe406c5d926c2d0e654b6690a15111cf1
+```
+
+Risultati:
+
+```text
+Evidence rows            : 4
+Parent commits           : 1
+Fixed production files   : 4
+Blamed files             : 4
+Bug-introducing commits  : 3
+Total blamed lines       : 4
+```
+
+Una evidence è stata verificata manualmente su:
+
+```text
+openjpa-kernel/src/main/java/org/apache/openjpa/conf/ProductDerivations.java
+```
+
+Il fix modifica la linea 39 del parent e il `git blame` manuale restituisce:
+
+```text
+7a6d34e95f66e916e44b844b1ce6551ba8169539
+```
+
+che coincide esattamente con il BIC prodotto dall'analyzer.
+
+Il ticket `OPENJPA-14` possiede inoltre un secondo fix commit production che
+modifica `MetaDataRepository.java`; il caso ha confermato che `NFIX` deve
+contare il defect una sola volta per classe, mentre SZZ deve analizzare
+separatamente ciascun fix commit.
+
+## 16.3 Safeguard sui fix dello stesso defect
+
+Durante il primo FULL SZZ è stato rilevato un caso metodologicamente
+importante: un commit già classificato come fix dello stesso `IssueKey` poteva
+essere restituito da `git blame` come BIC di un fix successivo appartenente
+alla stessa sequenza di correzione.
+
+È stato quindi introdotto il seguente vincolo:
+
+```text
+un fix commit dello stesso IssueKey
+non può essere utilizzato come BIC dello stesso defect
+```
+
+Il filtro ha escluso:
+
+```text
+Same-issue fix BIC rows skipped : 446
+Same-issue blamed lines skipped : 2934
+```
+
+Dopo il filtro:
+
+```text
+Same-issue fix BIC remaining : 0
+```
+
+## 16.4 FULL SZZ
+
+Gli output finali sono:
+
+```text
+isw2/datasets/szz_evidence.csv
+isw2/results/szz/szz_fix_audit.csv
+```
+
+Risultati:
+
+```text
+Fix mappings processed          : 1222
+Unique fix commits analyzed     : 1196
+Cache reuses                    : 26
+
+Mappings with evidence          : 943
+Mappings without evidence       : 279
+
+SZZ evidence rows               : 3748
+Defects with evidence           : 766
+Fix commits with evidence       : 921
+Distinct fixed files            : 778
+Bug-introducing commits         : 982
+Total blamed lines              : 70830
+
+Same-issue fix BIC rows skipped : 446
+Same-issue blamed lines skipped : 2934
+Same-issue fix BIC remaining    : 0
+Validation failures             : 0
+```
+
+Sono stati verificati:
+
+```text
+Audit rows                      : 1222
+Duplicati audit                 : 0
+Duplicati evidence              : 0
+SHA commit malformati           : 0
+BlamedLineCount <= 0            : 0
+File non Java production        : 0
+Mismatch audit/evidence         : 0
+Same-issue fix usato come BIC   : 0
+```
+
+L'audit mantiene anche i 279 mapping `NO_EVIDENCE`, evitando di confondere
+l'assenza legittima di linee blameabili con un errore di elaborazione.
+
+---
+
+# 17. Output disponibili
 
 Sono attualmente disponibili:
 
@@ -1091,6 +1512,10 @@ isw2/datasets/java_class_inventory.csv
 isw2/datasets/class_metrics.csv
 isw2/datasets/sonar_smell_metrics.csv
 isw2/datasets/class_metrics_with_smells.csv
+isw2/datasets/defect_ticket_catalog_raw.csv
+isw2/datasets/fix_commit_catalog.csv
+isw2/datasets/nfix_metrics.csv
+isw2/datasets/szz_evidence.csv
 ```
 
 Sono inoltre prodotti output diagnostici sotto:
@@ -1098,38 +1523,36 @@ Sono inoltre prodotti output diagnostici sotto:
 ```text
 isw2/results/metrics/
 isw2/results/sonar/
+isw2/results/szz/
 ```
 
-Per ciascuna release analizzata da Sonar vengono mantenuti:
+Tra gli output di audit SZZ è presente:
 
 ```text
-smell_metrics.csv
-sonar_smell_evidence.csv
-summary.txt
+isw2/results/szz/szz_fix_audit.csv
 ```
 
 Tutti i dataset vengono generati automaticamente dall'analyzer o dagli script
 di estrazione e validazione e non vengono modificati manualmente.
 
-`class_metrics.csv` viene mantenuto come output delle sole metriche di classe.
+`class_metrics.csv` viene mantenuto come output delle metriche di classe
+calcolate prima dell'analisi defect.
 
-`class_metrics_with_smells.csv` rappresenta invece l'output intermedio
-aggiornato con:
+`class_metrics_with_smells.csv` rappresenta l'output intermedio aggiornato con:
 
 ```text
 NSmells
 ```
 
-ma non costituisce ancora il Dataset A finale, poiché devono essere aggiunti:
+`nfix_metrics.csv` contiene invece la metrica `NFIX` validata sulle stesse
+12.836 chiavi `(ReleaseIndex, Class)`.
 
-```text
-NFIX
-Bugginess
-```
+Il Dataset A finale non è ancora stato assemblato: devono ancora essere
+determinati il labeling di `Bugginess` e la join finale delle metriche.
 
-e, nella costruzione del dataset finale, l'identificativo del progetto.
+---
 
-# 15. Decisioni metodologiche
+# 18. Decisioni metodologiche
 
 Le principali decisioni adottate finora sono:
 
@@ -1166,6 +1589,9 @@ non appartenenti al codice production.
 La classificazione non si basa esclusivamente sulla presenza di
 `src/main/java`, ma considera anche il contesto del modulo e del percorso,
 come nel caso di `osgi-itests`.
+
+La stessa classificazione viene riutilizzata per filtrare i fix commit
+rilevanti per `NFIX` e SZZ.
 
 ### Metriche storiche
 
@@ -1220,10 +1646,39 @@ rappresentano smell storici non più presenti nello snapshot analizzato.
 La tracciabilità delle singole issue viene comunque mantenuta negli output
 di evidence prodotti per release.
 
+### Defect e fix commit
+
+Sono considerati defect JIRA i ticket:
+
+```text
+Bug
+Closed/Resolved
+Fixed
+```
+
+L'associazione al codice richiede la chiave `OPENJPA-*` nel subject del commit
+e almeno una modifica a Java `PRODUCTION`.
+
+Le date JIRA vengono mantenute come diagnostica e non usate come criterio
+rigido di esclusione del fix commit.
+
 ### NFIX
 
-`NFIX` viene rinviato alla fase di identificazione dei bug e dei fix commit,
-in modo da non introdurre valori artificiali prima di avere evidenza JIRA/Git.
+`NFIX` rappresenta il numero cumulativo di defect fixing JIRA distinti che
+hanno interessato la classe fino alla release osservata.
+
+Più fix commit appartenenti allo stesso defect e alla stessa classe
+contribuiscono una sola unità.
+
+### SZZ
+
+SZZ utilizza le linee eliminate/modificate dal fix e applica `git blame` sul
+parent commit.
+
+I fix add-only possono produrre legittimamente `NO_EVIDENCE`.
+
+Un fix commit dello stesso `IssueKey` viene escluso dai possibili BIC dello
+stesso defect.
 
 ### Dataset
 
@@ -1232,7 +1687,7 @@ manualmente.
 
 ---
 
-# 16. Stato Milestone 1
+# 19. Stato Milestone 1
 
 ## Completato
 
@@ -1264,18 +1719,25 @@ manualmente.
 * [x] Aggregazione in `sonar_smell_metrics.csv`
 * [x] Join 1:1 con `class_metrics.csv`
 * [x] Generazione di `class_metrics_with_smells.csv`
+* [x] Recupero e validazione dei defect ticket JIRA
+* [x] Generazione di `defect_ticket_catalog_raw.csv`
+* [x] Identificazione e validazione dei fix commit production
+* [x] Generazione di `fix_commit_catalog.csv`
+* [x] Definizione e pilot di `NFIX`
+* [x] FULL `NFIX` sulle 12.836 osservazioni
+* [x] Validazione di `nfix_metrics.csv`
+* [x] Pilot SZZ
+* [x] Verifica manuale diff/blame del pilot
+* [x] FULL SZZ
+* [x] Filtro dei fix dello stesso defect dai BIC
+* [x] Validazione finale di `szz_evidence.csv`
+* [x] Generazione dell'audit `szz_fix_audit.csv`
 
 ## Prossimo step
 
-* [ ] Recupero e analisi dei ticket bug
-* [ ] Identificazione dei fix commit
-* [ ] Calcolo di `NFIX`
-* [ ] SZZ
-
-Successivamente:
-
 * [ ] Proportion;
 * [ ] determinazione della `Bugginess`;
+* [ ] join di `NFIX` con le altre metriche;
 * [ ] assemblaggio e validazione finale;
 * [ ] generazione del Dataset A.
 

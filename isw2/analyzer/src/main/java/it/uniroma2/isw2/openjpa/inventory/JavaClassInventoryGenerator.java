@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -141,8 +140,7 @@ public class JavaClassInventoryGenerator {
                                 release.version(),
                                 release.commitId(),
                                 filePath,
-                                classify(filePath)
-                        )
+                                JavaClassScopeClassifier.classify(filePath)                        )
                 );
             }
         }
@@ -176,69 +174,6 @@ public class JavaClassInventoryGenerator {
                 .toList();
     }
 
-    private static ClassScope classify(
-            String filePath
-    ) {
-
-        String path =
-                filePath
-                        .replace('\\', '/')
-                        .toLowerCase(Locale.ROOT);
-
-        String fileName =
-                Path.of(path)
-                        .getFileName()
-                        .toString();
-
-        if (fileName.equals("package-info.java")
-                || fileName.equals("module-info.java")) {
-
-            return ClassScope.NON_CLASS;
-        }
-
-        String normalized =
-                "/" + path + "/";
-
-        if (normalized.contains("/src/test/")
-                || normalized.contains("/src/test-java/")
-                || normalized.contains("/src/it/")
-                || normalized.contains("/src/itests/")
-                || normalized.contains("/itests/")
-                || normalized.contains("-itests/")
-                || normalized.contains("/tests/")
-                || normalized.contains("-tests/")) {
-
-            return ClassScope.TEST;
-        }
-
-        if (normalized.contains("/examples/")
-                || normalized.contains("/example/")
-                || normalized.contains("/openjpa-examples/")) {
-
-            return ClassScope.EXAMPLE;
-        }
-
-        if (normalized.contains("/generated-sources/")
-                || normalized.contains("/src/generated/")
-                || normalized.contains("/generated/")) {
-
-            return ClassScope.GENERATED;
-        }
-
-        if (normalized.contains("/src/main/jjtree/")
-                || normalized.contains("/src/main/javacc/")) {
-
-            return ClassScope.PARSER_SOURCE;
-        }
-
-        if (normalized.contains("/src/main/java/")
-                || normalized.contains("/src/java/")) {
-
-            return ClassScope.PRODUCTION;
-        }
-
-        return ClassScope.OTHER;
-    }
 
     private static void validate(
             List<DatasetRelease> releases,
