@@ -1500,9 +1500,526 @@ l'assenza legittima di linee blameabili con un errore di elaborazione.
 
 ---
 
-# 17. Output disponibili
+# 17. Proportion e intervalli effettivi
 
-Sono attualmente disponibili:
+Dopo il FULL SZZ è stata determinata, per ciascun defect con evidence,
+la porzione di storia del progetto nella quale il defect deve essere
+considerato attivo.
+
+La ricostruzione utilizza tre versioni concettuali:
+
+```text
+IV = Injected Version
+OV = Opening Version
+FV = Fixed Version
+```
+
+Per evitare di alterare le distanze temporali tra le versioni, questa fase
+utilizza la timeline completa delle release JIRA rilasciate:
+
+```text
+Release universe : 42
+```
+
+e non soltanto le 36 release stabili utilizzate per selezionare il Dataset A.
+
+Le 12 release del Dataset A corrispondono ai seguenti indici nella timeline RAW:
+
+```text
+1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 14, 18
+```
+
+---
+
+## 17.1 Proportion Total
+
+Per i defect per i quali sono noti e temporalmente coerenti `IV`, `OV` e `FV`
+viene calcolato:
+
+```text
+P = (FV - IV) / (FV - OV)
+```
+
+con il caso:
+
+```text
+OV == FV
+```
+
+gestito utilizzando distanza pari a `1`, evitando la divisione per zero.
+
+Sono considerati utilizzabili per il calcolo di `P_TOTAL` soltanto lifecycle
+che rispettano:
+
+```text
+IV <= OV <= FV
+IV < FV
+```
+
+Risultati:
+
+```text
+Usable defects for P_TOTAL : 621
+P_TOTAL                    : 1.9688220484114205
+P median                   : 1.0
+P minimum                  : 1.0
+P maximum                  : 25.0
+```
+
+Nel calcolo viene mantenuta la precisione completa di `P_TOTAL`; il valore
+arrotondato è utilizzato soltanto a scopo descrittivo.
+
+---
+
+## 17.2 Determinazione della Fixed Version effettiva
+
+Per i 766 defect che possiedono evidence SZZ, la `Fix Version` JIRA viene
+utilizzata come fonte primaria della `FV`.
+
+La coerenza viene verificata rispetto ai fix commit che producono evidence
+SZZ: un fix è considerato allineato a una release quando il relativo commit
+è raggiungibile dallo snapshot Git associato a quella release.
+
+Quando non esiste una `Fix Version` JIRA utilizzabile, oppure quando la
+`Fix Version` dichiarata non contiene nessuno dei fix commit SZZ del defect,
+viene utilizzata come fallback la prima release RAW il cui snapshot contiene
+almeno uno dei fix commit rilevanti.
+
+Le sorgenti finali della `FV` sono:
+
+```text
+JIRA_FIX_VERSION
+GIT_CONTAINMENT_NO_JIRA_FV
+GIT_CONTAINMENT_JIRA_MISMATCH
+```
+
+Risultati:
+
+```text
+Defect con SZZ                         : 766
+
+FV da JIRA                             : 696
+FV da Git - nessuna FV JIRA usabile   : 36
+FV da Git - mismatch JIRA/SZZ          : 34
+FV unresolved                          : 0
+
+Defect con ZERO evidence allineata     : 0
+Defect con PARTIAL alignment           : 14
+Defect con ALL fixes aligned           : 752
+
+SZZ rows prima dell'allineamento       : 3748
+SZZ rows dopo l'allineamento           : 3700
+```
+
+Nei 14 casi di allineamento parziale la `FV` effettiva rimane quella
+determinata dalla procedura precedente, ma vengono utilizzate per quel
+lifecycle soltanto le evidence appartenenti ai fix commit già contenuti
+nello snapshot della `FV`.
+
+In questo modo eventuali ulteriori fix dello stesso defect, entrati in
+release successive, non vengono anticipati artificialmente.
+
+---
+
+## 17.3 Determinazione della Injected Version effettiva
+
+L'`Opening Version` viene ricavata dalla data di creazione del ticket:
+
+```text
+OV =
+    ultima release RAW con
+    ReleaseDate <= CreatedDate
+```
+
+Quando JIRA fornisce una `Affected Version`, viene utilizzata come `IV`
+osservata soltanto se il lifecycle è coerente:
+
+```text
+ObservedIV <= OV <= EffectiveFV
+ObservedIV < EffectiveFV
+```
+
+Se questa condizione non è soddisfatta, oppure se manca una `Affected Version`
+utilizzabile, viene applicato `Proportion Total`.
+
+La stima viene calcolata come:
+
+```text
+distance = EffectiveFV - OV
+```
+
+con:
+
+```text
+distance = 1
+```
+
+quando `EffectiveFV == OV`.
+
+Successivamente:
+
+```text
+LAV = EffectiveFV - distance * P_TOTAL
+EffectiveIV = ceil(LAV)
+```
+
+Se il risultato precede l'inizio della storia osservata:
+
+```text
+EffectiveIV = 1
+```
+
+Per i ticket creati prima della prima release disponibile viene invece usata
+esplicitamente la sorgente:
+
+```text
+PRE_FIRST_RELEASE
+```
+
+con:
+
+```text
+EffectiveIV = 1
+```
+
+senza classificare il caso come stima tramite Proportion.
+
+Distribuzione finale sui 766 defect con SZZ:
+
+```text
+JIRA_AFFECTED_VERSION : 476
+PROPORTION_TOTAL      : 284
+PRE_FIRST_RELEASE     : 6
+UNRESOLVED            : 0
+```
+
+Ulteriori controlli:
+
+```text
+Defect senza OV                    : 6
+Observed IV incoerenti             : 174
+Proportion IV clamped a release 1  : 11
+```
+
+---
+
+## 17.4 Intervallo di vita del defect
+
+Una volta determinati `EffectiveIV` ed `EffectiveFV`, il defect viene
+considerato attivo nell'intervallo:
+
+```text
+[EffectiveIV, EffectiveFV)
+```
+
+quindi:
+
+```text
+EffectiveIV inclusa
+EffectiveFV esclusa
+```
+
+La `FV` non è buggy perché rappresenta la release nella quale il fix è già
+presente.
+
+Tra i 766 defect con SZZ:
+
+```text
+Lifecycle che intersecano Dataset A : 461
+Lifecycle esterni a Dataset A       : 305
+```
+
+I 461 lifecycle che intersecano almeno una delle 12 release costituiscono
+la base temporale del labeling finale.
+
+---
+
+# 18. Determinazione della Bugginess
+
+La `Bugginess` viene determinata combinando tre informazioni:
+
+```text
+SZZ                  -> identifica le classi coinvolte nel defect
+Effective IV / FV    -> determina le release nelle quali il defect è attivo
+Production inventory -> verifica che la classe esista nello snapshot
+```
+
+Per una release del Dataset A una classe può essere marcata:
+
+```text
+BUGGY = YES
+```
+
+quando esiste almeno un defect che:
+
+```text
+EffectiveIV <= RawReleaseIndex < EffectiveFV
+```
+
+e la classe associata all'evidence SZZ è presente tra le classi Java
+`PRODUCTION` dello snapshot della release.
+
+Il `BugIntroducingCommitId` rimane evidence utile per SZZ, ma la sua
+raggiungibilità dalla release non viene utilizzata come un secondo filtro
+temporale del lifecycle.
+
+La temporalità del labeling è infatti determinata da `IV`, `OV`, `FV` e
+`Proportion`, mentre SZZ identifica le classi associate al defect.
+
+---
+
+## 18.1 Mapping del path della classe
+
+Il mapping utilizza come riferimento primario:
+
+```text
+BlamedFilePath
+```
+
+prodotto da SZZ.
+
+Per ciascuna coppia defect/release appartenente al lifecycle viene prima
+verificata la presenza esatta del path nell'inventario production.
+
+Questo primo mapping ha prodotto:
+
+```text
+Candidate evidence-release pairs : 6833
+Unique exact BUGGY pairs          : 2007
+Defect con exact mapping          : 458
+Defect senza exact mapping        : 3
+```
+
+I tre defect senza alcun exact mapping nel Dataset A sono stati verificati
+direttamente sulla storia Git:
+
+```text
+OPENJPA-304
+OPENJPA-311
+OPENJPA-76
+```
+
+Nei relativi snapshot le classi indicate dall'evidence non erano ancora
+presenti; non è stato quindi introdotto alcun mapping artificiale.
+
+Non viene utilizzata una corrispondenza basata soltanto sul nome del file e
+non viene accettata automaticamente una lineage ricostruita per similarità.
+
+Un path storico alternativo viene accettato soltanto quando Git fornisce
+un'evidenza esplicita di rename che collega direttamente il path storico al
+`BlamedFilePath`, e il path storico appartiene all'inventario production
+della release.
+
+La verifica finale dei rename ha prodotto:
+
+```text
+Exact BUGGY pairs                          : 2007
+Raw lineage candidate rows                 : 70
+Direct explicit rename rows                : 4
+Direct rename rows in production inventory : 4
+Unique direct rename pairs                 : 4
+New pairs rispetto agli exact              : 3
+
+FINAL exact + direct rename BUGGY pairs    : 2010
+```
+
+I quattro mapping validati appartengono a `OPENJPA-896` e riguardano il rename:
+
+```text
+openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java
+        ->
+openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+```
+
+nelle release 7, 8, 9 e 10.
+
+La coppia della release 9 era già supportata da un mapping exact; per questo
+i quattro mapping di rename aggiungono soltanto tre nuove osservazioni al
+set finale.
+
+---
+
+## 18.2 Labeling finale
+
+L'output finale della fase è:
+
+```text
+isw2/datasets/bugginess_labels.csv
+```
+
+Colonne:
+
+```text
+ReleaseIndex
+Version
+CommitId
+Class
+BUGGY
+```
+
+Risultati complessivi:
+
+```text
+Observations : 12836
+BUGGY=YES    : 2010
+BUGGY=NO     : 10826
+Buggy rate   : 15.66%
+```
+
+Distribuzione per release:
+
+| Release | Versione | Classi | BUGGY=YES | BUGGY=NO | Buggy rate |
+| ------: | -------- | -----: | --------: | -------: | ---------: |
+| 1 | 0.9.0 | 932 | 63 | 869 | 6.76% |
+| 2 | 0.9.6 | 949 | 100 | 849 | 10.54% |
+| 3 | 0.9.7 | 948 | 158 | 790 | 16.67% |
+| 4 | 1.0.0 | 996 | 123 | 873 | 12.35% |
+| 5 | 1.0.1 | 1029 | 113 | 916 | 10.98% |
+| 6 | 1.0.2 | 1058 | 136 | 922 | 12.85% |
+| 7 | 1.1.0 | 1045 | 232 | 813 | 22.20% |
+| 8 | 1.0.3 | 1050 | 234 | 816 | 22.29% |
+| 9 | 1.2.0 | 1051 | 210 | 841 | 19.98% |
+| 10 | 1.2.1 | 1185 | 350 | 835 | 29.54% |
+| 11 | 1.2.2 | 1300 | 159 | 1141 | 12.23% |
+| 12 | 2.0.0 | 1293 | 132 | 1161 | 10.21% |
+
+Sono stati verificati:
+
+```text
+Righe finali                           : 12836
+Chiavi (ReleaseIndex, Class) duplicate : 0
+Classi extra rispetto all'inventario   : 0
+Classi mancanti rispetto all'inventario: 0
+BUGGY senza defect di supporto         : 0
+```
+
+---
+
+## 18.3 Validazione dell'andamento tra le release
+
+È stato eseguito un controllo aggiuntivo sull'andamento delle classi buggy,
+in particolare sulla diminuzione osservata tra:
+
+```text
+R10 = 1.2.1
+R11 = 1.2.2
+```
+
+Risultati:
+
+```text
+BUGGY R10 : 350
+BUGGY R11 : 159
+
+Retained R10 -> R11 : 100
+Removed             : 250
+Added               : 59
+```
+
+Per i 250 path che cessano di essere buggy è stato verificato il defect di
+supporto:
+
+```text
+Removed supportati soltanto da defect usciti : 250
+Removed ancora supportati da defect carried   : 0
+Removed senza support mapping                  : 0
+```
+
+La diminuzione non deriva quindi da una perdita arbitraria di mapping:
+le classi escono dal set BUGGY perché i defect che le supportavano terminano
+prima della release successiva del Dataset A.
+
+Tra R10 e R11:
+
+```text
+Active defects R10 : 96
+Active defects R11 : 108
+Carried            : 40
+Entered            : 68
+Exited             : 56
+```
+
+Poiché R10 e R11 corrispondono rispettivamente agli indici RAW 11 e 14,
+49 dei 56 defect usciti hanno una `EffectiveFV` collocata in una release RAW
+intermedia non appartenente al Dataset A.
+
+---
+
+## 18.4 Caso OPENJPA-896
+
+Il principale contributore al picco della release 10 è:
+
+```text
+OPENJPA-896
+```
+
+con lifecycle:
+
+```text
+EffectiveIV = 7
+EffectiveFV = 12
+IV source   = JIRA_AFFECTED_VERSION
+FV source   = JIRA_FIX_VERSION
+```
+
+Il defect contribuisce:
+
+```text
+R7  : 132 classi
+R8  : 134 classi
+R9  : 135 classi
+R10 : 246 classi
+```
+
+e quindi da solo supporta 246 delle 350 osservazioni `BUGGY=YES` della
+release 10.
+
+Il relativo fix commit è:
+
+```text
+90b84c5d73db4d0d7fa3e5520358912961b59c43
+```
+
+con subject:
+
+```text
+OPENJPA-896. Setting eol-style:native and removing windows eol characters from source files.
+```
+
+L'audit ha confermato la natura trasversale del defect:
+
+```text
+File modificati                  : 1544
+Java production                  : 264
+Java test                        : 1280
+Changed lines - diff normale     : 382166
+Changed lines ignorando EOL      : 0
+
+SZZ evidence rows                : 686
+Distinct BIC                     : 244
+SZZ blamed lines                 : 52128
+```
+
+Il fatto che il fix riguardi i caratteri di fine riga non viene utilizzato
+come criterio di esclusione.
+
+`OPENJPA-896` è mantenuto nell'analisi come qualsiasi altro defect valido:
+la pipeline non applica filtri basati sulla natura funzionale, di
+formattazione o di line-ending del problema.
+
+L'audit EOL/whitespace è stato utilizzato esclusivamente per spiegare
+l'elevato numero di classi coinvolte e non modifica `szz_evidence.csv` né
+`bugginess_labels.csv`.
+
+Il picco di R10 è quindi interpretabile come effetto di un defect
+cross-cutting che interessa contemporaneamente un numero elevato di file,
+non come un errore del conteggio finale.
+
+---
+
+# 19. Output disponibili
+
+Gli output principali della Milestone 1 disponibili a questo punto sono:
 
 ```text
 isw2/datasets/release_catalog_raw.csv
@@ -1516,45 +2033,42 @@ isw2/datasets/defect_ticket_catalog_raw.csv
 isw2/datasets/fix_commit_catalog.csv
 isw2/datasets/nfix_metrics.csv
 isw2/datasets/szz_evidence.csv
+isw2/datasets/bugginess_labels.csv
 ```
 
-Sono inoltre prodotti output diagnostici sotto:
+Gli output diagnostici sono organizzati principalmente sotto:
 
 ```text
 isw2/results/metrics/
 isw2/results/sonar/
 isw2/results/szz/
+isw2/results/labeling/
 ```
 
-Tra gli output di audit SZZ è presente:
+Tra i principali audit della fase defect/labeling sono presenti:
 
 ```text
 isw2/results/szz/szz_fix_audit.csv
+
+isw2/results/labeling/bugginess_path_presence_diagnostic.csv
+isw2/results/labeling/bugginess_direct_rename_valid.csv
+isw2/results/labeling/bugginess_direct_rename_final_check.txt
+isw2/results/labeling/bugginess_trend_diagnostic.txt
+isw2/results/labeling/openjpa_896_audit.txt
 ```
 
-Tutti i dataset vengono generati automaticamente dall'analyzer o dagli script
-di estrazione e validazione e non vengono modificati manualmente.
+Tutti i dataset vengono generati automaticamente dall'analyzer o dagli
+script di estrazione, audit e validazione e non vengono corretti manualmente.
 
-`class_metrics.csv` viene mantenuto come output delle metriche di classe
-calcolate prima dell'analisi defect.
-
-`class_metrics_with_smells.csv` rappresenta l'output intermedio aggiornato con:
-
-```text
-NSmells
-```
-
-`nfix_metrics.csv` contiene invece la metrica `NFIX` validata sulle stesse
-12.836 chiavi `(ReleaseIndex, Class)`.
-
-Il Dataset A finale non è ancora stato assemblato: devono ancora essere
-determinati il labeling di `Bugginess` e la join finale delle metriche.
+Il Dataset A finale non è ancora assemblato: restano da unire le metriche di
+classe, `NSmells`, `NFIX` e `Bugginess` e da eseguire la validazione della
+join finale.
 
 ---
 
-# 18. Decisioni metodologiche
+# 20. Decisioni metodologiche
 
-Le principali decisioni adottate finora sono:
+Le principali decisioni adottate nella Milestone 1 sono:
 
 ### Release stabili
 
@@ -1574,6 +2088,12 @@ Il commit rappresentativo viene selezionato tramite `DATE_CUTOFF`.
 Viene utilizzato il primo 33% delle release stabili, con arrotondamento
 tramite `ceil`.
 
+### Timeline per Proportion
+
+La selezione del Dataset A utilizza le release stabili, mentre il calcolo
+temporale di `Proportion`, `IV`, `OV` e `FV` utilizza tutte le 42 release JIRA
+rilasciate, preservando le reali distanze tra le versioni.
+
 ### Identificazione dei file Java
 
 I file vengono letti direttamente dall'albero Git tramite `git ls-tree`,
@@ -1583,12 +2103,8 @@ senza modificare la working copy principale.
 
 Vengono utilizzate solamente le osservazioni classificate come `PRODUCTION`.
 
-Sono esclusi test, esempi, sorgenti generati, parser source e altri file
-non appartenenti al codice production.
-
-La classificazione non si basa esclusivamente sulla presenza di
-`src/main/java`, ma considera anche il contesto del modulo e del percorso,
-come nel caso di `osgi-itests`.
+Sono esclusi test, esempi, sorgenti generati, parser source e altri file non
+appartenenti al codice production.
 
 La stessa classificazione viene riutilizzata per filtrare i fix commit
 rilevanti per `NFIX` e SZZ.
@@ -1603,11 +2119,11 @@ from release 0
 
 ### Revisioni
 
-`NR` indica il **number of revisions** e conta le revisioni che modificano
-effettivamente il contenuto sorgente della classe.
+`NR` conta soltanto le revisioni che modificano effettivamente il contenuto
+sorgente della classe.
 
 Rename/move vengono seguiti per preservare la continuità della storia;
-mode-only e rename puri senza modifica del contenuto non incrementano `NR`.
+mode-only e rename puri senza modifica testuale non incrementano `NR`.
 
 ### Churn
 
@@ -1626,59 +2142,102 @@ LOC_TOUCHED_revision = added + deleted
 ### Identificatore della classe
 
 Il path completo presente nella colonna `Class` viene mantenuto come
-identificatore della classe. Non viene aggiunta una colonna ridondante
-contenente soltanto il simple name.
+identificatore della classe.
 
 ### NSmells
 
-`NSmells` rappresenta il numero di `CODE_SMELL` presenti nella classe nello
-snapshot della specifica release.
+`NSmells` rappresenta il numero di `CODE_SMELL` `OPEN` presenti nella classe
+nello snapshot della specifica release.
 
-Vengono considerate esclusivamente issue Sonar nello stato:
-
-```text
-OPEN
-```
-
-Le issue `FIXED` vengono escluse dal valore della release corrente, poiché
-rappresentano smell storici non più presenti nello snapshot analizzato.
-
-La tracciabilità delle singole issue viene comunque mantenuta negli output
-di evidence prodotti per release.
+Le issue `FIXED` non vengono conteggiate nella release corrente.
 
 ### Defect e fix commit
 
 Sono considerati defect JIRA i ticket:
 
 ```text
-Bug
-Closed/Resolved
-Fixed
+Issue Type = Bug
+Status     = Closed oppure Resolved
+Resolution = Fixed
 ```
 
-L'associazione al codice richiede la chiave `OPENJPA-*` nel subject del commit
-e almeno una modifica a Java `PRODUCTION`.
+L'associazione a Git richiede la chiave `OPENJPA-*` nel subject del commit e
+almeno una modifica a Java `PRODUCTION`.
 
-Le date JIRA vengono mantenute come diagnostica e non usate come criterio
-rigido di esclusione del fix commit.
+Le date JIRA sono utilizzate come diagnostica e non come criterio rigido per
+eliminare un fix commit già validato tramite ticket e modifica production.
 
 ### NFIX
 
-`NFIX` rappresenta il numero cumulativo di defect fixing JIRA distinti che
-hanno interessato la classe fino alla release osservata.
+`NFIX` rappresenta il numero cumulativo di `IssueKey` defect fixing distinti
+che hanno interessato la classe fino alla release osservata.
 
-Più fix commit appartenenti allo stesso defect e alla stessa classe
-contribuiscono una sola unità.
+Più fix commit dello stesso defect sulla stessa classe contribuiscono una
+sola unità.
 
 ### SZZ
 
-SZZ utilizza le linee eliminate/modificate dal fix e applica `git blame` sul
-parent commit.
+SZZ utilizza le linee eliminate/modificate dal fix e applica `git blame`
+sul parent commit.
 
 I fix add-only possono produrre legittimamente `NO_EVIDENCE`.
 
 Un fix commit dello stesso `IssueKey` viene escluso dai possibili BIC dello
 stesso defect.
+
+Non viene applicato un filtro che escluda categorie di bug in base alla
+natura del problema.
+
+### Fixed Version
+
+La `Fix Version` JIRA è la fonte primaria.
+
+Git containment viene utilizzato come fallback quando manca una FV JIRA
+utilizzabile oppure quando la FV dichiarata non contiene alcun fix commit SZZ
+del defect.
+
+### Injected Version
+
+La `Affected Version` JIRA viene utilizzata quando forma un lifecycle
+temporalmente coerente con `OV` e `FV`.
+
+Negli altri casi viene utilizzato `Proportion Total`.
+
+I ticket anteriori alla prima release vengono gestiti separatamente tramite
+`PRE_FIRST_RELEASE`.
+
+### Intervallo BUGGY
+
+Un defect è attivo nell'intervallo:
+
+```text
+[EffectiveIV, EffectiveFV)
+```
+
+La release di fix è quindi esclusa.
+
+### Mapping della classe
+
+Il `BlamedFilePath` SZZ viene associato in modo exact all'inventario della
+release.
+
+Un path alternativo viene accettato soltanto in presenza di un rename Git
+diretto e verificato verso una classe production presente nello snapshot.
+
+Non vengono usati matching basati soltanto sul simple filename.
+
+### Bug-introducing commit
+
+La presenza del BIC nella storia della release viene mantenuta come
+informazione diagnostica, ma non viene utilizzata come secondo filtro
+temporale dopo la determinazione di `EffectiveIV` ed `EffectiveFV`.
+
+### Tipologia del defect
+
+Non vengono esclusi defect sulla base della loro natura.
+
+Problemi cross-cutting, di configurazione, formattazione o line-ending
+rimangono defect validi quando soddisfano i criteri JIRA adottati.
 
 ### Dataset
 
@@ -1687,7 +2246,7 @@ manualmente.
 
 ---
 
-# 19. Stato Milestone 1
+# 21. Stato Milestone 1
 
 ## Completato
 
@@ -1697,48 +2256,40 @@ manualmente.
 * [x] Verifica tag Git
 * [x] Associazione release → commit
 * [x] Validazione temporale dei commit
-* [x] Generazione catalogo definitivo delle release
 * [x] Selezione delle 12 release
-* [x] Inventario RAW dei file Java
-* [x] Classificazione dei sorgenti Java
-* [x] Verifica delle regole di inclusione/esclusione
-* [x] Gestione dei sorgenti di integration test
-* [x] Gestione dei `PARSER_SOURCE`
-* [x] Generazione dell'inventario production
-* [x] Validazione delle 12.836 osservazioni production
-* [x] Implementazione del conteggio LOC
-* [x] Implementazione delle metriche storiche Git
-* [x] Gestione rename/move tramite `--follow`
-* [x] Gestione delle revisioni zero-LOC
-* [x] Pilot delle metriche sulla release `0.9.0`
-* [x] Generazione FULL delle metriche
-* [x] Validazione delle 12.836 righe di `class_metrics.csv`
-* [x] Pilot del calcolo `NSmells`
-* [x] Estrazione `NSmells` sulle 12 release
-* [x] Validazione delle 12.836 osservazioni Sonar
-* [x] Aggregazione in `sonar_smell_metrics.csv`
-* [x] Join 1:1 con `class_metrics.csv`
-* [x] Generazione di `class_metrics_with_smells.csv`
+* [x] Inventario e classificazione dei sorgenti Java
+* [x] Generazione e validazione delle 12.836 osservazioni production
+* [x] Calcolo e validazione delle metriche di classe
+* [x] Calcolo e validazione di `NSmells`
 * [x] Recupero e validazione dei defect ticket JIRA
-* [x] Generazione di `defect_ticket_catalog_raw.csv`
 * [x] Identificazione e validazione dei fix commit production
-* [x] Generazione di `fix_commit_catalog.csv`
-* [x] Definizione e pilot di `NFIX`
-* [x] FULL `NFIX` sulle 12.836 osservazioni
-* [x] Validazione di `nfix_metrics.csv`
-* [x] Pilot SZZ
-* [x] Verifica manuale diff/blame del pilot
-* [x] FULL SZZ
-* [x] Filtro dei fix dello stesso defect dai BIC
+* [x] Calcolo e validazione di `NFIX`
+* [x] Pilot e FULL SZZ
+* [x] Safeguard sui fix commit dello stesso defect
 * [x] Validazione finale di `szz_evidence.csv`
-* [x] Generazione dell'audit `szz_fix_audit.csv`
+* [x] Calcolo di `Proportion Total`
+* [x] Allineamento `FV` / fix commit / evidence SZZ
+* [x] Determinazione di `EffectiveIV` ed `EffectiveFV`
+* [x] Ricostruzione dei lifecycle `[IV,FV)`
+* [x] Verifica dei lifecycle che intersecano Dataset A
+* [x] Mapping exact delle classi buggy
+* [x] Audit dei path SZZ assenti dagli snapshot
+* [x] Validazione dei rename Git diretti
+* [x] Generazione di `bugginess_labels.csv`
+* [x] Validazione delle 12.836 label finali
+* [x] Audit dell'andamento BUGGY tra le release
+* [x] Verifica mirata del caso `OPENJPA-896`
 
 ## Prossimo step
 
-* [ ] Proportion;
-* [ ] determinazione della `Bugginess`;
-* [ ] join di `NFIX` con le altre metriche;
-* [ ] assemblaggio e validazione finale;
-* [ ] generazione del Dataset A.
+* [ ] Join di `class_metrics_with_smells.csv`, `nfix_metrics.csv` e `bugginess_labels.csv`
+* [ ] Aggiunta dell'identificativo `Project`
+* [ ] Assemblaggio del Dataset A
+* [ ] Validazione finale delle 12.836 osservazioni del Dataset A
 
-Il presente documento verrà aggiornato durante l'avanzamento della milestone.
+Successivamente:
+
+* [ ] Milestone 2 – Classification
+
+Il presente documento verrà aggiornato con l'assemblaggio e la validazione
+finale del Dataset A.
