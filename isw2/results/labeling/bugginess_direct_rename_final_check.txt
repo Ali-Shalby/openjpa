@@ -1,0 +1,37 @@
+﻿===== DIRECT RENAME FINAL CHECK =====
+Exact BUGGY pairs                         : 2007
+Raw GIT_LINEAGE_MATCH rows                : 70
+Direct explicit rename rows               : 4
+Direct rename rows in production inventory: 4
+Unique direct rename class/release pairs  : 4
+New pairs vs exact set                    : 3
+FINAL exact + direct-rename BUGGY pairs   : 2010
+
+===== VALID DIRECT RENAMES =====
+dataset=7/1.1.0 | issues=OPENJPA-896
+  SZZ path : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+  old path : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java
+  inventory: YES | already exact BUGGY: False
+  rename   : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java -> openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+
+dataset=8/1.0.3 | issues=OPENJPA-896
+  SZZ path : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+  old path : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java
+  inventory: YES | already exact BUGGY: False
+  rename   : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java -> openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+
+dataset=9/1.2.0 | issues=OPENJPA-896
+  SZZ path : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+  old path : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java
+  inventory: YES | already exact BUGGY: True
+  rename   : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java -> openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+
+dataset=10/1.2.1 | issues=OPENJPA-896
+  SZZ path : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+  old path : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java
+  inventory: YES | already exact BUGGY: False
+  rename   : openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedStoreManager.java -> openjpa-slice/src/main/java/org/apache/openjpa/slice/jdbc/DistributedJDBCStoreManager.java
+
+CSV report : C:\ISW2\openjpa\isw2\results\labeling\bugginess_direct_rename_valid.csv
+TXT report : C:\ISW2\openjpa\isw2\results\labeling\bugginess_direct_rename_final_check.txt
+====================================

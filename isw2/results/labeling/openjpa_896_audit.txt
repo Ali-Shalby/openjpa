@@ -1,0 +1,57 @@
+﻿===== OPENJPA-896 TARGETED AUDIT =====
+Repository                : C:\ISW2\openjpa
+
+===== SZZ EVIDENCE =====
+SZZ evidence rows         : 686
+SZZ-producing fix commits : 1
+Distinct SZZ parents      : 1
+Distinct fixed files      : 264
+Distinct blamed files     : 264
+Distinct BICs             : 244
+Total blamed lines        : 52128
+Fix catalog mappings      : 1
+
+===== FIX COMMIT AUDIT =====
+------------------------------------------------------------
+Fix commit     : 90b84c5d73db4d0d7fa3e5520358912961b59c43
+Parent         : c3175eea3c3885286898170fae6b487b070f60b5
+Date           : 2009-03-22T23:37:24Z
+Subject        : OPENJPA-896. Setting eol-style:native and removing windows eol characters from source files.
+Classification : MASS_CHANGE_MIXED
+
+Changed files normal           : 1544
+  production Java              : 264
+  test Java                    : 1280
+Changed files ignore EOL       : 1544
+Changed files ignore whitespace: 1544
+EOL reduction                  : 0%
+Whitespace reduction           : 0%
+
+Normal changed lines           : 382166
+Ignore-EOL changed lines       : 0
+Ignore-whitespace changed lines: 0
+
+SZZ rows                       : 686
+SZZ fixed files                : 264
+SZZ blamed files               : 264
+SZZ BICs                       : 244
+SZZ blamed lines               : 52128
+
+===== OPENJPA-896 BUGGY CONTRIBUTION BY DATASET RELEASE =====
+Release  7 | 1.1.0   | exact=131 | rename-only= 1 | total=132
+Release  8 | 1.0.3   | exact=133 | rename-only= 1 | total=134
+Release  9 | 1.2.0   | exact=134 | rename-only= 1 | total=135
+Release 10 | 1.2.1   | exact=245 | rename-only= 1 | total=246
+
+R10 contribution from OPENJPA-896 : 246
+
+===== INTERPRETATION FLAGS =====
+EOL_ONLY commits                 : 0
+WHITESPACE_ONLY commits          : 0
+MASS_FORMATTING_DOMINATED commits: 0
+MASS_CHANGE_MIXED commits        : 1
+
+Fix audit CSV     : C:\ISW2\openjpa\isw2\results\labeling\openjpa_896_fix_commits.csv
+Release audit CSV : C:\ISW2\openjpa\isw2\results\labeling\openjpa_896_release_contribution.csv
+TXT report        : C:\ISW2\openjpa\isw2\results\labeling\openjpa_896_audit.txt
+=======================================

@@ -1,0 +1,119 @@
+﻿===== OPENJPA BUGGINESS TREND DIAGNOSTIC =====
+Final observations : 12836
+Final BUGGY=YES    : 2010
+Overall BUGGY rate : 15,66%
+Defects represented in lifecycle evidence : 461
+
+===== TREND BY DATASET RELEASE =====
+Rel Version Raw | Classes BUGGY Rate   | ActiveDef Enter Exit Carry | JiraIV PropIV PreFirst
+-------------------------------------------------------------------------------------------
+ 1  0.9.0     1 |     932    63   6,76% |        45    45    0     0 |     19     21        5
+ 2  0.9.6     2 |     949   100  10,54% |        74    37    8    37 |     33     38        3
+ 3  0.9.7     3 |     948   158  16,67% |        74    30   30    44 |     43     28        3
+ 4  1.0.0     4 |     996   123  12,35% |       107    64   31    43 |     69     35        3
+ 5  1.0.1     5 |    1029   113  10,98% |        88    17   36    71 |     48     38        2
+ 6  1.0.2     6 |    1058   136  12,85% |       102    30   16    72 |     46     54        2
+ 7  1.1.0     7 |    1045   232  22,20% |        95    29   36    66 |     50     44        1
+ 8  1.0.3     8 |    1050   234  22,29% |       100    13    8    87 |     53     46        1
+ 9  1.2.0     9 |    1051   210  19,98% |        92    37   45    55 |     62     30        0
+10  1.2.1    11 |    1185   350  29,54% |        96    39   35    57 |     64     32        0
+11  1.2.2    14 |    1300   159  12,23% |       108    68   56    40 |     75     33        0
+12  2.0.0    18 |    1293   132  10,21% |        89    52   71    37 |     71     18        0
+
+===== BUGGY CLASS-PATH TRANSITIONS =====
+Rel Version | retained from previous | removed | added | resulting BUGGY
+-----------------------------------------------------------------------
+ 1  0.9.0   |                      0 |       0 |    63 |              63
+ 2  0.9.6   |                     59 |       4 |    41 |             100
+ 3  0.9.7   |                     73 |      27 |    85 |             158
+ 4  1.0.0   |                     84 |      74 |    39 |             123
+ 5  1.0.1   |                     94 |      29 |    19 |             113
+ 6  1.0.2   |                     98 |      15 |    38 |             136
+ 7  1.1.0   |                    108 |      28 |   124 |             232
+ 8  1.0.3   |                    228 |       4 |     6 |             234
+ 9  1.2.0   |                    194 |      40 |    16 |             210
+10  1.2.1   |                    196 |      14 |   154 |             350
+11  1.2.2   |                    100 |     250 |    59 |             159
+12  2.0.0   |                     92 |      67 |    40 |             132
+
+===== FOCUS: RELEASE 10 -> RELEASE 11 =====
+R10 : 1.2.1 | raw=11
+R11 : 1.2.2 | raw=14
+
+Active defects R10                 : 96
+Active defects R11                 : 108
+Carried R10 -> R11                 : 40
+Entered by R11                     : 68
+Exited after R10                   : 56
+  with EffectiveFV = R11 raw index : 7
+  with FV between dataset releases : 49
+
+BUGGY class paths R10              : 350
+BUGGY class paths R11              : 159
+Retained class paths               : 100
+Removed class paths                : 250
+Added class paths                  : 59
+Removed, supported only by exited defects : 250
+Removed, still supported by carried defect: 0
+Removed without support mapping            : 0
+
+===== TOP EXITING DEFECTS AT R10 =====
+OPENJPA-896    | R10 classes=246 | IV= 7 | FV=12 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+OPENJPA-1253   | R10 classes= 16 | IV=10 | FV=13 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+OPENJPA-1308   | R10 classes=  4 | IV= 8 | FV=14 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+OPENJPA-1002   | R10 classes=  3 | IV= 7 | FV=12 | IVSource=JIRA_AFFECTED_VERSION | FVSource=GIT_CONTAINMENT_JIRA_MISMATCH
+OPENJPA-1041   | R10 classes=  3 | IV=11 | FV=12 | IVSource=PROPORTION_TOTAL | FVSource=JIRA_FIX_VERSION
+OPENJPA-1051   | R10 classes=  3 | IV= 4 | FV=12 | IVSource=JIRA_AFFECTED_VERSION | FVSource=GIT_CONTAINMENT_JIRA_MISMATCH
+OPENJPA-1074   | R10 classes=  3 | IV=10 | FV=13 | IVSource=PROPORTION_TOTAL | FVSource=JIRA_FIX_VERSION
+OPENJPA-787    | R10 classes=  3 | IV= 7 | FV=12 | IVSource=PROPORTION_TOTAL | FVSource=JIRA_FIX_VERSION
+OPENJPA-927    | R10 classes=  3 | IV= 9 | FV=12 | IVSource=PROPORTION_TOTAL | FVSource=JIRA_FIX_VERSION
+OPENJPA-1004   | R10 classes=  2 | IV=11 | FV=12 | IVSource=PROPORTION_TOTAL | FVSource=JIRA_FIX_VERSION
+OPENJPA-1053   | R10 classes=  2 | IV=11 | FV=12 | IVSource=PROPORTION_TOTAL | FVSource=JIRA_FIX_VERSION
+OPENJPA-1054   | R10 classes=  2 | IV=11 | FV=12 | IVSource=PROPORTION_TOTAL | FVSource=JIRA_FIX_VERSION
+OPENJPA-1120   | R10 classes=  2 | IV= 7 | FV=13 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+OPENJPA-1218   | R10 classes=  2 | IV=10 | FV=13 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+OPENJPA-1328   | R10 classes=  2 | IV= 9 | FV=14 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+OPENJPA-207    | R10 classes=  2 | IV= 2 | FV=12 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+OPENJPA-466    | R10 classes=  2 | IV= 4 | FV=13 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+OPENJPA-525    | R10 classes=  2 | IV= 4 | FV=13 | IVSource=JIRA_AFFECTED_VERSION | FVSource=GIT_CONTAINMENT_JIRA_MISMATCH
+OPENJPA-973    | R10 classes=  2 | IV= 8 | FV=13 | IVSource=PROPORTION_TOTAL | FVSource=JIRA_FIX_VERSION
+OPENJPA-1025   | R10 classes=  1 | IV=11 | FV=14 | IVSource=JIRA_AFFECTED_VERSION | FVSource=JIRA_FIX_VERSION
+
+===== TOP BUGGY-CLASS CONTRIBUTORS IN R10 =====
+OPENJPA-896    | classes=246 | IV= 7 | FV=12 | JIRA_AFFECTED_VERSION
+OPENJPA-1565   | classes= 20 | IV=10 | FV=17 | JIRA_AFFECTED_VERSION
+OPENJPA-1253   | classes= 16 | IV=10 | FV=13 | JIRA_AFFECTED_VERSION
+OPENJPA-1185   | classes= 11 | IV=10 | FV=15 | PROPORTION_TOTAL
+OPENJPA-1189   | classes=  7 | IV=10 | FV=15 | PROPORTION_TOTAL
+OPENJPA-1376   | classes=  6 | IV=11 | FV=23 | JIRA_AFFECTED_VERSION
+OPENJPA-1142   | classes=  5 | IV=10 | FV=15 | PROPORTION_TOTAL
+OPENJPA-1303   | classes=  4 | IV= 1 | FV=36 | PROPORTION_TOTAL
+OPENJPA-1308   | classes=  4 | IV= 8 | FV=14 | JIRA_AFFECTED_VERSION
+OPENJPA-526    | classes=  4 | IV= 4 | FV=21 | JIRA_AFFECTED_VERSION
+OPENJPA-1002   | classes=  3 | IV= 7 | FV=12 | JIRA_AFFECTED_VERSION
+OPENJPA-1041   | classes=  3 | IV=11 | FV=12 | PROPORTION_TOTAL
+OPENJPA-1051   | classes=  3 | IV= 4 | FV=12 | JIRA_AFFECTED_VERSION
+OPENJPA-1074   | classes=  3 | IV=10 | FV=13 | PROPORTION_TOTAL
+OPENJPA-1248   | classes=  3 | IV= 7 | FV=17 | JIRA_AFFECTED_VERSION
+
+===== TOP BUGGY-CLASS CONTRIBUTORS IN R11 =====
+OPENJPA-1565   | classes= 20 | IV=10 | FV=17 | JIRA_AFFECTED_VERSION
+OPENJPA-1686   | classes= 16 | IV=14 | FV=23 | PROPORTION_TOTAL
+OPENJPA-1185   | classes= 13 | IV=10 | FV=15 | PROPORTION_TOTAL
+OPENJPA-1381   | classes= 11 | IV=12 | FV=15 | PROPORTION_TOTAL
+OPENJPA-1387   | classes= 10 | IV=13 | FV=15 | JIRA_AFFECTED_VERSION
+OPENJPA-1650   | classes= 10 | IV=14 | FV=23 | PROPORTION_TOTAL
+OPENJPA-1189   | classes=  7 | IV=10 | FV=15 | PROPORTION_TOTAL
+OPENJPA-1409   | classes=  7 | IV=12 | FV=15 | PROPORTION_TOTAL
+OPENJPA-1634   | classes=  7 | IV=14 | FV=21 | PROPORTION_TOTAL
+OPENJPA-1303   | classes=  6 | IV= 1 | FV=36 | PROPORTION_TOTAL
+OPENJPA-1376   | classes=  6 | IV=11 | FV=23 | JIRA_AFFECTED_VERSION
+OPENJPA-1550   | classes=  6 | IV=14 | FV=18 | JIRA_AFFECTED_VERSION
+OPENJPA-1142   | classes=  5 | IV=10 | FV=15 | PROPORTION_TOTAL
+OPENJPA-1396   | classes=  4 | IV=13 | FV=15 | JIRA_AFFECTED_VERSION
+OPENJPA-1444   | classes=  4 | IV=12 | FV=15 | PROPORTION_TOTAL
+
+Release CSV : C:\ISW2\openjpa\isw2\results\labeling\bugginess_trend_by_release.csv
+Top defects : C:\ISW2\openjpa\isw2\results\labeling\bugginess_top_defects.csv
+TXT report  : C:\ISW2\openjpa\isw2\results\labeling\bugginess_trend_diagnostic.txt
+=============================================
