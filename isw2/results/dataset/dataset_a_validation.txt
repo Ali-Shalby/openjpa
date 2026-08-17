@@ -1,0 +1,28 @@
+===== OPENJPA DATASET A VALIDATION =====
+Project              : OPENJPA
+Dataset              : C:\ISW2\openjpa\isw2\datasets\openjpa_dataset_a.csv
+Rows                 : 12836
+Unique observations  : 12836
+Releases             : 12
+Feature columns      : 18
+Sum(NSmells)         : 94308
+Sum(NFIX)            : 7523
+BUGGY=YES            : 2010
+BUGGY=NO             : 10826
+
+===== BY RELEASE =====
+Release  1 | rows= 932 | BUGGY=YES= 63 | BUGGY=NO= 869
+Release  2 | rows= 949 | BUGGY=YES=100 | BUGGY=NO= 849
+Release  3 | rows= 948 | BUGGY=YES=158 | BUGGY=NO= 790
+Release  4 | rows= 996 | BUGGY=YES=123 | BUGGY=NO= 873
+Release  5 | rows=1029 | BUGGY=YES=113 | BUGGY=NO= 916
+Release  6 | rows=1058 | BUGGY=YES=136 | BUGGY=NO= 922
+Release  7 | rows=1045 | BUGGY=YES=232 | BUGGY=NO= 813
+Release  8 | rows=1050 | BUGGY=YES=234 | BUGGY=NO= 816
+Release  9 | rows=1051 | BUGGY=YES=210 | BUGGY=NO= 841
+Release 10 | rows=1185 | BUGGY=YES=350 | BUGGY=NO= 835
+Release 11 | rows=1300 | BUGGY=YES=159 | BUGGY=NO=1141
+Release 12 | rows=1293 | BUGGY=YES=132 | BUGGY=NO=1161
+
+ValidationPassed=True
+======================================

@@ -160,10 +160,9 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Generazione e validazione della `Bugginess`
 * [x] Audit dell'andamento della `Bugginess`
 * [x] Verifica mirata del caso `OPENJPA-896`
-
-### In corso
-
-* [ ] Assemblaggio e validazione finale del Dataset A
+* [x] Assemblaggio del Dataset A
+* [x] Validazione finale delle 12.836 osservazioni
+* [x] Milestone 1 – Dataset Creation
 
 ### Successivamente
 
@@ -188,6 +187,7 @@ isw2/datasets/fix_commit_catalog.csv
 isw2/datasets/nfix_metrics.csv
 isw2/datasets/szz_evidence.csv
 isw2/datasets/bugginess_labels.csv
+isw2/datasets/openjpa_dataset_a.csv
 ```
 
 L'audit dei fix analizzati da SZZ è disponibile in:
@@ -221,11 +221,45 @@ Gli audit principali della fase di labeling sono disponibili in:
 ```text
 isw2/results/labeling/bugginess_trend_diagnostic.txt
 isw2/results/labeling/openjpa_896_audit.txt
+isw2/results/dataset/dataset_a_validation.txt
 ```
 
-Il Dataset A finale non è ancora assemblato: il prossimo blocco riguarda
-la join delle metriche, `NSmells`, `NFIX` e `Bugginess`, seguita dalla
-validazione finale delle 12.836 osservazioni.
+Il Dataset A finale è disponibile in:
+
+```text
+isw2/datasets/openjpa_dataset_a.csv
+```
+
+ed è stato generato tramite `DatasetAGenerator` unendo:
+
+```text
+class_metrics_with_smells.csv
+nfix_metrics.csv
+bugginess_labels.csv
+```
+
+La validazione finale ha prodotto:
+
+```text
+Rows                : 12836
+Unique observations : 12836
+Releases            : 12
+Feature columns     : 18
+Sum(NSmells)        : 94308
+Sum(NFIX)           : 7523
+BUGGY=YES           : 2010
+BUGGY=NO            : 10826
+ValidationPassed    : True
+```
+
+Il relativo report è disponibile in:
+
+```text
+isw2/results/dataset/dataset_a_validation.txt
+```
+
+Con questa validazione la **Milestone 1 – Dataset Creation è completata**.
+Il prossimo step è la **Milestone 2 – Classification**.
 
 ---
 

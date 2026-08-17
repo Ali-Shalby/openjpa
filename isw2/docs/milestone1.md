@@ -2017,7 +2017,197 @@ non come un errore del conteggio finale.
 
 ---
 
-# 19. Output disponibili
+# 19. Assemblaggio finale del Dataset A
+
+Completate le metriche di classe, `NSmells`, `NFIX` e la `Bugginess`,
+è stato assemblato il Dataset A definitivo.
+
+La generazione è automatizzata dalla classe:
+
+```text
+it.uniroma2.isw2.openjpa.dataset.DatasetAGenerator
+```
+
+Output:
+
+```text
+isw2/datasets/openjpa_dataset_a.csv
+```
+
+Report di validazione:
+
+```text
+isw2/results/dataset/dataset_a_validation.txt
+```
+
+Il generator utilizza come input:
+
+```text
+isw2/datasets/class_metrics_with_smells.csv
+isw2/datasets/nfix_metrics.csv
+isw2/datasets/bugginess_labels.csv
+```
+
+Tutti e tre gli input contengono:
+
+```text
+12836 osservazioni
+```
+
+La join viene effettuata sulla chiave:
+
+```text
+(ReleaseIndex, Class)
+```
+
+Prima di unire i valori, vengono inoltre confrontati:
+
+```text
+ReleaseIndex
+Version
+CommitId
+Class
+```
+
+tra i tre dataset intermedi.
+
+La generazione fallisce se viene rilevato:
+
+```text
+un duplicato
+una chiave mancante
+una chiave aggiuntiva
+un mismatch di Version
+un mismatch di CommitId
+un valore metrico mancante
+un valore numerico non valido
+un NFIX negativo
+un NSmells negativo
+un valore BUGGY diverso da YES/NO
+```
+
+`Version` e `CommitId` vengono quindi utilizzati per la validazione della join,
+ma non vengono mantenuti nel Dataset A finale.
+
+---
+
+## 19.1 Schema finale
+
+Il Dataset A contiene le colonne:
+
+```text
+Project
+Class
+ReleaseIndex
+LOC
+LOC_TOUCHED
+NR
+NAUTH
+LOC_ADDED
+MAX_LOC_ADDED
+AVG_LOC_ADDED
+CHURN
+MAX_CHURN
+AVG_CHURN
+CHANGE_SET_SIZE
+MAX_CHANGE_SET
+AVG_CHANGE_SET
+AGE_WEEKS
+WEIGHTED_AGE_WEEKS
+IGNORED_ZERO_LOC_REVS
+NSmells
+NFIX
+BUGGY
+```
+
+La colonna:
+
+```text
+Project
+```
+
+ha valore costante:
+
+```text
+OPENJPA
+```
+
+`Class` mantiene il path completo della classe Java production.
+
+`ReleaseIndex` identifica una delle 12 release selezionate.
+
+Il dataset contiene:
+
+```text
+22 colonne totali
+
+3 identificatori:
+Project
+Class
+ReleaseIndex
+
+18 predictor:
+16 metriche di classe
+NSmells
+NFIX
+
+1 target:
+BUGGY
+```
+
+---
+
+## 19.2 Validazione finale
+
+Il report finale ha prodotto:
+
+```text
+Rows                 : 12836
+Unique observations  : 12836
+Releases             : 12
+Feature columns      : 18
+Sum(NSmells)         : 94308
+Sum(NFIX)            : 7523
+BUGGY=YES            : 2010
+BUGGY=NO             : 10826
+ValidationPassed     : True
+```
+
+Non risultano quindi perdite o duplicazioni durante la join:
+
+```text
+righe attese                     : 12836
+righe finali                     : 12836
+chiavi (ReleaseIndex, Class)     : 12836
+duplicati                        : 0
+```
+
+La distribuzione finale per release è:
+
+| Release | Osservazioni | BUGGY=YES | BUGGY=NO |
+| ------: | -----------: | --------: | -------: |
+| 1 | 932 | 63 | 869 |
+| 2 | 949 | 100 | 849 |
+| 3 | 948 | 158 | 790 |
+| 4 | 996 | 123 | 873 |
+| 5 | 1029 | 113 | 916 |
+| 6 | 1058 | 136 | 922 |
+| 7 | 1045 | 232 | 813 |
+| 8 | 1050 | 234 | 816 |
+| 9 | 1051 | 210 | 841 |
+| 10 | 1185 | 350 | 835 |
+| 11 | 1300 | 159 | 1141 |
+| 12 | 1293 | 132 | 1161 |
+
+I valori aggregati di `NSmells`, `NFIX` e `Bugginess` coincidono con quelli
+validati nei rispettivi dataset intermedi.
+
+Il Dataset A è quindi considerato completo e pronto per essere utilizzato
+nella Milestone 2.
+
+---
+
+# 20. Output disponibili
 
 Gli output principali della Milestone 1 disponibili a questo punto sono:
 
@@ -2034,6 +2224,7 @@ isw2/datasets/fix_commit_catalog.csv
 isw2/datasets/nfix_metrics.csv
 isw2/datasets/szz_evidence.csv
 isw2/datasets/bugginess_labels.csv
+isw2/datasets/openjpa_dataset_a.csv
 ```
 
 Gli output diagnostici sono organizzati principalmente sotto:
@@ -2055,18 +2246,28 @@ isw2/results/labeling/bugginess_direct_rename_valid.csv
 isw2/results/labeling/bugginess_direct_rename_final_check.txt
 isw2/results/labeling/bugginess_trend_diagnostic.txt
 isw2/results/labeling/openjpa_896_audit.txt
+
+isw2/results/dataset/dataset_a_validation.txt
 ```
 
 Tutti i dataset vengono generati automaticamente dall'analyzer o dagli
 script di estrazione, audit e validazione e non vengono corretti manualmente.
 
-Il Dataset A finale non è ancora assemblato: restano da unire le metriche di
-classe, `NSmells`, `NFIX` e `Bugginess` e da eseguire la validazione della
-join finale.
+Il Dataset A finale è disponibile in:
+
+```text
+isw2/datasets/openjpa_dataset_a.csv
+```
+
+ed è accompagnato dal report di validazione automatica:
+
+```text
+isw2/results/dataset/dataset_a_validation.txt
+```
 
 ---
 
-# 20. Decisioni metodologiche
+# 21. Decisioni metodologiche
 
 Le principali decisioni adottate nella Milestone 1 sono:
 
@@ -2239,6 +2440,21 @@ Non vengono esclusi defect sulla base della loro natura.
 Problemi cross-cutting, di configurazione, formattazione o line-ending
 rimangono defect validi quando soddisfano i criteri JIRA adottati.
 
+### Assemblaggio del Dataset A
+
+La join finale utilizza la chiave:
+
+```text
+(ReleaseIndex, Class)
+```
+
+e verifica anche la coerenza di `Version` e `CommitId` tra gli input
+intermedi.
+
+Il dataset finale conserva soltanto gli identificatori richiesti per
+l'osservazione (`Project`, `Class`, `ReleaseIndex`), i 18 predictor e il
+target `BUGGY`.
+
 ### Dataset
 
 Gli output CSV vengono generati automaticamente e non vengono modificati
@@ -2246,7 +2462,7 @@ manualmente.
 
 ---
 
-# 21. Stato Milestone 1
+# 22. Stato Milestone 1
 
 ## Completato
 
@@ -2280,16 +2496,17 @@ manualmente.
 * [x] Audit dell'andamento BUGGY tra le release
 * [x] Verifica mirata del caso `OPENJPA-896`
 
-## Prossimo step
+* [x] Join di `class_metrics_with_smells.csv`, `nfix_metrics.csv` e `bugginess_labels.csv`
+* [x] Aggiunta dell'identificativo `Project`
+* [x] Assemblaggio di `openjpa_dataset_a.csv`
+* [x] Validazione finale delle 12.836 osservazioni del Dataset A
 
-* [ ] Join di `class_metrics_with_smells.csv`, `nfix_metrics.csv` e `bugginess_labels.csv`
-* [ ] Aggiunta dell'identificativo `Project`
-* [ ] Assemblaggio del Dataset A
-* [ ] Validazione finale delle 12.836 osservazioni del Dataset A
+## Milestone 1 completata
 
-Successivamente:
+Il Dataset A è stato generato e validato con:
 
-* [ ] Milestone 2 – Classification
+```text
+ValidationPassed=True
+```
 
-Il presente documento verrà aggiornato con l'assemblaggio e la validazione
-finale del Dataset A.
+La Milestone 1 è quindi considerata completata.
