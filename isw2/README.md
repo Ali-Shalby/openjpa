@@ -171,10 +171,14 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Calcolo Precision / Recall / AUC / Kappa / NPofB20
 * [x] Milestone 2 – Classification
 * [x] Selezione `BClassifier = RandomForest`
+* [x] Costruzione dataset M3 `B+`, `B`, `C`
+* [x] Training `BClassifierA` su Dataset A
+* [x] What-if analysis su A / B+ / B / C
+* [x] Stima classi buggy potenzialmente prevenibili
+* [x] Milestone 3 – What-if Analysis
 
 ### Successivamente
 
-* [ ] Milestone 3 – What-if Analysis
 * [ ] Selezione delle due classi OpenJPA
 * [ ] Software Testing – De Angelis
 * [ ] Milestone 4 – Automated Refactoring
@@ -344,11 +348,96 @@ tramite l'analyzer e non vengono versionati.
 
 ---
 
+
+## Milestone 3 – What-if Analysis
+
+La Milestone 3 utilizza il classificatore selezionato nella Milestone 2:
+
+```text
+BClassifier = RandomForest
+```
+
+e costruisce i dataset:
+
+```text
+B+ = osservazioni di A con NSmells > 0
+C  = osservazioni di A con NSmells = 0
+B  = copia di B+ con NSmells impostato a 0
+```
+
+Per OpenJPA:
+
+```text
+A  = 12836 osservazioni
+B+ = 8933 osservazioni
+B  = 8933 osservazioni
+C  = 3903 osservazioni
+```
+
+Il modello finale:
+
+```text
+BClassifierA = RandomForest addestrato sull'intero Dataset A
+```
+
+utilizza tutti i 18 predictor, senza Feature Selection e senza SMOTE, così da
+mantenere esplicitamente `NSmells` nel modello.
+
+La tabella finale del what-if è:
+
+```text
+Dataset   Actual BUGGY   Estimated BUGGY
+A             2010            2010
+B+            1723            1723
+B                -            1300
+C              287             287
+```
+
+Nel passaggio controfattuale `B+ -> B`:
+
+```text
+predicted YES -> NO = 425
+predicted NO  -> YES =   2
+```
+
+La riduzione netta stimata è quindi:
+
+```text
+423 classi buggy
+```
+
+equivalente a:
+
+```text
+21.04% di tutte le classi BUGGY di A
+24.55% delle classi BUGGY appartenenti a B+
+```
+
+Gli output principali versionati sono:
+
+```text
+isw2/datasets/openjpa_m3_bplus.csv
+isw2/datasets/openjpa_m3_b.csv
+isw2/datasets/openjpa_m3_c.csv
+
+isw2/results/m3/what_if_prediction_summary.csv
+isw2/results/m3/what_if_validation.txt
+isw2/results/m3/what_if_result.csv
+isw2/results/m3/what_if_result_validation.txt
+```
+
+Gli artefatti diagnostici e le prediction riga-per-riga rimangono rigenerabili
+tramite l'analyzer e non vengono versionati.
+
+---
+
+
 ## Documentazione
 
 * [Setup e baseline](docs/setup.md)
 * [Milestone 1 – Dataset Creation](docs/milestone1.md)
 * [Milestone 2 – Classification](docs/milestone2.md)
+* [Milestone 3 – What-if Analysis](docs/milestone3.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
