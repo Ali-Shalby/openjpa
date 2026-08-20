@@ -163,14 +163,23 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Assemblaggio del Dataset A
 * [x] Validazione finale delle 12.836 osservazioni
 * [x] Milestone 1 – Dataset Creation
+* [x] Pipeline di classificazione Weka
+* [x] Feature Selection con `CfsSubsetEval + BestFirst`
+* [x] Balancing con SMOTE training-only
+* [x] Validazione `10 times 10-folds`
+* [x] Confronto RandomForest / NaiveBayes / IBk
+* [x] Calcolo Precision / Recall / AUC / Kappa / NPofB20
+* [x] Milestone 2 – Classification
+* [x] Selezione `BClassifier = RandomForest`
 
 ### Successivamente
 
-* [ ] Milestone 2 – Classification
 * [ ] Milestone 3 – What-if Analysis
 * [ ] Selezione delle due classi OpenJPA
 * [ ] Software Testing – De Angelis
 * [ ] Milestone 4 – Automated Refactoring
+
+---
 
 ## Output principali della Milestone 1
 
@@ -252,14 +261,86 @@ BUGGY=NO            : 10826
 ValidationPassed    : True
 ```
 
-Il relativo report è disponibile in:
+---
+
+## Milestone 2 – Classification
+
+La Milestone 2 confronta:
 
 ```text
-isw2/results/dataset/dataset_a_validation.txt
+RandomForest
+NaiveBayes
+IBk
 ```
 
-Con questa validazione la **Milestone 1 – Dataset Creation è completata**.
-Il prossimo step è la **Milestone 2 – Classification**.
+utilizzando:
+
+```text
+Precision
+Recall
+AUC
+Kappa
+NPofB20
+```
+
+con validazione:
+
+```text
+10 times 10-folds
+```
+
+Sono state confrontate quattro configurazioni:
+
+```text
+C1 = no Feature Selection / no balancing
+C2 = Feature Selection / no balancing
+C3 = no Feature Selection / SMOTE
+C4 = Feature Selection / SMOTE
+```
+
+La Feature Selection utilizza:
+
+```text
+CfsSubsetEval + BestFirst
+```
+
+e SMOTE viene applicato esclusivamente ai training fold.
+
+Il run FULL ha prodotto:
+
+```text
+1200 model training
+120 risultati raw
+12 configurazioni finali aggregate
+```
+
+I vincitori per metrica sono:
+
+```text
+Precision -> C1 RandomForest = 0.842343
+Recall    -> C3 RandomForest = 0.793881
+AUC       -> C3 RandomForest = 0.963241
+Kappa     -> C3 RandomForest = 0.750842
+NPofB20   -> C1 RandomForest = 0.691393
+```
+
+Il classificatore selezionato è quindi:
+
+```text
+BClassifier = RandomForest
+```
+
+Gli output finali versionati sono:
+
+```text
+isw2/results/m2/full/classifier_metrics_full.csv
+isw2/results/m2/full/experiment_validation_full.txt
+isw2/results/m2/summary/classifier_summary_full.csv
+isw2/results/m2/summary/summary_validation_full.txt
+```
+
+I risultati intermedi QUICK, fold plan e audit completi sono rigenerabili
+tramite l'analyzer e non vengono versionati.
 
 ---
 
@@ -267,8 +348,9 @@ Il prossimo step è la **Milestone 2 – Classification**.
 
 * [Setup e baseline](docs/setup.md)
 * [Milestone 1 – Dataset Creation](docs/milestone1.md)
+* [Milestone 2 – Classification](docs/milestone2.md)
 
-La documentazione verrà aggiornata progressivamente durante lo sviluppo.
+La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
 ---
 
@@ -283,4 +365,4 @@ Durante il progetto:
 5. le scelte metodologiche vengono documentate e motivate;
 6. il branch `baseline-4.1.1` rimane immutabile;
 7. i defect non vengono esclusi sulla base della natura del problema se soddisfano i criteri adottati;
-8. gli audit diagnostici vengono utilizzati per verificare e spiegare i risultati senza modificare manualmente i dataset;
+8. gli audit diagnostici vengono utilizzati per verificare e spiegare i risultati senza modificare manualmente i dataset.
