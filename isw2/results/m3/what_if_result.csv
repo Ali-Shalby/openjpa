@@ -1,0 +1,13 @@
+Dataset,Rows,ActualBuggy,EstimatedBuggy,MeanProbabilityYES
+A,12836,2010,2010,0.154853394100
+B+,8933,1723,1723,0.189732863167
+B,8933,,1300,0.162005709168
+C,3903,287,287,0.075022931079
+
+Measure,Value
+Gross YES->NO,425
+Adverse NO->YES,2
+Net prevented,423
+Net prevented / all actual buggy,0.210447761194
+Net prevented / preventable actual buggy,0.245502031341
+Mean P(YES) reduction B+->B,0.027727153998

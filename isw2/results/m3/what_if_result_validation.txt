@@ -1,0 +1,22 @@
+===== OPENJPA M3 FINAL WHAT-IF RESULT =====
+Dataset | Actual BUGGY | Estimated BUGGY
+A       | 2010         | 2010
+B+      | 1723         | 1723
+B       |    -         | 1300
+C       |  287         |  287
+
+B+ predicted YES -> B predicted NO : 425
+B+ predicted NO  -> B predicted YES: 2
+Net estimated prevented             : 423
+Proportion of all actual BUGGY        : 0.210448 (21.04%)
+Out of preventable actual BUGGY       : 0.245502 (24.55%)
+Mean P(YES) B+                       : 0.189733
+Mean P(YES) B                        : 0.162006
+Mean P(YES) reduction B+ -> B        : 0.027727
+
+Transition matrix                  : PASSED
+Net = YES->NO - NO->YES            : PASSED
+A = B+ union C predicted counts    : PASSED
+Proportion ranges                  : PASSED
+ValidationPassed=True
+============================================

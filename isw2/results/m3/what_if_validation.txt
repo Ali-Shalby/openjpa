@@ -1,0 +1,28 @@
+===== OPENJPA M3 WHAT-IF VALIDATION =====
+BClassifier            : RandomForest
+Training dataset       : A
+Training rows          : 12836
+Predictors             : 18
+NSmells predictor      : included
+Feature Selection      : False
+Balancing              : False
+RandomForest seed      : 1
+Model options          : -P 100 -I 100 -num-slots 1 -K 0 -M 1.0 -V 0.001 -S 1
+Prediction target seen : False
+Prediction CSV         : C:\ISW2\openjpa\isw2\results\m3\what_if_predictions.csv
+Summary CSV            : C:\ISW2\openjpa\isw2\results\m3\what_if_prediction_summary.csv
+
+A  | rows=12836 | ref YES/NO=2010/10826 | pred YES/NO=2010/10826 | mean P(YES)=0.154853
+B+ | rows= 8933 | ref YES/NO=1723/ 7210 | pred YES/NO=1723/ 7210 | mean P(YES)=0.189733
+B  | rows= 8933 | ref YES/NO=1723/ 7210 | pred YES/NO=1300/ 7633 | mean P(YES)=0.162006
+C  | rows= 3903 | ref YES/NO= 287/ 3616 | pred YES/NO= 287/ 3616 | mean P(YES)=0.075023
+
+Total prediction rows      : 34605
+A = B+ union C predictions : PASSED
+A/B+ unchanged prediction  : PASSED
+A/C unchanged prediction   : PASSED
+B/B+ observation alignment : PASSED
+B/B+ only NSmells differs  : PASSED
+Probability validation     : PASSED
+ValidationPassed=True
+==========================================
