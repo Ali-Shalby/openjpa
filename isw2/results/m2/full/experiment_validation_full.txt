@@ -1,0 +1,153 @@
+===== OPENJPA M2 EXPERIMENT VALIDATION =====
+Mode                  : FULL
+Requested repetitions : 10
+Completed repetitions : 10
+Folds/repetition      : 10
+Configurations        : 4
+Classifiers           : 3
+Metric rows           : 120
+Preprocessing rows    : 400
+Model runs            : 1200
+FULL fold fingerprint : b67164ea440d16576420a3ae1a8af4ac39d05c1c51085ea166ca6035af08b10c
+Checkpoint/final      : FINAL
+
+Repetition 1:
+  C1 | RandomForest | P=0.841435 | R=0.723383 | AUC=0.960187 | Kappa=0.740367 | NPofB20=0.692537
+  C1 | NaiveBayes   | P=0.518056 | R=0.371144 | AUC=0.805615 | Kappa=0.347120 | NPofB20=0.198010
+  C1 | IBk          | P=0.659553 | R=0.645771 | AUC=0.800298 | Kappa=0.588893 | NPofB20=0.528856
+  C2 | RandomForest | P=0.739371 | R=0.666169 | AUC=0.941351 | Kappa=0.648721 | NPofB20=0.672637
+  C2 | NaiveBayes   | P=0.543943 | R=0.341791 | AUC=0.792323 | Kappa=0.340041 | NPofB20=0.201493
+  C2 | IBk          | P=0.707173 | R=0.657214 | AUC=0.905078 | Kappa=0.624656 | NPofB20=0.632338
+  C3 | RandomForest | P=0.789837 | R=0.796517 | AUC=0.961606 | Kappa=0.754569 | NPofB20=0.688557
+  C3 | NaiveBayes   | P=0.510503 | R=0.399005 | AUC=0.806568 | Kappa=0.359985 | NPofB20=0.209950
+  C3 | IBk          | P=0.608586 | R=0.719403 | AUC=0.823166 | Kappa=0.589772 | NPofB20=0.561692
+  C4 | RandomForest | P=0.697452 | R=0.762687 | AUC=0.941676 | Kappa=0.675534 | NPofB20=0.674627
+  C4 | NaiveBayes   | P=0.520848 | R=0.379104 | AUC=0.792711 | Kappa=0.353526 | NPofB20=0.247761
+  C4 | IBk          | P=0.671875 | R=0.748756 | AUC=0.907914 | Kappa=0.650554 | NPofB20=0.640796
+Repetition 2:
+  C1 | RandomForest | P=0.842566 | R=0.718905 | AUC=0.960522 | Kappa=0.738072 | NPofB20=0.690547
+  C1 | NaiveBayes   | P=0.518390 | R=0.371642 | AUC=0.804725 | Kappa=0.347603 | NPofB20=0.197015
+  C1 | IBk          | P=0.656218 | R=0.645771 | AUC=0.801128 | Kappa=0.586763 | NPofB20=0.526368
+  C2 | RandomForest | P=0.739082 | R=0.665174 | AUC=0.940914 | Kappa=0.647958 | NPofB20=0.675124
+  C2 | NaiveBayes   | P=0.545817 | R=0.340796 | AUC=0.788987 | Kappa=0.340171 | NPofB20=0.201990
+  C2 | IBk          | P=0.697084 | R=0.642289 | AUC=0.899426 | Kappa=0.609992 | NPofB20=0.622886
+  C3 | RandomForest | P=0.782566 | R=0.786070 | AUC=0.963316 | Kappa=0.744162 | NPofB20=0.692040
+  C3 | NaiveBayes   | P=0.509829 | R=0.400000 | AUC=0.805935 | Kappa=0.360191 | NPofB20=0.210448
+  C3 | IBk          | P=0.603003 | R=0.719403 | AUC=0.824855 | Kappa=0.585451 | NPofB20=0.558706
+  C4 | RandomForest | P=0.697968 | R=0.769154 | AUC=0.942420 | Kappa=0.679155 | NPofB20=0.683085
+  C4 | NaiveBayes   | P=0.521858 | R=0.380100 | AUC=0.789889 | Kappa=0.354668 | NPofB20=0.250249
+  C4 | IBk          | P=0.666519 | R=0.748756 | AUC=0.906000 | Kappa=0.646712 | NPofB20=0.640299
+Repetition 3:
+  C1 | RandomForest | P=0.836605 | R=0.720896 | AUC=0.959947 | Kappa=0.736214 | NPofB20=0.688060
+  C1 | NaiveBayes   | P=0.519861 | R=0.371144 | AUC=0.804739 | Kappa=0.348040 | NPofB20=0.200000
+  C1 | IBk          | P=0.652261 | R=0.645771 | AUC=0.798575 | Kappa=0.584218 | NPofB20=0.525373
+  C2 | RandomForest | P=0.733406 | R=0.670647 | AUC=0.940986 | Kappa=0.647962 | NPofB20=0.673632
+  C2 | NaiveBayes   | P=0.554913 | R=0.334328 | AUC=0.794395 | Kappa=0.339488 | NPofB20=0.207960
+  C2 | IBk          | P=0.703625 | R=0.656716 | AUC=0.902859 | Kappa=0.622249 | NPofB20=0.629851
+  C3 | RandomForest | P=0.782908 | R=0.793035 | AUC=0.963368 | Kappa=0.748266 | NPofB20=0.687065
+  C3 | NaiveBayes   | P=0.508883 | R=0.399005 | AUC=0.805799 | Kappa=0.359079 | NPofB20=0.209950
+  C3 | IBk          | P=0.600415 | R=0.719900 | AUC=0.822836 | Kappa=0.583655 | NPofB20=0.559204
+  C4 | RandomForest | P=0.685177 | R=0.761194 | AUC=0.942469 | Kappa=0.666165 | NPofB20=0.678607
+  C4 | NaiveBayes   | P=0.529006 | R=0.381095 | AUC=0.795568 | Kappa=0.358964 | NPofB20=0.269652
+  C4 | IBk          | P=0.664339 | R=0.757214 | AUC=0.909589 | Kappa=0.649226 | NPofB20=0.644776
+Repetition 4:
+  C1 | RandomForest | P=0.841527 | R=0.723881 | AUC=0.960911 | Kappa=0.740736 | NPofB20=0.687562
+  C1 | NaiveBayes   | P=0.518006 | R=0.372139 | AUC=0.805443 | Kappa=0.347717 | NPofB20=0.198507
+  C1 | IBk          | P=0.662121 | R=0.652239 | AUC=0.806800 | Kappa=0.594053 | NPofB20=0.533831
+  C2 | RandomForest | P=0.734571 | R=0.669154 | AUC=0.941387 | Kappa=0.647750 | NPofB20=0.671144
+  C2 | NaiveBayes   | P=0.550040 | R=0.341791 | AUC=0.788872 | Kappa=0.342710 | NPofB20=0.209453
+  C2 | IBk          | P=0.707212 | R=0.653731 | AUC=0.902960 | Kappa=0.622654 | NPofB20=0.631841
+  C3 | RandomForest | P=0.787773 | R=0.788557 | AUC=0.963418 | Kappa=0.748812 | NPofB20=0.690050
+  C3 | NaiveBayes   | P=0.507926 | R=0.398507 | AUC=0.806267 | Kappa=0.358252 | NPofB20=0.212438
+  C3 | IBk          | P=0.610806 | R=0.719900 | AUC=0.825632 | Kappa=0.591705 | NPofB20=0.562687
+  C4 | RandomForest | P=0.700696 | R=0.751244 | AUC=0.942904 | Kappa=0.671929 | NPofB20=0.678607
+  C4 | NaiveBayes   | P=0.517172 | R=0.382090 | AUC=0.789731 | Kappa=0.353449 | NPofB20=0.269652
+  C4 | IBk          | P=0.675771 | R=0.763184 | AUC=0.909165 | Kappa=0.660416 | NPofB20=0.643781
+Repetition 5:
+  C1 | RandomForest | P=0.840302 | R=0.719900 | AUC=0.959497 | Kappa=0.737526 | NPofB20=0.692040
+  C1 | NaiveBayes   | P=0.521107 | R=0.374627 | AUC=0.805401 | Kappa=0.350864 | NPofB20=0.199005
+  C1 | IBk          | P=0.656953 | R=0.639303 | AUC=0.800478 | Kappa=0.583708 | NPofB20=0.523383
+  C2 | RandomForest | P=0.729144 | R=0.669652 | AUC=0.942401 | Kappa=0.644891 | NPofB20=0.669154
+  C2 | NaiveBayes   | P=0.552191 | R=0.344776 | AUC=0.791415 | Kappa=0.345742 | NPofB20=0.212935
+  C2 | IBk          | P=0.698885 | R=0.654726 | AUC=0.902744 | Kappa=0.618258 | NPofB20=0.629851
+  C3 | RandomForest | P=0.784978 | R=0.795522 | AUC=0.962721 | Kappa=0.750957 | NPofB20=0.693035
+  C3 | NaiveBayes   | P=0.509542 | R=0.398507 | AUC=0.806380 | Kappa=0.359157 | NPofB20=0.211443
+  C3 | IBk          | P=0.607547 | R=0.720896 | AUC=0.826722 | Kappa=0.589645 | NPofB20=0.561194
+  C4 | RandomForest | P=0.693411 | R=0.769652 | AUC=0.940480 | Kappa=0.676198 | NPofB20=0.674129
+  C4 | NaiveBayes   | P=0.521305 | R=0.389552 | AUC=0.792680 | Kappa=0.360205 | NPofB20=0.265174
+  C4 | IBk          | P=0.666233 | R=0.763682 | AUC=0.909808 | Kappa=0.653716 | NPofB20=0.644279
+Repetition 6:
+  C1 | RandomForest | P=0.842319 | R=0.722886 | AUC=0.960497 | Kappa=0.740513 | NPofB20=0.689055
+  C1 | NaiveBayes   | P=0.518390 | R=0.371642 | AUC=0.805320 | Kappa=0.347603 | NPofB20=0.198507
+  C1 | IBk          | P=0.663789 | R=0.650249 | AUC=0.802506 | Kappa=0.594033 | NPofB20=0.532836
+  C2 | RandomForest | P=0.744224 | R=0.673134 | AUC=0.942614 | Kappa=0.655684 | NPofB20=0.676617
+  C2 | NaiveBayes   | P=0.557271 | R=0.341294 | AUC=0.794753 | Kappa=0.345468 | NPofB20=0.206965
+  C2 | IBk          | P=0.697198 | R=0.643781 | AUC=0.892543 | Kappa=0.610927 | NPofB20=0.614925
+  C3 | RandomForest | P=0.783144 | R=0.790547 | AUC=0.962486 | Kappa=0.747029 | NPofB20=0.690050
+  C3 | NaiveBayes   | P=0.512041 | R=0.401990 | AUC=0.806344 | Kappa=0.362596 | NPofB20=0.212438
+  C3 | IBk          | P=0.610783 | R=0.721393 | AUC=0.824630 | Kappa=0.592364 | NPofB20=0.561692
+  C4 | RandomForest | P=0.709648 | R=0.772139 | AUC=0.944238 | Kappa=0.688788 | NPofB20=0.677612
+  C4 | NaiveBayes   | P=0.526533 | R=0.380100 | AUC=0.795775 | Kappa=0.357075 | NPofB20=0.260697
+  C4 | IBk          | P=0.652402 | R=0.743284 | AUC=0.897686 | Kappa=0.633807 | NPofB20=0.628856
+Repetition 7:
+  C1 | RandomForest | P=0.844406 | R=0.720896 | AUC=0.960602 | Kappa=0.740323 | NPofB20=0.691542
+  C1 | NaiveBayes   | P=0.517647 | R=0.372139 | AUC=0.805157 | Kappa=0.347533 | NPofB20=0.198507
+  C1 | IBk          | P=0.668186 | R=0.656219 | AUC=0.807618 | Kappa=0.600093 | NPofB20=0.539303
+  C2 | RandomForest | P=0.741848 | R=0.679104 | AUC=0.942952 | Kappa=0.657884 | NPofB20=0.678607
+  C2 | NaiveBayes   | P=0.554472 | R=0.339303 | AUC=0.790757 | Kappa=0.342858 | NPofB20=0.202985
+  C2 | IBk          | P=0.709071 | R=0.657214 | AUC=0.903832 | Kappa=0.625784 | NPofB20=0.628856
+  C3 | RandomForest | P=0.788878 | R=0.797512 | AUC=0.964145 | Kappa=0.754523 | NPofB20=0.694030
+  C3 | NaiveBayes   | P=0.511465 | R=0.399502 | AUC=0.806195 | Kappa=0.360814 | NPofB20=0.213433
+  C3 | IBk          | P=0.616779 | R=0.727861 | AUC=0.830655 | Kappa=0.599905 | NPofB20=0.572139
+  C4 | RandomForest | P=0.699954 | R=0.763682 | AUC=0.942889 | Kappa=0.677776 | NPofB20=0.678109
+  C4 | NaiveBayes   | P=0.525447 | R=0.380100 | AUC=0.792667 | Kappa=0.356519 | NPofB20=0.263184
+  C4 | IBk          | P=0.668904 | R=0.743781 | AUC=0.908939 | Kappa=0.645984 | NPofB20=0.640299
+Repetition 8:
+  C1 | RandomForest | P=0.843732 | R=0.719900 | AUC=0.961350 | Kappa=0.739326 | NPofB20=0.692537
+  C1 | NaiveBayes   | P=0.521498 | R=0.374129 | AUC=0.805460 | Kappa=0.350752 | NPofB20=0.198010
+  C1 | IBk          | P=0.663417 | R=0.643284 | AUC=0.804497 | Kappa=0.589979 | NPofB20=0.525871
+  C2 | RandomForest | P=0.740864 | R=0.665672 | AUC=0.943450 | Kappa=0.649273 | NPofB20=0.676119
+  C2 | NaiveBayes   | P=0.556445 | R=0.345771 | AUC=0.797045 | Kappa=0.348289 | NPofB20=0.210945
+  C2 | IBk          | P=0.695070 | R=0.645274 | AUC=0.893954 | Kappa=0.610524 | NPofB20=0.612935
+  C3 | RandomForest | P=0.787370 | R=0.794030 | AUC=0.963915 | Kappa=0.751630 | NPofB20=0.691045
+  C3 | NaiveBayes   | P=0.511111 | R=0.400498 | AUC=0.806275 | Kappa=0.361201 | NPofB20=0.209950
+  C3 | IBk          | P=0.604768 | R=0.719403 | AUC=0.829102 | Kappa=0.586822 | NPofB20=0.561194
+  C4 | RandomForest | P=0.703125 | R=0.761194 | AUC=0.942900 | Kappa=0.678700 | NPofB20=0.679602
+  C4 | NaiveBayes   | P=0.520275 | R=0.376617 | AUC=0.798051 | Kappa=0.351681 | NPofB20=0.260199
+  C4 | IBk          | P=0.650389 | R=0.748756 | AUC=0.902446 | Kappa=0.634929 | NPofB20=0.634328
+Repetition 9:
+  C1 | RandomForest | P=0.843353 | R=0.725871 | AUC=0.961713 | Kappa=0.742980 | NPofB20=0.698010
+  C1 | NaiveBayes   | P=0.519417 | R=0.372637 | AUC=0.804302 | Kappa=0.348752 | NPofB20=0.197512
+  C1 | IBk          | P=0.662802 | R=0.654229 | AUC=0.805516 | Kappa=0.595570 | NPofB20=0.536318
+  C2 | RandomForest | P=0.740842 | R=0.674129 | AUC=0.943082 | Kappa=0.654337 | NPofB20=0.673632
+  C2 | NaiveBayes   | P=0.541766 | R=0.338806 | AUC=0.798916 | Kappa=0.337006 | NPofB20=0.199005
+  C2 | IBk          | P=0.715217 | R=0.654726 | AUC=0.904585 | Kappa=0.627949 | NPofB20=0.634328
+  C3 | RandomForest | P=0.792342 | R=0.802985 | AUC=0.964161 | Kappa=0.759757 | NPofB20=0.695025
+  C3 | NaiveBayes   | P=0.510152 | R=0.400000 | AUC=0.805692 | Kappa=0.360373 | NPofB20=0.210448
+  C3 | IBk          | P=0.604141 | R=0.725871 | AUC=0.827932 | Kappa=0.589224 | NPofB20=0.563184
+  C4 | RandomForest | P=0.706587 | R=0.763184 | AUC=0.942912 | Kappa=0.682098 | NPofB20=0.676617
+  C4 | NaiveBayes   | P=0.518039 | R=0.378607 | AUC=0.799142 | Kappa=0.351758 | NPofB20=0.238308
+  C4 | IBk          | P=0.672000 | R=0.752239 | AUC=0.908724 | Kappa=0.652354 | NPofB20=0.644279
+Repetition 10:
+  C1 | RandomForest | P=0.847190 | R=0.719900 | AUC=0.961263 | Kappa=0.741132 | NPofB20=0.692040
+  C1 | NaiveBayes   | P=0.519391 | R=0.373134 | AUC=0.804624 | Kappa=0.349050 | NPofB20=0.198010
+  C1 | IBk          | P=0.658120 | R=0.651244 | AUC=0.803335 | Kappa=0.590946 | NPofB20=0.529851
+  C2 | RandomForest | P=0.738318 | R=0.668159 | AUC=0.943917 | Kappa=0.649314 | NPofB20=0.674627
+  C2 | NaiveBayes   | P=0.552652 | R=0.347264 | AUC=0.797206 | Kappa=0.347687 | NPofB20=0.210448
+  C2 | IBk          | P=0.709189 | R=0.652736 | AUC=0.902922 | Kappa=0.623241 | NPofB20=0.628856
+  C3 | RandomForest | P=0.782737 | R=0.794030 | AUC=0.963269 | Kappa=0.748711 | NPofB20=0.689055
+  C3 | NaiveBayes   | P=0.510152 | R=0.400000 | AUC=0.805923 | Kappa=0.360373 | NPofB20=0.212935
+  C3 | IBk          | P=0.603299 | R=0.727861 | AUC=0.828392 | Kappa=0.589447 | NPofB20=0.561692
+  C4 | RandomForest | P=0.697302 | R=0.758706 | AUC=0.943367 | Kappa=0.673412 | NPofB20=0.680100
+  C4 | NaiveBayes   | P=0.521739 | R=0.388060 | AUC=0.797470 | Kappa=0.359522 | NPofB20=0.269154
+  C4 | IBk          | P=0.674543 | R=0.752736 | AUC=0.909654 | Kappa=0.654418 | NPofB20=0.643781
+
+OOF rows per metric row     : 12836
+Same FULL fold plan          : True
+FS-before-SMOTE invariant    : PASSED
+Test oversampling            : False
+Metric ranges                : PASSED
+Confusion totals             : PASSED
+NPofB20 LOC budget           : PASSED
+ValidationPassed=True
+=============================================

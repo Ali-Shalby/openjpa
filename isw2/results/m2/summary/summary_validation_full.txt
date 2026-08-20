@@ -1,0 +1,31 @@
+===== OPENJPA M2 FULL SUMMARY VALIDATION =====
+Raw metric rows       : 120
+Summary rows          : 12
+Repetitions/group     : 10
+StdDev                : sample (n-1)
+Summary CSV           : C:\ISW2\openjpa\isw2\results\m2\summary\classifier_summary_full.csv
+
+C1 | IBk          | P=0.660342±0.004612 | R=0.648408±0.005281 | AUC=0.803075±0.003007 | Kappa=0.590826±0.005211 | NPofB20=0.530199±0.005223
+C1 | NaiveBayes   | P=0.519176±0.001329 | R=0.372438±0.001200 | AUC=0.805079±0.000445 | Kappa=0.348503±0.001346 | NPofB20=0.198308±0.000819
+C1 | RandomForest | P=0.842343±0.002775 | R=0.721642±0.002240 | AUC=0.960649±0.000679 | Kappa=0.739719±0.001973 | NPofB20=0.691393±0.002967
+C2 | IBk          | P=0.703973±0.006658 | R=0.651841±0.005792 | AUC=0.901090±0.004411 | Kappa=0.619624±0.006789 | NPofB20=0.626667±0.007365
+C2 | NaiveBayes   | P=0.550951±0.005409 | R=0.341592±0.003747 | AUC=0.793467±0.003544 | Kappa=0.342946±0.003781 | NPofB20=0.206418±0.004734
+C2 | RandomForest | P=0.738167±0.004521 | R=0.670100±0.004359 | AUC=0.942305±0.001078 | Kappa=0.650377±0.004136 | NPofB20=0.674129±0.002745
+C3 | IBk          | P=0.607013±0.004870 | R=0.722189±0.003558 | AUC=0.826392±0.002605 | Kappa=0.589799±0.004451 | NPofB20=0.562338±0.003709
+C3 | NaiveBayes   | P=0.510160±0.001219 | R=0.399701±0.001054 | AUC=0.806138±0.000284 | Kappa=0.360202±0.001219 | NPofB20=0.211343±0.001364
+C3 | RandomForest | P=0.786253±0.003477 | R=0.793881±0.004795 | AUC=0.963241±0.000795 | Kappa=0.750842±0.004497 | NPofB20=0.690995±0.002531
+C4 | IBk          | P=0.666297±0.008681 | R=0.752239±0.007179 | AUC=0.906993±0.003977 | Kappa=0.648212±0.008384 | NPofB20=0.640547±0.005188
+C4 | NaiveBayes   | P=0.522222±0.003725 | R=0.381542±0.004112 | AUC=0.794368±0.003324 | Kappa=0.355737±0.003174 | NPofB20=0.259403±0.010643
+C4 | RandomForest | P=0.699132±0.006833 | R=0.763284±0.006042 | AUC=0.942625±0.001001 | Kappa=0.676976±0.006072 | NPofB20=0.678109±0.002622
+
+Global winners by mean:
+  Precision -> C1 RandomForest = 0.842343
+  Recall    -> C3 RandomForest = 0.793881
+  AUC       -> C3 RandomForest = 0.963241
+  Kappa     -> C3 RandomForest = 0.750842
+  NPofB20   -> C1 RandomForest = 0.691393
+
+Repetition coverage   : PASSED
+Summary metric ranges : PASSED
+ValidationPassed=True
+===============================================

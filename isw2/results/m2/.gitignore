@@ -1,0 +1,17 @@
+# Generated M2 intermediate results
+*
+
+# Keep this ignore file
+!.gitignore
+
+# Keep final FULL experiment
+!full/
+full/*
+!full/classifier_metrics_full.csv
+!full/experiment_validation_full.txt
+
+# Keep final summary
+!summary/
+summary/*
+!summary/classifier_summary_full.csv
+!summary/summary_validation_full.txt
