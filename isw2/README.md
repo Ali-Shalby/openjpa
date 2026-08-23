@@ -56,7 +56,9 @@ isw2/
 ├── analyzer/
 ├── datasets/
 ├── docs/
-└── results/
+│   └── testing/
+├── results/
+└── testing/
 ```
 
 ### `analyzer/`
@@ -75,6 +77,12 @@ Risultati sperimentali delle analisi.
 
 Documentazione metodologica dettagliata.
 
+### `testing/`
+
+Harness Maven indipendente dedicato agli esperimenti della parte De Angelis.
+Le suite sperimentali vengono sviluppate senza riutilizzare i test già presenti
+nel repository OpenJPA.
+
 ---
 
 ## Parte Falessi
@@ -92,7 +100,7 @@ La granularità utilizzata è la **classe Java**.
 
 ## Parte De Angelis
 
-La parte di Software Testing verrà svolta su due classi OpenJPA e comprenderà:
+La parte di Software Testing viene svolta su due classi OpenJPA e comprende:
 
 * Category Partition;
 * test manuali;
@@ -104,6 +112,47 @@ La parte di Software Testing verrà svolta su due classi OpenJPA e comprenderà:
 * miglioramento delle suite;
 * reliability;
 * confronto dei test sulle versioni refactored.
+
+Per la suite manuale iniziale viene adottato un approccio **black-box**:
+le categorie vengono ricavate prima dalla documentazione e dal contratto pubblico
+della classe. Coverage, mutation testing, code smell e dettagli del controllo di
+flusso non vengono usati per costruire retroattivamente la suite iniziale.
+
+La prima classe attualmente in lavorazione è:
+
+```text
+org.apache.openjpa.enhance.PCEnhancer
+```
+
+Per `PCEnhancer` la suite manuale iniziale `T_BB` è stata derivata tramite
+Category Partition e congelata prima di osservare coverage e mutation score.
+Successivamente è stata costruita una suite manuale coverage-guided `T_CF`,
+selezionando scenari a partire dai gap del controllo di flusso.
+
+Stato corrente:
+
+```text
+T_BB             : 30 test, FROZEN
+T_BB outcome     : 29 PASS, 1 FAIL noto (TBB-026)
+T_BB LINE        : 43.61%
+T_BB BRANCH      : 30.57%
+
+T_CF additions   : 5 test, FROZEN
+Suite cumulativa : 35 test
+Outcome finale   : 34 PASS, 1 FAIL noto (TBB-026)
+Final LINE       : 70.77%
+Final BRANCH     : 55.22%
+```
+
+La failure `TBB-026` resta invariata: il contratto pubblico di
+`PCEnhancer.run(..., Options)` dichiara `false` per opzioni invalide, mentre la
+baseline OpenJPA 4.1.1 restituisce `true` per il representative input congelato.
+L'oracle non viene modificato per rendere artificialmente verde la suite.
+
+Documentazione:
+
+* [`docs/testing/pcenhancer-black-box.md`](docs/testing/pcenhancer-black-box.md)
+* [`docs/testing/pcenhancer-control-flow.md`](docs/testing/pcenhancer-control-flow.md)
 
 ---
 
@@ -176,11 +225,32 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] What-if analysis su A / B+ / B / C
 * [x] Stima classi buggy potenzialmente prevenibili
 * [x] Milestone 3 – What-if Analysis
+* [x] Creazione dell'harness Maven indipendente `isw2/testing`
+* [x] Selezione di `PCEnhancer` come prima classe della parte De Angelis
+* [x] Category Partition black-box di `PCEnhancer`
+* [x] Freeze audit della suite manuale iniziale `T_BB` (`N = 30`)
+* [x] Implementazione completa `T_BB` – 30 test
+* [x] Full regression `T_BB` – 29 PASS, 1 FAIL documentato (`TBB-026`)
+* [x] Audit finale e traceability degli oracle `T_BB`
+* [x] Baseline JaCoCo `T_BB` – 43.61% Line / 30.57% Branch
+* [x] Coverage-gap audit pre-`T_CF`
+* [x] Implementazione `T_CF` – 5 test coverage-guided
+* [x] Feasibility preflight dei candidati complessi `TCF-003..005`
+* [x] Coverage cumulativa finale – 70.77% Line / 55.22% Branch
+* [x] Final gap audit e stopping rule (`TCF-006` non pianificato)
+* [x] Freeze audit `T_CF` – 5 test, 6 fixture, manifest SHA-256
+
+### In corso
+
+* [ ] Mutation analysis della suite manuale congelata `T_BB + T_CF`
+* [ ] Evoluzione mutation-guided `T_MT`
+* [ ] Suite automatiche `T_RND`, `T_LLM`, `T_ES`
+* [ ] Reliability di `PCEnhancer`
+* [ ] Testing della seconda classe OpenJPA
 
 ### Successivamente
 
-* [ ] Selezione delle due classi OpenJPA
-* [ ] Software Testing – De Angelis
+* [ ] Completamento Software Testing – De Angelis
 * [ ] Milestone 4 – Automated Refactoring
 
 ---
@@ -432,12 +502,112 @@ tramite l'analyzer e non vengono versionati.
 ---
 
 
+## Software Testing – PCEnhancer
+
+### Suite manuale black-box `T_BB`
+
+La Category Partition iniziale è stata congelata a:
+
+```text
+N = 30
+```
+
+Full regression canonica:
+
+```text
+isw2/results/testing/pcenhancer/tbb/runs/pcenhancer_tbb_full_run.txt
+```
+
+Risultato:
+
+```text
+Tests run : 30
+PASS      : 29
+FAIL      : 1 (TBB-026)
+Errors    : 0
+Skipped   : 0
+```
+
+Baseline di adeguatezza sulla classe esterna
+`org.apache.openjpa.enhance.PCEnhancer`:
+
+```text
+LINE   : 43.61% (1177 / 2699)
+BRANCH : 30.57% (372 / 1217)
+```
+
+### Suite manuale coverage-guided `T_CF`
+
+Dopo il freeze di `T_BB`, un gap audit formale ha guidato l'aggiunta di cinque
+scenari manuali:
+
+```text
+TCF-001 Application Identity
+TCF-002 Detached-state Externalization
+TCF-003 Standard Serialization
+TCF-004 Relationship-valued Identity
+TCF-005 Optimized IdClass Copy
+```
+
+La suite cumulativa finale contiene:
+
+```text
+T_BB             : 30
+T_CF additions   : 5
+Total            : 35
+PASS             : 34
+Known FAIL       : 1 (TBB-026)
+Errors           : 0
+Skipped          : 0
+```
+
+Coverage finale:
+
+```text
+LINE   : 70.77% (1910 / 2699)
+BRANCH : 55.22% (672 / 1217)
+```
+
+Incremento rispetto alla baseline `T_BB`:
+
+```text
+Covered lines    : +733
+Covered branches : +300
+LINE delta       : +27.16 pp
+BRANCH delta     : +24.65 pp
+```
+
+Il final gap audit applica una stopping rule esplicita: i gap residui non sono
+sufficienti, da soli, a giustificare nuovi micro-test. `TCF-006` non è
+pianificato e `T_CF` è stata congelata.
+
+Evidence principali:
+
+```text
+isw2/results/testing/pcenhancer/tbb/
+isw2/results/testing/pcenhancer/tcf/
+```
+
+Il freeze finale di `T_CF` verifica cinque test, sei fixture, assenza di
+diagnostic temporanei e micro-test obsoleti, clean compilation e manifest
+SHA-256 degli 11 artefatti Java definitivi.
+
+Prossima fase:
+
+```text
+Mutation analysis -> T_MT
+```
+
+---
+
 ## Documentazione
 
 * [Setup e baseline](docs/setup.md)
 * [Milestone 1 – Dataset Creation](docs/milestone1.md)
 * [Milestone 2 – Classification](docs/milestone2.md)
 * [Milestone 3 – What-if Analysis](docs/milestone3.md)
+* [Testing – PCEnhancer black-box](docs/testing/pcenhancer-black-box.md)
+* [Testing – PCEnhancer control-flow](docs/testing/pcenhancer-control-flow.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
@@ -454,4 +624,8 @@ Durante il progetto:
 5. le scelte metodologiche vengono documentate e motivate;
 6. il branch `baseline-4.1.1` rimane immutabile;
 7. i defect non vengono esclusi sulla base della natura del problema se soddisfano i criteri adottati;
-8. gli audit diagnostici vengono utilizzati per verificare e spiegare i risultati senza modificare manualmente i dataset.
+8. gli audit diagnostici vengono utilizzati per verificare e spiegare i risultati senza modificare manualmente i dataset;
+9. la suite manuale black-box iniziale viene congelata prima di osservare coverage e mutation score;
+10. i test già presenti nel repository OpenJPA non vengono riutilizzati come suite sperimentale;
+11. ogni famiglia di test viene documentata, implementata, eseguita e validata prima di procedere alla successiva.
+12. i test `T_CF` vengono selezionati dai gap di Line/Branch Coverage solo dopo il freeze di `T_BB` e vengono congelati prima della mutation analysis.
