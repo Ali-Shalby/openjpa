@@ -1,0 +1,68 @@
+﻿===== PCENHANCER T_BB ORACLE-SOURCE AUDIT =====
+
+===== CLASSIFICATION LEGEND =====
+DOCUMENTED_EXACT    = exact expected result stated by public documentation
+PUBLIC_CONTRACT     = expected behavior follows directly from public API contract
+DOCUMENTED_PROPERTY = documented behavioral property used as oracle
+INTERFACE_INFERENCE = conservative inference from public interface semantics
+
+C0 codes:
+NO                      = no production-source inspection needed for oracle
+VALUE_ONLY              = C0 used only to instantiate an already-defined input category
+SETUP_VALIDATION_ONLY   = C0 checked only to make a documented frame executable
+POST_RUN_DIAGNOSIS_ONLY = C0 inspected only after observing a frozen test failure
+
+===== FRAME TRACEABILITY =====
+TBB-001  | PUBLIC_CONTRACT      | VALUE_ONLY               | generated PC-subclass name -> recognized
+TBB-002  | PUBLIC_CONTRACT      | NO                       | ordinary class name -> not recognized
+TBB-003  | PUBLIC_CONTRACT      | VALUE_ONLY               | generated PC-subclass name -> managed type name
+TBB-004  | PUBLIC_CONTRACT      | NO                       | ordinary name -> unchanged
+TBB-005  | DOCUMENTED_EXACT     | NO                       | new Flags() -> documented defaults
+TBB-006  | INTERFACE_INFERENCE  | NO                       | empty string is not a generated PC-subclass name
+TBB-007  | PUBLIC_CONTRACT      | NO                       | non-generated name -> unchanged, including empty string
+TBB-008  | DOCUMENTED_PROPERTY  | NO                       | constructor present + add=true -> enhancement succeeds
+TBB-009  | DOCUMENTED_PROPERTY  | NO                       | constructor present + add=false -> enhancement succeeds
+TBB-010  | DOCUMENTED_PROPERTY  | NO                       | constructor missing + add=true -> no-arg constructor generated
+TBB-011  | DOCUMENTED_PROPERTY  | NO                       | constructor missing + add=false -> enhancement rejected
+TBB-012  | PUBLIC_CONTRACT      | NO                       | metadata present -> ENHANCE_PC
+TBB-013  | PUBLIC_CONTRACT      | NO                       | metadata absent -> ENHANCE_AWARE
+TBB-014  | PUBLIC_CONTRACT      | NO                       | already PersistenceCapable -> ENHANCE_NONE
+TBB-015  | PUBLIC_CONTRACT      | NO                       | managed interface -> ENHANCE_INTERFACE
+TBB-016  | DOCUMENTED_PROPERTY  | NO                       | compliant property access + enforcement=true -> accepted
+TBB-017  | DOCUMENTED_PROPERTY  | NO                       | violating property access + enforcement=false -> not rejected
+TBB-018  | DOCUMENTED_PROPERTY  | NO                       | violating property access + enforcement=true -> rejected
+TBB-019  | DOCUMENTED_PROPERTY  | NO                       | directory=null -> disposable original class is replaced
+TBB-020  | DOCUMENTED_PROPERTY  | NO                       | explicit directory -> output written under package tree
+TBB-021  | PUBLIC_CONTRACT      | NO                       | FQCN target representation accepted
+TBB-022  | PUBLIC_CONTRACT      | NO                       | .java target representation accepted
+TBB-023  | PUBLIC_CONTRACT      | NO                       | .class target representation accepted
+TBB-024  | PUBLIC_CONTRACT      | NO                       | .jdo metadata target representation accepted
+TBB-025  | DOCUMENTED_PROPERTY  | NO                       | zero explicit targets -> configured persistent classes used
+TBB-026  | DOCUMENTED_EXACT     | POST_RUN_DIAGNOSIS_ONLY  | invalid option -> run(..., Options) returns false
+TBB-027  | PUBLIC_CONTRACT      | NO                       | direct mode -> managed type itself becomes PC type
+TBB-028  | PUBLIC_CONTRACT      | SETUP_VALIDATION_ONLY    | subclass mode -> separate generated PC subclass
+TBB-029  | DOCUMENTED_EXACT     | NO                       | version == ENHANCER_VERSION -> not down-level
+TBB-030  | DOCUMENTED_EXACT     | NO                       | version == ENHANCER_VERSION-1 -> down-level + log
+
+Frame count: 30
+
+===== SOURCE-DERIVATION AUDIT =====
+Coverage/mutation-derived design markers: NONE
+
+===== NATIVE TEST DEPENDENCY AUDIT =====
+OpenJPA native/test JAR dependency: NONE
+
+===== C0 INSPECTION SUMMARY =====
+NO                      : 26
+POST_RUN_DIAGNOSIS_ONLY : 1
+SETUP_VALIDATION_ONLY   : 1
+VALUE_ONLY              : 2
+
+===== FINAL ORACLE-SOURCE STATUS =====
+Frames audited : 30
+T_BB status     : FROZEN
+Coverage used to derive T_BB : NO
+Mutation used to derive T_BB : NO
+Native OpenJPA tests reused  : NO
+
+RESULT: PCENHANCER T_BB ORACLE-SOURCE AUDIT COMPLETED

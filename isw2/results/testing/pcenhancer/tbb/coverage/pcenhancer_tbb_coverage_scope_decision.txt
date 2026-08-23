@@ -1,0 +1,43 @@
+﻿===== PCENHANCER COVERAGE SCOPE DECISION =====
+
+Experimental target:
+org.apache.openjpa.enhance.PCEnhancer
+
+Rationale:
+The course experiment is performed on two selected classes.
+Therefore the primary adequacy metrics are computed from the
+JaCoCo counters of the selected outer class PCEnhancer.
+
+Nested types declared in PCEnhancer.java remain part of the testable
+public API where relevant, but are not included in the primary
+class-level adequacy denominator.
+
+===== PRIMARY CLASS-LEVEL BASELINE =====
+
+Suite             : T_BB
+Selected class    : org.apache.openjpa.enhance.PCEnhancer
+
+Line covered      : 1177
+Line missed       : 1522
+Line total        : 2699
+Line Coverage     : 43.61%
+
+Branch covered    : 372
+Branch missed     : 845
+Branch total      : 1217
+Branch Coverage   : 30.57%
+
+===== SECONDARY SOURCE-FILE DIAGNOSTIC =====
+
+Source file       : PCEnhancer.java
+Includes          : PCEnhancer + executable nested types
+
+Line Coverage     : 43.71%
+Branch Coverage   : 30.57%
+
+===== DECISION =====
+
+PRIMARY METRIC SCOPE   : outer PCEnhancer class
+SECONDARY DIAGNOSTIC   : PCEnhancer.java source-file aggregation
+
+RESULT: PCENHANCER COVERAGE SCOPE FROZEN

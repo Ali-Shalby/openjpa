@@ -1,0 +1,2 @@
+﻿"Suite","Tests","Passed","Failed","KnownFailure","SelectedClass","PrimaryScope","LineCovered","LineMissed","LineTotal","LineCoveragePercent","BranchCovered","BranchMissed","BranchTotal","BranchCoveragePercent","SourceFileLineCoveragePercent","SourceFileBranchCoveragePercent"
+"T_BB","30","29","1","TBB-026","org.apache.openjpa.enhance.PCEnhancer","Outer class","1177","1522","2699","43,61","372","845","1217","30,57","43,71","30,57"

@@ -1,0 +1,64 @@
+﻿
+===== PCENHANCER FINAL T_BB AUDIT =====
+
+===== GIT DIFF CHECK =====
+git diff --check: PASS
+
+===== STATIC TEST AUDIT =====
+PCEnhancerBlackBoxConstructorTest.java                    4
+PCEnhancerBlackBoxEnhancementLevelTest.java               2
+PCEnhancerBlackBoxFlagsTest.java                          1
+PCEnhancerBlackBoxInvalidOptionsTest.java                 1
+PCEnhancerBlackBoxNamingTest.java                         6
+PCEnhancerBlackBoxOutcomeTest.java                        4
+PCEnhancerBlackBoxPropertyAccessTest.java                 3
+PCEnhancerBlackBoxRecordingTest.java                      2
+PCEnhancerBlackBoxStrategyTest.java                       2
+PCEnhancerBlackBoxTargetRepresentationTest.java           5
+
+Test classes : 10
+Total @Test  : 30
+Static T_BB inventory: PASS
+
+===== TEST COMPILE =====
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ openjpa-isw2-testing ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.959 s
+[INFO] Finished at: 2026-08-23T10:46:24+02:00
+[INFO] ------------------------------------------------------------------------
+T_BB test compilation: PASS
+
+===== FULL RUN EVIDENCE CHECK =====
+Full run evidence : PASS
+Tests             : 30
+PASS              : 29
+FAIL              : 1
+Errors            : 0
+Skipped           : 0
+Expected failure  : TBB-026
+
+===== FINAL T_BB STATUS =====
+Suite   : T_BB
+Status  : FROZEN / IMPLEMENTED / FULLY EXECUTED
+TBB-026 : documented-contract discrepancy
+
+RESULT: PCENHANCER T_BB FINAL AUDIT PASSED
