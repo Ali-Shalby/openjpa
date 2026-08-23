@@ -1,0 +1,72 @@
+﻿===== PCENHANCER BLACK-BOX PUBLIC API PREFLIGHT =====
+
+Target   : org.apache.openjpa.enhance.PCEnhancer
+Baseline : OpenJPA 4.1.1 / C0
+JAR      : .\openjpa-kernel\target\openjpa-kernel-4.1.1.jar
+Exists   : True
+
+===== PCEnhancer PUBLIC API =====
+Compiled from "PCEnhancer.java"
+public class org.apache.openjpa.enhance.PCEnhancer {
+  public static final int ENHANCER_VERSION;
+  public static final int ENHANCE_NONE;
+  public static final int ENHANCE_AWARE;
+  public static final int ENHANCE_INTERFACE;
+  public static final int ENHANCE_PC;
+  public static final java.lang.String PRE;
+  public static final java.lang.String ISDETACHEDSTATEDEFINITIVE;
+  public org.apache.openjpa.enhance.PCEnhancer(org.apache.openjpa.conf.OpenJPAConfiguration, java.lang.Class<?>);
+  public org.apache.openjpa.enhance.PCEnhancer(org.apache.openjpa.conf.OpenJPAConfiguration, org.apache.openjpa.meta.ClassMetaData);
+  public org.apache.openjpa.enhance.PCEnhancer(org.apache.openjpa.conf.OpenJPAConfiguration, org.apache.openjpa.util.asm.ClassNodeTracker, org.apache.openjpa.meta.MetaDataRepository);
+  public org.apache.openjpa.enhance.PCEnhancer(org.apache.openjpa.conf.OpenJPAConfiguration, org.apache.openjpa.util.asm.ClassNodeTracker, org.apache.openjpa.meta.MetaDataRepository, java.lang.ClassLoader);
+  public org.apache.openjpa.enhance.PCEnhancer(org.apache.openjpa.meta.MetaDataRepository, org.apache.openjpa.util.asm.ClassNodeTracker, org.apache.openjpa.meta.ClassMetaData);
+  public static boolean isPCSubclassName(java.lang.String);
+  public static java.lang.String toManagedTypeName(java.lang.String);
+  public org.apache.openjpa.util.asm.ClassNodeTracker getPCBytecode();
+  public org.apache.openjpa.util.asm.ClassNodeTracker getManagedTypeBytecode();
+  public org.apache.openjpa.meta.ClassMetaData getMetaData();
+  public boolean getAddDefaultConstructor();
+  public void setAddDefaultConstructor(boolean);
+  public boolean getRedefine();
+  public void setRedefine(boolean);
+  public boolean isAlreadyRedefined();
+  public boolean isAlreadySubclassed();
+  public boolean getCreateSubclass();
+  public void setCreateSubclass(boolean);
+  public boolean getEnforcePropertyRestrictions();
+  public void setEnforcePropertyRestrictions(boolean);
+  public java.io.File getDirectory();
+  public void setDirectory(java.io.File);
+  public org.apache.openjpa.util.asm.BytecodeWriter getBytecodeWriter();
+  public void setBytecodeWriter(org.apache.openjpa.util.asm.BytecodeWriter);
+  public int run();
+  public void record() throws java.io.IOException;
+  public org.apache.openjpa.enhance.PCEnhancer$AuxiliaryEnhancer[] getAuxiliaryEnhancers();
+  public java.lang.Class getType(org.apache.openjpa.meta.ClassMetaData);
+  public static void main(java.lang.String[]);
+  public static boolean run(java.lang.String[], org.apache.openjpa.lib.util.Options);
+  public static boolean run(org.apache.openjpa.conf.OpenJPAConfiguration, java.lang.String[], org.apache.openjpa.lib.util.Options) throws java.io.IOException;
+  public static boolean run(org.apache.openjpa.conf.OpenJPAConfiguration, java.lang.String[], org.apache.openjpa.enhance.PCEnhancer$Flags, org.apache.openjpa.meta.MetaDataRepository, org.apache.openjpa.util.asm.BytecodeWriter, java.lang.ClassLoader) throws java.io.IOException;
+  public static boolean checkEnhancementLevel(java.lang.Class<?>, org.apache.openjpa.lib.log.Log);
+}
+
+===== PCEnhancer.Flags PUBLIC API =====
+Compiled from "PCEnhancer.java"
+public class org.apache.openjpa.enhance.PCEnhancer$Flags {
+  public java.io.File directory;
+  public boolean addDefaultConstructor;
+  public boolean tmpClassLoader;
+  public boolean enforcePropertyRestrictions;
+  public org.apache.openjpa.enhance.PCEnhancer$Flags();
+}
+
+===== BLACK-BOX POLICY =====
+Private methods inspected : NO
+Bytecode disassembly      : NO
+Native tests inspected    : NO
+Coverage information used : NO
+Mutation information used : NO
+Sonar used for T_BB       : NO
+M4 started                : NO
+
+===== END =====

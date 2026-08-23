@@ -1,0 +1,76 @@
+﻿===== OPENJPA 4.1.1 FINAL CLASS-SELECTION RANKING =====
+
+===== VALIDATION =====
+Inventory rows          : 1495
+Sonar metric rows       : 1495
+Joined rows             : 1495
+Eligible CLASS rows     : 802
+Minimum TypeLOC         : 40
+Minimum methods         : 3
+Ranking metric          : NSmells DESC
+Tie-break               : FQCN ASC
+Sonar revision          : 9a3db3eb463ab40a45485eec284d5e107a6a1f34
+
+Eligible with smells    : 722
+Eligible with NSmells=0 : 80
+Maximum NSmells         : 201
+Minimum NSmells         : 0
+
+===== NAME-BASED RULE =====
+Name initial            : A
+Alphabet position       : 1
+1 mod 5                 : 1
+Case                     : first + 1 / last - 1
+
+===== SELECTED CLASS 1 =====
+Rank            : 2
+FQCN            : org.apache.openjpa.enhance.PCEnhancer
+FilePath        : openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java
+Module          : openjpa-kernel
+NSmells         : 190
+TypeLOC         : 5690
+DeclaredMethods : 131
+Constructors    : 5
+Abstract        : false
+Public          : true
+
+===== SELECTED CLASS 2 =====
+Rank            : 801
+FQCN            : org.apache.openjpa.util.asm.ClassWriterTracker
+FilePath        : openjpa-kernel/src/main/java/org/apache/openjpa/util/asm/ClassWriterTracker.java
+Module          : openjpa-kernel
+NSmells         : 0
+TypeLOC         : 49
+DeclaredMethods : 6
+Constructors    : 2
+Abstract        : false
+Public          : true
+
+===== TOP 10 =====
+#1 | NSmells=201 | LOC=5975 | Methods=343 | org.apache.openjpa.jdbc.sql.DBDictionary
+#2 | NSmells=190 | LOC=5690 | Methods=131 | org.apache.openjpa.enhance.PCEnhancer
+#3 | NSmells=174 | LOC=2849 | Methods=166 | org.apache.openjpa.persistence.XMLPersistenceMetaDataParser
+#4 | NSmells=143 | LOC=5402 | Methods=275 | org.apache.openjpa.kernel.BrokerImpl
+#5 | NSmells=124 | LOC=3505 | Methods=210 | org.apache.openjpa.jdbc.sql.SelectImpl
+#6 | NSmells=119 | LOC=2514 | Methods=179 | org.apache.openjpa.meta.FieldMetaData
+#7 | NSmells=107 | LOC=2212 | Methods=281 | org.apache.openjpa.conf.OpenJPAConfigurationImpl
+#8 | NSmells=90 | LOC=2783 | Methods=166 | org.apache.openjpa.meta.ClassMetaData
+#9 | NSmells=73 | LOC=1743 | Methods=85 | org.apache.openjpa.persistence.jdbc.XMLPersistenceMappingParser
+#10 | NSmells=71 | LOC=2518 | Methods=143 | org.apache.openjpa.meta.MetaDataRepository
+
+===== BOTTOM 10 =====
+#793 | NSmells=0 | LOC=355 | Methods=59 | org.apache.openjpa.persistence.query.AbstractDomainObject
+#794 | NSmells=0 | LOC=539 | Methods=102 | org.apache.openjpa.persistence.query.ExpressionImpl
+#795 | NSmells=0 | LOC=58 | Methods=7 | org.apache.openjpa.persistence.query.JoinPath
+#796 | NSmells=0 | LOC=48 | Methods=6 | org.apache.openjpa.persistence.query.NavigationPath
+#797 | NSmells=0 | LOC=103 | Methods=3 | org.apache.openjpa.tools.maven.AbstractOpenJpaEnhancerMojo
+#798 | NSmells=0 | LOC=127 | Methods=4 | org.apache.openjpa.tools.maven.AbstractOpenJpaMappingToolMojo
+#799 | NSmells=0 | LOC=61 | Methods=3 | org.apache.openjpa.tools.maven.OpenJpaTestEnhancerMojo
+#800 | NSmells=0 | LOC=62 | Methods=7 | org.apache.openjpa.util.asm.ClassNodeTracker
+#801 | NSmells=0 | LOC=49 | Methods=6 | org.apache.openjpa.util.asm.ClassWriterTracker
+#802 | NSmells=0 | LOC=53 | Methods=4 | org.apache.openjpa.util.BlacklistClassResolver
+
+===== IMPORTANT =====
+Structural thresholds were frozen before observing 4.1.1 NSmells.
+No manual class choice was performed.
+===== END =====

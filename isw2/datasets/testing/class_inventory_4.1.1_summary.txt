@@ -1,0 +1,15 @@
+OpenJPA class-selection structural inventory
+ReleaseTag=4.1.1
+CommitId=9d2f5f8c35691c3542606bea1d23b916bcbeda8d
+TrackedJavaFiles=4753
+ProductionJavaFiles=1495
+PrimaryTypeRows=1495
+SkippedFiles=0
+DuplicateFqcnGroups=0
+ClassRows=1112
+ConcreteClassRows=993
+AbstractClassRows=119
+TypeKind.CLASS=1112
+TypeKind.INTERFACE=274
+TypeKind.ENUM=35
+TypeKind.ANNOTATION_TYPE=74

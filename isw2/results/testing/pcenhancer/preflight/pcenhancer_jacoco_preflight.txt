@@ -1,0 +1,80 @@
+﻿===== PCENHANCER JACOCO PREFLIGHT =====
+
+===== JAVA =====
+java version "21" 2023-09-19 LTS
+Java(TM) SE Runtime Environment (build 21+35-LTS-2513)
+Java HotSpot(TM) 64-Bit Server VM (build 21+35-LTS-2513, mixed mode, sharing)
+
+===== MAVEN =====
+Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
+Maven home: C:\Program Files\apache-maven-3.9.9
+Java version: 21, vendor: Oracle Corporation, runtime: C:\Program Files\Java\jdk-21
+Default locale: it_IT, platform encoding: UTF-8
+OS name: "windows 11", version: "10.0", arch: "amd64", family: "windows"
+
+===== TESTING POM =====
+POM: FOUND
+maven.compiler.release : 21
+maven.surefire.version : 3.5.6
+Surefire forkCount=0   : NO
+JaCoCo already in POM  : NO
+
+===== OPENJPA DEPENDENCIES =====
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.7.0:tree (default-cli) @ openjpa-isw2-testing ---
+[INFO] it.uniroma2.isw2.openjpa:openjpa-isw2-testing:jar:1.0-SNAPSHOT
+[INFO] +- org.apache.openjpa:openjpa-kernel:jar:4.1.1:compile
+[INFO] |  \- org.apache.openjpa:openjpa-lib:jar:4.1.1:compile
+[INFO] \- org.apache.openjpa:openjpa-persistence:jar:4.1.1:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.148 s
+[INFO] Finished at: 2026-08-23T10:58:09+02:00
+[INFO] ------------------------------------------------------------------------
+
+===== OPENJPA KERNEL ARTIFACT =====
+Kernel JAR : C:\Users\marco\.m2\repository\org\apache\openjpa\openjpa-kernel\4.1.1\openjpa-kernel-4.1.1.jar
+Bytes      : 1542400
+SHA256     : F19BF2E106754518DB9B0E5ED548DA4B390B717E22C18DEC44A68B6DFD976E79
+
+===== PCENHANCER BYTECODE =====
+  Compiled from "PCEnhancer.java"
+  minor version: 0
+  major version: 55
+
+===== PCENHANCER SOURCE =====
+Source : openjpa-kernel\src\main\java\org\apache\openjpa\enhance\PCEnhancer.java
+Bytes  : 279410
+SHA256 : F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A
+
+===== FROZEN T_BB EVIDENCE =====
+T_BB final audit : PASS
+Expected tests   : 30
+Expected PASS    : 29
+Expected FAIL    : 1
+Known failure    : TBB-026
+
+===== COVERAGE REQUIREMENTS =====
+Production project     : Apache OpenJPA 4.1.1
+Production target      : org.apache.openjpa.enhance.PCEnhancer
+Target origin          : openjpa-kernel:4.1.1 dependency
+Harness                : isw2/testing
+Frozen suite           : T_BB
+Adequacy metric 1      : LINE
+Adequacy metric 2      : BRANCH
+Known failing test     : TBB-026
+Native OpenJPA tests   : excluded
+
+===== IMPORTANT =====
+No JaCoCo configuration has been applied by this script.
+This file only records the local environment needed
+to choose the OpenJPA-specific coverage configuration.
+
+RESULT: PCENHANCER JACOCO PREFLIGHT COMPLETED
