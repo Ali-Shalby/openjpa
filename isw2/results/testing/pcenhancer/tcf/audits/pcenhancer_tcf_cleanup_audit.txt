@@ -1,0 +1,41 @@
+﻿============================================================
+ PCENHANCER T_CF CLEANUP
+============================================================
+
+===== 1. REMOVE OBSOLETE CF SOURCES =====
+ABSENT : isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowTest.java
+ABSENT : isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowCompactGapTest.java
+
+===== 2. VERIFY KEPT SOURCES =====
+FOUND: PCEnhancerControlFlowApplicationIdentityTest.java
+FOUND: PCEnhancerControlFlowApplicationIdentityTarget.java
+
+===== 3. RENUMBER APPLICATION IDENTITY =====
+Application Identity identifier normalized to TCF-001
+
+===== 4. REMOVE OBSOLETE CF RUN EVIDENCE =====
+ABSENT: isw2\results\testing\pcenhancer_tcf_batch1_run.txt
+ABSENT: isw2\results\testing\pcenhancer_tcf_batch2_run.txt
+ABSENT: isw2\results\testing\pcenhancer_tcf_batch3_application_identity_run.txt
+ABSENT: isw2\results\testing\pcenhancer_tcf_batch1_delta_audit.txt
+
+===== 5. REMOVE OBSOLETE T_CF COVERAGE =====
+OLD T_CF COVERAGE DIRECTORY: ABSENT
+
+===== 6. FINAL CF SOURCE TREE =====
+PCEnhancerControlFlowApplicationIdentityTarget.java
+PCEnhancerControlFlowApplicationIdentityTest.java
+
+===== 7. NUMBERING AUDIT =====
+Old TCF identifiers : NONE
+TCF-001 Application Identity : FOUND
+
+===== 8. PRE-T_CF EVIDENCE =====
+Pre-T_CF gap audit : PRESERVED
+
+===== FINAL STATE =====
+
+T_CF definitive sources:
+TCF-001 = Application Identity
+
+RESULT: PCENHANCER T_CF CLEANUP COMPLETED

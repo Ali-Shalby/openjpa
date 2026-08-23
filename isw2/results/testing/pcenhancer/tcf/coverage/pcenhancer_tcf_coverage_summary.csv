@@ -1,0 +1,2 @@
+﻿"Suite","Definition","ControlFlowTests","Tests","Passed","Failed","Errors","Skipped","KnownFailure","LineCovered","LineMissed","LineTotal","LineCoveragePercent","BranchCovered","BranchMissed","BranchTotal","BranchCoveragePercent","TCF003AdditionalLines","TCF003AdditionalBranches","TCF003DeltaLinePercentagePoints","TCF003DeltaBranchPercentagePoints"
+"T_CF","T_BB + TCF-001 Application Identity + TCF-002 Externalization + TCF-003 Serialization","3","33","32","1","0","0","TBB-026","1728","971","2699","64,02","599","618","1217","49,22","78","26","2,89","2,14"

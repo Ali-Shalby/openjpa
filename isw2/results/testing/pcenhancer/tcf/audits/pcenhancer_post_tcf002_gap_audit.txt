@@ -1,0 +1,113 @@
+﻿============================================================
+ PCENHANCER POST-TCF-002 COVERAGE GAP AUDIT
+============================================================
+
+Current suite:
+T_BB + TCF-001 Application Identity + TCF-002 Externalization
+
+Tests  : 32
+PASS   : 31
+FAIL   : 1 (TBB-026)
+
+LINE   : 61.13%
+BRANCH : 47.08%
+
+===== 1. REMAINING FUNCTIONAL CLUSTER GAPS =====
+
+
+Cluster               Methods BranchCovered BranchMissed LineCovered LineMissed
+-------               ------- ------------- ------------ ----------- ----------
+APPLICATION_IDENTITY        4            90          176         180        371
+PROPERTY_FIELD_ACCESS      10            78           72         123         79
+IDENTITY_OPTIMIZATION       6             9           58          15         72
+DETACHED_STATE              5            35           41         130         70
+SERIALIZATION               4             3           33           2        107
+EXTERNALIZATION             9            61           31         217         43
+CLONING                     1             3           19          10         25
+
+
+
+
+===== 2. COMPLETELY UNCOVERED BRANCHING METHODS =====
+
+
+Method                           StartLine BranchMissed LineMissed
+------                           --------- ------------ ----------
+addExtractObjectIdFieldValueCode      2460           58        172
+getIdClassConstructorParmOrder        5737           22         34
+optimizeIdCopy                        5702           16         15
+toPrimitiveWrapper                    2031            9         10
+setVisibilityToSuperMethod            4240            8         18
+modifyWriteObjectMethod               3645            6         30
+addNotifyMutation                     1207            6         17
+ifDefaultValue                        4005            5         18
+addSubclassSerializationCode          3594            4         22
+addSubclassGetMethod                  4269            4         21
+modifyReadObjectMethod                3696            4         16
+addSubclassSetMethod                  4202            2         21
+addNotifyAccess                       1177            2         10
+main                                  5486            2          5
+listSize                              5806            2          1
+
+
+
+
+===== 3. LARGE PARTIALLY-COVERED METHODS =====
+
+
+Method                             StartLine BranchCovered BranchMissed LineCovered LineMissed
+------                             --------- ------------- ------------ ----------- ----------
+addCopyKeyFieldsToObjectIdMethod        2173            32           54          70         99
+addCopyKeyFieldsFromObjectIdMethod      2742            31           45          63         88
+writeIsDetachedMethod                   3766            19           23          77         61
+replaceAndValidateFieldAccess           1074            14           20          19         23
+addSerializationCode                    3501             3           19           2         39
+addCloningCode                          4069             3           19          10         25
+addNewObjectIdInstanceMethod            3075            27           19          47         12
+findField                                907            19           17          26          9
+validateProperties                       696            12           16          21         24
+run                                     5544            23           13          40         10
+addPCMethods                            1284             9           13          25          4
+addAttributeTranslation                  801             4           10          24         17
+addAttachDetachCode                     4426             6           10          11          5
+
+
+
+
+===== 4. CLUSTER EVOLUTION =====
+
+PRE-T_CF:
+APPLICATION_IDENTITY  missed lines=551  missed branches=266
+EXTERNALIZATION       missed lines=260  missed branches=92
+DETACHED_STATE        missed lines=109  missed branches=62
+SERIALIZATION         missed lines=107  missed branches=34
+IDENTITY_OPTIMIZATION missed lines=84   missed branches=65
+CLONING               missed lines=25   missed branches=19
+
+CURRENT:
+
+Cluster               BranchMissed LineMissed
+-------               ------------ ----------
+APPLICATION_IDENTITY           176        371
+EXTERNALIZATION                 31         43
+DETACHED_STATE                  41         70
+SERIALIZATION                   33        107
+IDENTITY_OPTIMIZATION           58         72
+PROPERTY_FIELD_ACCESS           72         79
+CLONING                         19         25
+
+
+
+
+===== 5. TCF-003 SELECTION RULE =====
+
+TCF-003 should be added only if a remaining cluster:
+1. still exposes a substantial independent gap;
+2. represents coherent production behavior;
+3. is reachable through a reasonable target/configuration;
+4. has limited overlap with TCF-001 and TCF-002;
+5. is expected to produce a meaningful coverage increase.
+
+Otherwise T_CF should be frozen after TCF-002.
+
+RESULT: PCENHANCER POST-TCF-002 GAP AUDIT COMPLETED
