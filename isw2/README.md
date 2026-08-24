@@ -138,10 +138,21 @@ T_BB LINE        : 43.61%
 T_BB BRANCH      : 30.57%
 
 T_CF additions   : 5 test, FROZEN
-Suite cumulativa : 35 test
-Outcome finale   : 34 PASS, 1 FAIL noto (TBB-026)
-Final LINE       : 70.77%
-Final BRANCH     : 55.22%
+Suite post-T_CF  : 35 test
+T_CF outcome     : 34 PASS, 1 FAIL noto (TBB-026)
+T_CF LINE        : 70.77%
+T_CF BRANCH      : 55.22%
+
+T_MT additions   : 5 test, FROZEN
+Suite manuale    : 40 test
+Outcome finale   : 39 PASS, 1 FAIL noto (TBB-026)
+PIT population   : 1700 mutanti
+Raw KILLED       : 827
+Raw SURVIVED     : 355
+NO_COVERAGE      : 516
+TIMED_OUT        : 2
+Mutation Score   : 48.65%
+Test Strength    : 69.97%
 ```
 
 La failure `TBB-026` resta invariata: il contratto pubblico di
@@ -153,6 +164,7 @@ Documentazione:
 
 * [`docs/testing/pcenhancer-black-box.md`](docs/testing/pcenhancer-black-box.md)
 * [`docs/testing/pcenhancer-control-flow.md`](docs/testing/pcenhancer-control-flow.md)
+* [`docs/testing/pcenhancer-mutation-testing.md`](docs/testing/pcenhancer-mutation-testing.md)
 
 ---
 
@@ -239,11 +251,18 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Coverage cumulativa finale – 70.77% Line / 55.22% Branch
 * [x] Final gap audit e stopping rule (`TCF-006` non pianificato)
 * [x] Freeze audit `T_CF` – 5 test, 6 fixture, manifest SHA-256
+* [x] Mutation baseline sulla suite `T_BB + T_CF` – 1700 mutanti
+* [x] Survivor analysis e `TMT-001` – Application Identity runtime semantics
+* [x] `TMT-002` – Externalization runtime round-trip semantics
+* [x] `TMT-003` – Standard Java Serialization runtime round-trip
+* [x] `TMT-004` – PersistenceCapable / StateManager runtime semantics
+* [x] `TMT-005` – Relationship-valued / derived identity runtime semantics
+* [x] Final PIT – 827 KILLED / 355 SURVIVED / 516 NO_COVERAGE / 2 TIMED_OUT
+* [x] Clean full regression – 40 test, 39 PASS, 1 FAIL documentato (`TBB-026`)
+* [x] Freeze `T_MT` – Mutation Score 48.65% / Test Strength 69.97%
 
 ### In corso
 
-* [ ] Mutation analysis della suite manuale congelata `T_BB + T_CF`
-* [ ] Evoluzione mutation-guided `T_MT`
 * [ ] Suite automatiche `T_RND`, `T_LLM`, `T_ES`
 * [ ] Reliability di `PCEnhancer`
 * [ ] Testing della seconda classe OpenJPA
@@ -592,10 +611,116 @@ Il freeze finale di `T_CF` verifica cinque test, sei fixture, assenza di
 diagnostic temporanei e micro-test obsoleti, clean compilation e manifest
 SHA-256 degli 11 artefatti Java definitivi.
 
+### Mutation testing e suite mutation-guided `T_MT`
+
+La mutation baseline è stata misurata solo dopo il freeze di `T_BB` e `T_CF`,
+utilizzando PIT sulla sola classe esterna:
+
+```text
+org.apache.openjpa.enhance.PCEnhancer
+```
+
+Protocollo congelato:
+
+```text
+PIT                 : 1.25.8
+PIT JUnit 5 plugin  : 1.2.3
+Mutators            : DEFAULTS
+Threads             : 1
+Mutation population : 1700
+```
+
+`TBB-026` rimane parte della suite manuale e conserva il proprio oracle, ma è
+escluso esclusivamente dalla mutation execution per garantire una baseline PIT
+verde. I test nativi OpenJPA non vengono utilizzati.
+
+Baseline mutation della suite `T_BB + T_CF`:
+
+```text
+Killed         : 465
+Survived       : 714
+No coverage    : 521
+Mutation Score : 27.35%
+Test Strength  : 39.44%
+```
+
+L'analisi dei survivor ha guidato cinque aggiunte comportamentali:
+
+```text
+TMT-001 Application Identity runtime object-id semantics
+TMT-002 Detached-state Externalization runtime round-trip
+TMT-003 Standard Java Serialization runtime round-trip
+TMT-004 PersistenceCapable / StateManager runtime field semantics
+TMT-005 Relationship-valued / derived identity runtime semantics
+```
+
+Evoluzione:
+
+| Stage | KILLED | SURVIVED | NO_COVERAGE | TIMED_OUT | Mutation Score | Test Strength | Δ KILLED |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Baseline | 465 | 714 | 521 | 0 | 27.35% | 39.44% | – |
+| Post TMT-001 | 632 | 551 | 516 | 1 | 37.18% | 53.42% | +167 |
+| Post TMT-002 | 718 | 465 | 516 | 1 | 42.24% | 60.69% | +86 |
+| Post TMT-003 | 745 | 438 | 516 | 1 | 43.82% | 62.98% | +27 |
+| Post TMT-004 | 773 | 409 | 516 | 2 | 45.47% | 65.40% | +28 |
+| Post TMT-005 | 827 | 355 | 516 | 2 | 48.65% | 69.97% | +54 |
+
+Miglioramento complessivo rispetto alla baseline:
+
+```text
+Additional KILLED     : +362
+Survivor reduction    : -359
+Mutation Score delta  : +21.30 pp
+Test Strength delta   : +30.53 pp
+```
+
+Nel riepilogo finale la console PIT stampa `Killed 829`; l'XML raw distingue
+invece `827 KILLED` e `2 TIMED_OUT`. Le metriche del progetto seguono la
+definizione congelata `KILLED/TOTAL` e `KILLED/(KILLED+SURVIVED)`, mantenendo i
+timeout separati.
+
+La regressione manuale definitiva è stata eseguita da build pulita:
+
+```text
+T_BB             : 30, FROZEN
+T_CF additions   : 5, FROZEN
+T_MT additions   : 5, FROZEN
+Manual suite     : 40
+Full regression  : 39 PASS, 1 FAIL noto (TBB-026)
+T_MT STATUS      : FROZEN
+```
+
+La stopping rule non richiede l'azzeramento dei survivor. `TMT-006` non viene
+pianificato: i 355 survivor residui vengono conservati come evidence
+sperimentale senza classificarli automaticamente come equivalenti.
+
+Evidence versionate:
+
+```text
+isw2/results/testing/pcenhancer/mutation/
+├── preflight/
+├── baseline/
+├── tmt001/
+├── tmt002/
+├── tmt003/
+├── tmt004/
+├── tmt005/
+└── final/
+```
+
+Per ogni iterazione viene mantenuto un summary uniforme e il relativo XML PIT.
+I diagnostic di feasibility, i gate intermedi, i dump CSV derivati e i run PIT
+intermedi molto verbosi restano artefatti di lavoro rigenerabili e non vengono
+versionati.
+
+Documentazione dettagliata:
+
+[`docs/testing/pcenhancer-mutation-testing.md`](docs/testing/pcenhancer-mutation-testing.md)
+
 Prossima fase:
 
 ```text
-Mutation analysis -> T_MT
+suite automatiche T_RND / T_LLM / T_ES e successive attività De Angelis
 ```
 
 ---
@@ -608,6 +733,7 @@ Mutation analysis -> T_MT
 * [Milestone 3 – What-if Analysis](docs/milestone3.md)
 * [Testing – PCEnhancer black-box](docs/testing/pcenhancer-black-box.md)
 * [Testing – PCEnhancer control-flow](docs/testing/pcenhancer-control-flow.md)
+* [Testing – PCEnhancer mutation testing](docs/testing/pcenhancer-mutation-testing.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
@@ -627,5 +753,6 @@ Durante il progetto:
 8. gli audit diagnostici vengono utilizzati per verificare e spiegare i risultati senza modificare manualmente i dataset;
 9. la suite manuale black-box iniziale viene congelata prima di osservare coverage e mutation score;
 10. i test già presenti nel repository OpenJPA non vengono riutilizzati come suite sperimentale;
-11. ogni famiglia di test viene documentata, implementata, eseguita e validata prima di procedere alla successiva.
-12. i test `T_CF` vengono selezionati dai gap di Line/Branch Coverage solo dopo il freeze di `T_BB` e vengono congelati prima della mutation analysis.
+11. ogni famiglia di test viene documentata, implementata, eseguita e validata prima di procedere alla successiva;
+12. i test `T_CF` vengono selezionati dai gap di Line/Branch Coverage solo dopo il freeze di `T_BB` e vengono congelati prima della mutation analysis;
+13. i test `T_MT` vengono selezionati da cluster di survivor behaviorally meaningful, mantenuti solo se dimostrano capacità aggiuntiva di fault detection e congelati quando la stopping rule rende non giustificata un'ulteriore iterazione.

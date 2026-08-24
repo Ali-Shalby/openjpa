@@ -1,0 +1,118 @@
+PCEnhancer - Formal Mutation Gap Audit
+
+Baseline
+--------
+Apache OpenJPA          : 4.1.1
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+Frozen T_BB             : 30
+Frozen T_CF             : 5
+Frozen manual suite     : 35
+PIT execution subset    : 34 green tests
+Known excluded test     : TBB-026
+Native OpenJPA tests    : NOT USED
+
+Mutation protocol
+-----------------
+PIT                     : 1.25.8
+Integration             : pitest-maven
+Mutator set             : DEFAULTS
+Class limit             : NONE
+Target scope            : outer PCEnhancer only
+
+Baseline results
+----------------
+Total mutants           : 1700
+Killed                  : 465
+Survived                : 714
+No coverage             : 521
+Timed out               : 0
+Run error               : 0
+Memory error            : 0
+
+Covered mutants         : 1179
+Mutation Score          : 27.35%
+Test Strength           : 39.44%
+Survivor rate (covered) : 60.56%
+
+Metric definitions
+------------------
+Mutation Score =
+    KILLED / TOTAL MUTANTS
+
+Test Strength =
+    KILLED / (KILLED + SURVIVED)
+
+NO_COVERAGE mutants are reported separately.
+They are not automatically interpreted as oracle weaknesses.
+
+Formal interpretation rule
+--------------------------
+SURVIVED mutants:
+    production code was reached by at least one test, but the current
+    observable oracle did not distinguish the mutant.
+
+NO_COVERAGE mutants:
+    mutated code was not exercised by the PIT execution subset.
+    They are retained as reachability evidence but are not automatically
+    selected for T_MT.
+
+No survivor is automatically classified as equivalent.
+No mutation-guided test is selected by this audit alone.
+
+Candidate ranking is descriptive, not prescriptive:
+    1. number of surviving mutants;
+    2. survivor rate among covered mutants;
+    3. diversity of surviving mutator types.
+
+Top survivor methods
+--------------------
+addCopyKeyFieldsToObjectIdMethod              survived=74    killed=13    noCoverage=24    strength=14,94%
+addCopyKeyFieldsFromObjectIdMethod            survived=61    killed=4     noCoverage=32    strength=6,15%
+writeIsDetachedMethod                         survived=38    killed=19    noCoverage=42    strength=33,33%
+addNewObjectIdInstanceMethod                  survived=33    killed=0     noCoverage=9     strength=0%
+addWriteExternal                              survived=30    killed=0     noCoverage=3     strength=0%
+addExtractObjectIdFieldValueCode              survived=24    killed=0     noCoverage=83    strength=0%
+addStaticInitializer                          survived=24    killed=20    noCoverage=10    strength=45,45%
+addMultipleFieldsMethodVersion                survived=22    killed=25    noCoverage=0     strength=53,19%
+addReadExternal                               survived=20    killed=0     noCoverage=3     strength=0%
+modifyWriteObjectMethod                       survived=19    killed=0     noCoverage=1     strength=0%
+run                                           survived=19    killed=30    noCoverage=18    strength=61,22%
+readExternal                                  survived=14    killed=1     noCoverage=8     strength=6,67%
+getfield                                      survived=13    killed=3     noCoverage=2     strength=18,75%
+addNewInstanceMethod                          survived=13    killed=11    noCoverage=1     strength=45,83%
+writeExternal                                 survived=12    killed=1     noCoverage=0     strength=7,69%
+addGetMethod                                  survived=12    killed=11    noCoverage=3     strength=47,83%
+addPCMethods                                  survived=12    killed=12    noCoverage=7     strength=50%
+addReplaceFieldsMethods                       survived=11    killed=10    noCoverage=4     strength=47,62%
+addSetMethod                                  survived=11    killed=10    noCoverage=4     strength=47,62%
+addAttributeTranslation                       survived=10    killed=0     noCoverage=8     strength=0%
+
+Top surviving mutators
+-----------------------
+org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator   survived=397   share=55,6%
+org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_EQUAL_ELSE survived=252   share=35,29%
+org.pitest.mutationtest.engine.gregor.mutators.MathMutator             survived=24    share=3,36%
+org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE survived=10    share=1,4%
+org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator survived=9     share=1,26%
+org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator       survived=7     share=0,98%
+org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator survived=6     share=0,84%
+org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanFalseReturnValsMutator survived=5     share=0,7%
+org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator survived=2     share=0,28%
+org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator survived=1     share=0,14%
+org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator survived=1     share=0,14%
+
+Next methodological step
+------------------------
+For the highest-value survivor clusters:
+
+1. inspect the exact mutations and production behavior;
+2. determine whether the mutant is meaningful, potentially equivalent,
+   redundant, or externally observable;
+3. evaluate whether a stable oracle can be constructed;
+4. perform a feasibility preflight before writing a definitive T_MT test;
+5. admit only justified mutation-guided tests into T_MT.
+
+No T_BB or T_CF test is modified retroactively.
+
+STATUS: MUTATION BASELINE ANALYZED
+NEXT PHASE: CANDIDATE SURVIVOR FEASIBILITY ANALYSIS

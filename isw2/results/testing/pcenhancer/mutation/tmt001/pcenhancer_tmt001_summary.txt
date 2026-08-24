@@ -1,0 +1,40 @@
+PCEnhancer Mutation Stage - TMT-001
+
+Scenario
+--------
+Application Identity runtime object-id semantics
+
+Cumulative suite
+----------------
+T_BB                    : 30
+T_CF                    : 5
+T_MT                    : 1
+Manual tests            : 36
+Known discrepancy       : TBB-026
+PIT execution set       : 35 green tests
+Native OpenJPA tests    : NOT USED
+
+Mutation protocol
+-----------------
+PIT                     : 1.25.8
+PIT JUnit 5 plugin      : 1.2.3
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+Mutators                : DEFAULTS
+Threads                 : 1
+Mutation population     : 1700
+
+Result
+------
+KILLED                  : 632
+SURVIVED                : 551
+NO_COVERAGE             : 516
+TIMED_OUT               : 1
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+Mutation Score          : 37.18%
+Test Strength           : 53.42%
+Delta KILLED            : +167
+
+Decision
+--------
+TMT-001                 : KEEP

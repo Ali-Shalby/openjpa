@@ -1,0 +1,37 @@
+PCEnhancer Mutation Stage - BASELINE
+
+Scenario
+--------
+Frozen T_BB + T_CF mutation baseline
+
+Cumulative suite
+----------------
+T_BB                    : 30
+T_CF                    : 5
+T_MT                    : 0
+Manual tests            : 35
+Known discrepancy       : TBB-026
+PIT execution set       : 34 green tests
+Native OpenJPA tests    : NOT USED
+
+Mutation protocol
+-----------------
+PIT                     : 1.25.8
+PIT JUnit 5 plugin      : 1.2.3
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+Mutators                : DEFAULTS
+Threads                 : 1
+Mutation population     : 1700
+
+Result
+------
+KILLED                  : 465
+SURVIVED                : 714
+NO_COVERAGE             : 521
+TIMED_OUT               : 0
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+Mutation Score          : 27.35%
+Test Strength           : 39.44%
+
+STATUS                  : BASELINE FROZEN

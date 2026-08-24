@@ -1,0 +1,40 @@
+PCEnhancer Mutation Stage - TMT-004
+
+Scenario
+--------
+PersistenceCapable / StateManager runtime field semantics
+
+Cumulative suite
+----------------
+T_BB                    : 30
+T_CF                    : 5
+T_MT                    : 4
+Manual tests            : 39
+Known discrepancy       : TBB-026
+PIT execution set       : 38 green tests
+Native OpenJPA tests    : NOT USED
+
+Mutation protocol
+-----------------
+PIT                     : 1.25.8
+PIT JUnit 5 plugin      : 1.2.3
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+Mutators                : DEFAULTS
+Threads                 : 1
+Mutation population     : 1700
+
+Result
+------
+KILLED                  : 773
+SURVIVED                : 409
+NO_COVERAGE             : 516
+TIMED_OUT               : 2
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+Mutation Score          : 45.47%
+Test Strength           : 65.40%
+Delta KILLED            : +28
+
+Decision
+--------
+TMT-004                 : KEEP

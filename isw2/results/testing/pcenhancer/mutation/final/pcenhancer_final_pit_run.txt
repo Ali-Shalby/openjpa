@@ -1,0 +1,180 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom-tmt005-final-pit.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- pitest:1.25.8:mutationCoverage (default-cli) @ openjpa-isw2-testing ---
+[INFO] Root dir is : C:\ISW2\openjpa\isw2\testing
+[INFO] Found plugin : Default csv report plugin
+[INFO] Found plugin : Default xml report plugin
+[INFO] Found plugin : Log progress during mutation analysis
+[INFO] Found plugin : Default html report plugin
+[INFO] Found plugin : Static initializer code detector plugin
+[INFO] Found plugin : Excluded annotations plugin
+[INFO] Found plugin : Try with resources filter
+[INFO] Found plugin : Inlined finally block filter plugin
+[INFO] Found plugin : Implicit null check filter
+[INFO] Found plugin : Method reference null check filter
+[INFO] Found plugin : For each loop filter
+[INFO] Found plugin : Enum junk filter
+[INFO] Found plugin : Record junk mutation filter
+[INFO] Found plugin : String switch filter
+[INFO] Found plugin : Assertions filter
+[INFO] Found plugin : Enum switch filter
+[INFO] Found plugin : Logging calls filter
+[INFO] Found plugin : Infinite for loop filter
+[INFO] Found plugin : Long running iterator loop filter
+[INFO] Found plugin : For loop counter filter
+[INFO] Found plugin : Kotlin junk mutations filter
+[INFO] Found plugin : Groovy junk mutations filter
+[INFO] Found plugin : Max mutations per class limit
+[INFO] Found plugin : Equals shortcut equivalent mutant filter
+[INFO] Found plugin : Trivial return vals equivalence filter
+[INFO] Found plugin : Filters mutants with line number <= 1
+[INFO] Found plugin : Division by one equivalent mutant filter
+[INFO] Found plugin : Lombok junk mutations filter
+[INFO] Found plugin : Filter mutations to defensive wrappers such as unmodifiableCollection on return or field write
+[INFO] Found plugin : Final field null assignment equivalent mutant filter
+[INFO] Found plugin : Mutant export plugin
+[INFO] Found plugin : Auto add java.awt.headless=true to keep keyboard focus on Mac OS
+[INFO] Found plugin : Auto set number of threads based on machine
+[INFO] Found plugin : Automatically add -ea to launch args to enable assertions
+[INFO] Found plugin : Default build verifier
+[INFO] Found plugin : Detect missing JUnit5 plugin
+[INFO] Found plugin : Detect missing TestNG plugin
+[INFO] Found plugin : Detect missing kotlin plugin
+[INFO] Found plugin : Detect missing spring plugin
+[INFO] Found plugin : Default coverage exporter
+[INFO] Found plugin : Basic test statistics
+[INFO] Found shared classpath plugin : Default mutation engine
+[INFO] Found shared classpath plugin : JUnit 5 test framework support
+[INFO] Found shared classpath plugin : JUnit plugin
+[INFO] Found shared classpath plugin : Support for mocking frameworks using javassist
+[INFO] Found shared classpath plugin : Disable JaCoCo
+[INFO] Found shared classpath plugin : Reset environment for javassist
+[INFO] Available mutators : EXPERIMENTAL_ARGUMENT_PROPAGATION,FALSE_RETURNS,TRUE_RETURNS,CONDITIONALS_BOUNDARY,CONSTRUCTOR_CALLS,EMPTY_RETURNS,INCREMENTS,INLINE_CONSTS,INVERT_NEGS,MATH,NEGATE_CONDITIONALS,NON_VOID_METHOD_CALLS,NULL_RETURNS,PRIMITIVE_RETURNS,REMOVE_CONDITIONALS_EQUAL_IF,REMOVE_CONDITIONALS_EQUAL_ELSE,REMOVE_CONDITIONALS_ORDER_IF,REMOVE_CONDITIONALS_ORDER_ELSE,VOID_METHOD_CALLS,EXPERIMENTAL_BIG_DECIMAL,EXPERIMENTAL_BIG_INTEGER,EXPERIMENTAL_MEMBER_VARIABLE,EXPERIMENTAL_NAKED_RECEIVER,REMOVE_INCREMENTS,EXPERIMENTAL_SWITCH
+[INFO] Adding org.pitest:pitest-junit5-plugin to SUT classpath
+[INFO] Adding org.pitest:pitest to SUT classpath
+[INFO] Auto adding org.junit.platform:junit-platform-launcher:jar:6.1.1 < central (https://repo.maven.apache.org/maven2, default, releases) to classpath.
+[INFO] Mutating from C:\ISW2\openjpa\isw2\testing\target\classes
+mvn : 21:01:20 PIT >> INFO : Verbose logging is disabled. If you encounter a problem, please enable it before reporting an issue.
+In riga:1 car:1
++ mvn -f $tempPom "org.pitest:pitest-maven:1.25.8:mutationCoverage" 2>& ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (21:01:20 PIT >>...rting an issue.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+21:01:20 PIT >> INFO : Created 1 mutation test units in pre scan
+21:01:21 PIT >> INFO : Sending 63 test classes to minion
+21:01:21 PIT >> INFO : Sent tests to minion
+21:01:23 PIT >> INFO : Calculated coverage in 2 seconds.
+21:01:23 PIT >> INFO : 0 tests took longer than 2000 ms
+21:01:23 PIT >> INFO : Slowest test ([engine:junit-jupiter]/[class:it.uniroma2.isw2.openjpa.testing.pcenhancer.bb.PCEnhancerBlackBoxConstructorTest]/[method:tbb009ExistingNoArgConstru
+ctorWithAdditionDisabledSucceeds()]) took 210 ms
+21:01:23 PIT >> INFO : Largest test
+([engine:junit-jupiter]/[class:it.uniroma2.isw2.openjpa.testing.pcenhancer.mt.PCEnhancerMutationExternalizationTest]/[method:generatedExternalizationMethodsPreserveRuntimeState()])
+covered 1960 blocks
+21:01:24 PIT >> INFO : Created 1 mutation test units
+21:03:43 PIT >> WARNING : Minion exited abnormally due to TIMED_OUT
+21:05:38 PIT >> WARNING : Minion exited abnormally due to TIMED_OUT
+21:05:59 PIT >> INFO : Completed in 279 seconds
+/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\/================================================================================
+- Mutators
+================================================================================
+> org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE
+>> Generated 27 Killed 15 (56%)
+> KILLED 15 SURVIVED 6 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 6 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator
+>> Generated 27 Killed 15 (56%)
+> KILLED 15 SURVIVED 6 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 6 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator
+>> Generated 10 Killed 4 (40%)
+> KILLED 4 SURVIVED 5 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 1 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator
+>> Generated 8 Killed 6 (75%)
+> KILLED 6 SURVIVED 1 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 1 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator
+>> Generated 904 Killed 470 (52%)
+> KILLED 468 SURVIVED 120 TIMED_OUT 2 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 314 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator
+>> Generated 50 Killed 24 (48%)
+> KILLED 24 SURVIVED 8 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 18 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_EQUAL_ELSE
+>> Generated 527 Killed 229 (43%)
+> KILLED 229 SURVIVED 185 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 113 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator
+>> Generated 58 Killed 31 (53%)
+> KILLED 31 SURVIVED 1 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 26 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.MathMutator
+>> Generated 54 Killed 18 (33%)
+> KILLED 18 SURVIVED 17 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 19 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanFalseReturnValsMutator
+>> Generated 28 Killed 13 (46%)
+> KILLED 13 SURVIVED 4 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 11 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator
+>> Generated 7 Killed 4 (57%)
+> KILLED 4 SURVIVED 2 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 1 EQUIVALENT 0
+--------------------------------------------------------------------------------
+================================================================================
+- Timings
+================================================================================
+> pre-scan for mutations : < 1 second
+> scan classpath : < 1 second
+> coverage and dependency analysis : 2 seconds
+> build mutation tests : < 1 second
+> run mutation analysis : 4 minutes and 35 seconds
+--------------------------------------------------------------------------------
+> Total  : 4 minutes and 38 seconds
+--------------------------------------------------------------------------------
+> 0 tests took longer than 2000 ms
+> Slowest test ([engine:junit-jupiter]/[class:it.uniroma2.isw2.openjpa.testing.pcenhancer.bb.PCEnhancerBlackBoxConstructorTest]/[method:tbb009ExistingNoArgConstructorWithAdditionDisabledSucceeds()]) took 210 ms
+> Largest test ([engine:junit-jupiter]/[class:it.uniroma2.isw2.openjpa.testing.pcenhancer.mt.PCEnhancerMutationExternalizationTest]/[method:generatedExternalizationMethodsPreserveRuntimeState()]) covered 1960 blocks
+================================================================================
+- Statistics
+================================================================================
+>> Line Coverage (for mutated classes only): 1911/2702 (71%)
+>> 63 tests examined
+>> Generated 1700 mutations Killed 829 (49%)
+>> Mutations with no coverage 516. Test strength 70%
+>> Ran 7164 tests (4.21 tests per mutation)
+Enhanced functionality available at https://www.arcmutate.com/
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  04:41 min
+[INFO] Finished at: 2026-08-23T21:05:59+02:00
+[INFO] ------------------------------------------------------------------------

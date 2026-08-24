@@ -1,0 +1,40 @@
+PCEnhancer Mutation Stage - TMT-003
+
+Scenario
+--------
+Standard Java Serialization runtime round-trip
+
+Cumulative suite
+----------------
+T_BB                    : 30
+T_CF                    : 5
+T_MT                    : 3
+Manual tests            : 38
+Known discrepancy       : TBB-026
+PIT execution set       : 37 green tests
+Native OpenJPA tests    : NOT USED
+
+Mutation protocol
+-----------------
+PIT                     : 1.25.8
+PIT JUnit 5 plugin      : 1.2.3
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+Mutators                : DEFAULTS
+Threads                 : 1
+Mutation population     : 1700
+
+Result
+------
+KILLED                  : 745
+SURVIVED                : 438
+NO_COVERAGE             : 516
+TIMED_OUT               : 1
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+Mutation Score          : 43.82%
+Test Strength           : 62.98%
+Delta KILLED            : +27
+
+Decision
+--------
+TMT-003                 : KEEP

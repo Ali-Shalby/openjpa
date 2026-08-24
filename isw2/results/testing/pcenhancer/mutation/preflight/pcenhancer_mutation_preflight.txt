@@ -1,0 +1,47 @@
+PCEnhancer Mutation Testing - PIT Maven Preflight
+
+Baseline
+--------
+Apache OpenJPA          : 4.1.1
+Target class            : org.apache.openjpa.enhance.PCEnhancer
+Frozen manual suite     : 35 tests
+Known discrepancy       : TBB-026
+Mutation execution set  : 34 tests
+Mutation subset outcome : 34 PASS / 0 FAIL / 0 ERROR / 0 SKIPPED
+
+Protocol
+--------
+PIT                     : 1.25.8
+Integration             : pitest-maven
+PIT JUnit plugin        : 1.2.3
+Mutator set             : DEFAULTS
+Smoke class limit       : 10
+Threads                 : 1
+Native OpenJPA tests    : NOT USED
+Target scope            : outer PCEnhancer only
+
+Mutable production bytecode
+---------------------------
+JAR                     : C:\Users\marco\.m2\repository\org\apache\openjpa\openjpa-kernel\4.1.1\openjpa-kernel-4.1.1.jar
+PCEnhancer.class size   : 110190
+PCEnhancer.class SHA256 : 3C825DF257CC2FCF6550448E177A602495600A0470B742457AFC46BF4D788911
+PCEnhancer.java SHA256  : F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A
+
+Smoke result
+------------
+Generated mutants       : 9
+Executed mutants        : 5
+No-coverage mutants     : 4
+Statuses                : NO_COVERAGE=4; SURVIVED=5
+
+Integration decision
+--------------------
+The direct PIT command-line preflight produced an empty mutation report for
+PCEnhancer despite valid production bytecode and debug information.
+The Maven PIT integration is therefore used for the experiment.
+
+TBB-026 remains part of frozen T_BB and its oracle is unchanged.
+It is excluded only from PIT execution because the unmutated mutation baseline
+must be green.
+
+RESULT: PCENHANCER PIT MAVEN PREFLIGHT PASSED

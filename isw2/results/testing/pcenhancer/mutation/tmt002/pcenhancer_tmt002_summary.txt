@@ -1,0 +1,40 @@
+PCEnhancer Mutation Stage - TMT-002
+
+Scenario
+--------
+Detached-state Externalization runtime round-trip
+
+Cumulative suite
+----------------
+T_BB                    : 30
+T_CF                    : 5
+T_MT                    : 2
+Manual tests            : 37
+Known discrepancy       : TBB-026
+PIT execution set       : 36 green tests
+Native OpenJPA tests    : NOT USED
+
+Mutation protocol
+-----------------
+PIT                     : 1.25.8
+PIT JUnit 5 plugin      : 1.2.3
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+Mutators                : DEFAULTS
+Threads                 : 1
+Mutation population     : 1700
+
+Result
+------
+KILLED                  : 718
+SURVIVED                : 465
+NO_COVERAGE             : 516
+TIMED_OUT               : 1
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+Mutation Score          : 42.24%
+Test Strength           : 60.69%
+Delta KILLED            : +86
+
+Decision
+--------
+TMT-002                 : KEEP

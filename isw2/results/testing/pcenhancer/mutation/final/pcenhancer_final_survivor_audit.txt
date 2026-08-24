@@ -1,0 +1,69 @@
+PCEnhancer - Final Survivor Audit
+
+Final mutation state
+--------------------
+Population              : 1700
+KILLED                  : 827
+SURVIVED                : 355
+NO_COVERAGE             : 516
+TIMED_OUT               : 2
+Mutation Score          : 48.65%
+Test Strength           : 69.97%
+
+Top remaining survivor methods
+------------------------------
+addCopyKeyFieldsToObjectIdMethod                 38
+writeIsDetachedMethod                            24
+run                                              18
+addCopyKeyFieldsFromObjectIdMethod               18
+getfield                                         12
+addStaticInitializer                             10
+addMultipleFieldsMethodVersion                   10
+findField                                        10
+replaceAndValidateFieldAccess                    10
+addAttributeTranslation                          10
+enhanceClass                                     9
+configureBCs                                     8
+putfield                                         8
+addDetachExternalize                             8
+addNewObjectIdInstanceMethod                     8
+fromBackingFieldName                             7
+beginSwitchMethod                                6
+addExtractObjectIdFieldValueCode                 6
+addStockMethods                                  6
+addWriteExternal                                 6
+
+Remaining survivors by mutator
+------------------------------
+RemoveConditionalMutator_EQUAL_ELSE              185
+VoidMethodCallMutator                            120
+MathMutator                                      17
+BooleanTrueReturnValsMutator                     8
+ConditionalsBoundaryMutator                      6
+RemoveConditionalMutator_ORDER_ELSE              6
+IncrementsMutator                                5
+BooleanFalseReturnValsMutator                    4
+EmptyObjectReturnValsMutator                     2
+NullReturnValsMutator                            1
+PrimitiveReturnsMutator                          1
+
+TIMED_OUT raw statuses
+----------------------
+Method      : addMultipleFieldsMethodVersion
+Line        : 1848
+Mutator     : VoidMethodCallMutator
+Description : removed call to org/apache/xbean/asm9/tree/InsnList::add
+
+Method      : replaceAndValidateFieldAccess
+Line        : 1125
+Mutator     : VoidMethodCallMutator
+Description : removed call to org/apache/xbean/asm9/tree/InsnList::remove
+
+Stopping interpretation
+-----------------------
+The remaining 355 survivors are retained as experimental evidence.
+They are not automatically classified as equivalent mutants.
+
+No additional TMT is selected solely to optimize the PIT score.
+
+STATUS: T_MT FROZEN

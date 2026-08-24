@@ -1,0 +1,50 @@
+PCEnhancer Mutation Testing - FINAL SUMMARY
+
+Frozen suites
+-------------
+T_BB                    : 30
+T_CF                    : 5
+T_MT                    : 5
+Manual tests            : 40
+
+Clean manual regression
+-----------------------
+PASS                    : 39
+Known FAIL              : 1 (TBB-026)
+Errors                  : 0
+Skipped                 : 0
+
+Mutation protocol
+-----------------
+PIT                     : 1.25.8
+PIT JUnit 5 plugin      : 1.2.3
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+Mutators                : DEFAULTS
+Threads                 : 1
+Population              : 1700
+
+Final raw status
+----------------
+KILLED                  : 827
+SURVIVED                : 355
+NO_COVERAGE             : 516
+TIMED_OUT               : 2
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+
+Final metrics
+-------------
+Mutation Score          : 48.65%
+Test Strength           : 69.97%
+
+Improvement vs baseline
+-----------------------
+Additional KILLED       : +362
+SURVIVED reduction      : -359
+Mutation Score delta    : +21.30 pp
+Test Strength delta     : +30.53 pp
+
+Decision
+--------
+TMT-006                 : NOT PLANNED
+T_MT STATUS             : FROZEN
