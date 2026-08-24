@@ -1,0 +1,47 @@
+PCEnhancer T_RND - Summary finale
+=================================
+
+Tecnica                 : feedback-directed random generation
+Generatore              : Randoop 4.3.4
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+
+Generazione
+-----------
+Seed                    : 0
+Deterministica          : SI
+N                       : 30
+Test generati           : 30
+
+Esecuzione
+-----------
+Test                    : 30
+PASS                    : 30
+FAIL                    : 0
+Errors                  : 0
+Skipped                 : 0
+
+JaCoCo
+------
+LINE                    : 53 / 2699 = 1.96%
+BRANCH                  : 10 / 1217 = 0.82%
+
+PIT
+---
+Popolazione             : 1700
+KILLED                  : 2
+SURVIVED                : 3
+NO_COVERAGE             : 1695
+TIMED_OUT               : 0
+
+Mutation Score          : 0.12%
+Test Strength           : 40%
+
+Politica sperimentale
+---------------------
+Feedback coverage       : NESSUNO
+Feedback mutation       : NESSUNO
+Modifica manuale oracle : NESSUNA
+
+Stato
+-----
+T_RND                   : FROZEN

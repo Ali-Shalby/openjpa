@@ -153,6 +153,18 @@ NO_COVERAGE      : 516
 TIMED_OUT        : 2
 Mutation Score   : 48.65%
 Test Strength    : 69.97%
+
+T_RND            : 30 test, FROZEN
+T_RND outcome    : 30 PASS, 0 FAIL
+T_RND LINE       : 1.96% (53 / 2699)
+T_RND BRANCH     : 0.82% (10 / 1217)
+T_RND PIT        : 1700 mutanti
+T_RND KILLED     : 2
+T_RND SURVIVED   : 3
+T_RND NO_COVERAGE: 1695
+T_RND TIMED_OUT  : 0
+T_RND Mut. Score : 0.12%
+T_RND Strength   : 40.00%
 ```
 
 La failure `TBB-026` resta invariata: il contratto pubblico di
@@ -165,6 +177,7 @@ Documentazione:
 * [`docs/testing/pcenhancer-black-box.md`](docs/testing/pcenhancer-black-box.md)
 * [`docs/testing/pcenhancer-control-flow.md`](docs/testing/pcenhancer-control-flow.md)
 * [`docs/testing/pcenhancer-mutation-testing.md`](docs/testing/pcenhancer-mutation-testing.md)
+* [`docs/testing/pcenhancer-random-testing.md`](docs/testing/pcenhancer-random-testing.md)
 
 ---
 
@@ -260,10 +273,18 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Final PIT – 827 KILLED / 355 SURVIVED / 516 NO_COVERAGE / 2 TIMED_OUT
 * [x] Clean full regression – 40 test, 39 PASS, 1 FAIL documentato (`TBB-026`)
 * [x] Freeze `T_MT` – Mutation Score 48.65% / Test Strength 69.97%
+* [x] Protocollo Randoop 4.3.4 – `N = 30`, seed `0`, generazione deterministica
+* [x] Generazione `T_RND` – 30 regression test
+* [x] Validazione RAW `T_RND` – 30 PASS, 0 FAIL
+* [x] Integrazione JUnit 4 tramite JUnit Vintage – 30 PASS
+* [x] JaCoCo isolato `T_RND` – 1.96% Line / 0.82% Branch
+* [x] PIT isolato `T_RND` – 2 KILLED / 3 SURVIVED / 1695 NO_COVERAGE
+* [x] Freeze `T_RND` – Mutation Score 0.12% / Test Strength 40.00%
 
 ### In corso
 
-* [ ] Suite automatiche `T_RND`, `T_LLM`, `T_ES`
+* [ ] Suite automatica coverage-guided `T_ES`
+* [ ] Suite automatica `T_LLM`
 * [ ] Reliability di `PCEnhancer`
 * [ ] Testing della seconda classe OpenJPA
 
@@ -717,10 +738,88 @@ Documentazione dettagliata:
 
 [`docs/testing/pcenhancer-mutation-testing.md`](docs/testing/pcenhancer-mutation-testing.md)
 
+### Suite automatica random `T_RND`
+
+Dopo il freeze delle suite manuali è stata generata una suite automatica
+indipendente tramite Randoop 4.3.4.
+
+Il protocollo è stato fissato prima di osservare le metriche:
+
+```text
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+N                       : 30
+Random seed             : 0
+Deterministica          : SI
+Time limit              : 0
+Generated limit         : 20000
+Output limit            : 30
+Solo membri pubblici    : SI
+Error-revealing test    : DISABILITATI
+Feedback coverage       : NESSUNO
+Feedback mutation       : NESSUNO
+Modifica manuale oracle : NESSUNA
+```
+
+La prima generazione con infrastruttura valida ha prodotto direttamente
+30 regression test. Una precedente invocazione con classpath incompleto
+aveva prodotto zero test ed è stata classificata come errore
+infrastrutturale precedente all'esperimento.
+
+La suite RAW è stata compilata ed eseguita senza modifica degli oracle.
+Successivamente è stata integrata nell'harness Maven tramite JUnit Vintage,
+mantenendo invariati input, assertion ed eccezioni attese.
+
+Risultato della suite integrata:
+
+```text
+T_RND                   : 30
+PASS                    : 30
+FAIL                    : 0
+Errors                  : 0
+Skipped                 : 0
+```
+
+Adeguatezza JaCoCo sulla sola classe esterna `PCEnhancer`:
+
+```text
+LINE                    : 1.96% (53 / 2699)
+BRANCH                  : 0.82% (10 / 1217)
+```
+
+Mutation testing isolato sulla stessa popolazione congelata:
+
+```text
+Population              : 1700
+KILLED                  : 2
+SURVIVED                : 3
+NO_COVERAGE             : 1695
+TIMED_OUT               : 0
+Mutation Score          : 0.12%
+Test Strength           : 40.00%
+```
+
+La bassa adequacy viene mantenuta come risultato sperimentale della
+generazione random. La suite non viene rigenerata né modificata dopo
+l'osservazione di JaCoCo o PIT.
+
+```text
+T_RND STATUS            : FROZEN
+```
+
+Evidence principali:
+
+```text
+isw2/results/testing/pcenhancer/rnd/
+```
+
+Documentazione dettagliata:
+
+[`docs/testing/pcenhancer-random-testing.md`](docs/testing/pcenhancer-random-testing.md)
+
 Prossima fase:
 
 ```text
-suite automatiche T_RND / T_LLM / T_ES e successive attività De Angelis
+T_ES – generazione coverage-guided con EvoSuite
 ```
 
 ---
@@ -734,6 +833,7 @@ suite automatiche T_RND / T_LLM / T_ES e successive attività De Angelis
 * [Testing – PCEnhancer black-box](docs/testing/pcenhancer-black-box.md)
 * [Testing – PCEnhancer control-flow](docs/testing/pcenhancer-control-flow.md)
 * [Testing – PCEnhancer mutation testing](docs/testing/pcenhancer-mutation-testing.md)
+* [Testing – PCEnhancer random testing](docs/testing/pcenhancer-random-testing.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
@@ -755,4 +855,5 @@ Durante il progetto:
 10. i test già presenti nel repository OpenJPA non vengono riutilizzati come suite sperimentale;
 11. ogni famiglia di test viene documentata, implementata, eseguita e validata prima di procedere alla successiva;
 12. i test `T_CF` vengono selezionati dai gap di Line/Branch Coverage solo dopo il freeze di `T_BB` e vengono congelati prima della mutation analysis;
-13. i test `T_MT` vengono selezionati da cluster di survivor behaviorally meaningful, mantenuti solo se dimostrano capacità aggiuntiva di fault detection e congelati quando la stopping rule rende non giustificata un'ulteriore iterazione.
+13. i test `T_MT` vengono selezionati da cluster di survivor behaviorally meaningful, mantenuti solo se dimostrano capacità aggiuntiva di fault detection e congelati quando la stopping rule rende non giustificata un'ulteriore iterazione;
+14. la suite `T_RND` viene generata e congelata prima di osservare JaCoCo e PIT; coverage e mutation testing sono utilizzati esclusivamente come metriche di valutazione e non come feedback per rigenerare o selezionare i test random.

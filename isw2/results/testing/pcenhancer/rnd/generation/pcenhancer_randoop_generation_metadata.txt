@@ -1,0 +1,45 @@
+PCEnhancer T_RND - Metadata di generazione
+===========================================
+
+Strumento
+---------
+Generatore              : Randoop
+Versione                : 4.3.4
+
+Target
+------
+Classe                  : org.apache.openjpa.enhance.PCEnhancer
+Cardinalità target N    : 30
+Test nativi OpenJPA     : NON UTILIZZATI
+
+Protocollo
+----------
+Random seed             : 0
+Modalità deterministica : SI
+Time limit              : 0
+Generated limit         : 20000
+Output limit            : 30
+Solo membri pubblici    : SI
+Error-revealing test    : DISABILITATI
+Feedback coverage       : NESSUNO
+Feedback mutation       : NESSUNO
+Modifica manuale oracle : NESSUNA
+
+Generazione canonica
+--------------------
+Regression test prodotti: 30
+File Java prodotti      : 2
+
+Nota metodologica
+-----------------
+Una prima invocazione aveva un classpath incompleto e non esponeva
+PCEnhancer a Randoop. Tale tentativo ha prodotto zero test ed è
+classificato come errore infrastrutturale precedente all'esperimento.
+
+La generazione canonica è la prima esecuzione con infrastruttura valida.
+I parametri non sono stati modificati sulla base di JaCoCo o PIT.
+
+Repository
+----------
+HEAD precedente al commit T_RND:
+712e9eec68ec5305389346c55eb3d747d506f00e

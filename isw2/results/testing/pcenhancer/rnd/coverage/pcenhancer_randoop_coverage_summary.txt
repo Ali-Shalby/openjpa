@@ -1,0 +1,31 @@
+PCEnhancer T_RND - Summary coverage JaCoCo
+==========================================
+
+Suite                   : T_RND isolata
+Numero test             : 30
+Failures                : 0
+Errors                  : 0
+
+Target                  : PCEnhancer outer class
+JaCoCo                  : 0.8.15
+
+LINE
+----
+Covered                 : 53
+Missed                  : 2646
+Total                   : 2699
+Coverage                : 1.96%
+
+BRANCH
+------
+Covered                 : 10
+Missed                  : 1207
+Total                   : 1217
+Coverage                : 0.82%
+
+Interpretazione
+---------------
+La coverage è stata misurata solo dopo il freeze della suite Randoop.
+
+Il risultato non è stato utilizzato per rigenerare, selezionare o
+modificare i test di T_RND.

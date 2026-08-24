@@ -1,0 +1,27 @@
+PCEnhancer T_RND - Validazione output RAW
+=========================================
+
+Regression test prodotti : 30
+Framework generato        : JUnit 4
+Compilazione RAW          : PASS
+Esecuzione RAW            : PASS
+
+Test eseguiti             : 30
+Failures                  : 0
+Errors                    : 0
+Skipped                   : 0
+
+Nota compilatore
+----------------
+javac ha segnalato l'utilizzo o override di una API deprecata.
+Si tratta esclusivamente di un warning e la compilazione è terminata
+correttamente.
+
+Politica di integrazione
+------------------------
+Input generati modificati       : NO
+Assertion generate modificate   : NO
+Eccezioni attese modificate     : NO
+Oracle modificati manualmente   : NO
+Selezione tramite coverage      : NO
+Selezione tramite mutation      : NO

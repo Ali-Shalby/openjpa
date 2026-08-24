@@ -59,7 +59,17 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <!--
+          Randoop 4.3.4 generates JUnit 4 tests.
+          Vintage executes the frozen T_RND suite on the existing
+          JUnit Platform without rewriting generated assertions.
+        -->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!--
           Available for later isolated-unit-test needs.
           Its presence does not make Mockito mandatory for T_BB.

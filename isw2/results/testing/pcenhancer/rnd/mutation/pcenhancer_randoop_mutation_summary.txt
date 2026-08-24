@@ -1,0 +1,38 @@
+PCEnhancer T_RND - Summary mutation testing
+===========================================
+
+Suite                   : T_RND isolata
+Numero test             : 30
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+
+PIT                     : 1.25.8
+Mutators                : DEFAULTS
+Threads                 : 1
+
+Popolazione             : 1700
+KILLED                  : 2
+SURVIVED                : 3
+NO_COVERAGE             : 1695
+TIMED_OUT               : 0
+
+Mutation Score          : 0.12%
+Test Strength           : 40%
+
+Definizioni
+-----------
+Mutation Score = KILLED / TOTAL MUTANTS
+
+Test Strength =
+    KILLED / (KILLED + SURVIVED)
+
+Interpretazione
+---------------
+La suite random raggiunge soltanto 5 mutanti della popolazione:
+
+- 2 KILLED
+- 3 SURVIVED
+
+I restanti 1695 mutanti risultano NO_COVERAGE.
+
+Il risultato è coerente con la bassa coverage JaCoCo e non è stato
+utilizzato per modificare o rigenerare T_RND.

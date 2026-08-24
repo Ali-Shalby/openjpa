@@ -1,0 +1,68 @@
+PCEnhancer T_RND - Freeze audit
+===============================
+
+Generazione
+-----------
+Generatore               : Randoop 4.3.4
+Cardinalità T_RND        : 30
+Seed                     : 0
+Deterministica           : SI
+
+Validazione
+-----------
+Test                     : 30
+PASS                     : 30
+FAIL                     : 0
+Errors                   : 0
+Skipped                  : 0
+
+Integrazione meccanica
+-----------------------
+Trasformazioni consentite:
+
+1. aggiunta header ASF;
+2. aggiunta package:
+   it.uniroma2.isw2.openjpa.testing.pcenhancer.rnd
+3. rinomina del solo wrapper:
+   PCEnhancerRandoopRegression
+   -> PCEnhancerRandoopRegressionTest
+4. integrazione JUnit 4 tramite JUnit Vintage.
+
+Non sono stati modificati:
+
+- input dei test;
+- assertion;
+- eccezioni attese;
+- oracle;
+- struttura dei singoli test.
+
+SHA-256 sorgenti integrati
+--------------------------
+
+PCEnhancerRandoopRegression0.java
+FB5DEDDC758A96D87620A5588673A6B3378D0EAC1FBC29AA7EA36F468182DAB9
+
+PCEnhancerRandoopRegressionTest.java
+3A7C084F96921AE0138793C4048F0B7A7BED44E78FC5DC1CB5962F2E78C01048
+
+Adequacy
+--------
+LINE                    : 1.96%
+BRANCH                  : 0.82%
+
+Mutation testing
+----------------
+Popolazione             : 1700
+KILLED                  : 2
+SURVIVED                : 3
+NO_COVERAGE             : 1695
+TIMED_OUT               : 0
+Mutation Score          : 0.12%
+Test Strength           : 40%
+
+Decisione finale
+----------------
+T_RND                   : FROZEN
+
+Dopo il freeze non sono consentite rigenerazioni o modifiche della
+suite finalizzate al miglioramento delle metriche.
