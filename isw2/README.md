@@ -105,8 +105,8 @@ La parte di Software Testing viene svolta su due classi OpenJPA e comprende:
 * Category Partition;
 * test manuali;
 * random testing;
-* test generati tramite LLM;
 * generazione guidata dalla coverage;
+* test generati tramite LLM;
 * code coverage;
 * mutation testing;
 * miglioramento delle suite;
@@ -165,6 +165,18 @@ T_RND NO_COVERAGE: 1695
 T_RND TIMED_OUT  : 0
 T_RND Mut. Score : 0.12%
 T_RND Strength   : 40.00%
+
+T_ES             : 30 test, FROZEN
+T_ES outcome     : 30 PASS, 0 FAIL
+T_ES LINE        : 3.00% (81 / 2699)
+T_ES BRANCH      : 1.56% (19 / 1217)
+T_ES PIT         : 1700 mutanti, identity 1700/1700
+T_ES KILLED      : 10
+T_ES SURVIVED    : 4
+T_ES NO_COVERAGE : 1686
+T_ES TIMED_OUT   : 0
+T_ES Mut. Score  : 0.59%
+T_ES Strength    : 71.43%
 ```
 
 La failure `TBB-026` resta invariata: il contratto pubblico di
@@ -178,6 +190,7 @@ Documentazione:
 * [`docs/testing/pcenhancer-control-flow.md`](docs/testing/pcenhancer-control-flow.md)
 * [`docs/testing/pcenhancer-mutation-testing.md`](docs/testing/pcenhancer-mutation-testing.md)
 * [`docs/testing/pcenhancer-random-testing.md`](docs/testing/pcenhancer-random-testing.md)
+* [`docs/testing/pcenhancer-evosuite-testing.md`](docs/testing/pcenhancer-evosuite-testing.md)
 
 ---
 
@@ -280,10 +293,16 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] JaCoCo isolato `T_RND` – 1.96% Line / 0.82% Branch
 * [x] PIT isolato `T_RND` – 2 KILLED / 3 SURVIVED / 1695 NO_COVERAGE
 * [x] Freeze `T_RND` – Mutation Score 0.12% / Test Strength 40.00%
+* [x] Protocollo EvoSuite 1.2.0 – `N = 30`, criteri `LINE:BRANCH`, budget 120 s per seed
+* [x] Generazione multi-seed `T_ES` – seed 0 = 15 test, seed 1 = 18 test
+* [x] Freeze `T_ES` – 15 test dal seed 0 + primi 15 dal seed 1 = 30 test
+* [x] Validazione isolata Java 11 `T_ES` – 30 PASS, 0 FAIL
+* [x] JaCoCo isolato `T_ES` – 3.00% Line / 1.56% Branch
+* [x] PIT isolato `T_ES` – popolazione identica 1700/1700, 10 KILLED / 4 SURVIVED / 1686 NO_COVERAGE
+* [x] Freeze `T_ES` – Mutation Score 0.59% / Test Strength 71.43%
 
 ### In corso
 
-* [ ] Suite automatica coverage-guided `T_ES`
 * [ ] Suite automatica `T_LLM`
 * [ ] Reliability di `PCEnhancer`
 * [ ] Testing della seconda classe OpenJPA
@@ -760,10 +779,7 @@ Feedback mutation       : NESSUNO
 Modifica manuale oracle : NESSUNA
 ```
 
-La prima generazione con infrastruttura valida ha prodotto direttamente
-30 regression test. Una precedente invocazione con classpath incompleto
-aveva prodotto zero test ed è stata classificata come errore
-infrastrutturale precedente all'esperimento.
+La generazione canonica ha prodotto direttamente 30 regression test.
 
 La suite RAW è stata compilata ed eseguita senza modifica degli oracle.
 Successivamente è stata integrata nell'harness Maven tramite JUnit Vintage,
@@ -816,10 +832,100 @@ Documentazione dettagliata:
 
 [`docs/testing/pcenhancer-random-testing.md`](docs/testing/pcenhancer-random-testing.md)
 
+### Suite automatica coverage-guided `T_ES`
+
+Dopo il freeze di `T_RND` è stata costruita una seconda suite automatica
+indipendente tramite EvoSuite 1.2.0.
+
+Il protocollo è stato fissato prima di osservare le metriche:
+
+```text
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+N                       : 30
+Criterion               : LINE:BRANCH
+Search budget           : 120 s per seed
+Stopping condition      : MAXTIME
+Test format             : JUnit 4
+Minimization            : enabled
+Max suite size          : 30
+Runtime EvoSuite        : Zulu JDK 11
+Feedback coverage       : NESSUNO
+Feedback mutation       : NESSUNO
+Modifica manuale oracle : NESSUNA
+```
+
+La cardinalità finale è stata ottenuta mediante seed deterministici consecutivi:
+
+```text
+Seed 0                  : 15 test finali
+Seed 1                  : 18 test finali
+T_ES finale             : 15 + primi 15 del seed 1 = 30
+```
+
+Gli ultimi tre test del seed 1 non vengono inclusi. La selezione è
+puramente posizionale e non usa JaCoCo o PIT.
+
+Per l'integrazione sono state mantenute separate le due infrastrutture di
+scaffolding generate da EvoSuite. Un bridge esclusivamente di test,
+`PCEnhancerTestAccess`, delega agli helper package-protected necessari senza
+modificare il production code e senza introdurre nuovi oracle.
+
+EvoSuite 1.2.0 richiede, per questa suite, un runtime tecnico Java 11.
+Il normale harness Maven del progetto resta su Java 21 ed esclude `T_ES`
+dalla compilazione standard; la suite EvoSuite viene validata e misurata in
+un'esecuzione isolata Java 11.
+
+Risultato della suite congelata:
+
+```text
+T_ES                    : 30
+PASS                    : 30
+FAIL                    : 0
+Errors                  : 0
+Skipped                 : 0
+```
+
+Adeguatezza JaCoCo sulla sola classe esterna `PCEnhancer`:
+
+```text
+LINE                    : 3.00% (81 / 2699)
+BRANCH                  : 1.56% (19 / 1217)
+```
+
+Mutation testing isolato sulla stessa popolazione congelata:
+
+```text
+Population              : 1700
+Population identity     : 1700/1700
+KILLED                  : 10
+SURVIVED                : 4
+NO_COVERAGE             : 1686
+TIMED_OUT               : 0
+Mutation Score          : 0.59%
+Test Strength           : 71.43%
+```
+
+Le metriche vengono osservate soltanto dopo il freeze della suite e non
+vengono utilizzate per rigenerare o selezionare ulteriormente i test.
+
+```text
+T_ES STATUS             : FROZEN
+```
+
+Evidence principali:
+
+```text
+isw2/results/testing/pcenhancer/es/
+```
+
+Documentazione dettagliata:
+
+[`docs/testing/pcenhancer-evosuite-testing.md`](docs/testing/pcenhancer-evosuite-testing.md)
+
 Prossima fase:
 
 ```text
-T_ES – generazione coverage-guided con EvoSuite
+T_LLM – generazione di test tramite LLM / GitHub Copilot
 ```
 
 ---
@@ -834,6 +940,7 @@ T_ES – generazione coverage-guided con EvoSuite
 * [Testing – PCEnhancer control-flow](docs/testing/pcenhancer-control-flow.md)
 * [Testing – PCEnhancer mutation testing](docs/testing/pcenhancer-mutation-testing.md)
 * [Testing – PCEnhancer random testing](docs/testing/pcenhancer-random-testing.md)
+* [Testing – PCEnhancer EvoSuite](docs/testing/pcenhancer-evosuite-testing.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
@@ -856,4 +963,5 @@ Durante il progetto:
 11. ogni famiglia di test viene documentata, implementata, eseguita e validata prima di procedere alla successiva;
 12. i test `T_CF` vengono selezionati dai gap di Line/Branch Coverage solo dopo il freeze di `T_BB` e vengono congelati prima della mutation analysis;
 13. i test `T_MT` vengono selezionati da cluster di survivor behaviorally meaningful, mantenuti solo se dimostrano capacità aggiuntiva di fault detection e congelati quando la stopping rule rende non giustificata un'ulteriore iterazione;
-14. la suite `T_RND` viene generata e congelata prima di osservare JaCoCo e PIT; coverage e mutation testing sono utilizzati esclusivamente come metriche di valutazione e non come feedback per rigenerare o selezionare i test random.
+14. la suite `T_RND` viene generata e congelata prima di osservare JaCoCo e PIT; coverage e mutation testing sono utilizzati esclusivamente come metriche di valutazione e non come feedback per rigenerare o selezionare i test random;
+15. la suite `T_ES` viene costruita con protocollo e stopping rule fissati prima delle misure di adequacy; i seed vengono consumati in ordine deterministico fino a raggiungere `N = 30`, e JaCoCo/PIT sono usati soltanto dopo il freeze come metriche di valutazione.

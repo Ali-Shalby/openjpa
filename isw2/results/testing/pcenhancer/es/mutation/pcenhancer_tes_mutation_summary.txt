@@ -1,0 +1,43 @@
+PCEnhancer T_ES - Mutation Testing
+==================================
+
+Suite
+-----
+T_ES                   : 30
+Seed 0                 : 15
+Seed 1                 : 15
+Pre-PIT validation     : PASS
+
+Protocol
+--------
+OpenJPA                : 4.1.1
+Target                 : org.apache.openjpa.enhance.PCEnhancer
+Target scope           : outer class only
+PIT                    : 1.25.8
+Integration            : direct command line
+Mutators               : DEFAULTS
+Threads                : 1
+Runtime                : Zulu JDK 11
+Native OpenJPA tests   : NOT USED
+
+Population
+----------
+Mutants                : 1700
+Expected               : 1700
+Reference XML          : isw2/results/testing/pcenhancer/mutation/baseline/pcenhancer_mutations.xml
+Population identity    : True
+Identity match         : 1700/1700
+
+Raw status
+----------
+KILLED                 : 10
+SURVIVED               : 4
+NO_COVERAGE            : 1686
+TIMED_OUT              : 0
+RUN_ERROR              : 0
+MEMORY_ERROR           : 0
+
+Metrics
+-------
+Mutation Score         : 0.59%
+Test Strength          : 71.43%

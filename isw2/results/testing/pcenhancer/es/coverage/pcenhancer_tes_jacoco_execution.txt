@@ -1,0 +1,13 @@
+JUnit version 4.13.2
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+.WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.evosuite.runtime.jvm.ShutdownHookHandler (file:/C:/Users/marco/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.2.0/evosuite-standalone-runtime-1.2.0.jar) to field java.lang.ApplicationShutdownHooks.hooks
+WARNING: Please consider reporting this to the maintainers of org.evosuite.runtime.jvm.ShutdownHookHandler
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+.............................
+Time: 3.665
+
+OK (30 tests)

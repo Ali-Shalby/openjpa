@@ -1,0 +1,22 @@
+﻿PCEnhancer T_ES - EvoSuite RAW Manifest
+========================================
+
+File   : isw2\testing\generated\pcenhancer\evosuite\raw\seed-0\PCEnhancer_ESTest.java
+Bytes  : 8747
+Tests  : 15
+SHA256 : AB0550C8A25B4D7AF10FAE0E2408A0F15D2A81C3DD9D5BC5EED7EBD2D784766C
+
+File   : isw2\testing\generated\pcenhancer\evosuite\raw\seed-0\PCEnhancer_ESTest_scaffolding.java
+Bytes  : 21119
+Tests  : 0
+SHA256 : 2F402057A0C74FF329C7C36DB446D0B8A9024038F6619B5798ACB90F47F6D69B
+
+File   : isw2\testing\generated\pcenhancer\evosuite\raw\seed-1\PCEnhancer_ESTest.java
+Bytes  : 11064
+Tests  : 18
+SHA256 : 1ADD6288E49411927BFB0E9F7AEEDBBA22E646C54246DB090300A673203F2C17
+
+File   : isw2\testing\generated\pcenhancer\evosuite\raw\seed-1\PCEnhancer_ESTest_scaffolding.java
+Bytes  : 22210
+Tests  : 0
+SHA256 : C850204C679F9A6AF0209D603FC3ADAA9F058E8960FF0BBF436CE82886EE9040

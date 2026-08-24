@@ -1,0 +1,29 @@
+﻿===== PCENHANCER T_ES JACOCO COVERAGE =====
+
+Target        : org.apache.openjpa.enhance.PCEnhancer
+OpenJPA       : 4.1.1
+Suite         : T_ES
+Tests         : 30
+Seed 0        : 15
+Seed 1        : 15
+EvoSuite      : 1.2.0
+Runtime       : Zulu JDK 11
+JUnit         : 4.13.2
+JaCoCo        : 0.8.15
+Class loader  : separateClassLoader=false
+
+===== VALIDATION =====
+JUnit result  : PASS
+Tests run     : 30
+
+===== LINE COVERAGE =====
+Covered       : 81
+Missed        : 2618
+Total         : 2699
+Coverage      : 3,00%
+
+===== BRANCH COVERAGE =====
+Covered       : 19
+Missed        : 1198
+Total         : 1217
+Coverage      : 1,56%

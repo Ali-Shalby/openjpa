@@ -1,0 +1,112 @@
+NOTE: Picked up JDK_JAVA_OPTIONS: --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED
+17:52:11 PIT >> INFO : Verbose logging is disabled. If you encounter a problem, please enable it before reporting an issue.
+17:52:11 PIT >> INFO : Created 1 mutation test units in pre scan
+17:52:11 PIT >> INFO : MINION : NOTE: Picked up JDK_JAVA_OPTIONS: --add-opens=java.desktop/java.awt=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED
+17:52:12 PIT >> INFO : Sending 2 test classes to minion
+17:52:12 PIT >> INFO : Sent tests to minion
+17:52:12 PIT >> INFO : MINION : SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+17:52:12 PIT >> INFO : MINION : SLF4J: Defaulting to no-operation (NOP) logger implementation
+17:52:12 PIT >> INFO : MINION : SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+17:52:14 PIT >> INFO : MINION : WARNING: An illegal reflective access operation has occurred
+17:52:14 PIT >> INFO : MINION : WARNING: Illegal reflective access by org.evosuite.runtime.jvm.ShutdownHookHandler (file:/C:/Users/marco/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.2.0/evosuite-standalone-runtime-1.2.0.jar) to field java.lang.ApplicationShutdownHooks.hooks
+17:52:14 PIT >> INFO : MINION : WARNING: Please consider reporting this to the maintainers of org.evosuite.runtime.jvm.ShutdownHookHandler
+17:52:14 PIT >> INFO : MINION : WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+17:52:14 PIT >> INFO : MINION : WARNING: All illegal access operations will be denied in a future release
+/-17:52:15 PIT >> INFO : Calculated coverage in 3 seconds.
+17:52:15 PIT >> INFO : 1 tests took longer than 2000 ms
+17:52:15 PIT >> INFO : Slowest test (it.uniroma2.isw2.openjpa.testing.pcenhancer.es.PCEnhancerEvoSuiteSeed0Test) took 2239 ms
+17:52:15 PIT >> INFO : Largest test (it.uniroma2.isw2.openjpa.testing.pcenhancer.es.PCEnhancerEvoSuiteSeed0Test) covered 87 blocks
+17:52:16 PIT >> INFO : Created 1 mutation test units
+/17:52:24 PIT >> INFO : Completed in 12 seconds
+================================================================================
+- Mutators
+================================================================================
+> org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_ORDER_ELSE
+>> Generated 27 Killed 0 (0%)
+> KILLED 0 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 27 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator
+>> Generated 27 Killed 0 (0%)
+> KILLED 0 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 27 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator
+>> Generated 10 Killed 0 (0%)
+> KILLED 0 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 10 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator
+>> Generated 8 Killed 0 (0%)
+> KILLED 0 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 8 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator
+>> Generated 904 Killed 1 (0%)
+> KILLED 1 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 903 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanTrueReturnValsMutator
+>> Generated 50 Killed 2 (4%)
+> KILLED 2 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 48 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator_EQUAL_ELSE
+>> Generated 527 Killed 4 (1%)
+> KILLED 4 SURVIVED 4 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 519 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.NullReturnValsMutator
+>> Generated 58 Killed 0 (0%)
+> KILLED 0 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 58 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.MathMutator
+>> Generated 54 Killed 0 (0%)
+> KILLED 0 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 54 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.BooleanFalseReturnValsMutator
+>> Generated 28 Killed 0 (0%)
+> KILLED 0 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 28 EQUIVALENT 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.EmptyObjectReturnValsMutator
+>> Generated 7 Killed 3 (43%)
+> KILLED 3 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 4 EQUIVALENT 0
+--------------------------------------------------------------------------------
+================================================================================
+- Timings
+================================================================================
+> pre-scan for mutations : < 1 second
+> scan classpath : < 1 second
+> coverage and dependency analysis : 3 seconds
+> build mutation tests : 1 seconds
+> run mutation analysis : 7 seconds
+--------------------------------------------------------------------------------
+> Total  : 12 seconds
+--------------------------------------------------------------------------------
+> 1 tests took longer than 2000 ms
+> Slowest test (it.uniroma2.isw2.openjpa.testing.pcenhancer.es.PCEnhancerEvoSuiteSeed0Test) took 2239 ms
+> Largest test (it.uniroma2.isw2.openjpa.testing.pcenhancer.es.PCEnhancerEvoSuiteSeed0Test) covered 87 blocks
+================================================================================
+- Statistics
+================================================================================
+>> Line Coverage (for mutated classes only): 95/2702 (4%)
+>> 2 tests examined
+>> Generated 1700 mutations Killed 10 (1%)
+>> Mutations with no coverage 1686. Test strength 71%
+>> Ran 130 tests (0.08 tests per mutation)
+Enhanced functionality available at https://www.arcmutate.com/
