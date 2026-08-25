@@ -1,0 +1,42 @@
+# P2 - Test Design + Implementation
+
+Continua lo stesso esperimento sulla classe:
+
+org.apache.openjpa.enhance.PCEnhancer
+
+Baseline: Apache OpenJPA 4.1.1.
+
+Sulla base dell'analisi precedente e del production context disponibile,
+progetta e implementa esattamente 30 test case per PCEnhancer.
+
+Identifica i casi come:
+
+TLLM-001 ... TLLM-030
+
+Per ciascun caso descrivi sinteticamente:
+- comportamento considerato;
+- setup/input;
+- azione;
+- risultato atteso.
+
+Successivamente fornisci il codice Java completo della suite.
+
+Ambiente:
+- Java 21;
+- JUnit Jupiter;
+- Mockito disponibile ma non obbligatorio.
+
+Usa esclusivamente il production context fornito durante questa conversazione.
+
+Non utilizzare:
+- test nativi OpenJPA;
+- altre suite sperimentali;
+- risultati JaCoCo;
+- risultati PIT;
+- Web o fonti esterne.
+
+Devono essere rappresentati esattamente i 30 test case
+TLLM-001 ... TLLM-030.
+
+Puoi utilizzare liberamente fixture, setup condiviso e metodi helper:
+questi elementi non costituiscono test case aggiuntivi.

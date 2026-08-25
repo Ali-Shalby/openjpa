@@ -1,0 +1,34 @@
+# P1 - Functional Analysis
+
+Sto svolgendo un esperimento universitario di Software Testing sulla classe:
+
+org.apache.openjpa.enhance.PCEnhancer
+
+Baseline: Apache OpenJPA 4.1.1.
+
+Analizza PCEnhancer dal punto di vista del testing utilizzando esclusivamente
+il production context fornito.
+
+Non utilizzare:
+- test nativi OpenJPA;
+- altre suite sperimentali;
+- risultati JaCoCo;
+- risultati PIT;
+- Web o fonti esterne.
+
+In questa fase non progettare ancora i 30 test e non scrivere codice Java.
+
+Descrivi:
+1. le principali responsabilità della classe;
+2. le funzionalità e i comportamenti osservabili rilevanti per il testing;
+3. gli input e gli stati che influenzano tali comportamenti;
+4. gli output, gli effetti e le eccezioni osservabili;
+5. i principali collaboratori production coinvolti;
+6. eventuali aspetti che rendono il testing più complesso;
+7. eventuali informazioni production mancanti o incertezze.
+
+Analizza comunque tutto ciò che è determinabile dal contesto disponibile.
+Se alcune informazioni dipendono da production code non fornito, segnalale
+soltanto nella sezione finale delle incertezze senza inventarne il contenuto.
+
+Non generare test Java.
