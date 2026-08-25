@@ -177,6 +177,19 @@ T_ES NO_COVERAGE : 1686
 T_ES TIMED_OUT   : 0
 T_ES Mut. Score  : 0.59%
 T_ES Strength    : 71.43%
+
+T_LLM            : 30 test, FROZEN
+T_LLM outcome    : 30 PASS, 0 FAIL
+T_LLM stability  : 5/5 PASS
+T_LLM LINE       : 4.41% (119 / 2699)
+T_LLM BRANCH     : 3.53% (43 / 1217)
+T_LLM PIT        : 1700 mutanti
+T_LLM KILLED     : 39
+T_LLM SURVIVED   : 6
+T_LLM NO_COVERAGE: 1655
+T_LLM TIMED_OUT  : 0
+T_LLM Mut. Score : 2.29%
+T_LLM Strength   : 86.67%
 ```
 
 La failure `TBB-026` resta invariata: il contratto pubblico di
@@ -191,6 +204,7 @@ Documentazione:
 * [`docs/testing/pcenhancer-mutation-testing.md`](docs/testing/pcenhancer-mutation-testing.md)
 * [`docs/testing/pcenhancer-random-testing.md`](docs/testing/pcenhancer-random-testing.md)
 * [`docs/testing/pcenhancer-evosuite-testing.md`](docs/testing/pcenhancer-evosuite-testing.md)
+* [`docs/testing/pcenhancer-llm-testing.md`](docs/testing/pcenhancer-llm-testing.md)
 
 ---
 
@@ -300,10 +314,15 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] JaCoCo isolato `T_ES` – 3.00% Line / 1.56% Branch
 * [x] PIT isolato `T_ES` – popolazione identica 1700/1700, 10 KILLED / 4 SURVIVED / 1686 NO_COVERAGE
 * [x] Freeze `T_ES` – Mutation Score 0.59% / Test Strength 71.43%
+* [x] Protocollo single-prompt `T_LLM` – `N = 30`, Java 21, JUnit Jupiter
+* [x] Generazione `T_LLM` – 30 scenari `TLLM-001 ... TLLM-030`
+* [x] Validazione `T_LLM` – 30 PASS, 0 FAIL / stabilità 5/5 PASS
+* [x] JaCoCo isolato `T_LLM` – 4.41% Line / 3.53% Branch
+* [x] PIT isolato `T_LLM` – 39 KILLED / 6 SURVIVED / 1655 NO_COVERAGE
+* [x] Freeze `T_LLM` – Mutation Score 2.29% / Test Strength 86.67%
 
 ### In corso
 
-* [ ] Suite automatica `T_LLM`
 * [ ] Reliability di `PCEnhancer`
 * [ ] Testing della seconda classe OpenJPA
 
@@ -922,10 +941,90 @@ Documentazione dettagliata:
 
 [`docs/testing/pcenhancer-evosuite-testing.md`](docs/testing/pcenhancer-evosuite-testing.md)
 
+### Suite automatica LLM `T_LLM`
+
+Dopo il freeze di `T_ES` è stata costruita una terza suite automatica
+indipendente tramite LLM, mantenendo la stessa cardinalità sperimentale:
+
+```text
+N = 30
+```
+
+Il protocollo è stato fissato prima di osservare le metriche di adequacy:
+
+```text
+Target                  : org.apache.openjpa.enhance.PCEnhancer
+N                       : 30
+Framework               : JUnit Jupiter
+Runtime                 : Java 21
+LLM client              : Microsoft Copilot
+Interaction mode        : browser chat
+Model                   : GPT 5.6 Think Deeper
+Feedback coverage       : NESSUNO
+Feedback mutation       : NESSUNO
+Modifica post-adequacy  : NESSUNA
+```
+
+Il prompt principale ha richiesto nella stessa risposta la progettazione di
+30 scenari `TLLM-001 ... TLLM-030` e la relativa implementazione.
+
+Durante l'integrazione sono stati effettuati soltanto repair tecnici di
+rendering/completamento dell'output e di compatibilità Mockito sui generic,
+senza modificare gli oracle sulla base di JaCoCo o PIT.
+
+La suite è stata validata e congelata prima delle misure di adequacy:
+
+```text
+T_LLM                  : 30
+PASS                   : 30
+FAIL                   : 0
+Errors                 : 0
+Skipped                : 0
+Stability              : 5/5 PASS
+```
+
+Adeguatezza JaCoCo sulla sola classe esterna `PCEnhancer`:
+
+```text
+LINE                   : 4.41% (119 / 2699)
+BRANCH                 : 3.53% (43 / 1217)
+```
+
+Mutation testing isolato sulla stessa configurazione PIT utilizzata per il
+confronto delle suite automatiche:
+
+```text
+Population             : 1700
+KILLED                 : 39
+SURVIVED               : 6
+NO_COVERAGE            : 1655
+TIMED_OUT              : 0
+Mutation Score         : 2.29%
+Test Strength          : 86.67%
+```
+
+JaCoCo e PIT restano misure esclusivamente post-freeze. I survivor non vengono
+utilizzati per modificare o rigenerare `T_LLM`.
+
+```text
+T_LLM STATUS           : FROZEN / COMPLETE
+```
+
+Evidence principali:
+
+```text
+isw2/testing/llm/pcenhancer/
+isw2/results/testing/pcenhancer/llm/
+```
+
+Documentazione dettagliata:
+
+[`docs/testing/pcenhancer-llm-testing.md`](docs/testing/pcenhancer-llm-testing.md)
+
 Prossima fase:
 
 ```text
-T_LLM – generazione di test tramite LLM / GitHub Copilot
+Reliability di PCEnhancer
 ```
 
 ---
@@ -941,6 +1040,7 @@ T_LLM – generazione di test tramite LLM / GitHub Copilot
 * [Testing – PCEnhancer mutation testing](docs/testing/pcenhancer-mutation-testing.md)
 * [Testing – PCEnhancer random testing](docs/testing/pcenhancer-random-testing.md)
 * [Testing – PCEnhancer EvoSuite](docs/testing/pcenhancer-evosuite-testing.md)
+* [Testing – PCEnhancer LLM](docs/testing/pcenhancer-llm-testing.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
@@ -965,3 +1065,4 @@ Durante il progetto:
 13. i test `T_MT` vengono selezionati da cluster di survivor behaviorally meaningful, mantenuti solo se dimostrano capacità aggiuntiva di fault detection e congelati quando la stopping rule rende non giustificata un'ulteriore iterazione;
 14. la suite `T_RND` viene generata e congelata prima di osservare JaCoCo e PIT; coverage e mutation testing sono utilizzati esclusivamente come metriche di valutazione e non come feedback per rigenerare o selezionare i test random;
 15. la suite `T_ES` viene costruita con protocollo e stopping rule fissati prima delle misure di adequacy; i seed vengono consumati in ordine deterministico fino a raggiungere `N = 30`, e JaCoCo/PIT sono usati soltanto dopo il freeze come metriche di valutazione.
+16. la suite `T_LLM` viene generata con protocollo single-prompt e cardinalità fissata prima delle misure di adequacy; dopo il freeze, JaCoCo e PIT sono usati esclusivamente per la valutazione e non come feedback per modificare o rigenerare i test.

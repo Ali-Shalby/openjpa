@@ -1,0 +1,34 @@
+﻿PCEnhancer T_LLM - Mutation Testing Summary
+
+Population
+----------
+Mutants       : 1700
+
+Raw status
+----------
+KILLED        : 39
+SURVIVED      : 6
+NO_COVERAGE   : 1655
+TIMED_OUT     : 0
+RUN_ERROR     : 0
+MEMORY_ERROR  : 0
+
+Metrics
+-------
+Mutation Score : 2,29%
+Test Strength  : 86,67%
+
+Definitions
+-----------
+Mutation Score = KILLED / TOTAL
+Test Strength  = KILLED / (KILLED + SURVIVED)
+
+Protocol
+--------
+Target        : org.apache.openjpa.enhance.PCEnhancer
+Target scope  : outer class only
+PIT           : 1.25.8
+Mutators      : DEFAULTS
+Threads       : 1
+Suite         : T_LLM
+Tests         : 30
