@@ -1,0 +1,41 @@
+PCEnhancer T_LLM - Generation Environment
+==========================================
+
+Project              : Apache OpenJPA
+Baseline             : 4.1.1
+Target               : org.apache.openjpa.enhance.PCEnhancer
+Suite                : T_LLM
+Target cardinality   : 30 test case/scenari distinti
+
+Experiment date      : 2026-08-25
+Repository branch    : isw2-project
+Repository HEAD      : fa2cf51186b00cd833338b20bdf2a2d3709ece75
+
+Runtime              : Java 21
+Test framework       : JUnit Jupiter 6.1.1
+Mocking              : Mockito 5.23.0 (available, not mandatory)
+OpenJPA kernel       : 4.1.1
+OpenJPA persistence  : 4.1.1
+
+LLM client           : Microsoft Copilot
+Interaction mode     : browser chat
+Copilot mode         : Think Deeper
+Model                : NOT EXPOSED
+Browser              : Google Chrome 152.0.7977.54 (64 bit)
+Copilot interface    : Microsoft Copilot web chat
+
+Constraints
+-----------
+Native OpenJPA tests : NOT PROVIDED
+Previous test suites : NOT PROVIDED
+JaCoCo results       : NOT PROVIDED
+PIT results          : NOT PROVIDED
+External sources     : NOT PROVIDED
+
+Notes
+-----
+The exact underlying model is not exposed by the Microsoft Copilot web
+interface used for this experiment; therefore no model name is inferred.
+
+The recorded repository HEAD identifies the project state on which T_LLM was
+preregistered, before the T_LLM preregistration commit itself.

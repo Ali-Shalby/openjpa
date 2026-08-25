@@ -1,0 +1,82 @@
+# PCEnhancer T_LLM - Context Manifest
+
+Questo manifest descrive il contesto production reso disponibile all'LLM prima
+e durante la generazione di `T_LLM`.
+
+## Baseline
+
+```text
+Project              : Apache OpenJPA
+Release              : 4.1.1
+Target               : org.apache.openjpa.enhance.PCEnhancer
+Suite                : T_LLM
+N                    : 30 test case/scenari distinti
+LLM client           : Microsoft Copilot
+Interaction mode     : browser chat
+Copilot mode         : Think Deeper
+Repository branch    : isw2-project
+Repository HEAD      : fa2cf51186b00cd833338b20bdf2a2d3709ece75
+```
+
+`Repository HEAD` identifica lo stato del progetto precedente al commit di
+preregistrazione `T_LLM`.
+
+## Contesto iniziale autorizzato
+
+Prima di P1 l'LLM riceve soltanto:
+
+```text
+openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java
+T_LLM-environment.txt
+```
+
+## Contesto esplicitamente escluso
+
+Non vengono resi disponibili all'LLM:
+
+- test nativi OpenJPA;
+- sorgenti `T_BB`;
+- sorgenti `T_CF`;
+- sorgenti `T_MT`;
+- sorgenti `T_RND`;
+- sorgenti `T_ES`;
+- risultati JaCoCo;
+- risultati PIT;
+- survivor mutation;
+- documentazione del progetto contenente risultati delle suite precedenti;
+- ulteriori fonti esterne fornite per colmare informazioni mancanti.
+
+## Context completion
+
+Eventuali classi production aggiuntive possono essere aggiunte soltanto se
+richieste esplicitamente dall'LLM durante P1/P2 perché necessarie alla
+comprensione o implementazione.
+
+Per ciascuna aggiunta registrare:
+
+| Step | File production aggiunto | Motivo dichiarato dall'LLM | SHA-256 |
+|---|---|---|---|
+| - | - | - | - |
+
+## Fingerprint del contesto iniziale
+
+```text
+PCEnhancer.java SHA-256 : F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A
+Environment SHA-256     : D5FD08C4803445E10D9775ED375966617B630839746ED4000DF910C7502D1649
+```
+
+La copia di `PCEnhancer.java` usata nel contesto LLM è stata verificata
+byte-identica al sorgente presente nel repository:
+
+```text
+Repository/Context match : True
+```
+
+## Freeze del contesto
+
+Il contesto iniziale è congelato prima della prima interrogazione P1.
+
+Il manifest può essere aggiornato successivamente soltanto per registrare
+context completion leciti e richiesti esplicitamente dall'LLM. Non devono
+essere aggiunti file derivati da coverage, mutation analysis o suite
+sperimentali precedenti.

@@ -1,0 +1,55 @@
+# P3 - Implementation
+
+Implementa in JUnit Jupiter i 30 test case TLLM-001 ... TLLM-030 definiti nella
+fase P2 per:
+
+org.apache.openjpa.enhance.PCEnhancer
+Apache OpenJPA 4.1.1
+
+Ambiente:
+- Java 21;
+- JUnit Jupiter;
+- Mockito disponibile;
+- OpenJPA 4.1.1.
+
+Usa esclusivamente il production context fornito e il progetto dei casi P2.
+
+Non utilizzare:
+- test nativi OpenJPA;
+- altre suite sperimentali;
+- risultati JaCoCo;
+- risultati PIT;
+- Web o fonti esterne.
+
+Vincoli:
+- implementa esattamente i 30 test case definiti in P2;
+- non aggiungere nuovi test case;
+- non eliminare test case;
+- non modificare il production code;
+- non inventare API o comportamenti mancanti.
+
+L'organizzazione del codice è libera. Puoi utilizzare:
+- una o più classi di test;
+- metodi di setup;
+- fixture;
+- metodi helper;
+- utility di test.
+
+Questi elementi di supporto non costituiscono test case aggiuntivi e non
+incrementano `N`.
+
+Mantieni chiaramente distinguibili e tracciabili i 30 test case
+TLLM-001 ... TLLM-030 nella loro implementazione.
+
+Se uno dei 30 casi non è implementabile con il contesto disponibile, segnala
+precisamente il motivo e la classe o firma production necessaria.
+
+Output richiesto:
+1. codice completo della suite JUnit Jupiter;
+2. eventuali fixture/helper necessari;
+3. tabella di tracciabilità:
+   TLLM-001 -> implementazione corrispondente
+   ...
+   TLLM-030 -> implementazione corrispondente;
+4. conferma che tutti i 30 test case definiti in P2 sono rappresentati
+   nell'implementazione.
