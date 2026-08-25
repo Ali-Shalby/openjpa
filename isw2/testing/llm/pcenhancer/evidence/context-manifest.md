@@ -74,10 +74,10 @@ Non vengono resi disponibili all'LLM:
 - documentazione del progetto contenente risultati delle suite precedenti;
 - ulteriori fonti esterne fornite per colmare informazioni mancanti.
 
-## Context completion
+## Context Completion C1
 
 Dopo P1-R1, l'LLM ha indicato sette dipendenze production a necessità alta.
-Sono state aggiunte come `Context Completion C1` prima di P2.
+Sono state aggiunte prima di P2.
 
 Ogni file è stato copiato nel contesto isolato con sola estensione `.txt`;
 per tutti i file è stata verificata l'identità byte-a-byte mediante SHA-256.
@@ -97,6 +97,48 @@ Tutti i confronti SOURCE/CONTEXT per C1 hanno restituito:
 ```text
 MATCH : True
 ```
+
+Per un limite dell'interfaccia Microsoft Copilot (massimo tre allegati per
+messaggio), C1 è stato consegnato nella stessa conversazione in tre batch
+(3 + 3 + 1), senza avviare P2 prima del batch finale.
+
+## Context Completion C2
+
+Dopo P2, l'LLM ha richiesto ulteriore production context necessario per
+implementare in modo affidabile i 30 scenari senza inventare contratti.
+
+Le richieste P2 corrispondono a 10 voci concettuali ma a 11 file fisici:
+la voce relativa al subclassing comprende sia `PCSubclassValidator.java` sia
+`DynamicPersistenceCapable.java`.
+
+Il tipo restituito da `OpenJPAConfiguration.getDetachStateInstance()` è stato
+identificato nel production code come `org.apache.openjpa.conf.DetachOptions`,
+definito in `DetachOptions.java`.
+
+Tutti gli 11 file sono stati copiati nel contesto isolato con sola estensione
+`.txt`, senza modifiche di contenuto, e verificati mediante SHA-256.
+
+| Step | File production aggiunto | Motivo dichiarato dall'LLM | SHA-256 |
+|---|---|---|---|
+| C2 | `org/apache/openjpa/meta/MetaDataRepository.java` | Richiesto in P2 per lookup metadata autorevoli, in particolare TLLM-004. | `1E9A34F6AC405A763A93B48FEDA2BF9A60728E15F07550B25FD088F404DC725E` |
+| C2 | `org/apache/openjpa/util/asm/ClassNodeTracker.java` | Richiesto in P2 per costruzione, class loader, progetto e osservazione del writer. | `940C40C90F9F761DABE90D7212321A91FBFCC3ABC4121DDF9A98C9D6566CEF0F` |
+| C2 | `org/apache/openjpa/util/asm/EnhancementProject.java` | Richiesto in P2 per caricamento di classi e sottoclassi synthetic. | `D5F230D344F276D4197C220795507BFABCAABC332B3359AF313FD1A73A4A1C68` |
+| C2 | `org/apache/openjpa/util/asm/BytecodeWriter.java` | Richiesto in P2 per il contratto di scrittura osservato da TLLM-030. | `5DF42B85AA44EE4CEC4C254787909319587C4B57408A735490F5C50056967DA8` |
+| C2 | `org/apache/openjpa/util/asm/RedefinedAttribute.java` | Richiesto in P2 per TLLM-007 e TLLM-008. | `8C1BCA957400EEEB13EA4B7F476D02A1370BC5922DA3C4B21F3226A450E502B5` |
+| C2 | `org/apache/openjpa/enhance/RedefinitionHelper.java` | Richiesto in P2 per notifiche runtime e dirty check, incluso TLLM-026. | `697EE3F2EEEC002430B302D786382D6DAAF3FC7A00009728A62362F1D26E9E84` |
+| C2 | `org/apache/openjpa/enhance/AttributeTranslator.java` | Richiesto in P2 per il contratto formale di TLLM-017. | `5938C99DC2C91757113EA59D324D8931D661CBC8319D84A6740E1AD81578A919` |
+| C2 | `org/apache/openjpa/enhance/PCSubclassValidator.java` | Richiesto in P2 per validare l'ammissibilità del subclassing. | `A547DF6739A3163067B9B65B22CC044B63C888EE012C984C693397D2B7C71B80` |
+| C2 | `org/apache/openjpa/enhance/DynamicPersistenceCapable.java` | Richiesto in P2 per il contratto della sottoclasse generated. | `E72E5035FB3AFB6C3C8B2C2D8C47A527A5AA1AA82BC13BD0EB2A1A025FA691E7` |
+| C2 | `org/apache/openjpa/conf/OpenJPAConfiguration.java` | Richiesto in P2 per configurazione, repository, log, resolver, detach-state e OptimizeIdCopy. | `1B5EFF8684B96D39791AEEB8DD51737421D190FAEBA89F7CC239A4DD34E10809` |
+| C2 | `org/apache/openjpa/conf/DetachOptions.java` | Identificato come tipo production restituito da OpenJPAConfiguration.getDetachStateInstance(). | `21923B0279B9FC0BBDD9612DEFF3B2B5A47857A16588B674B7D00BFCA7BC8FC3` |
+
+Tutti i confronti SOURCE/CONTEXT per C2 hanno restituito:
+
+```text
+MATCH : True
+```
+
+C2 è registrato prima della consegna dei file a Copilot e prima di P3.
 
 ## Fingerprint del contesto iniziale
 

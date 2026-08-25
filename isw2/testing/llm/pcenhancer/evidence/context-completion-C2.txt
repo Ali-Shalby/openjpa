@@ -1,0 +1,44 @@
+PCEnhancer T_LLM - Context Completion C2
+=========================================
+
+Trigger
+-------
+P2 ha progettato esattamente 30 test case/scenari (TLLM-001 ... TLLM-030) e ha
+indicato ulteriore production context necessario per implementare tutti i casi
+senza inventare i contratti dei collaboratori.
+
+Cardinalità
+-----------
+Le richieste P2 sono 10 voci concettuali ma corrispondono a 11 file fisici.
+La voce relativa al subclassing comprende due file:
+PCSubclassValidator.java e DynamicPersistenceCapable.java.
+
+Il tipo production restituito da OpenJPAConfiguration.getDetachStateInstance()
+è stato identificato come org.apache.openjpa.conf.DetachOptions.
+
+Delivery
+--------
+Gli 11 sorgenti production sono stati copiati nel contesto isolato con sola
+estensione aggiuntiva `.txt` per compatibilità con Microsoft Copilot.
+Nessun contenuto è stato modificato.
+
+Verification
+------------
+MetaDataRepository.java        : 1E9A34F6AC405A763A93B48FEDA2BF9A60728E15F07550B25FD088F404DC725E
+ClassNodeTracker.java          : 940C40C90F9F761DABE90D7212321A91FBFCC3ABC4121DDF9A98C9D6566CEF0F
+EnhancementProject.java        : D5F230D344F276D4197C220795507BFABCAABC332B3359AF313FD1A73A4A1C68
+BytecodeWriter.java            : 5DF42B85AA44EE4CEC4C254787909319587C4B57408A735490F5C50056967DA8
+RedefinedAttribute.java        : 8C1BCA957400EEEB13EA4B7F476D02A1370BC5922DA3C4B21F3226A450E502B5
+RedefinitionHelper.java        : 697EE3F2EEEC002430B302D786382D6DAAF3FC7A00009728A62362F1D26E9E84
+AttributeTranslator.java       : 5938C99DC2C91757113EA59D324D8931D661CBC8319D84A6740E1AD81578A919
+PCSubclassValidator.java       : A547DF6739A3163067B9B65B22CC044B63C888EE012C984C693397D2B7C71B80
+DynamicPersistenceCapable.java : E72E5035FB3AFB6C3C8B2C2D8C47A527A5AA1AA82BC13BD0EB2A1A025FA691E7
+OpenJPAConfiguration.java      : 1B5EFF8684B96D39791AEEB8DD51737421D190FAEBA89F7CC239A4DD34E10809
+DetachOptions.java             : 21923B0279B9FC0BBDD9612DEFF3B2B5A47857A16588B674B7D00BFCA7BC8FC3
+
+SOURCE/CONTEXT match           : True for all 11 files
+
+Restrictions preserved
+----------------------
+No native OpenJPA tests, previous experimental suites, JaCoCo results, PIT
+results, mutation survivors, or external sources were added to the LLM context.
