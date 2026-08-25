@@ -1,0 +1,31 @@
+PCEnhancer T_LLM - Context Completion C1
+=========================================
+
+Trigger
+-------
+P1-R1 ha confermato la lettura completa di PCEnhancer e ha classificato sette
+dipendenze production come "Necessità alta" per completare in modo affidabile
+la semantica dei collaboratori.
+
+Delivery
+--------
+I sette sorgenti production sono stati copiati nel contesto isolato con sola
+estensione aggiuntiva `.txt` per compatibilità con Microsoft Copilot.
+Nessun contenuto è stato modificato.
+
+Verification
+------------
+PersistenceCapable.java : 6AE2744BCFB66393AE9511CCB002364BE7C1DA5EF0B41511A73EBD9F93571DDC
+StateManager.java       : 603A33B2AD4A721D1BA7E6140DEB4F57BF09E55B87CDA7ED6D65AA552541434F
+ClassMetaData.java      : C697C807BE2622601A7C44734186071222A251BF5C5E65ED4932753584735987
+FieldMetaData.java      : 11DE9DB8A3E3C0F3FA9FC7E7A176D6E4DCABDEA4839BCE55749031B6F63DB3CB
+AsmHelper.java          : A74FAC2D107581E63AFD9C88569CF5129272ED642B822465A51DFF01611A4954
+PCRegistry.java         : 6E9BB0AD72A8158671B028583EF519E8A90FE1DC6F1CDDBA372454F5D5CE25D8
+Reflection.java         : D4D151EFBA0DD5C3D0938746045701027FCB14CA712FB35781C1D423A66FD939
+
+SOURCE/CONTEXT match     : True for all 7 files
+
+Restrictions preserved
+----------------------
+No native OpenJPA tests, previous experimental suites, JaCoCo results, PIT
+results, mutation survivors, or external sources were added to the LLM context.

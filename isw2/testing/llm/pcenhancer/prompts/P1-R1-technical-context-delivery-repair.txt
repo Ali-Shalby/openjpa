@@ -1,0 +1,25 @@
+# P1-R1 - Technical Context Delivery Repair
+
+Nel messaggio precedente il file `PCEnhancer.java` fornito era stato verificato
+byte-identico al sorgente production del repository, ma la tua risposta indica
+che l'interfaccia lo ha interpretato in forma incompleta o alterata.
+
+Ti fornisco ora lo stesso identico contenuto come allegato
+`PCEnhancer.java.txt`. Il contenuto non è stato modificato: è cambiata soltanto
+l'estensione del file per superare il problema tecnico di lettura
+dell'allegato.
+
+Usa il nuovo allegato come sorgente production autorevole per `PCEnhancer` e
+riesegui esclusivamente l'analisi richiesta dal prompt P1 precedente,
+mantenendone invariati tutti i vincoli.
+
+In particolare:
+- non generare codice di test;
+- non definire i 30 test case finali;
+- non utilizzare test nativi OpenJPA, suite precedenti, risultati JaCoCo,
+  risultati PIT o fonti esterne;
+- non inventare API o comportamenti mancanti.
+
+Se, dopo aver letto il file completo, ritieni ancora necessarie classi
+production aggiuntive per proseguire in modo affidabile, elencale e motiva
+precisamente la necessità di ciascuna.
