@@ -13,13 +13,25 @@ Suite                : T_LLM
 N                    : 30 test case/scenari distinti
 LLM client           : Microsoft Copilot
 Interaction mode     : browser chat
-Copilot mode         : Think Deeper
+Model                : GPT 5.6 Think Deeper
+Model provider       : OpenAI
+Copilot plan         : Copilot Chat (Basic)
 Repository branch    : isw2-project
 Repository HEAD      : fa2cf51186b00cd833338b20bdf2a2d3709ece75
 ```
 
 `Repository HEAD` identifica lo stato del progetto precedente al commit di
 preregistrazione `T_LLM`.
+
+## Pre-P1 environment refinement
+
+Dopo il commit iniziale di preregistrazione, ma prima di qualsiasi prompt P1,
+l'accesso a Microsoft Copilot tramite l'account istituzionale ha esposto
+esplicitamente il modello selezionabile. L'ambiente è stato quindi raffinato
+pre-P1 registrando `GPT 5.6 Think Deeper` come modello effettivamente scelto.
+
+Nessun prompt dell'esperimento era stato ancora inviato e il production context
+non è stato modificato.
 
 ## Contesto iniziale autorizzato
 
@@ -62,7 +74,7 @@ Per ciascuna aggiunta registrare:
 
 ```text
 PCEnhancer.java SHA-256 : F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A
-Environment SHA-256     : D5FD08C4803445E10D9775ED375966617B630839746ED4000DF910C7502D1649
+Environment SHA-256     : 250C6EF4401AEABCF50B3E37C33DA4B12467E739FF21C69F214AE7CAA77E13A7
 ```
 
 La copia di `PCEnhancer.java` usata nel contesto LLM è stata verificata
