@@ -1,0 +1,53 @@
+# P1 - Analysis + Test Design
+
+Esperimento di test generation per:
+
+org.apache.openjpa.enhance.PCEnhancer
+Apache OpenJPA 4.1.1
+
+Ambiente:
+- Java 21
+- JUnit Jupiter
+- Mockito disponibile ma non obbligatorio
+
+Usa esclusivamente il production context fornito con questo messaggio.
+
+Non utilizzare:
+- test nativi OpenJPA;
+- altre suite sperimentali;
+- risultati JaCoCo;
+- risultati PIT;
+- survivor mutation;
+- Web o fonti esterne.
+
+Svolgi due attività nello stesso passaggio.
+
+1. Analizza `PCEnhancer` dal punto di vista del testing, identificando le
+   principali responsabilità, gli input o stati rilevanti, gli output o effetti
+   osservabili e i collaboratori production coinvolti.
+
+2. Se il production context disponibile è sufficiente, progetta esattamente
+   30 test case/scenari distinti identificati:
+
+   TLLM-001 ... TLLM-030
+
+Per ciascun test case indica:
+- ID;
+- comportamento considerato;
+- input e setup necessari;
+- azione;
+- risultato atteso o altro elemento osservabile.
+
+`N = 30` riguarda i test case/scenari, non il numero futuro di metodi Java,
+fixture o helper.
+
+Non scrivere ancora codice Java.
+
+Se il production context non è sufficiente per progettare in modo affidabile i
+30 casi senza inventare API o contratti, non completare artificialmente il
+progetto: indica soltanto i file production realmente necessari e il motivo
+della richiesta.
+
+Se invece il progetto viene completato, alla fine conferma:
+- numero totale dei test case = 30;
+- presenza degli ID da TLLM-001 a TLLM-030 senza salti o duplicazioni.
