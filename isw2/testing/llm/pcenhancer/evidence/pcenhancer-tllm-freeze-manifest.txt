@@ -1,3 +1,11 @@
+Post-freeze repository compliance:
+- ASF license header added to PCEnhancerLLMTest.java
+- comment-only change required by Apache RAT
+- test semantics unchanged
+- cardinality unchanged: 30
+- validation unchanged: 30/30 PASS
+- canonical SHA-256 updated after header addition
+
 PCEnhancer T_LLM - Freeze Manifest
 
 Target          : org.apache.openjpa.enhance.PCEnhancer
@@ -12,7 +20,7 @@ Failures        : 0
 Errors          : 0
 Skipped         : 0
 Stability       : 5/5 PASS
-SHA-256         : 2C986140B09456C3F831372EAF82167DD9DF6E7F8D6DDC8B2B8C00446F0A9FC72
+SHA-256         : 4E785E30F56C5E07C454DA15D9E2EEE6DC50419C12CECBD792327CDD0C6ADBFC
 Status          : FROZEN
 
 Canonical executable source:

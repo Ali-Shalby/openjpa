@@ -239,3 +239,17 @@ Canonical executable source:
 
 From this point onward, JaCoCo, PIT and qualitative comparison are strictly
 post-freeze measurements and must not be used to modify the suite.
+
+## Repository compliance adjustment
+
+After the initial freeze, GitHub Actions failed the Apache RAT check because
+PCEnhancerLLMTest.java did not contain the ASF license header.
+
+The standard ASF license header was added as a comment-only repository
+compliance change.
+
+No test case, oracle, helper or executable statement was modified.
+
+Canonical post-compliance SHA-256:
+
+4E785E30F56C5E07C454DA15D9E2EEE6DC50419C12CECBD792327CDD0C6ADBFC
