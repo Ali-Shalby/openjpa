@@ -23,9 +23,9 @@ Repository HEAD      : fa2cf51186b00cd833338b20bdf2a2d3709ece75
 `Repository HEAD` identifica lo stato del progetto precedente al commit di
 preregistrazione `T_LLM`.
 
-## Pre-P1 environment refinement
+## Pre-generation environment refinement
 
-Dopo il commit iniziale di preregistrazione, ma prima di qualsiasi prompt P1,
+Dopo il commit iniziale di preregistrazione, ma prima del prompt principale,
 l'accesso a Microsoft Copilot tramite l'account istituzionale ha esposto
 esplicitamente il modello selezionabile. L'ambiente è stato quindi raffinato
 pre-P1 registrando `GPT 5.6 Think Deeper` come modello effettivamente scelto.
@@ -35,10 +35,11 @@ non è stato modificato.
 
 ## Contesto iniziale autorizzato
 
-Prima di P1 l'LLM riceve soltanto:
+Prima del prompt principale l'LLM riceve soltanto:
 
 ```text
 openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java
+(consegnato all'interfaccia come copia byte-identica `PCEnhancer.java.txt`)
 T_LLM-environment.txt
 ```
 
@@ -61,7 +62,7 @@ Non vengono resi disponibili all'LLM:
 ## Context completion
 
 Eventuali classi production aggiuntive possono essere aggiunte soltanto se
-richieste esplicitamente dall'LLM durante P1/P2 perché necessarie alla
+richieste esplicitamente dall'LLM durante la run corrente perché necessarie alla
 comprensione o implementazione.
 
 Per ciascuna aggiunta registrare:
@@ -86,7 +87,7 @@ Repository/Context match : True
 
 ## Freeze del contesto
 
-Il contesto iniziale è congelato prima della prima interrogazione P1.
+Il contesto iniziale è congelato prima del prompt principale.
 
 Il manifest può essere aggiornato successivamente soltanto per registrare
 context completion leciti e richiesti esplicitamente dall'LLM. Non devono
