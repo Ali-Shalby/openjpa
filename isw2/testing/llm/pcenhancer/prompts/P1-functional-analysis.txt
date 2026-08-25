@@ -1,34 +1,40 @@
 # P1 - Functional Analysis
 
-Sto svolgendo un esperimento universitario di Software Testing sulla classe:
+Sto svolgendo un esperimento universitario di software testing sulla classe:
 
 org.apache.openjpa.enhance.PCEnhancer
 
 Baseline: Apache OpenJPA 4.1.1.
 
-Analizza PCEnhancer dal punto di vista del testing utilizzando esclusivamente
-il production context fornito.
+Usa esclusivamente il production context fornito.
 
 Non utilizzare:
+- test già esistenti;
 - test nativi OpenJPA;
 - altre suite sperimentali;
 - risultati JaCoCo;
 - risultati PIT;
 - Web o fonti esterne.
 
-In questa fase non progettare ancora i 30 test e non scrivere codice Java.
+Se per comprendere correttamente un comportamento è necessaria una classe
+production non presente nel contesto, indicami esattamente quale file o classe
+devo fornirti. Non inventare API o comportamenti mancanti.
 
-Descrivi:
-1. le principali responsabilità della classe;
-2. le funzionalità e i comportamenti osservabili rilevanti per il testing;
-3. gli input e gli stati che influenzano tali comportamenti;
-4. gli output, gli effetti e le eccezioni osservabili;
-5. i principali collaboratori production coinvolti;
-6. eventuali aspetti che rendono il testing più complesso;
-7. eventuali informazioni production mancanti o incertezze.
+In questa fase NON scrivere codice di test e NON definire ancora i 30 casi
+finali.
 
-Analizza comunque tutto ciò che è determinabile dal contesto disponibile.
-Se alcune informazioni dipendono da production code non fornito, segnalale
-soltanto nella sezione finale delle incertezze senza inventarne il contenuto.
+Analizza PCEnhancer dal punto di vista del testing.
+
+Per le principali aree funzionali che individui, descrivi:
+1. il comportamento o la responsabilità osservabile;
+2. gli input o gli stati rilevanti;
+3. gli output, gli effetti o le eccezioni osservabili;
+4. i principali collaboratori production coinvolti;
+5. eventuali informazioni production mancanti necessarie per comprendere il comportamento.
+
+Concludi con:
+- un elenco sintetico delle aree funzionali individuate;
+- l'elenco delle sole classi/file production aggiuntivi che ritieni necessari;
+- eventuali aspetti che non puoi determinare dal contesto disponibile.
 
 Non generare test Java.
