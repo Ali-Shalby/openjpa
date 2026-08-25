@@ -1,0 +1,157 @@
+    }
+
+    // TLLM-021
+    @Test
+    void tllm021_getReturnedFieldFindsDirectlyReturnedField()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method getter = method(AccessFixture.class, "getValue");
+
+        Field result = PCEnhancer.getReturnedField(classNode, getter);
+
+        assertEquals(
+                AccessFixture.class.getDeclaredField("value"),
+                result);
+    }
+
+    // TLLM-022
+    @Test
+    void tllm022_getReturnedFieldSkipsCheckcast()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method getter = method(AccessFixture.class, "getCastedValue");
+
+        Field result = PCEnhancer.getReturnedField(classNode, getter);
+
+        assertEquals(
+                AccessFixture.class.getDeclaredField("objectValue"),
+                result);
+    }
+
+    // TLLM-023
+    @Test
+    void tllm023_getReturnedFieldRejectsLiteralReturn()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method getter = method(AccessFixture.class, "getLiteral");
+
+        Field result = PCEnhancer.getReturnedField(classNode, getter);
+
+        assertNull(result);
+    }
+
+    // TLLM-024
+    @Test
+    void tllm024_getReturnedFieldRejectsStaticGetter()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method getter = method(AccessFixture.class, "getStaticValue");
+
+        Field result = PCEnhancer.getReturnedField(classNode, getter);
+
+        assertNull(result);
+    }
+
+    // TLLM-025
+    @Test
+    void tllm025_getReturnedFieldRejectsInterfaceMethod()
+            throws Exception {
+
+        ClassNode classNode = new EnhancementProject()
+                .loadClass(AccessFixtureInterface.class)
+                .getClassNode();
+
+        Method getter = method(
+                AccessFixtureInterface.class,
+                "getValue");
+
+        Field result = PCEnhancer.getReturnedField(classNode, getter);
+
+        assertNull(result);
+    }
+
+    // TLLM-026
+    @Test
+    void tllm026_getAssignedFieldFindsDirectSetterAssignment()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method setter = method(
+                AccessFixture.class,
+                "setValue",
+                String.class);
+
+        Field result = PCEnhancer.getAssignedField(classNode, setter);
+
+        assertEquals(
+                AccessFixture.class.getDeclaredField("value"),
+                result);
+    }
+
+    // TLLM-027
+    @Test
+    void tllm027_getAssignedFieldRejectsTransformedArgument()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method setter = method(
+                AccessFixture.class,
+                "setIncrementedNumber",
+                int.class);
+
+        Field result = PCEnhancer.getAssignedField(classNode, setter);
+
+        assertNull(result);
+    }
+
+    // TLLM-028
+    @Test
+    void tllm028_getAssignedFieldRejectsStaticSetter()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method setter = method(
+                AccessFixture.class,
+                "setStaticValue",
+                String.class);
+
+        Field result = PCEnhancer.getAssignedField(classNode, setter);
+
+        assertNull(result);
+    }
+
+    // TLLM-029
+    @Test
+    void tllm029_getTypeUsesInterfaceImplementationWhenPresent() {
+        PCEnhancer enhancer = newEnhancer();
+        ClassMetaData metadata = mock(ClassMetaData.class);
+
+        when(metadata.getInterfaceImpl())
+                .thenReturn(InterfaceImplementation.class);
+        when(metadata.getDescribedType())
+                .thenReturn(ManagedType.class);
+
+        Class<?> result = enhancer.getType(metadata);
+
+        assertSame(InterfaceImplementation.class, result);
+    }
+
+    // TLLM-030
+    @Test
+    void tllm030_getTypeFallsBackToDescribedType() {
+        PCEnhancer enhancer = newEnhancer();
+        ClassMetaData metadata = mock(ClassMetaData.class);
+
+        when(metadata.getInterfaceImpl()).thenReturn(null);
+        when(metadata.getDescribedType())
+                .thenReturn(ManagedType.class);
+
+        Class<?> result = enhancer.getType(metadata);
+
+        assertSame(ManagedType.class, result);
+    }
+}

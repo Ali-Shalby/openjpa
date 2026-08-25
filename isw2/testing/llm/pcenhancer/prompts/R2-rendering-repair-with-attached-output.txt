@@ -1,0 +1,28 @@
+# R2 - Rendering Repair With Attached Original Output
+
+Il file allegato contiene esattamente il codice Java prodotto nella tua
+risposta precedente, ma l'interfaccia ha inserito caratteri `*` all'interno
+di keyword, identificatori e istruzioni.
+
+Ripristina esclusivamente la corruzione sintattica introdotta
+dall'interfaccia.
+
+Non modificare, migliorare, sostituire o rigenerare:
+- i 30 test TLLM-001 ... TLLM-030;
+- gli oracle;
+- le fixture;
+- gli helper;
+- la struttura logica della suite.
+
+Restituisci il codice ripristinato in 3 blocchi:
+
+BLOCCO 1:
+package, import, fixture/helper e TLLM-001 ... TLLM-010
+
+BLOCCO 2:
+TLLM-011 ... TLLM-020
+
+BLOCCO 3:
+TLLM-021 ... TLLM-030 e chiusura della classe.
+
+Non aggiungere spiegazioni.

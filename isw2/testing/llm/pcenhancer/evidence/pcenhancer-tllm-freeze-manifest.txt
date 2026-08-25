@@ -1,0 +1,30 @@
+PCEnhancer T_LLM - Freeze Manifest
+
+Target          : org.apache.openjpa.enhance.PCEnhancer
+Baseline        : Apache OpenJPA 4.1.1
+Suite           : T_LLM
+Cardinality     : 30 test case/scenari
+IDs             : TLLM-001 ... TLLM-030
+Unique IDs      : 30
+@Test count     : 30
+Validation      : 30/30 PASS
+Failures        : 0
+Errors          : 0
+Skipped         : 0
+Stability       : 5/5 PASS
+SHA-256         : 2C986140B09456C3F831372EAF82167DD9DF6E7F8D6DDC8B2B8C00446F0A9FC72
+Status          : FROZEN
+
+Canonical executable source:
+isw2/testing/src/test/java/org/apache/openjpa/enhance/PCEnhancerLLMTest.java
+
+Freeze rule:
+After this point the suite must not be modified using JaCoCo, PIT, mutation
+survivors, comparison with previous suites, or any other adequacy feedback.
+
+Technical repairs performed before freeze:
+- output rendering repair;
+- output completion repair;
+- Mockito generic/wildcard compilation repair for TLLM-029/TLLM-030.
+
+No JaCoCo or PIT feedback was used before freeze.

@@ -1,0 +1,31 @@
+    // TLLM-029
+    @Test
+    void tllm029_getTypeUsesInterfaceImplementationWhenPresent() {
+        PCEnhancer enhancer = newEnhancer();
+        ClassMetaData metadata = mock(ClassMetaData.class);
+
+        org.mockito.Mockito.doReturn(InterfaceImplementation.class)
+                .when(metadata).getInterfaceImpl();
+        org.mockito.Mockito.doReturn(ManagedType.class)
+                .when(metadata).getDescribedType();
+
+        Class<?> result = enhancer.getType(metadata);
+
+        assertSame(InterfaceImplementation.class, result);
+    }
+
+    // TLLM-030
+    @Test
+    void tllm030_getTypeFallsBackToDescribedType() {
+        PCEnhancer enhancer = newEnhancer();
+        ClassMetaData metadata = mock(ClassMetaData.class);
+
+        org.mockito.Mockito.doReturn(null)
+                .when(metadata).getInterfaceImpl();
+        org.mockito.Mockito.doReturn(ManagedType.class)
+                .when(metadata).getDescribedType();
+
+        Class<?> result = enhancer.getType(metadata);
+
+        assertSame(ManagedType.class, result);
+    }

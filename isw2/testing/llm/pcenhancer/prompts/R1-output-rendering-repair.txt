@@ -1,0 +1,25 @@
+# R1 - Output Rendering Repair
+
+Il codice Java della risposta precedente è stato corrotto durante la
+visualizzazione: nel blocco sono comparsi caratteri `*` all'interno di
+keyword, identificatori e istruzioni Java.
+
+Non modificare, migliorare, sostituire o rigenerare i test.
+
+Ripubblica ESCLUSIVAMENTE lo stesso codice Java già prodotto, mantenendo
+esattamente gli stessi TLLM-001 ... TLLM-030 e gli stessi oracle.
+
+Per evitare nuovamente il problema di rendering, suddividi il codice in
+3 blocchi separati:
+
+BLOCCO 1:
+package, import, fixture/helper e TLLM-001 ... TLLM-010
+
+BLOCCO 2:
+TLLM-011 ... TLLM-020
+
+BLOCCO 3:
+TLLM-021 ... TLLM-030 e chiusura della classe
+
+Non usare abbreviazioni, omissioni o "continua".
+Non aggiungere spiegazioni fuori dai tre blocchi Java.

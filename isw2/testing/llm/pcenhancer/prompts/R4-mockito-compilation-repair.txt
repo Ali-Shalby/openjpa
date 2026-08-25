@@ -1,0 +1,40 @@
+# R4 - Mockito Compilation Repair
+
+La suite generata è stata integrata nel test harness e la compilazione Maven
+raggiunge correttamente PCEnhancerLLMTest.java.
+
+Restano esclusivamente 3 errori di compilazione Mockito nei test
+TLLM-029 e TLLM-030:
+
+no suitable method found for thenReturn(Class<InterfaceImplementation>)
+no suitable method found for thenReturn(Class<ManagedType>)
+no suitable method found for thenReturn(Class<ManagedType>)
+
+Le righe interessate sono:
+
+when(metadata.getInterfaceImpl())
+        .thenReturn(InterfaceImplementation.class);
+
+when(metadata.getDescribedType())
+        .thenReturn(ManagedType.class);
+
+e in TLLM-030:
+
+when(metadata.getInterfaceImpl()).thenReturn(null);
+when(metadata.getDescribedType())
+        .thenReturn(ManagedType.class);
+
+Correggi esclusivamente questo problema tecnico di compilazione relativo ai
+generic/wildcard di Mockito.
+
+Non modificare:
+- TLLM-001 ... TLLM-028;
+- il significato di TLLM-029 e TLLM-030;
+- gli oracle;
+- le fixture o gli helper se non strettamente necessario alla compilazione;
+- la cardinalità N = 30.
+
+Non aggiungere o sostituire test.
+
+Restituisci esclusivamente il codice corretto di TLLM-029 e TLLM-030
+(e, solo se indispensabile, l'eventuale helper tecnico necessario).

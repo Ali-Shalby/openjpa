@@ -1,0 +1,29 @@
+# R3 - Output Completion Repair
+
+Ti allego due file:
+
+1. il codice originale completo generato nella prima risposta, corrotto
+   dall'interfaccia con caratteri `*`;
+2. il codice già ripristinato nella risposta successiva, che però si è
+   interrotto durante TLLM-021.
+
+Usa il file originale corrotto esclusivamente per ricostruire fedelmente
+il contenuto mancante da TLLM-021 a TLLM-030.
+
+Non modificare, migliorare, sostituire o rigenerare i test.
+
+Continua dal punto di interruzione del file pulito e restituisci soltanto:
+
+- eventuale chiusura mancante di TLLM-020;
+- TLLM-021 completo;
+- TLLM-022 ... TLLM-030;
+- chiusura finale della classe PCEnhancerLLMTest.
+
+Mantieni esattamente gli stessi test case, gli stessi oracle, gli stessi
+helper e la stessa logica presenti nel codice originale.
+
+Correggi esclusivamente la corruzione sintattica introdotta
+dall'interfaccia.
+
+Non ripetere TLLM-001 ... TLLM-019.
+Non aggiungere spiegazioni.

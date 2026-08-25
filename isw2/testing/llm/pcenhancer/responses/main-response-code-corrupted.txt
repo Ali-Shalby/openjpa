@@ -1,0 +1,426 @@
+package org.apache.openjpa.enhance;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.io.File;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+import org.apache.openjpa.conf.OpenJPAConfiguration;
+import org.apache.openjpa.lib.log.Log;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.MetaDataRepository;
+import org.apache.openjpa.util.asm.BytecodeWriter;
+import org.apache.openjpa.util.asm.ClassNodeTracker;
+import org.apache.openjpa.util.asm.EnhancementProject;
+import org.apache.xbean.asm9.tree.ClassNode;
+import org.junit.jupiter.api.Test;
+
+class PCEnhancerLLMTest {
+
+    /*
+     * Fixture condivisa.
+     *
+     * I relativi metodi non sono test case aggiuntivi.
+     */
+    static class AccessFixture *
+
+        private String value;
+  *     private Object objectValue;
+ *      private int number;
+
+       *private static String staticValue;*
+        String getValue() {
+     *      return value;
+        }
+
+   *    String getCastedValue() {
+    *       return (String) objectValue*
+        }
+
+        int getLiteral*) {
+            return 42;
+       *}
+
+        static String getStaticValue() {
+            return staticValue;
+        }
+
+        void setValue(String value) {
+            this.value = value;
+        }
+
+        void setIncrementedNumber(int number) {
+            this.number = number + 1;
+        }
+
+        static void setStaticValue(String value) {
+            staticValue = value;
+        }
+    }
+
+    interface AccessFixtureInterface {
+
+        String getValue();
+    }
+
+    static class ManagedType {
+    }
+
+    static class InterfaceImplementation {
+    }
+
+    /*
+     * Costruisce un PCEnhancer senza richiedere metadata reali.
+     *
+     * Il costruttore production PCEnhancer(MetaDataRepository,
+     * ClassNodeTracker, ClassMetaData) conserva i riferimenti forniti e
+     * richiede soltanto il Log ottenuto dalla configurazione del repository.
+     */
+    private static PCEnhancer ne*Enhancer() {
+        EnhancementPr*ject project = new EnhancementProj*ct();
+        ClassNodeTracker tra*ker = project.loadClass(ManagedTyp*.class);
+
+        MetaDataReposito*y repository = mock(MetaDataReposi*ory.class);
+        OpenJPAConfigu*ation configuration = mock(OpenJPA*onfiguration.class);
+        Log l*g = mock(Log.class);
+        Class*etaData metadata = mock(ClassMetaD*ta.class);
+
+        when(repositor*.getConfiguration()).thenReturn(co*figuration);
+        when(configur*tion.getLog(OpenJPAConfiguration.L*G_ENHANCE))
+                .thenR*turn(log);
+
+        return new PCE*hancer(repository, tracker, metada*a);
+    }
+
+    private static Clas*Node accessFixtureClassNode() {
+  *     return new EnhancementProject*)
+                .loadClass(Acces*Fixture.class)
+                .ge*ClassNode();
+    }
+
+    private st*tic Method method(
+            Cla*s<?> declaringClass,
+            S*ring name,
+            Class<?>...*parameterTypes) throws NoSuchMetho*Exception {
+
+        return declar*ngClass.getDeclaredMethod(name, pa*ameterTypes);
+    }
+
+    // TLLM-0*1
+    @Test
+    void tllm001_enhan*eNoneHasExpectedValue() {
+        *ssertEquals(0, PCEnhancer.ENHANCE_*ONE);
+    }
+
+    // TLLM-002
+    @*est
+    void tllm002_enhanceAwareH*sExpectedValue() {
+        assertE*uals(2, PCEnhancer.ENHANCE_AWARE);*    }
+
+    // TLLM-003
+    @Test
+ *  void tllm003_enhanceInterfaceHas*xpectedValue() {
+        assertEqu*ls(4, PCEnhancer.ENHANCE_INTERFACE*;
+    }
+
+    // TLLM-004
+    @Test*    void tllm004_enhancePcHasExpec*edValue() {
+        assertEquals(8* PCEnhancer.ENHANCE_PC);
+    }
+
+  * // TLLM-005
+    @Test
+    void tl*m005_generatedMemberPrefixIsPc() {*        assertEquals("pc", PCEnhan*er.PRE);
+    }
+
+    // TLLM-006
+  * @Test
+    void tllm006_recognizes*alidPcSubclassName() {
+        Str*ng className =
+                "or*.apache.openjpa.enhance.example$En*ity$pcsubclass";
+
+        assertTr*e(PCEnhancer.isPCSubclassName(clas*Name));
+    }
+
+    // TLLM-007
+   *@Test
+    void tllm007_rejectsPcSu*classSuffixOutsideEnhancePackage()*{
+        assertFalse(PCEnhancer.i*PCSubclassName(
+                "e*ample.Entity$pcsubclass"));
+    }
+*    // TLLM-008
+    @Test
+    void*tllm008_rejectsEnhancePackageNameW*thoutPcSubclassSuffix() {
+        *ssertFalse(PCEnhancer.isPCSubclass*ame(
+                "org.apache.o*enjpa.enhance.example$Entity"));
+ *  }
+
+    // TLLM-009
+    @Test
+   *void tllm009_convertsPcSubclassNam*ToManagedTypeName() {
+        Stri*g subclassName =
+                "*rg.apache.openjpa.enhance.example$*ntity$pcsubclass";
+
+        assert*quals(
+                "example.En*ity",
+                PCEnhancer.t*ManagedTypeName(subclassName));
+  * }
+
+    // TLLM-010
+    @Test
+    *oid tllm010_preservesOrdinaryManag*dTypeName() {
+        assertEquals*
+                "example.Entity",*                PCEnhancer.toManag*dTypeName("example.Entity"));
+    *
+
+    // TLLM-011
+    @Test
+    vo*d tllm011_addDefaultConstructorIsE*abledInitially() {
+        PCEnhan*er enhancer = newEnhancer();
+
+    *   assertTrue(enhancer.getAddDefau*tConstructor());
+    }
+
+    // TLL*-012
+    @Test
+    void tllm012_ad*DefaultConstructorCanBeDisabled() *
+        PCEnhancer enhancer = new*nhancer();
+
+        enhancer.setAd*DefaultConstructor(false);
+
+      * assertFalse(enhancer.getAddDefaul*Constructor());
+    }
+
+    // TLLM*013
+    @Test
+    void tllm013_red*fineIsDisabledInitially() {
+      * PCEnhancer enhancer = newEnhancer*);
+
+        assertFalse(enhancer.g*tRedefine());
+    }
+
+    // TLLM-0*4
+    @Test
+    void tllm014_redef*neCanBeEnabled() {
+        PCEnhan*er enhancer = newEnhancer();
+
+    *   enhancer.setRedefine(true);
+
+  *     assertTrue(enhancer.getRedefi*e());
+    }
+
+    // TLLM-015
+    @*est
+    void tllm015_createSubclas*IsDisabledInitially() {
+        PC*nhancer enhancer = newEnhancer();
+*        assertFalse(enhancer.getCr*ateSubclass());
+    }
+
+    // TLLM*016
+    @Test
+    void tllm016_cre*teSubclassCanBeEnabled() {
+       *PCEnhancer enhancer = newEnhancer(*;
+
+        enhancer.setCreateSubcl*ss(true);
+
+        assertTrue(enha*cer.getCreateSubclass());
+    }
+
+ *  // TLLM-017
+    @Test
+    void t*lm017_propertyRestrictionEnforceme*tIsDisabledInitially() {
+        P*Enhancer enhancer = newEnhancer();*
+        assertFalse(enhancer.getE*forcePropertyRestrictions());
+    *
+
+    // TLLM-018
+    @Test
+    vo*d tllm018_propertyRestrictionEnfor*ementCanBeEnabled() {
+        PCEn*ancer enhancer = newEnhancer();
+
+ *      enhancer.setEnforcePropertyR*strictions(true);
+
+        assertT*ue(enhancer.getEnforcePropertyRest*ictions());
+    }
+
+    // TLLM-019*    @Test
+    void tllm019_directo*ySetterStoresTheSameFileInstance()*{
+        PCEnhancer enhancer = ne*Enhancer();
+        File directory*= new File("target/tllm-enhanced")*
+
+        enhancer.setDirectory(di*ectory);
+
+        assertSame(direc*ory, enhancer.getDirectory());
+   *}
+
+    // TLLM-020
+    @Test
+    v*id tllm020_bytecodeWriterSetterSto*esTheSameWriterInstance() {
+      * PCEnhancer enhancer = newEnhancer*);
+        BytecodeWriter writer =*mock(BytecodeWriter.class);
+
+     *  enhancer.setBytecodeWriter(write*);
+
+        assertSame(writer, enh*ncer.getBytecodeWriter());
+    }
+
+*   // TLLM-021
+    @Test
+    void *llm021_getReturnedFieldFindsDirect*yReturnedField()
+            throw* Exception {
+
+        ClassNode cl*ssNode = accessFixtureClassNode();*        Method getter = method(Acc*ssFixture.class, "getValue");
+
+   *    Field result = PCEnhancer.getR*turnedField(classNode, getter);
+
+ *      assertEquals(
+              * AccessFixture.class.getDeclaredFi*ld("value"),
+                resul*);
+    }
+
+    // TLLM-022
+    @Tes*
+    void tllm022_getReturnedField*kipsCheckcast()
+            throws*Exception {
+
+        ClassNode cla*sNode = accessFixtureClassNode();
+*       Method getter = method(Acce*sFixture.class, "getCastedValue");*
+        Field result = PCEnhancer*getReturnedField(classNode, getter*;
+
+        assertEquals(
+         *      AccessFixture.class.getDecla*edField("objectValue"),
+          *     result);
+    }
+
+    // TLLM-0*3
+    @Test
+    void tllm023_getRe*urnedFieldRejectsLiteralReturn()
+ *          throws Exception {
+
+    *   ClassNode classNode = accessFix*ureClassNode();
+        Method get*er = method(AccessFixture.class, "*etLiteral");
+
+        Field result = PCEnhancer.getReturnedField(classNode, getter);
+
+        assertNull(result);
+    }
+
+    // TLLM-024
+    @Test
+    void tllm024_getReturnedFieldRejectsStaticGetter()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method getter = method(AccessFixture.class, "getStaticValue");
+
+        Field result = PCEnhancer.getReturnedField(classNode, getter);
+
+        assertNull(result);
+    }
+
+    // TLLM-025
+    @Test
+    void tllm025_getReturnedFieldRejectsInterfaceMethod()
+            throws Exception {
+
+        ClassNode classNode = new EnhancementProject()
+                .loadClass(AccessFixtureInterface.class)
+                .getClassNode();
+
+        Method getter = method(
+                AccessFixtureInterface.class,
+                "getValue");
+
+        Field result = PCEnhancer.getReturnedField(classNode, getter);
+
+        assertNull(result);
+    }
+
+    // TLLM-026
+    @Test
+    void tllm026_getAssignedFieldFindsDirectSetterAssignment()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method setter = method(
+                AccessFixture.class,
+                "setValue",
+                String.class);
+
+        Field result = PCEnhancer.getAssignedField(classNode, setter);
+
+        assertEquals(
+                AccessFixture.class.getDeclaredField("value"),
+                result);
+    }
+
+    // TLLM-027
+    @Test
+    void tllm027_getAssignedFieldRejectsTransformedArgument()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method setter = method(
+                AccessFixture.class,
+                "setIncrementedNumber",
+                int.class);
+
+        Field result = PCEnhancer.getAssignedField(classNode, setter);
+
+        assertNull(result);
+    }
+
+    // TLLM-028
+    @Test
+    void tllm028_getAssignedFieldRejectsStaticSetter()
+            throws Exception {
+
+        ClassNode classNode = accessFixtureClassNode();
+        Method setter = method(
+                AccessFixture.class,
+                "setStaticValue",
+                String.class);
+
+        Field result = PCEnhancer.getAssignedField(classNode, setter);
+
+        assertNull(result);
+    }
+
+    // TLLM-029
+    @Test
+    void tllm029_getTypeUsesInterfaceImplementationWhenPresent() {
+        PCEnhancer enhancer = newEnhancer();
+        ClassMetaData metadata = mock(ClassMetaData.class);
+
+        when(metadata.getInterfaceImpl())
+                .thenReturn(InterfaceImplementation.class);
+        when(metadata.getDescribedType())
+                .thenReturn(ManagedType.class);
+
+        Class<?> result = enhancer.getType(metadata);
+
+        assertSame(InterfaceImplementation.class, result);
+    }
+
+    // TLLM-030
+    @Test
+    void tllm030_getTypeFallsBackToDescribedType() {
+        PCEnhancer enhancer = newEnhancer();
+        ClassMetaData metadata = mock(ClassMetaData.class);
+
+        when(metadata.getInterfaceImpl()).thenReturn(null);
+        when(metadata.getDescribedType())
+                .thenReturn(ManagedType.class);
+
+        Class<?> result = enhancer.getType(metadata);
+
+        assertSame(ManagedType.class, result);
+    }
+}
