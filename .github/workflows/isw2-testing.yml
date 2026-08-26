@@ -83,7 +83,7 @@ jobs:
           echo "TBB-026 reproduced the documented expected failure."
 
   evosuite-tests:
-    name: PCEnhancer T_ES - Java 11
+    name: EvoSuite T_ES - Java 11
     runs-on: windows-latest
 
     steps:
@@ -105,45 +105,67 @@ jobs:
           javac -version
           mvn -version
 
-      - name: Validate frozen T_ES cardinality
+      - name: Validate frozen T_ES cardinalities
         shell: pwsh
         run: |
-          $seed0 = "isw2/testing/src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/es/PCEnhancerEvoSuiteSeed0Test.java"
-          $seed1 = "isw2/testing/src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/es/PCEnhancerEvoSuiteSeed1Test.java"
-
           function Count-Tests([string]$path) {
+            if (-not (Test-Path $path)) {
+              throw "Frozen EvoSuite source not found: $path"
+            }
+
             $count = 0
             $matches = @(Select-String -Path $path -Pattern "@Test" -AllMatches)
+
             foreach ($match in $matches) {
               $count += $match.Matches.Count
             }
+
             return $count
           }
 
-          $seed0Count = Count-Tests $seed0
-          $seed1Count = Count-Tests $seed1
-          $total = $seed0Count + $seed1Count
+          $pcSeed0 = "isw2/testing/src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/es/PCEnhancerEvoSuiteSeed0Test.java"
+          $pcSeed1 = "isw2/testing/src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/es/PCEnhancerEvoSuiteSeed1Test.java"
 
-          Write-Host "Seed 0 tests : $seed0Count"
-          Write-Host "Seed 1 tests : $seed1Count"
-          Write-Host "Total T_ES   : $total"
+          $liwSeed0 = "isw2/testing/src/test/java/it/uniroma2/isw2/openjpa/testing/listiteratorwrapper/es/ListIteratorWrapperEvoSuiteSeed0Test.java"
 
-          if ($seed0Count -ne 15 -or $seed1Count -ne 15 -or $total -ne 30) {
-            throw "Frozen T_ES cardinality mismatch. Expected 15 + 15 = 30."
+          $pcSeed0Count = Count-Tests $pcSeed0
+          $pcSeed1Count = Count-Tests $pcSeed1
+          $pcTotal = $pcSeed0Count + $pcSeed1Count
+
+          $liwTotal = Count-Tests $liwSeed0
+
+          Write-Host "PCEnhancer seed 0       : $pcSeed0Count"
+          Write-Host "PCEnhancer seed 1       : $pcSeed1Count"
+          Write-Host "PCEnhancer total        : $pcTotal"
+          Write-Host "ListIteratorWrapper     : $liwTotal"
+
+          if (
+            $pcSeed0Count -ne 15 -or
+            $pcSeed1Count -ne 15 -or
+            $pcTotal -ne 30
+          ) {
+            throw "Frozen PCEnhancer T_ES cardinality mismatch. Expected 15 + 15 = 30."
           }
+
+          if ($liwTotal -ne 12) {
+            throw "Frozen ListIteratorWrapper T_ES cardinality mismatch. Expected 12."
+          }
+
+          Write-Host ""
+          Write-Host "Frozen cardinalities: PASS"
 
       - name: Prepare isolated EvoSuite Java 11 harness
         shell: pwsh
         run: |
           $testing = Join-Path $env:GITHUB_WORKSPACE "isw2\testing"
+
           $depsDir = Join-Path $testing "target\ci-evosuite-deps"
           $outDir = Join-Path $testing "target\ci-evosuite-test-classes"
 
           New-Item -ItemType Directory -Force $depsDir | Out-Null
           New-Item -ItemType Directory -Force $outDir | Out-Null
 
-          # I due scaffolding congelati registrano questi percorsi Windows.
-          # Li ricreiamo senza modificare i sorgenti T_ES.
+          # PCEnhancer frozen scaffolding paths.
           New-Item -ItemType Directory -Force `
             "C:\ISW2\openjpa\isw2\testing\target\evosuite-pcenhancer\canonical-seed-0" |
             Out-Null
@@ -152,6 +174,12 @@ jobs:
             "C:\ISW2\openjpa\isw2\testing\target\evosuite-pcenhancer\canonical-seed-1" |
             Out-Null
 
+          # ListIteratorWrapper frozen scaffolding path.
+          New-Item -ItemType Directory -Force `
+            "C:\ISW2\openjpa\isw2\testing\target\evosuite-listiteratorwrapper\canonical-seed-0" |
+            Out-Null
+
+          # Path recorded by the frozen EvoSuite scaffoldings.
           New-Item -ItemType Directory -Force `
             "C:\Users\marco\AppData\Local\Temp" |
             Out-Null
@@ -172,7 +200,6 @@ jobs:
             throw "Unable to copy the ISW2 harness dependencies."
           }
 
-          # JUnit 4 e Hamcrest vengono resi espliciti per la suite EvoSuite.
           mvn -B `
             -f isw2/testing/pom.xml `
             dependency:copy `
@@ -193,10 +220,12 @@ jobs:
             throw "Unable to resolve Hamcrest 1.3."
           }
 
-          # EvoSuite 1.2.0 non è pubblicato su Maven Central: usiamo
-          # il runtime standalone della release ufficiale GitHub.
-          $runtimeJar = Join-Path $depsDir "evosuite-standalone-runtime-1.2.0.jar"
-          $runtimeUrl = "https://github.com/EvoSuite/evosuite/releases/download/v1.2.0/evosuite-standalone-runtime-1.2.0.jar"
+          $runtimeJar = Join-Path `
+            $depsDir `
+            "evosuite-standalone-runtime-1.2.0.jar"
+
+          $runtimeUrl = `
+            "https://github.com/EvoSuite/evosuite/releases/download/v1.2.0/evosuite-standalone-runtime-1.2.0.jar"
 
           Invoke-WebRequest `
             -Uri $runtimeUrl `
@@ -207,24 +236,40 @@ jobs:
           }
 
           Write-Host "Resolved dependency jars:"
-          Get-ChildItem $depsDir -Filter "*.jar" |
-            Sort-Object Name |
-            Select-Object -ExpandProperty Name
 
-      - name: Compile frozen PCEnhancer T_ES
+          Get-ChildItem `
+            $depsDir `
+            -Filter "*.jar" |
+          Sort-Object Name |
+          Select-Object -ExpandProperty Name
+
+      - name: Compile frozen EvoSuite T_ES suites
         shell: pwsh
         run: |
           $testing = Join-Path $env:GITHUB_WORKSPACE "isw2\testing"
+
           $depsDir = Join-Path $testing "target\ci-evosuite-deps"
           $outDir = Join-Path $testing "target\ci-evosuite-test-classes"
 
           $sources = @(
+
+            # PCEnhancer T_ES
             (Join-Path $testing "src\test\java\org\apache\openjpa\enhance\PCEnhancerTestAccess.java"),
             (Join-Path $testing "src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed0Scaffolding.java"),
             (Join-Path $testing "src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed0Test.java"),
             (Join-Path $testing "src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed1Scaffolding.java"),
-            (Join-Path $testing "src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed1Test.java")
+            (Join-Path $testing "src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed1Test.java"),
+
+            # ListIteratorWrapper T_ES
+            (Join-Path $testing "src\test\java\it\uniroma2\isw2\openjpa\testing\listiteratorwrapper\es\ListIteratorWrapperEvoSuiteSeed0Scaffolding.java"),
+            (Join-Path $testing "src\test\java\it\uniroma2\isw2\openjpa\testing\listiteratorwrapper\es\ListIteratorWrapperEvoSuiteSeed0Test.java")
           )
+
+          foreach ($source in $sources) {
+            if (-not (Test-Path $source)) {
+              throw "Frozen EvoSuite source not found: $source"
+            }
+          }
 
           $javacArgs = @(
             "--release", "11",
@@ -236,15 +281,19 @@ jobs:
           & javac @javacArgs
 
           if ($LASTEXITCODE -ne 0) {
-            throw "Compilation of frozen PCEnhancer T_ES failed."
+            throw "Compilation of frozen EvoSuite T_ES suites failed."
           }
+
+          Write-Host "Frozen EvoSuite compilation: PASS"
 
       - name: Run frozen PCEnhancer T_ES
         shell: pwsh
         run: |
           $testing = Join-Path $env:GITHUB_WORKSPACE "isw2\testing"
+
           $depsDir = Join-Path $testing "target\ci-evosuite-deps"
           $outDir = Join-Path $testing "target\ci-evosuite-test-classes"
+
           $runtimeCp = "$outDir;$depsDir\*"
 
           $output = & java `
@@ -255,15 +304,68 @@ jobs:
             2>&1
 
           $exitCode = $LASTEXITCODE
-          $output | ForEach-Object { Write-Host $_ }
+
+          $output |
+            ForEach-Object {
+              Write-Host $_
+            }
 
           if ($exitCode -ne 0) {
             throw "Frozen PCEnhancer T_ES failed."
           }
 
           $text = $output -join "`n"
+
           if ($text -notmatch "OK \(30 tests\)") {
-            throw "T_ES finished without the expected JUnit result: OK (30 tests)."
+            throw "PCEnhancer T_ES finished without expected result OK (30 tests)."
           }
 
+          Write-Host ""
           Write-Host "Frozen PCEnhancer T_ES: 30/30 PASS."
+
+      - name: Run frozen ListIteratorWrapper T_ES
+        shell: pwsh
+        run: |
+          $testing = Join-Path $env:GITHUB_WORKSPACE "isw2\testing"
+
+          $depsDir = Join-Path $testing "target\ci-evosuite-deps"
+          $outDir = Join-Path $testing "target\ci-evosuite-test-classes"
+
+          $runtimeCp = "$outDir;$depsDir\*"
+
+          $oldJdkJavaOptions = $env:JDK_JAVA_OPTIONS
+
+          $env:JDK_JAVA_OPTIONS = `
+            "--add-opens=java.desktop/java.awt=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED"
+
+          try {
+
+            $output = & java `
+              -cp $runtimeCp `
+              org.junit.runner.JUnitCore `
+              it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.es.ListIteratorWrapperEvoSuiteSeed0Test `
+              2>&1
+
+            $exitCode = $LASTEXITCODE
+          }
+          finally {
+            $env:JDK_JAVA_OPTIONS = $oldJdkJavaOptions
+          }
+
+          $output |
+            ForEach-Object {
+              Write-Host $_
+            }
+
+          if ($exitCode -ne 0) {
+            throw "Frozen ListIteratorWrapper T_ES failed."
+          }
+
+          $text = $output -join "`n"
+
+          if ($text -notmatch "OK \(12 tests\)") {
+            throw "ListIteratorWrapper T_ES finished without expected result OK (12 tests)."
+          }
+
+          Write-Host ""
+          Write-Host "Frozen ListIteratorWrapper T_ES: 12/12 PASS."

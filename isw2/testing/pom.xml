@@ -99,6 +99,7 @@
                 <configuration>
                     <testExcludes>
                         <testExclude>**/pcenhancer/es/**</testExclude>
+                        <testExclude>**/listiteratorwrapper/es/**</testExclude>
                         <testExclude>**/PCEnhancerTestAccess.java</testExclude>
                     </testExcludes>
                 </configuration>
