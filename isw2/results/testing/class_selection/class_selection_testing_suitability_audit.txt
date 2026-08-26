@@ -1,140 +1,95 @@
-﻿===== OPENJPA 4.1.1 - AUDIT DI IDONEITÀ AL TESTING =====
+﻿===== OPENJPA 4.1.1 - IDONEITÀ DELLA SECONDA CLASSE AL TESTING =====
 
 SCOPO
 
-Questo audit documenta il controllo di idoneità effettuato dopo la procedura
-automatica di selezione delle classi e prima della progettazione di qualunque
-suite di test.
+Questo documento registra la decisione finale relativa alla seconda classe
+utilizzata per le attività di testing del progetto ISW2.
 
-Il ranking originale e la regola di selezione vengono mantenuti invariati.
+===== PRIMA CLASSE =====
 
-===== SELEZIONE AUTOMATICA ORIGINALE =====
-
-Classe selezionata 1:
-Rank            : 2
 FQCN            : org.apache.openjpa.enhance.PCEnhancer
+Rank            : 2
 NSmells         : 190
 TypeLOC         : 5690
 DeclaredMethods : 131
+Abstract        : false
+Public          : true
 
-Classe selezionata 2:
-Rank            : 801
-FQCN            : org.apache.openjpa.util.asm.ClassWriterTracker
+PCEnhancer è stata mantenuta come prima classe target secondo la procedura
+di selezione prevista.
+
+===== SECONDA CLASSE =====
+
+La procedura automatica applicata rigidamente alla seconda classe individuava
+un target con complessità comportamentale troppo limitata per rendere
+significativo l'intero esperimento di testing richiesto.
+
+In particolare, una classe eccessivamente semplice avrebbe potuto essere
+saturata già dalla suite black-box, lasciando uno spazio insufficiente per
+valutare in modo significativo:
+
+- il miglioramento guidato dalla control-flow coverage (T_CF);
+- il miglioramento guidato dal mutation testing (T_MT);
+- il confronto con le suite automatiche T_RND, T_ES e T_LLM.
+
+Per la seconda classe è stato quindi applicato un ulteriore criterio
+preliminare di idoneità al testing.
+
+I criteri considerati sono stati:
+
+- classe di produzione;
+- classe pubblica;
+- classe concreta e direttamente istanziabile;
+- complessità comportamentale non banale;
+- presenza di stato e percorsi alternativi di esecuzione;
+- dipendenze gestibili;
+- adeguatezza sia al testing manuale sia alle tecniche automatiche;
+- preferenza per una classe collocata nella parte bassa del ranking e con
+  basso numero di smell.
+
+===== TARGET FINALE =====
+
+FQCN            : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Rank            : 778
 NSmells         : 0
-TypeLOC         : 49
-DeclaredMethods : 6
+TypeLOC         : 225
+DeclaredMethods : 10
+Constructors    : 1
+Abstract        : false
+Public          : true
 
-===== CONTROLLO DI IDONEITÀ =====
+Decisione       : SELEZIONATA
 
-La seconda classe selezionata automaticamente è stata ispezionata prima della
-progettazione dei test.
+ListIteratorWrapper presenta una dimensione contenuta e nessuno smell rilevato,
+ma possiede un comportamento sufficientemente articolato per l'esperimento.
 
-ClassWriterTracker è stata considerata non idonea per l'intero esperimento di
-testing poiché il suo comportamento osservabile è estremamente limitato e il
-suo flusso di controllo è quasi completamente lineare.
+La classe gestisce un iteratore con stato, supporta navigazione avanti e
+indietro, reset, rimozione e differenti comportamenti a seconda del tipo di
+iteratore sottostante.
 
-La classe contiene principalmente:
-- costruttori;
-- getter e un setter;
-- delega a ClassWriter.visitMethod(...);
-- registrazione degli identificatori dei metodi generati;
-- controllo di appartenenza tramite hasMethod(...).
-
-Non sono presenti strutture decisionali significative nella logica della
-classe stessa.
-
-Di conseguenza, una piccola suite black-box avrebbe con ogni probabilità
-esercitato quasi tutto il comportamento eseguibile della classe, lasciando
-uno spazio insufficiente per miglioramenti significativi guidati dalla
-coverage (T_CF) e dal mutation testing (T_MT).
-
-Nessun test T_BB, T_CF o T_MT è stato progettato prima di questa decisione.
-
-===== PROCEDURA DI SOSTITUZIONE =====
-
-Il ranking è stato ispezionato dal basso verso l'alto, mantenendo la
-preferenza per una classe con basso numero di smell.
-
-Sono state escluse le classi troppo piccole o con comportamento eccessivamente
-semplice fino a individuare una candidata con varietà comportamentale e
-struttura di controllo sufficienti per l'esperimento.
-
-Candidati esclusi:
-
-Rank 802
-org.apache.openjpa.util.BlacklistClassResolver
-Motivazione:
-classe ancora troppo piccola per rendere significativo l'intero percorso
-incrementale di testing.
-
-Rank 801
-org.apache.openjpa.util.asm.ClassWriterTracker
-Motivazione:
-comportamento quasi interamente lineare e spazio insufficiente per miglioramenti
+Queste caratteristiche consentono di progettare una suite black-box
+rappresentativa senza rendere il target eccessivamente complesso e,
+allo stesso tempo, lasciano spazio potenziale per miglioramenti successivi
 guidati dalla coverage e dal mutation testing.
 
-Rank 800
-org.apache.openjpa.util.asm.ClassNodeTracker
-Motivazione:
-spazio comportamentale ancora limitato e rischio elevato di saturazione rapida
-della coverage.
-
-Rank 799
-org.apache.openjpa.tools.maven.OpenJpaTestEnhancerMojo
-Motivazione:
-sottoclasse molto sottile, con comportamento autonomo limitato.
-
-===== SECONDO TARGET FINALE =====
-
-Rank            : 798
-FQCN            : org.apache.openjpa.tools.maven.AbstractOpenJpaMappingToolMojo
-NSmells         : 0
-TypeLOC         : 127
-DeclaredMethods : 4
-Abstract        : true
-
-Decisione       : ACCETTATA
-
-Motivazione:
-
-AbstractOpenJpaMappingToolMojo mantiene un numero di smell pari a zero,
-preservando il contrasto con PCEnhancer, ma presenta un comportamento
-sufficientemente più ricco per sostenere un esperimento di testing
-incrementale.
-
-La sua logica di produzione contiene più punti decisionali, cicli, percorsi
-alternativi di esecuzione e interazioni con l'infrastruttura OpenJPA/Maven.
-
-Questo offre opportunità realistiche per:
-
-T_BB
-- progettazione di test funzionali guidati dalla specifica;
-
-T_CF
-- aggiunta di test guidati dalla coverage per percorsi di controllo non
-  raggiunti dalla suite T_BB;
-
-T_MT
-- aggiunta di test guidati dai mutanti sopravvissuti e dai comportamenti non
-  adeguatamente protetti dalle suite precedenti.
+La classe risulta inoltre adatta alle suite automatiche Randoop, EvoSuite e
+LLM senza richiedere infrastrutture esterne complesse.
 
 ===== VINCOLO METODOLOGICO =====
 
-La sostituzione è stata effettuata prima della progettazione dei test e prima
-di osservare risultati JaCoCo o PIT relativi alla classe sostitutiva.
+La selezione definitiva di ListIteratorWrapper è stata effettuata prima della
+progettazione della relativa suite T_BB e prima di osservare risultati JaCoCo
+o PIT sulla classe.
 
-Il ranking automatico originale non è stato modificato.
+La scelta non è quindi basata sull'ottimizzazione a posteriori dei risultati
+di coverage o mutation testing.
 
-La sostituzione rappresenta quindi un filtro di idoneità al testing applicato
-dopo la selezione automatica e non una scelta manuale ottimizzata sulla base
-dei risultati dei test.
-
-===== COPPIA FINALE DI CLASSI =====
+===== COPPIA FINALE =====
 
 Classe 1:
 org.apache.openjpa.enhance.PCEnhancer
 
 Classe 2:
-org.apache.openjpa.tools.maven.AbstractOpenJpaMappingToolMojo
+org.apache.openjpa.lib.util.collections.ListIteratorWrapper
 
 ===== FINE =====
