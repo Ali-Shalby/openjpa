@@ -118,16 +118,17 @@ le categorie vengono ricavate prima dalla documentazione e dal contratto pubblic
 della classe. Coverage, mutation testing, code smell e dettagli del controllo di
 flusso non vengono usati per costruire retroattivamente la suite iniziale.
 
-La prima classe attualmente in lavorazione è:
+Le due classi selezionate per la parte De Angelis sono:
 
 ```text
 org.apache.openjpa.enhance.PCEnhancer
+org.apache.openjpa.lib.util.collections.ListIteratorWrapper
 ```
 
-Per `PCEnhancer` la suite manuale iniziale `T_BB` è stata derivata tramite
+Per entrambe le classi la suite manuale iniziale `T_BB` viene derivata tramite
 Category Partition e congelata prima di osservare coverage e mutation score.
-Successivamente è stata costruita una suite manuale coverage-guided `T_CF`,
-selezionando scenari a partire dai gap del controllo di flusso.
+Le suite automatiche vengono inoltre congelate prima delle misure di adequacy,
+così da evitare feedback retroattivi da JaCoCo o PIT.
 
 Stato corrente:
 
@@ -192,10 +193,13 @@ T_LLM Mut. Score : 2.29%
 T_LLM Strength   : 86.67%
 ```
 
-La failure `TBB-026` resta invariata: il contratto pubblico di
-`PCEnhancer.run(..., Options)` dichiara `false` per opzioni invalide, mentre la
-baseline OpenJPA 4.1.1 restituisce `true` per il representative input congelato.
-L'oracle non viene modificato per rendere artificialmente verde la suite.
+La failure storica `TBB-026` resta invariata per preservare la baseline
+sperimentale già utilizzata nelle fasi successive. La documentazione pubblica
+indica `false` per opzioni invalide, ma il representative input congelato usa
+una proprietà `Options` non riconosciuta la cui classificazione come
+"opzione invalida" non è completamente univoca. Il caso viene quindi mantenuto
+come esito storico con interpretazione cauta, senza presentarlo come bug certo
+di OpenJPA e senza modificare retroattivamente l'oracle.
 
 Documentazione:
 
@@ -320,11 +324,28 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] JaCoCo isolato `T_LLM` – 4.41% Line / 3.53% Branch
 * [x] PIT isolato `T_LLM` – 39 KILLED / 6 SURVIVED / 1655 NO_COVERAGE
 * [x] Freeze `T_LLM` – Mutation Score 2.29% / Test Strength 86.67%
+* [x] Selezione di `ListIteratorWrapper` come seconda classe della parte De Angelis
+* [x] Category Partition black-box di `ListIteratorWrapper`
+* [x] Freeze `ListIteratorWrapper T_BB` – 12 test, 12 PASS
+* [x] JaCoCo `ListIteratorWrapper T_BB` – 52.78% Line / 45.00% Branch / 90.91% Method
+* [x] Implementazione `ListIteratorWrapper T_CF` – 5 test coverage-guided
+* [x] Coverage cumulativa `T_BB + T_CF` – 98.61% Line / 87.50% Branch / 100.00% Method
+* [x] PIT baseline `ListIteratorWrapper` – 46 KILLED / 4 SURVIVED / 2 NO_COVERAGE
+* [x] Implementazione `ListIteratorWrapper T_MT` – 2 test mutation-guided
+* [x] PIT post-`T_MT` – 50 KILLED / 2 SURVIVED / 0 NO_COVERAGE
+* [x] Freeze suite manuale `ListIteratorWrapper` – 19 test, 19 PASS
+* [x] Generazione multi-seed `ListIteratorWrapper T_RND` – seed 0 = 7 test, seed 1 = 9 test
+* [x] Freeze `ListIteratorWrapper T_RND` – 7 test seed 0 + primi 5 seed 1 = 12 test
+* [x] Validazione `ListIteratorWrapper T_RND` – 12 PASS, 0 FAIL
+* [x] JaCoCo `ListIteratorWrapper T_RND` – 58.33% Line / 47.50% Branch / 100.00% Method
+* [x] PIT `ListIteratorWrapper T_RND` – 6 KILLED / 19 SURVIVED / 27 NO_COVERAGE
+* [x] Freeze `ListIteratorWrapper T_RND` – Mutation Score 11.54% / Test Strength 24.00%
 
 ### In corso
 
+* [ ] `ListIteratorWrapper T_ES` – generazione EvoSuite e valutazione post-freeze
+* [ ] `ListIteratorWrapper T_LLM`
 * [ ] Reliability di `PCEnhancer`
-* [ ] Testing della seconda classe OpenJPA
 
 ### Successivamente
 
@@ -1029,6 +1050,272 @@ Reliability di PCEnhancer
 
 ---
 
+## Software Testing – ListIteratorWrapper
+
+La seconda classe selezionata per la parte De Angelis è:
+
+```text
+org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+```
+
+La classe è stata scelta dopo un audit di testing suitability: il candidato
+automatico precedente risultava troppo semplice per sostenere in modo
+significativo Category Partition, controllo di flusso e mutation-guided
+improvement. `ListIteratorWrapper` mantiene invece un'API pubblica compatta ma
+stateful, con branch e operazioni osservabili sufficienti per un confronto
+sperimentale difendibile.
+
+### Suite manuale black-box `T_BB`
+
+La Category Partition è stata costruita esclusivamente sul contratto pubblico
+della classe e congelata prima di coverage e mutation testing.
+
+Suite finale:
+
+```text
+T_BB                    : 12 test, FROZEN
+PASS                    : 12
+FAIL                    : 0
+Errors                  : 0
+Skipped                 : 0
+```
+
+Baseline JaCoCo:
+
+```text
+LINE                    : 52.78% (38 / 72)
+BRANCH                  : 45.00% (18 / 40)
+METHOD                  : 90.91% (10 / 11)
+```
+
+Il metodo `remove()` non è stato utilizzato per costruire la suite black-box
+iniziale perché la documentazione pubblica presenta elementi non sufficientemente
+univoci per definire un oracle specification-based forte.
+
+### Suite manuale coverage-guided `T_CF`
+
+Dopo il freeze di `T_BB` sono stati aggiunti cinque test mirati ai gap di
+controllo di flusso.
+
+```text
+T_CF additions          : 5
+Suite T_BB + T_CF       : 17
+PASS                    : 17
+FAIL                    : 0
+```
+
+Coverage cumulativa:
+
+```text
+LINE                    : 98.61% (71 / 72)
+BRANCH                  : 87.50% (35 / 40)
+METHOD                  : 100.00% (11 / 11)
+```
+
+Delta rispetto a `T_BB`:
+
+```text
+LINE delta              : +45.83 pp
+BRANCH delta            : +42.50 pp
+METHOD delta            : +9.09 pp
+Covered lines           : +33
+Covered branches        : +17
+Covered methods         : +1
+```
+
+La stopping rule viene applicata senza inseguire artificialmente il 100% dei
+branch residui.
+
+### Mutation testing e suite mutation-guided `T_MT`
+
+La baseline mutation viene misurata sulla suite congelata `T_BB + T_CF`.
+
+Protocollo:
+
+```text
+PIT                     : 1.25.8
+pitest-junit5-plugin    : 1.2.3
+Mutators                : DEFAULTS
+Threads                 : 1
+Production              : openjpa-lib 4.1.1
+Native OpenJPA tests    : NOT USED
+```
+
+Identità production:
+
+```text
+SHA-256:
+C06F2D6F83082E8CC538069769BA1C2241678054E9C27B0510A77C0ADCE4B0F4
+```
+
+Baseline:
+
+```text
+Population              : 52
+KILLED                  : 46
+SURVIVED                : 4
+NO_COVERAGE             : 2
+Mutation Score          : 88.46%
+Test Strength           : 92.00%
+```
+
+L'analisi dei mutanti problematici ha guidato due test aggiuntivi:
+
+```text
+TMT-001                 : navigation predicates across cached/frontier states
+TMT-002                 : remove after reset from consumed iterator
+```
+
+Regressione manuale finale:
+
+```text
+T_BB                    : 12
+T_CF additions          : 5
+T_MT additions          : 2
+Manual suite            : 19
+PASS                    : 19
+FAIL                    : 0
+```
+
+PIT post-`T_MT`:
+
+```text
+Population              : 52
+KILLED                  : 50
+SURVIVED                : 2
+NO_COVERAGE             : 0
+Mutation Score          : 96.15%
+Test Strength           : 96.15%
+```
+
+I due survivor residui sono conservati come strong equivalent/infeasible-
+discrimination candidates, senza presentarli come equivalenti formalmente
+dimostrati. Non viene pianificato `TMT-003`.
+
+```text
+T_MT STATUS             : FROZEN
+```
+
+Evidence principali:
+
+```text
+isw2/results/testing/list-iterator-wrapper/mutation/
+```
+
+Documentazione:
+
+* [`docs/testing/list-iterator-wrapper-black-box.md`](docs/testing/list-iterator-wrapper-black-box.md)
+* [`docs/testing/list-iterator-wrapper-control-flow.md`](docs/testing/list-iterator-wrapper-control-flow.md)
+* [`docs/testing/list-iterator-wrapper-mutation-testing.md`](docs/testing/list-iterator-wrapper-mutation-testing.md)
+
+### Suite automatica random `T_RND`
+
+Dopo il freeze della fase manuale è stata costruita una suite automatica
+indipendente tramite Randoop 4.3.4.
+
+Per mantenere il confronto same-cardinality con `T_BB`:
+
+```text
+N = 12
+```
+
+Poiché il costruttore di `ListIteratorWrapper` richiede un `Iterator`,
+`java.util.ArrayList` viene utilizzata esclusivamente come producer pubblico
+di input; la classe richiesta come effettivamente coperta rimane
+`ListIteratorWrapper`.
+
+Protocollo:
+
+```text
+Generator               : Randoop 4.3.4
+Target N                : 12
+Seeds                   : 0, 1
+Generated limit         : 20000
+Output limit            : 12
+Time limit              : 60 s per seed
+Only public members     : YES
+Error-revealing tests   : DISABLED
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+Manual oracle editing   : NONE
+```
+
+Generazione e validazione RAW:
+
+```text
+Seed 0                  : 7 regression test, 7 / 7 PASS
+Seed 1                  : 9 regression test, 9 / 9 PASS
+```
+
+La cardinalità canonica viene ottenuta deterministicamente prima delle
+metriche:
+
+```text
+Seed 0                  : tutti i 7 test
+Seed 1                  : primi 5 test
+T_RND finale            : 12
+```
+
+Suite integrata:
+
+```text
+T_RND                   : 12
+PASS                    : 12
+FAIL                    : 0
+Errors                  : 0
+Skipped                 : 0
+```
+
+JaCoCo isolato:
+
+```text
+LINE                    : 58.33% (42 / 72)
+BRANCH                  : 47.50% (19 / 40)
+METHOD                  : 100.00% (11 / 11)
+```
+
+PIT isolato sulla stessa popolazione mutante:
+
+```text
+Population              : 52
+KILLED                  : 6
+SURVIVED                : 19
+NO_COVERAGE             : 27
+TIMED_OUT               : 0
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+Mutation Score          : 11.54%
+Test Strength           : 24.00%
+```
+
+A parità di `N = 12`, Randoop supera leggermente `T_BB` nella coverage
+strutturale, ma mostra oracle significativamente meno discriminanti nella
+mutation analysis. Il risultato viene mantenuto senza rigenerazione o
+ottimizzazione post-hoc.
+
+```text
+T_RND STATUS            : FROZEN
+```
+
+Evidence:
+
+```text
+isw2/results/testing/list-iterator-wrapper/rnd/
+```
+
+Documentazione dettagliata:
+
+[`docs/testing/list-iterator-wrapper-random-testing.md`](docs/testing/list-iterator-wrapper-random-testing.md)
+
+Prossima fase:
+
+```text
+T_ES – EvoSuite
+```
+
+
+---
+
 ## Documentazione
 
 * [Setup e baseline](docs/setup.md)
@@ -1041,6 +1328,10 @@ Reliability di PCEnhancer
 * [Testing – PCEnhancer random testing](docs/testing/pcenhancer-random-testing.md)
 * [Testing – PCEnhancer EvoSuite](docs/testing/pcenhancer-evosuite-testing.md)
 * [Testing – PCEnhancer LLM](docs/testing/pcenhancer-llm-testing.md)
+* [Testing – ListIteratorWrapper black-box](docs/testing/list-iterator-wrapper-black-box.md)
+* [Testing – ListIteratorWrapper control-flow](docs/testing/list-iterator-wrapper-control-flow.md)
+* [Testing – ListIteratorWrapper mutation testing](docs/testing/list-iterator-wrapper-mutation-testing.md)
+* [Testing – ListIteratorWrapper random testing](docs/testing/list-iterator-wrapper-random-testing.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
@@ -1064,5 +1355,6 @@ Durante il progetto:
 12. i test `T_CF` vengono selezionati dai gap di Line/Branch Coverage solo dopo il freeze di `T_BB` e vengono congelati prima della mutation analysis;
 13. i test `T_MT` vengono selezionati da cluster di survivor behaviorally meaningful, mantenuti solo se dimostrano capacità aggiuntiva di fault detection e congelati quando la stopping rule rende non giustificata un'ulteriore iterazione;
 14. la suite `T_RND` viene generata e congelata prima di osservare JaCoCo e PIT; coverage e mutation testing sono utilizzati esclusivamente come metriche di valutazione e non come feedback per rigenerare o selezionare i test random;
-15. la suite `T_ES` viene costruita con protocollo e stopping rule fissati prima delle misure di adequacy; i seed vengono consumati in ordine deterministico fino a raggiungere `N = 30`, e JaCoCo/PIT sono usati soltanto dopo il freeze come metriche di valutazione.
-16. la suite `T_LLM` viene generata con protocollo single-prompt e cardinalità fissata prima delle misure di adequacy; dopo il freeze, JaCoCo e PIT sono usati esclusivamente per la valutazione e non come feedback per modificare o rigenerare i test.
+15. la suite `T_ES` viene costruita con protocollo e stopping rule fissati prima delle misure di adequacy; i seed vengono consumati in ordine deterministico fino a raggiungere la cardinalità sperimentale fissata per la classe, e JaCoCo/PIT sono usati soltanto dopo il freeze come metriche di valutazione;
+16. la suite `T_LLM` viene generata con protocollo e cardinalità fissati prima delle misure di adequacy; dopo il freeze, JaCoCo e PIT sono usati esclusivamente per la valutazione e non come feedback per modificare o rigenerare i test;
+17. per `ListIteratorWrapper`, le suite automatiche vengono confrontate a cardinalità `N = 12`, pari alla `T_BB` congelata; eventuali seed multipli vengono consumati in ordine e la selezione si arresta appena raggiunta la cardinalità prevista.

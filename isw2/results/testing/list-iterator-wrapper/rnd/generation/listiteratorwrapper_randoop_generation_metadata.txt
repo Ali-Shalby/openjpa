@@ -1,0 +1,55 @@
+ListIteratorWrapper T_RND - Randoop Generation Metadata
+=======================================================
+
+Generator
+---------
+Tool                    : Randoop
+Version                 : 4.3.4
+
+Target
+------
+Class                   : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Target test count N     : 12
+Public members only     : YES
+Native OpenJPA tests    : NOT USED
+
+Input construction
+------------------
+Additional producer     : java.util.ArrayList
+Purpose                 : provide public Iterator instances required by the target constructor
+Required covered class  : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+
+Generation protocol
+-------------------
+Seeds                   : 0, 1
+Deterministic seeds     : YES
+Time limit per seed     : 60 s
+Generated limit         : 20000
+Output limit per seed   : 12
+Error-revealing output  : DISABLED
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+
+Raw generation
+--------------
+Seed 0 regression tests : 7
+Seed 0 RAW validation   : 7 / 7 PASS
+
+Seed 1 regression tests : 9
+Seed 1 RAW validation   : 9 / 9 PASS
+
+Cardinality composition
+-----------------------
+Seed 0 selected         : test1 ... test7 = 7
+Seed 1 selected         : test1 ... test5 = 5
+Final N                 : 12
+
+Selection rule
+--------------
+Consecutive deterministic seeds were used.
+All valid tests from seed 0 were retained.
+The first five tests from seed 1, in generator order, completed N=12.
+The selection was frozen before JaCoCo and PIT were observed.
+No selection was performed using coverage or mutation results.
+
+Canonical suite status  : FROZEN

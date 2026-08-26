@@ -1,0 +1,22 @@
+ListIteratorWrapper T_RND - RAW Validation
+==========================================
+
+Framework               : JUnit 4.13.2
+
+Seed 0
+------
+Tests                   : 7
+PASS                    : 7
+FAIL                    : 0
+
+Seed 1
+------
+Tests                   : 9
+PASS                    : 9
+FAIL                    : 0
+
+The original Randoop outputs were compiled and executed before
+canonical-suite pruning.
+
+Oracle modifications    : NONE
+Result                  : PASS

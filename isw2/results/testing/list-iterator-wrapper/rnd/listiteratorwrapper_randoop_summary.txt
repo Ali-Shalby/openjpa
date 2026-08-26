@@ -1,0 +1,37 @@
+ListIteratorWrapper T_RND - Final Summary
+=========================================
+
+Technique               : feedback-directed random generation
+Generator               : Randoop 4.3.4
+Target                  : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+
+Final suite             : 12
+PASS                    : 12
+FAIL                    : 0
+
+JaCoCo
+------
+LINE                    : 42 / 72 = 58.33%
+BRANCH                  : 19 / 40 = 47.50%
+METHOD                  : 11 / 11 = 100.00%
+
+PIT
+---
+Population              : 52
+KILLED                  : 6
+SURVIVED                : 19
+NO_COVERAGE             : 27
+TIMED_OUT               : 0
+
+Mutation Score          : 11.54%
+Test Strength           : 24.00%
+
+Experimental policy
+-------------------
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+Manual oracle editing   : NONE
+
+Status
+------
+T_RND                   : FROZEN

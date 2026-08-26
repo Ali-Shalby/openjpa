@@ -1,0 +1,34 @@
+ListIteratorWrapper T_RND - PIT Summary
+=======================================
+
+Suite                   : T_RND
+Tests                   : 12
+
+PIT version             : 1.25.8
+JUnit 5 PIT plugin      : 1.2.3
+Mutators                : DEFAULTS
+Threads                 : 1
+
+Population              : 52
+KILLED                  : 6
+SURVIVED                : 19
+NO_COVERAGE             : 27
+TIMED_OUT               : 0
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+
+Mutation Score          : 11.54%
+Test Strength           : 24.00%
+
+Definitions
+-----------
+Mutation Score          = KILLED / TOTAL
+Test Strength           = KILLED / (KILLED + SURVIVED)
+
+PIT internal line cov.  : 45 / 72
+Canonical coverage tool : JaCoCo
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+Suite modified after    : NO
+
+Status                  : FROZEN
