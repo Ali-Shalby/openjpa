@@ -1,0 +1,140 @@
+﻿===== OPENJPA 4.1.1 - AUDIT DI IDONEITÀ AL TESTING =====
+
+SCOPO
+
+Questo audit documenta il controllo di idoneità effettuato dopo la procedura
+automatica di selezione delle classi e prima della progettazione di qualunque
+suite di test.
+
+Il ranking originale e la regola di selezione vengono mantenuti invariati.
+
+===== SELEZIONE AUTOMATICA ORIGINALE =====
+
+Classe selezionata 1:
+Rank            : 2
+FQCN            : org.apache.openjpa.enhance.PCEnhancer
+NSmells         : 190
+TypeLOC         : 5690
+DeclaredMethods : 131
+
+Classe selezionata 2:
+Rank            : 801
+FQCN            : org.apache.openjpa.util.asm.ClassWriterTracker
+NSmells         : 0
+TypeLOC         : 49
+DeclaredMethods : 6
+
+===== CONTROLLO DI IDONEITÀ =====
+
+La seconda classe selezionata automaticamente è stata ispezionata prima della
+progettazione dei test.
+
+ClassWriterTracker è stata considerata non idonea per l'intero esperimento di
+testing poiché il suo comportamento osservabile è estremamente limitato e il
+suo flusso di controllo è quasi completamente lineare.
+
+La classe contiene principalmente:
+- costruttori;
+- getter e un setter;
+- delega a ClassWriter.visitMethod(...);
+- registrazione degli identificatori dei metodi generati;
+- controllo di appartenenza tramite hasMethod(...).
+
+Non sono presenti strutture decisionali significative nella logica della
+classe stessa.
+
+Di conseguenza, una piccola suite black-box avrebbe con ogni probabilità
+esercitato quasi tutto il comportamento eseguibile della classe, lasciando
+uno spazio insufficiente per miglioramenti significativi guidati dalla
+coverage (T_CF) e dal mutation testing (T_MT).
+
+Nessun test T_BB, T_CF o T_MT è stato progettato prima di questa decisione.
+
+===== PROCEDURA DI SOSTITUZIONE =====
+
+Il ranking è stato ispezionato dal basso verso l'alto, mantenendo la
+preferenza per una classe con basso numero di smell.
+
+Sono state escluse le classi troppo piccole o con comportamento eccessivamente
+semplice fino a individuare una candidata con varietà comportamentale e
+struttura di controllo sufficienti per l'esperimento.
+
+Candidati esclusi:
+
+Rank 802
+org.apache.openjpa.util.BlacklistClassResolver
+Motivazione:
+classe ancora troppo piccola per rendere significativo l'intero percorso
+incrementale di testing.
+
+Rank 801
+org.apache.openjpa.util.asm.ClassWriterTracker
+Motivazione:
+comportamento quasi interamente lineare e spazio insufficiente per miglioramenti
+guidati dalla coverage e dal mutation testing.
+
+Rank 800
+org.apache.openjpa.util.asm.ClassNodeTracker
+Motivazione:
+spazio comportamentale ancora limitato e rischio elevato di saturazione rapida
+della coverage.
+
+Rank 799
+org.apache.openjpa.tools.maven.OpenJpaTestEnhancerMojo
+Motivazione:
+sottoclasse molto sottile, con comportamento autonomo limitato.
+
+===== SECONDO TARGET FINALE =====
+
+Rank            : 798
+FQCN            : org.apache.openjpa.tools.maven.AbstractOpenJpaMappingToolMojo
+NSmells         : 0
+TypeLOC         : 127
+DeclaredMethods : 4
+Abstract        : true
+
+Decisione       : ACCETTATA
+
+Motivazione:
+
+AbstractOpenJpaMappingToolMojo mantiene un numero di smell pari a zero,
+preservando il contrasto con PCEnhancer, ma presenta un comportamento
+sufficientemente più ricco per sostenere un esperimento di testing
+incrementale.
+
+La sua logica di produzione contiene più punti decisionali, cicli, percorsi
+alternativi di esecuzione e interazioni con l'infrastruttura OpenJPA/Maven.
+
+Questo offre opportunità realistiche per:
+
+T_BB
+- progettazione di test funzionali guidati dalla specifica;
+
+T_CF
+- aggiunta di test guidati dalla coverage per percorsi di controllo non
+  raggiunti dalla suite T_BB;
+
+T_MT
+- aggiunta di test guidati dai mutanti sopravvissuti e dai comportamenti non
+  adeguatamente protetti dalle suite precedenti.
+
+===== VINCOLO METODOLOGICO =====
+
+La sostituzione è stata effettuata prima della progettazione dei test e prima
+di osservare risultati JaCoCo o PIT relativi alla classe sostitutiva.
+
+Il ranking automatico originale non è stato modificato.
+
+La sostituzione rappresenta quindi un filtro di idoneità al testing applicato
+dopo la selezione automatica e non una scelta manuale ottimizzata sulla base
+dei risultati dei test.
+
+===== COPPIA FINALE DI CLASSI =====
+
+Classe 1:
+org.apache.openjpa.enhance.PCEnhancer
+
+Classe 2:
+org.apache.openjpa.tools.maven.AbstractOpenJpaMappingToolMojo
+
+===== FINE =====
