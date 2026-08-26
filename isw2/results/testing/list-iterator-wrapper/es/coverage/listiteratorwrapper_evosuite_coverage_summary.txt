@@ -1,0 +1,30 @@
+ListIteratorWrapper T_ES - JaCoCo Summary
+=========================================
+
+Suite                   : T_ES
+Tests                   : 12
+PASS                    : 12
+
+LINE
+----
+Covered                 : 60
+Missed                  : 12
+Total                   : 72
+Coverage                : 83.33%
+
+BRANCH
+------
+Covered                 : 33
+Missed                  : 7
+Total                   : 40
+Coverage                : 82.50%
+
+METHOD
+------
+Covered                 : 9
+Missed                  : 2
+Total                   : 11
+Coverage                : 81.82%
+
+Coverage tool           : JaCoCo 0.8.15
+Suite modified after    : NO

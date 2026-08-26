@@ -1,0 +1,23 @@
+ListIteratorWrapper T_ES - Validation Summary
+=============================================
+
+RAW seed 0
+----------
+Generated               : 15
+Compiled                : PASS
+JUnit                   : 15 / 15 PASS
+
+Canonical suite
+---------------
+Selection               : first 12 / 15
+Compiled                : PASS
+JUnit                   : 12 / 12 PASS
+
+Runtime                 : Zulu Java 11
+Framework               : JUnit 4.13.2
+EvoSuite runtime        : 1.2.0
+
+Coverage observed       : NO before freeze
+Mutation observed       : NO before freeze
+
+Result                  : PASS

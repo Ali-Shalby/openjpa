@@ -1,0 +1,39 @@
+ListIteratorWrapper T_ES - Freeze Audit
+=======================================
+
+Target                  : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+
+Generator               : EvoSuite 1.2.0
+Seed                    : 0
+RAW tests               : 15
+RAW validation          : 15 / 15 PASS
+
+Canonical selection     : first 12 / 15
+Canonical tests         : 12
+Canonical validation    : 12 / 12 PASS
+
+Test SHA-256            : 206731C8322758C64612DC194113549C4BDB583D557521B4D3E9629B1BC564D9
+Scaffolding SHA-256     : 7E501C4C62BBA117013BA5AC081AEE2B4A1615209359EA32077750157FF29CC5
+Production SHA-256      : C06F2D6F83082E8CC538069769BA1C2241678054E9C27B0510A77C0ADCE4B0F4
+
+JaCoCo
+------
+LINE                    : 83.33%
+BRANCH                  : 82.50%
+METHOD                  : 81.82%
+
+PIT
+---
+Population              : 52
+KILLED                  : 29
+SURVIVED                : 15
+NO_COVERAGE             : 8
+Mutation Score          : 55.77%
+Test Strength           : 65.91%
+Population identity     : PASS (52/52)
+
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+Post-adequacy editing   : NONE
+
+T_ES STATUS             : FROZEN

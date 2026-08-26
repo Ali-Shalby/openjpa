@@ -1,0 +1,28 @@
+ListIteratorWrapper T_ES - Final Summary
+========================================
+
+Technique               : coverage-guided automated test generation
+Generator               : EvoSuite 1.2.0
+
+RAW seed 0              : 15 / 15 PASS
+Canonical suite         : first 12 / 15
+Canonical PASS          : 12 / 12
+
+JaCoCo
+------
+LINE                    : 60 / 72 = 83.33%
+BRANCH                  : 33 / 40 = 82.50%
+METHOD                  : 9 / 11 = 81.82%
+
+PIT
+---
+Population              : 52
+KILLED                  : 29
+SURVIVED                : 15
+NO_COVERAGE             : 8
+TIMED_OUT               : 0
+Mutation Score          : 55.77%
+Test Strength           : 65.91%
+Population identity     : PASS (52/52)
+
+Status                  : FROZEN

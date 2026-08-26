@@ -1,0 +1,28 @@
+ListIteratorWrapper T_ES - PIT Summary
+======================================
+
+Suite                   : T_ES
+Tests                   : 12
+
+PIT                     : 1.25.8
+Mutators                : DEFAULTS
+Threads                 : 1
+
+TOTAL                   : 52
+KILLED                  : 29
+SURVIVED                : 15
+NO_COVERAGE             : 8
+TIMED_OUT               : 0
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+
+Mutation Score          : 55.77%
+Test Strength           : 65.91%
+
+Reference population    : 52
+Current population      : 52
+Population differences  : 0
+Population identity     : PASS (52/52)
+
+Suite modified after    : NO
+Status                  : FROZEN

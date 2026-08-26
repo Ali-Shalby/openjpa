@@ -340,10 +340,16 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] JaCoCo `ListIteratorWrapper T_RND` – 58.33% Line / 47.50% Branch / 100.00% Method
 * [x] PIT `ListIteratorWrapper T_RND` – 6 KILLED / 19 SURVIVED / 27 NO_COVERAGE
 * [x] Freeze `ListIteratorWrapper T_RND` – Mutation Score 11.54% / Test Strength 24.00%
+* [x] Protocollo `ListIteratorWrapper T_ES` – EvoSuite 1.2.0, `N = 12`, `LINE:BRANCH`, budget 120 s
+* [x] Generazione `ListIteratorWrapper T_ES` – seed 0 = 15 test
+* [x] Validazione RAW `ListIteratorWrapper T_ES` – 15 PASS, 0 FAIL
+* [x] Freeze `ListIteratorWrapper T_ES` – primi 12/15 test, 12 PASS
+* [x] JaCoCo `ListIteratorWrapper T_ES` – 83.33% Line / 82.50% Branch / 81.82% Method
+* [x] PIT `ListIteratorWrapper T_ES` – popolazione identica 52/52, 29 KILLED / 15 SURVIVED / 8 NO_COVERAGE
+* [x] Freeze `ListIteratorWrapper T_ES` – Mutation Score 55.77% / Test Strength 65.91%
 
 ### In corso
 
-* [ ] `ListIteratorWrapper T_ES` – generazione EvoSuite e valutazione post-freeze
 * [ ] `ListIteratorWrapper T_LLM`
 * [ ] Reliability di `PCEnhancer`
 
@@ -1307,10 +1313,113 @@ Documentazione dettagliata:
 
 [`docs/testing/list-iterator-wrapper-random-testing.md`](docs/testing/list-iterator-wrapper-random-testing.md)
 
+### Suite automatica coverage-guided `T_ES`
+
+Dopo il freeze di `T_RND` è stata costruita una seconda suite automatica
+indipendente tramite EvoSuite 1.2.0.
+
+Per mantenere il confronto same-cardinality con `T_BB`:
+
+```text
+N = 12
+```
+
+Il protocollo è stato fissato prima di osservare le metriche:
+
+```text
+Target                  : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Generator               : EvoSuite 1.2.0
+Runtime                 : Zulu JDK 11
+Criterion               : LINE:BRANCH
+Search budget           : 120 s
+Stopping condition      : MAXTIME
+Minimization            : enabled
+Max suite size          : 12
+Seed                    : 0
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+Post-adequacy editing   : NONE
+```
+
+Il seed 0 ha prodotto direttamente più test della cardinalità richiesta:
+
+```text
+RAW seed 0             : 15 test
+RAW validation         : 15 / 15 PASS
+Additional seeds       : NOT REQUIRED
+```
+
+La suite canonica è stata selezionata prima di JaCoCo e PIT mediante pruning
+puramente posizionale:
+
+```text
+Canonical selection    : first 12 / 15
+Canonical tests        : 12
+Canonical validation   : 12 / 12 PASS
+```
+
+Per l'integrazione sono stati applicati soltanto adattamenti infrastrutturali:
+package e nomi delle classi, pruning posizionale e
+`separateClassLoader = false` prima del freeze per consentire la misurazione
+JaCoCo. Gli oracle generati non sono stati modificati sulla base delle metriche.
+
+Hash SHA-256 della suite congelata:
+
+```text
+Test:
+206731C8322758C64612DC194113549C4BDB583D557521B4D3E9629B1BC564D9
+
+Scaffolding:
+7E501C4C62BBA117013BA5AC081AEE2B4A1615209359EA32077750157FF29CC5
+```
+
+Adeguatezza JaCoCo sulla sola classe `ListIteratorWrapper`:
+
+```text
+LINE                    : 83.33% (60 / 72)
+BRANCH                  : 82.50% (33 / 40)
+METHOD                  : 81.82% (9 / 11)
+```
+
+Mutation testing isolato sulla stessa popolazione congelata utilizzata per le
+altre suite della classe:
+
+```text
+Population              : 52
+Population identity     : PASS (52/52)
+KILLED                  : 29
+SURVIVED                : 15
+NO_COVERAGE             : 8
+TIMED_OUT               : 0
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+Mutation Score          : 55.77%
+Test Strength           : 65.91%
+```
+
+A parità di `N = 12`, EvoSuite migliora sensibilmente `T_RND` in Line
+Coverage, Branch Coverage, Mutation Score e Test Strength, mentre raggiunge
+9 degli 11 metodi contro gli 11 raggiunti da Randoop. Il risultato viene
+mantenuto senza rigenerazione o ottimizzazione post-hoc.
+
+```text
+T_ES STATUS             : FROZEN
+```
+
+Evidence:
+
+```text
+isw2/results/testing/list-iterator-wrapper/es/
+```
+
+Documentazione dettagliata:
+
+[`docs/testing/list-iterator-wrapper-evosuite-testing.md`](docs/testing/list-iterator-wrapper-evosuite-testing.md)
+
 Prossima fase:
 
 ```text
-T_ES – EvoSuite
+T_LLM
 ```
 
 
@@ -1332,6 +1441,7 @@ T_ES – EvoSuite
 * [Testing – ListIteratorWrapper control-flow](docs/testing/list-iterator-wrapper-control-flow.md)
 * [Testing – ListIteratorWrapper mutation testing](docs/testing/list-iterator-wrapper-mutation-testing.md)
 * [Testing – ListIteratorWrapper random testing](docs/testing/list-iterator-wrapper-random-testing.md)
+* [Testing – ListIteratorWrapper EvoSuite](docs/testing/list-iterator-wrapper-evosuite-testing.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 

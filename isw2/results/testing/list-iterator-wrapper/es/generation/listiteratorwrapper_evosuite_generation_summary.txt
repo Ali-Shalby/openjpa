@@ -1,0 +1,30 @@
+ListIteratorWrapper T_ES - EvoSuite Generation
+==============================================
+
+Target                  : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Generator               : EvoSuite 1.2.0
+Runtime                 : Zulu Java 11
+Criterion               : LINE:BRANCH
+Stopping condition      : MAXTIME
+Search budget           : 120 s
+Minimization            : enabled
+Max suite size          : 12
+Seed                    : 0
+
+Experimental cardinality
+------------------------
+Target N                : 12
+RAW generated tests     : 15
+RAW validation          : 15 / 15 PASS
+Additional seeds        : NOT REQUIRED
+
+Canonical selection
+-------------------
+Rule                    : positional
+Selected                : first 12 / 15
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+Post-adequacy editing   : NONE
+
+Canonical suite         : 12 / 12 PASS
+Status                  : FROZEN
