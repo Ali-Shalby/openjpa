@@ -1,0 +1,52 @@
+ListIteratorWrapper - PIT Mutation Baseline
+
+TARGET
+------
+Class                   : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+OpenJPA                 : 4.1.1
+
+FROZEN MANUAL SUITE
+-------------------
+T_BB                    : 12
+T_CF                    : 5
+T_MT                    : 0
+PIT execution set       : 17 green tests
+
+COVERAGE BEFORE PIT
+-------------------
+T_BB LINE               : 52.78%
+T_BB BRANCH             : 45.00%
+T_BB METHOD             : 90.91%
+
+T_BB + T_CF LINE        : 98.61%
+T_BB + T_CF BRANCH      : 87.50%
+T_BB + T_CF METHOD      : 100.00%
+
+MUTATION PROTOCOL
+-----------------
+PIT                     : 1.25.8
+JUnit 5 PIT plugin      : 1.2.3
+Mutators                : DEFAULTS
+Threads                 : 1
+Native OpenJPA tests    : NOT USED
+
+PRODUCTION BYTECODE
+-------------------
+Artifact                : org.apache.openjpa:openjpa-lib:4.1.1
+Class size              : 4353
+SHA-256                 : C06F2D6F83082E8CC538069769BA1C2241678054E9C27B0510A77C0ADCE4B0F4
+
+MUTATION RESULT
+---------------
+TOTAL                   : 52
+KILLED                  : 46
+SURVIVED                : 4
+NO_COVERAGE             : 2
+TIMED_OUT               : 0
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+
+Mutation Score          : 88.46%
+Test Strength           : 92%
+
+STATUS                  : BASELINE GENERATED

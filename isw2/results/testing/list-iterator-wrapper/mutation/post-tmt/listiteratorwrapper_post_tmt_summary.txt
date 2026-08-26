@@ -1,0 +1,39 @@
+ListIteratorWrapper - PIT Post T_MT
+
+TARGET
+------
+Class                   : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+OpenJPA                 : 4.1.1
+
+MANUAL SUITE
+------------
+T_BB                    : 12
+T_CF                    : 5
+T_MT                    : 2
+PIT execution set       : 19 green tests
+
+BASELINE PIT
+------------
+TOTAL                   : 52
+KILLED                  : 46
+SURVIVED                : 4
+NO_COVERAGE             : 2
+Mutation Score          : 88.46%
+Test Strength           : 92.00%
+
+POST T_MT
+----------
+TOTAL                   : 52
+KILLED                  : 50
+SURVIVED                : 2
+NO_COVERAGE             : 0
+TIMED_OUT               : 0
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+
+Mutation Score          : 96.15%
+Test Strength           : 96.15%
+
+Production SHA-256      : C06F2D6F83082E8CC538069769BA1C2241678054E9C27B0510A77C0ADCE4B0F4
+
+STATUS                  : POST T_MT GENERATED
