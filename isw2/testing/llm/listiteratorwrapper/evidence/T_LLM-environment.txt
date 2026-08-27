@@ -1,0 +1,39 @@
+ListIteratorWrapper T_LLM - Generation Environment
+===================================================
+
+Project              : Apache OpenJPA
+Baseline             : 4.1.1
+Target               : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Suite                : T_LLM
+Target cardinality   : 12 test case/scenari distinti
+
+Experiment date      : 2026-08-27
+Repository branch    : isw2-project
+Repository HEAD      : e6b83ff5c5443d57cd7aabc5f590c239212d7536
+
+Runtime              : Java 21
+Test framework       : JUnit Jupiter 6.1.1
+Mocking              : Mockito 5.23.0 (available, not mandatory)
+OpenJPA kernel       : 4.1.1
+OpenJPA persistence  : 4.1.1
+
+LLM client           : Microsoft Copilot
+Interaction mode     : browser chat
+Model                : GPT 5.6 Think Deeper
+Model provider       : OpenAI
+Copilot plan         : Copilot Chat (Basic)
+Browser              : Google Chrome 152 (64 bit)
+Copilot interface    : Microsoft Copilot web chat
+
+Constraints
+-----------
+Native OpenJPA tests : NOT PROVIDED
+Previous test suites : NOT PROVIDED
+JaCoCo results       : NOT PROVIDED
+PIT results          : NOT PROVIDED
+External sources     : NOT PROVIDED
+
+Notes
+-----
+The recorded repository HEAD identifies the project state on which T_LLM was
+preregistered, before the T_LLM preregistration commit itself.

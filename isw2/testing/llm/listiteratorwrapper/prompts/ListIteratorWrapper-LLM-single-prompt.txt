@@ -1,0 +1,52 @@
+# LLM Test Generation - ListIteratorWrapper
+
+Sto svolgendo un esperimento universitario di Software Testing sulla classe:
+
+org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+
+Baseline: Apache OpenJPA 4.1.1.
+
+Usa esclusivamente il production context fornito con questo messaggio.
+
+Non utilizzare:
+- test nativi OpenJPA;
+- altre suite sperimentali;
+- risultati JaCoCo;
+- risultati PIT;
+- survivor mutation;
+- Web o fonti esterne.
+
+Svolgi l'attività in un'unica risposta.
+
+1. Analizza sinteticamente ListIteratorWrapper dal punto di vista del testing,
+   individuando le principali responsabilità, funzionalità e comportamenti
+   osservabili.
+
+2. Progetta esattamente 12 test case/scenari distinti, identificati:
+
+   TLLM-001 ... TLLM-012
+
+   Per ciascun caso indica sinteticamente:
+   - comportamento considerato;
+   - setup/input;
+   - azione;
+   - risultato atteso.
+
+3. Implementa gli stessi 12 test case in Java 21 con JUnit Jupiter.
+
+Mockito è disponibile ma non obbligatorio.
+
+`N = 12` indica 12 test case/scenari distinti. Fixture, setup condiviso,
+helper e utility di test non costituiscono test case aggiuntivi.
+
+L'organizzazione del codice è libera: puoi utilizzare una o più classi di test.
+
+Mantieni la tracciabilità tra TLLM-001 ... TLLM-012 e la relativa
+implementazione.
+
+Non aggiungere, eliminare o sostituire casi tra la fase di progettazione e il
+codice prodotto.
+
+Se alcuni dettagli di una API production necessari alla compilazione non sono
+determinabili dal contesto fornito, non inventarne firme o comportamenti:
+segnala alla fine esclusivamente i file production mancanti realmente necessari.
