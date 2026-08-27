@@ -1,0 +1,41 @@
+============================================================
+ LISTITERATORWRAPPER T_LLM - PIT MUTATION TESTING
+============================================================
+
+Project              : Apache OpenJPA
+Baseline             : 4.1.1
+Target               : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Suite                : T_LLM
+Tests                : 12
+
+PIT                  : 1.25.8
+JUnit 5 PIT plugin   : 1.2.3
+Mutators             : DEFAULTS
+Threads              : 1
+Native OpenJPA tests : NOT USED
+
+Frozen test SHA-256  : 9044AC58592FD650B0080B27D42526A85A8762029C51DDD69E874666004C5F8C
+Production SHA-256   : C06F2D6F83082E8CC538069769BA1C2241678054E9C27B0510A77C0ADCE4B0F4
+
+Reference population : 52
+Current population   : 52
+Population diff      : 0
+Population identity  : PASS (52/52)
+
+TOTAL                : 52
+KILLED               : 47
+SURVIVED             : 5
+NO_COVERAGE          : 0
+TIMED_OUT            : 0
+RUN_ERROR            : 0
+MEMORY_ERROR         : 0
+
+Reached mutants      : 52
+
+Mutation Score       : 90.38%
+Test Strength        : 90.38%
+
+Mutation feedback    : NONE
+Post-freeze editing  : NONE
+
+============================================================

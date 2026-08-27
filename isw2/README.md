@@ -193,6 +193,38 @@ T_LLM Mut. Score : 2.29%
 T_LLM Strength   : 86.67%
 ```
 
+Per `ListIteratorWrapper`, le tre suite automatiche same-cardinality
+(`N = 12`) risultano completate:
+
+```text
+T_RND LINE       : 58.33% (42 / 72)
+T_RND BRANCH     : 47.50% (19 / 40)
+T_RND METHOD     : 100.00% (11 / 11)
+T_RND KILLED     : 6 / 52
+T_RND Mut. Score : 11.54%
+T_RND Strength   : 24.00%
+
+T_ES LINE        : 83.33% (60 / 72)
+T_ES BRANCH      : 82.50% (33 / 40)
+T_ES METHOD      : 81.82% (9 / 11)
+T_ES KILLED      : 29 / 52
+T_ES Mut. Score  : 55.77%
+T_ES Strength    : 65.91%
+
+T_LLM            : 12 test, FROZEN
+T_LLM outcome    : 12 PASS, 0 FAIL
+T_LLM stability  : 5/5 PASS
+T_LLM LINE       : 100.00% (72 / 72)
+T_LLM BRANCH     : 92.50% (37 / 40)
+T_LLM METHOD     : 100.00% (11 / 11)
+T_LLM PIT        : 52 mutanti, identity 52/52
+T_LLM KILLED     : 47
+T_LLM SURVIVED   : 5
+T_LLM NO_COVERAGE: 0
+T_LLM Mut. Score : 90.38%
+T_LLM Strength   : 90.38%
+```
+
 La failure storica `TBB-026` resta invariata per preservare la baseline
 sperimentale già utilizzata nelle fasi successive. La documentazione pubblica
 indica `false` per opzioni invalide, ma il representative input congelato usa
@@ -347,10 +379,17 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] JaCoCo `ListIteratorWrapper T_ES` – 83.33% Line / 82.50% Branch / 81.82% Method
 * [x] PIT `ListIteratorWrapper T_ES` – popolazione identica 52/52, 29 KILLED / 15 SURVIVED / 8 NO_COVERAGE
 * [x] Freeze `ListIteratorWrapper T_ES` – Mutation Score 55.77% / Test Strength 65.91%
+* [x] Protocollo single-prompt `ListIteratorWrapper T_LLM` – `N = 12`, Java 21, JUnit Jupiter
+* [x] Generazione `ListIteratorWrapper T_LLM` – 12 scenari `TLLM-001 ... TLLM-012`
+* [x] Repair pre-freeze `ListIteratorWrapper T_LLM` – catena `R1 -> R2 -> R3`
+* [x] Validazione `ListIteratorWrapper T_LLM` – 12 PASS, 0 FAIL / stabilità 5/5 PASS
+* [x] Freeze `ListIteratorWrapper T_LLM` – SHA-256 canonico registrato prima di JaCoCo e PIT
+* [x] JaCoCo `ListIteratorWrapper T_LLM` – 100.00% Line / 92.50% Branch / 100.00% Method
+* [x] PIT `ListIteratorWrapper T_LLM` – popolazione identica 52/52, 47 KILLED / 5 SURVIVED / 0 NO_COVERAGE
+* [x] Freeze `ListIteratorWrapper T_LLM` – Mutation Score 90.38% / Test Strength 90.38%
 
 ### In corso
 
-* [ ] `ListIteratorWrapper T_LLM`
 * [ ] Reliability di `PCEnhancer`
 
 ### Successivamente
@@ -1416,10 +1455,126 @@ Documentazione dettagliata:
 
 [`docs/testing/list-iterator-wrapper-evosuite-testing.md`](docs/testing/list-iterator-wrapper-evosuite-testing.md)
 
+### Suite automatica LLM `T_LLM`
+
+Dopo il freeze di `T_ES` è stata costruita la terza suite automatica
+indipendente tramite LLM, mantenendo la stessa cardinalità sperimentale:
+
+```text
+N = 12
+```
+
+Il protocollo è stato fissato prima di osservare JaCoCo e PIT:
+
+```text
+Target                  : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+N                       : 12
+Framework               : JUnit Jupiter
+Runtime                 : Java 21
+LLM client              : Microsoft Copilot
+Interaction mode        : browser chat
+Model                   : GPT 5.6 Think Deeper
+Feedback coverage       : NONE
+Feedback mutation       : NONE
+Post-freeze editing     : NONE
+```
+
+Il prompt principale ha richiesto nella stessa risposta la progettazione di
+12 scenari `TLLM-001 ... TLLM-012` e la relativa implementazione.
+
+La prima validazione runtime ha mantenuto la cardinalità di 12 test ma ha
+evidenziato problemi in sei scenari:
+
+```text
+Tests run               : 12
+Failures                : 3
+Errors                  : 3
+Skipped                 : 0
+```
+
+La correzione è stata gestita prima del freeze con una catena di repair
+documentata:
+
+```text
+R1                      : repair proposto, output Java troncato
+R2                      : decisioni di repair corrette, output Java troncato
+R3                      : completamento code-only utilizzabile
+Final usable repair     : R3
+```
+
+I repair hanno riguardato esclusivamente setup/oracle necessari ad allineare
+gli stessi scenari al comportamento runtime del production context. Non sono
+stati usati JaCoCo, PIT, survivor o risultati delle altre suite.
+
+La suite finale è stata validata e sottoposta a stability check prima delle
+misure di adequacy:
+
+```text
+T_LLM                   : 12
+PASS                    : 12
+FAIL                    : 0
+Errors                  : 0
+Skipped                 : 0
+Stability               : 5/5 PASS
+```
+
+Hash SHA-256 canonico del test congelato:
+
+```text
+9044AC58592FD650B0080B27D42526A85A8762029C51DDD69E874666004C5F8C
+```
+
+Adeguatezza JaCoCo sulla sola classe `ListIteratorWrapper`:
+
+```text
+LINE                    : 100.00% (72 / 72)
+BRANCH                  : 92.50% (37 / 40)
+METHOD                  : 100.00% (11 / 11)
+```
+
+Mutation testing isolato sulla stessa popolazione canonica utilizzata per le
+altre suite della classe:
+
+```text
+Population              : 52
+Population identity     : PASS (52/52)
+KILLED                  : 47
+SURVIVED                : 5
+NO_COVERAGE             : 0
+TIMED_OUT               : 0
+RUN_ERROR               : 0
+MEMORY_ERROR            : 0
+Mutation Score          : 90.38%
+Test Strength           : 90.38%
+```
+
+I cinque survivor post-freeze vengono conservati come risultato sperimentale
+e non vengono utilizzati per modificare o rigenerare la suite.
+
+Nel confronto same-cardinality `N = 12`, `T_LLM` ottiene per
+`ListIteratorWrapper` la coverage strutturale e la mutation effectiveness più
+alte tra `T_RND`, `T_ES` e `T_LLM`. Il risultato resta specifico del target e
+non viene generalizzato oltre l'esperimento.
+
+```text
+T_LLM STATUS            : FROZEN / COMPLETE
+```
+
+Evidence principali:
+
+```text
+isw2/testing/llm/listiteratorwrapper/
+isw2/results/testing/list-iterator-wrapper/llm/
+```
+
+Documentazione dettagliata:
+
+[`docs/testing/list-iterator-wrapper-llm-testing.md`](docs/testing/list-iterator-wrapper-llm-testing.md)
+
 Prossima fase:
 
 ```text
-T_LLM
+Reliability di PCEnhancer
 ```
 
 
@@ -1442,6 +1597,7 @@ T_LLM
 * [Testing – ListIteratorWrapper mutation testing](docs/testing/list-iterator-wrapper-mutation-testing.md)
 * [Testing – ListIteratorWrapper random testing](docs/testing/list-iterator-wrapper-random-testing.md)
 * [Testing – ListIteratorWrapper EvoSuite](docs/testing/list-iterator-wrapper-evosuite-testing.md)
+* [Testing – ListIteratorWrapper LLM](docs/testing/list-iterator-wrapper-llm-testing.md)
 
 La documentazione viene aggiornata progressivamente durante lo sviluppo.
 
@@ -1466,5 +1622,5 @@ Durante il progetto:
 13. i test `T_MT` vengono selezionati da cluster di survivor behaviorally meaningful, mantenuti solo se dimostrano capacità aggiuntiva di fault detection e congelati quando la stopping rule rende non giustificata un'ulteriore iterazione;
 14. la suite `T_RND` viene generata e congelata prima di osservare JaCoCo e PIT; coverage e mutation testing sono utilizzati esclusivamente come metriche di valutazione e non come feedback per rigenerare o selezionare i test random;
 15. la suite `T_ES` viene costruita con protocollo e stopping rule fissati prima delle misure di adequacy; i seed vengono consumati in ordine deterministico fino a raggiungere la cardinalità sperimentale fissata per la classe, e JaCoCo/PIT sono usati soltanto dopo il freeze come metriche di valutazione;
-16. la suite `T_LLM` viene generata con protocollo e cardinalità fissati prima delle misure di adequacy; dopo il freeze, JaCoCo e PIT sono usati esclusivamente per la valutazione e non come feedback per modificare o rigenerare i test;
+16. la suite `T_LLM` viene generata con protocollo e cardinalità fissati prima delle misure di adequacy; eventuali repair pre-freeze sono ammessi soltanto per problemi emersi durante compilazione/esecuzione e per allineare gli stessi scenari al production context, senza usare feedback di coverage o mutation; dopo il freeze, JaCoCo e PIT sono usati esclusivamente per la valutazione e non come feedback per modificare o rigenerare i test;
 17. per `ListIteratorWrapper`, le suite automatiche vengono confrontate a cardinalità `N = 12`, pari alla `T_BB` congelata; eventuali seed multipli vengono consumati in ordine e la selezione si arresta appena raggiunta la cardinalità prevista.

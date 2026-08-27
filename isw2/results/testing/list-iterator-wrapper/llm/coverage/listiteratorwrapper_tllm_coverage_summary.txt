@@ -1,0 +1,41 @@
+============================================================
+ LISTITERATORWRAPPER T_LLM - JACOCO COVERAGE
+============================================================
+
+Project              : Apache OpenJPA
+Baseline             : 4.1.1
+Target               : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Suite                : T_LLM
+Tests                : 12
+Result               : 12 / 12 PASS
+
+JaCoCo               : 0.8.15
+
+Frozen test SHA-256  : 9044AC58592FD650B0080B27D42526A85A8762029C51DDD69E874666004C5F8C
+Production SHA-256   : C06F2D6F83082E8CC538069769BA1C2241678054E9C27B0510A77C0ADCE4B0F4
+
+LINE
+Covered              : 72
+Missed               : 0
+Total                : 72
+Coverage             : 100%
+
+BRANCH
+Covered              : 37
+Missed               : 3
+Total                : 40
+Coverage             : 92.5%
+
+METHOD
+Covered              : 11
+Missed               : 0
+Total                : 11
+Coverage             : 100%
+
+Coverage universe    : PASS
+Expected             : 72 lines / 40 branches / 11 methods
+
+Coverage feedback    : NONE
+Post-freeze editing  : NONE
+
+============================================================
