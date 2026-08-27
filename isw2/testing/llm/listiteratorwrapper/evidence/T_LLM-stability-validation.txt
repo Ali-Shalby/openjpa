@@ -1,0 +1,233 @@
+============================================================
+ LISTITERATORWRAPPER T_LLM - STABILITY VALIDATION
+============================================================
+Target : ListIteratorWrapperLLMTest
+Runs   : 5
+Java   : 21
+JUnit  : Jupiter
+JaCoCo : NOT RUN
+PIT    : NOT RUN
+============================================================
+
+============================================================
+ RUN 1
+============================================================
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\main\resources
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\test\resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ openjpa-isw2-testing ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.181 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.072 s
+[INFO] Finished at: 2026-08-27T15:56:58+02:00
+[INFO] ------------------------------------------------------------------------
+
+
+============================================================
+ RUN 2
+============================================================
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\main\resources
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\test\resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ openjpa-isw2-testing ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.174 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.802 s
+[INFO] Finished at: 2026-08-27T15:57:03+02:00
+[INFO] ------------------------------------------------------------------------
+
+
+============================================================
+ RUN 3
+============================================================
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\main\resources
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\test\resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ openjpa-isw2-testing ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.159 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.198 s
+[INFO] Finished at: 2026-08-27T15:57:08+02:00
+[INFO] ------------------------------------------------------------------------
+
+
+============================================================
+ RUN 4
+============================================================
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\main\resources
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\test\resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ openjpa-isw2-testing ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.184 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.726 s
+[INFO] Finished at: 2026-08-27T15:57:13+02:00
+[INFO] ------------------------------------------------------------------------
+
+
+============================================================
+ RUN 5
+============================================================
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\main\resources
+[INFO]
+[INFO] --- compiler:3.14.1:compile (default-compile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ openjpa-isw2-testing ---
+[INFO] skip non existing resourceDirectory C:\ISW2\openjpa\isw2\testing\src\test\resources
+[INFO]
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ openjpa-isw2-testing ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ openjpa-isw2-testing ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.169 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.llm.ListIteratorWrapperLLMTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.762 s
+[INFO] Finished at: 2026-08-27T15:57:18+02:00
+[INFO] ------------------------------------------------------------------------
+
+
+============================================================
+ FINAL STABILITY SUMMARY
+============================================================
+Runs requested : 5
+Runs passed    : 5
+Runs failed    : 0
+============================================================

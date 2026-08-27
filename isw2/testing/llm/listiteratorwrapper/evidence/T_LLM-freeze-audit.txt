@@ -1,0 +1,28 @@
+============================================================
+ LISTITERATORWRAPPER T_LLM - FREEZE AUDIT
+============================================================
+
+Project              : Apache OpenJPA
+Baseline             : 4.1.1
+Target               : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Suite                : T_LLM
+
+Canonical test file  : ListIteratorWrapperLLMTest.java
+Cardinality          : 12
+Traceability         : TLLM-001 ... TLLM-012 PASS
+
+Validation           : 12 / 12 PASS
+Stability            : 5 / 5 PASS
+
+Repair chain         : R1 -> R2 -> R3
+Final usable repair  : R3
+
+JaCoCo before freeze : NOT RUN
+PIT before freeze    : NOT RUN
+
+Canonical SHA-256    : 9044AC58592FD650B0080B27D42526A85A8762029C51DDD69E874666004C5F8C
+Repository HEAD      : 2e07423c22b63298803bf0966f97f725773efd92
+
+============================================================
+ T_LLM STATUS : FROZEN
+============================================================
