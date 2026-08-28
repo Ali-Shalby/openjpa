@@ -1,0 +1,2 @@
+"Class","Suite","Profile","Tests","ProbabilityPerTest","Passed","Failures","Errors","Skipped","ReliabilityEstimate","EstimatedFailureProbability","Commit"
+"org.apache.openjpa.enhance.PCEnhancer","T_BB + T_CF + T_MT","Uniform over final test set","40","0.025000000000","40","0","0","0","1.000000","0.000000","333c5af055fb5283d00151b63339ce0489c91c5b"
