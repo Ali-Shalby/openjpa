@@ -1,0 +1,54 @@
+﻿PCEnhancer M4 - Sonar comparison
+
+Issue identity policy:
+Sonar IssueKey compared with case-sensitive ordinal equality.
+NEW_VS_C0 is an operational Sonar tracking classification.
+
+===== OVERALL =====
+
+Variant Compilation NSmells DistinctRules DeltaVsC0 ReductionPct SourceSHA256                                                     SonarRevision                           
+------- ----------- ------- ------------- --------- ------------ ------------                                                     -------------                           
+C0      PASS            190            28         0            0 F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A 1e480cc257c776f0c82bdff1af1e82b3ec72065d
+C1      FAIL            138            24       -52        27,37 5675A2AB26EDAF7E340A765F8459815DB5DD8F38B1F38ED80F161C35D379C1F5 3711b85ca3a61d4d0635b86676f925e8a79ca1fe
+C2      FAIL            141            26       -49        25,79 1503A8F2291221E5E55B02803695AC91B245BEC449467A7DDA4389EA2B8FCE13 0d04f3ff33ddf1b27d9227d01229932283bc765f
+C3      FAIL            162            23       -28        14,74 767BE6FEE45068C5B11BF692669136281EE9F2A568EC8A8CA275C0F181A02E36 bb7d0dc2ad568ddbf0b1c7015cae02c07adb649b
+C4      FAIL            167            26       -23        12,11 B2DD3CF39FE3BB9B41F6DBE796DF573345B4571F842E1F316EDBA13BDD973DE4 2a2d42f5e3c8ee90b5c7949c36196bc1fc05c08c
+
+
+
+
+===== ISSUE TRANSITIONS VS C0 =====
+
+Variant C0Issues VariantIssues RetainedFromC0 ResolvedFromC0 NewVsC0 NetDelta
+------- -------- ------------- -------------- -------------- ------- --------
+C1           190           138            135             55       3      -52
+C2           190           141            132             58       9      -49
+C3           190           162            128             62      34      -28
+C4           190           167            128             62      39      -23
+
+
+
+
+===== REMOVED RULE CATEGORIES =====
+
+Variant Rule       Status 
+------- ----       ------ 
+C1      java:S108  REMOVED
+C1      java:S1155 REMOVED
+C1      java:S1659 REMOVED
+C1      java:S1845 REMOVED
+C2      java:S116  REMOVED
+C2      java:S1659 REMOVED
+C3      java:S1133 REMOVED
+C3      java:S1135 REMOVED
+C3      java:S116  REMOVED
+C3      java:S1659 REMOVED
+C3      java:S6355 REMOVED
+C4      java:S116  REMOVED
+C4      java:S1659 REMOVED
+
+
+
+
+===== NEW RULE CATEGORIES =====
+

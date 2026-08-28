@@ -1,0 +1,3 @@
+﻿"Variant","Transition","IssueKey","Rule","Line","Message"
+"C1","NEW_VS_C0","AaBJmfzUiHPNjEe9mw-A","java:S1125","145","Remove the unnecessary boolean literal."
+"C3","NEW_VS_C0","AaBJpc4OvNIS2tTOV9Kf","java:S1125","136","Remove the unnecessary boolean literal."

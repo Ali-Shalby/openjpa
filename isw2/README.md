@@ -385,14 +385,18 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] PIT `ListIteratorWrapper T_LLM` – popolazione identica 52/52, 47 KILLED / 5 SURVIVED / 0 NO_COVERAGE
 * [x] Freeze `ListIteratorWrapper T_LLM` – Mutation Score 90.38% / Test Strength 90.38%
 
+* [x] Reliability `PCEnhancer` – 40/40 PASS, `R_hat = 1.000000`, `Q_hat = 0.000000`
+* [x] Reliability `ListIteratorWrapper` – 19/19 PASS, `R_hat = 1.000000`, `Q_hat = 0.000000`
+* [x] Milestone 4 – Automated Refactoring su `PCEnhancer`
+* [x] Milestone 4 – Automated Refactoring su `ListIteratorWrapper`
+
 ### In corso
 
-* [ ] Reliability di `PCEnhancer`
+* [ ] Audit finale, documentazione e packaging della consegna
 
 ### Successivamente
 
-* [ ] Completamento Software Testing – De Angelis
-* [ ] Milestone 4 – Automated Refactoring
+* [ ] Eventuali attività residue della parte De Angelis richieste dal materiale di consegna
 
 ---
 
@@ -642,6 +646,139 @@ tramite l'analyzer e non vengono versionati.
 
 ---
 
+
+
+## Milestone 4 – Automated Refactoring
+
+La Milestone 4 valuta il refactoring automatico delle due classi target già
+utilizzate nella parte di testing:
+
+```text
+org.apache.openjpa.enhance.PCEnhancer
+org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+```
+
+Per ciascuna classe vengono generate quattro varianti indipendenti a partire
+dalla stessa baseline `C0`:
+
+```text
+C1 : C0 + contesto Sonar, nessun test
+C2 : C0 + contesto Sonar + T_BB
+C3 : C0 + contesto Sonar + T_BB + T_CF
+C4 : C0 + contesto Sonar + T_BB + T_CF + T_MT
+```
+
+Ogni `C_X` viene generata una sola volta, in una nuova conversazione Copilot,
+senza riutilizzare le varianti precedenti e senza fornire `T_RND`, `T_ES` o
+`T_LLM` come vincoli di generazione.
+
+Le varianti vengono congelate prima della valutazione. Un errore sostanziale di
+compilazione è considerato un risultato dell'esperimento e non viene corretto
+iterativamente. Le suite dinamiche vengono eseguite post-hoc soltanto sulle
+varianti compilabili.
+
+### PCEnhancer
+
+Baseline M4:
+
+```text
+C0 SHA-256 : F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A
+LOC        : 3958
+NSmells    : 190
+```
+
+Risultati:
+
+| Variante | Compile | Post-hoc manual tests | NSmells | Δ smell | Nuove issue | LOC | Q3 | Q4 |
+|---|---|---|---:|---:|---:|---:|---|---|
+| `C1` | FAIL | BLOCKED | 138 | -52 | 3 | 3986 | YES (`LOC +28`) | NO |
+| `C2` | FAIL | BLOCKED | 141 | -49 | 9 | 3986 | YES (`LOC +28`) | NO |
+| `C3` | FAIL | BLOCKED | 162 | -28 | 34 | 3961 | YES (`LOC +3`) | NO |
+| `C4` | FAIL | BLOCKED | 167 | -23 | 39 | 3961 | YES (`LOC +3`) | NO |
+
+Tutte le varianti riducono `NSmells`, ma nessuna compila. La riduzione delle
+issue statiche non è quindi sufficiente a qualificare il refactoring come
+riuscito.
+
+Le suite dinamiche sono registrate come:
+
+```text
+NOT RUN / BLOCKED BY COMPILATION
+```
+
+e non come failure dei singoli test.
+
+Report completo:
+
+[`docs/m4/pcenhancer-m4-analysis.md`](docs/m4/pcenhancer-m4-analysis.md)
+
+### ListIteratorWrapper
+
+Baseline M4:
+
+```text
+C0 SHA-256 : 44CE059F3834F781ECE28CFA0253E8EA17F6298B9632E0F79B44DFD2CC09EE44
+LOC        : 134
+NSmells    : 0
+```
+
+Risultati:
+
+| Variante | Compile | Post-hoc manual tests | NSmells | LOC | Q3 | Q4 |
+|---|---|---|---:|---:|---|---|
+| `C1` | PASS | 19/19 PASS | 1 | 134 | YES (`NSmells +1`) | NO |
+| `C2` | PASS | 19/19 PASS | 0 | 134 | NO | NO |
+| `C3` | PASS | 19/19 PASS | 1 | 132 | YES (`NSmells +1`) | NO |
+| `C4` | PASS | 19/19 PASS | 0 | 139 | YES (`LOC +5`) | NO |
+
+`C0` è stata rianalizzata con le stesse regole Sonar correnti delle varianti e
+rimane a zero smell. `C1` e `C3` introducono una singola issue
+`java:S1125`; `C2` e `C4` rimangono a zero.
+
+Tra le quattro condizioni, `C2` presenta il profilo più favorevole rispetto ai
+criteri M4 osservati, ma una singola generazione per condizione non permette
+inferenze causali sull'effetto della quantità di test forniti al modello.
+
+Report completo:
+
+[`docs/m4/listiteratorwrapper-m4-analysis.md`](docs/m4/listiteratorwrapper-m4-analysis.md)
+
+### Feature correlate alla bugginess
+
+La correlazione viene calcolata sul Dataset A con `BUGGY NO=0 / YES=1`,
+equivalente alla correlazione point-biserial nel caso di una variabile binaria.
+
+Le feature direttamente modificabili dal refactoring sono trattate come:
+
+```text
+LOC
+NSmells
+```
+
+Le metriche storico/processuali vengono mantenute invarianti perché `C1`–`C4`
+sono sostituzioni source-level controfattuali e non nuove release storiche.
+
+Correlazioni rilevanti:
+
+```text
+LOC     : +0.374815228649
+NSmells : +0.352745614334
+```
+
+Per `PCEnhancer`, Q3 è `YES` per tutte le varianti a causa dell'aumento di
+`LOC`; Q4 è `NO` per tutte.
+
+Per `ListIteratorWrapper`, Q3 è `YES` per `C1`, `C3` e `C4`, `NO` per `C2`;
+Q4 è `NO` per tutte.
+
+Evidence principali:
+
+```text
+isw2/results/m4/pcenhancer/
+isw2/results/m4/listiteratorwrapper/
+```
+
+---
 
 ## Software Testing – PCEnhancer
 
@@ -1098,10 +1235,30 @@ Documentazione dettagliata:
 
 [`docs/testing/pcenhancer-llm-testing.md`](docs/testing/pcenhancer-llm-testing.md)
 
-Prossima fase:
+### Reliability
+
+La reliability empirica viene stimata sulla suite manuale finale congelata
+`T_BB + T_CF + T_MT`, assumendo un profilo operativo uniforme sui 40 test:
 
 ```text
-Reliability di PCEnhancer
+N                       : 40
+Probability per test    : 0.025000000000
+PASS                    : 40
+FAIL                    : 0
+Errors                  : 0
+Skipped                 : 0
+Reliability estimate    : 1.000000
+Failure probability     : 0.000000
+```
+
+Il valore è relativo al profilo operativo finito definito dall'esperimento e
+non costituisce una prova di affidabilità perfetta per ogni possibile uso in
+produzione.
+
+Evidence:
+
+```text
+isw2/results/testing/pcenhancer/reliability/
 ```
 
 ---
@@ -1582,10 +1739,30 @@ Documentazione dettagliata:
 
 [`docs/testing/list-iterator-wrapper-llm-testing.md`](docs/testing/list-iterator-wrapper-llm-testing.md)
 
-Prossima fase:
+### Reliability
+
+La reliability empirica viene stimata sulla suite manuale finale congelata
+`T_BB + T_CF + T_MT`, assumendo un profilo operativo uniforme sui 19 test:
 
 ```text
-Reliability di PCEnhancer
+N                       : 19
+Probability per test    : 0.052631578947
+PASS                    : 19
+FAIL                    : 0
+Errors                  : 0
+Skipped                 : 0
+Reliability estimate    : 1.000000
+Failure probability     : 0.000000
+```
+
+Anche in questo caso la misura è relativa al profilo operativo esplicitamente
+definito dall'esperimento e non va interpretata come prova di reliability
+perfetta in produzione.
+
+Evidence:
+
+```text
+isw2/results/testing/list-iterator-wrapper/reliability/
 ```
 
 
@@ -1597,6 +1774,8 @@ Reliability di PCEnhancer
 * [Milestone 1 – Dataset Creation](docs/milestone1.md)
 * [Milestone 2 – Classification](docs/milestone2.md)
 * [Milestone 3 – What-if Analysis](docs/milestone3.md)
+* [Milestone 4 – PCEnhancer Automated Refactoring](docs/m4/pcenhancer-m4-analysis.md)
+* [Milestone 4 – ListIteratorWrapper Automated Refactoring](docs/m4/listiteratorwrapper-m4-analysis.md)
 * [Testing – PCEnhancer black-box](docs/testing/pcenhancer-black-box.md)
 * [Testing – PCEnhancer control-flow](docs/testing/pcenhancer-control-flow.md)
 * [Testing – PCEnhancer mutation testing](docs/testing/pcenhancer-mutation-testing.md)
@@ -1635,3 +1814,8 @@ Durante il progetto:
 15. la suite `T_ES` viene costruita con protocollo e stopping rule fissati prima delle misure di adequacy; i seed vengono consumati in ordine deterministico fino a raggiungere la cardinalità sperimentale fissata per la classe, e JaCoCo/PIT sono usati soltanto dopo il freeze come metriche di valutazione;
 16. la suite `T_LLM` viene generata con protocollo e cardinalità fissati prima delle misure di adequacy; eventuali repair pre-freeze sono ammessi soltanto per problemi emersi durante compilazione/esecuzione e per allineare gli stessi scenari al production context, senza usare feedback di coverage o mutation; dopo il freeze, JaCoCo e PIT sono usati esclusivamente per la valutazione e non come feedback per modificare o rigenerare i test;
 17. per `ListIteratorWrapper`, le suite automatiche vengono confrontate a cardinalità `N = 12`, pari alla `T_BB` congelata; eventuali seed multipli vengono consumati in ordine e la selezione si arresta appena raggiunta la cardinalità prevista.
+18. la reliability viene stimata sulla suite manuale finale congelata tramite un profilo operativo uniforme esplicito; il valore ottenuto è una misura empirica relativa a tale profilo e non una prova di affidabilità perfetta in produzione;
+19. in M4 ogni variante `C1`–`C4` viene generata indipendentemente dalla stessa `C0`, in una nuova conversazione, senza usare come input le varianti precedenti e senza fornire le suite automatiche `T_RND`, `T_ES` o `T_LLM`;
+20. un fallimento sostanziale di compilazione di una variante M4 viene conservato come risultato sperimentale e non corretto iterativamente; in tale caso i test dinamici sono `NOT RUN / BLOCKED BY COMPILATION`;
+21. il confronto Sonar M4 usa analisi uniformi sulla stessa configurazione corrente e distingue le issue tramite `IssueKey` con confronto case-sensitive ordinal;
+22. per il confronto controfattuale M4, `LOC` e `NSmells` sono trattate come feature snapshot modificabili dal refactoring, mentre le metriche storico/processuali vengono mantenute invarianti perché le varianti non rappresentano nuove release storiche.

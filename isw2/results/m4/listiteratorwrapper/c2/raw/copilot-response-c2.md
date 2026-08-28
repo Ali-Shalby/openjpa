@@ -1,0 +1,326 @@
+Ho applicato un refactoring conservativo, limitato alla struttura interna della classe. La priorità è mantenere invariato anche il comportamento non coperto direttamente dai test black-box, in particolare il percorso con un `ListIterator` sottostante e la delicata gestione di `remove()`.
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.openjpa.lib.util.collections;
+
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.NoSuchElementException;
+
+/**
+ * Converts an {@link Iterator} into a {@link ResettableListIterator}.
+ * For plain <code>Iterator</code>s this is accomplished by caching the returned
+ * elements. This class can also be used to simply add
+ * {@link ResettableIterator}
+ * functionality to a given {@link ListIterator}.
+ * <p>
+ * The <code>ListIterator</code> interface has additional useful methods
+ * for navigation: <code>previous()</code> and the index methods.
+ * This class allows a regular <code>Iterator</code> to behave as a
+ * <code>ListIterator</code>. It achieves this by building an internal list
+ * as the underlying iterator is traversed.
+ * <p>
+ * The optional operations of <code>ListIterator</code> are not supported for
+ * plain <code>Iterator</code>s.
+ * <p>
+ * This class implements ResettableListIterator from Commons Collections 3.2.
+ *
+ * @since 2.1
+ */
+public class ListIteratorWrapper<E> implements ResettableListIterator<E> {
+
+    /** Message used when set or add are called. */
+    private static final String UNSUPPORTED_OPERATION_MESSAGE =
+        "ListIteratorWrapper does not support optional operations of ListIterator.";
+
+    /** Message used when remove cannot be performed. */
+    private static final String CANNOT_REMOVE_MESSAGE =
+        "Cannot remove element at index {0}.";
+
+    /** The underlying iterator being decorated. */
+    private final Iterator<? extends E> iterator;
+
+    /**
+     * The underlying iterator as a list iterator, or {@code null} when the
+     * supplied iterator is a plain iterator.
+     */
+    private final ListIterator<E> listIterator;
+
+    /** The list used to cache elements returned by a plain iterator. */
+    private final List<E> list = new ArrayList<>();
+
+    /** The current logical index of this iterator. */
+    private int currentIndex;
+
+    /** The number of elements consumed from the wrapped plain iterator. */
+    private int wrappedIteratorIndex;
+
+    /**
+     * Whether the wrapped plain iterator is in a state that permits
+     * {@link Iterator#remove()} to be called.
+     */
+    private boolean removeState;
+
+    /**
+     * Constructs a new <code>ListIteratorWrapper</code> that will wrap
+     * the given iterator.
+     *
+     * @param iterator the iterator to wrap
+     * @throws NullPointerException if the iterator is null
+     */
+    public ListIteratorWrapper(final Iterator<? extends E> iterator) {
+        if (iterator == null) {
+            throw new NullPointerException("Iterator must not be null");
+        }
+
+        this.iterator = iterator;
+        this.listIterator = asListIterator(iterator);
+    }
+
+    /**
+     * Converts the supplied iterator to a list iterator when possible.
+     *
+     * @param iterator the underlying iterator
+     * @return the iterator as a list iterator, or {@code null} when it is a
+     *         plain iterator
+     */
+    @SuppressWarnings("unchecked")
+    private static <E> ListIterator<E> asListIterator(
+            final Iterator<? extends E> iterator) {
+        if (iterator instanceof ListIterator) {
+            return (ListIterator<E>) iterator;
+        }
+        return null;
+    }
+
+    /**
+     * Throws {@link UnsupportedOperationException}
+     * unless the underlying <code>Iterator</code> is a <code>ListIterator</code>.
+     *
+     * @param obj the object to add
+     * @throws UnsupportedOperationException if the underlying iterator is not
+     *         of type {@link ListIterator}
+     */
+    @Override
+    public void add(final E obj) throws UnsupportedOperationException {
+        if (listIterator == null) {
+            throw new UnsupportedOperationException(
+                UNSUPPORTED_OPERATION_MESSAGE);
+        }
+        listIterator.add(obj);
+    }
+
+    /**
+     * Returns true if there are more elements in the iterator.
+     *
+     * @return true if there are more elements
+     */
+    @Override
+    public boolean hasNext() {
+        if (listIterator != null) {
+            return listIterator.hasNext();
+        }
+        return currentIndex < wrappedIteratorIndex || iterator.hasNext();
+    }
+
+    /**
+     * Returns true if there are previous elements in the iterator.
+     *
+     * @return true if there are previous elements
+     */
+    @Override
+    public boolean hasPrevious() {
+        if (listIterator != null) {
+            return listIterator.hasPrevious();
+        }
+        return currentIndex > 0;
+    }
+
+    /**
+     * Returns the next element from the iterator.
+     *
+     * @return the next element from the iterator
+     * @throws NoSuchElementException if there are no more elements
+     */
+    @Override
+    public E next() throws NoSuchElementException {
+        if (listIterator != null) {
+            return listIterator.next();
+        }
+
+        if (currentIndex < wrappedIteratorIndex) {
+            return list.get(currentIndex++);
+        }
+
+        final E element = iterator.next();
+        list.add(element);
+        currentIndex++;
+        wrappedIteratorIndex++;
+        removeState = true;
+        return element;
+    }
+
+    /**
+     * Returns the index of the next element.
+     *
+     * @return the index of the next element
+     */
+    @Override
+    public int nextIndex() {
+        if (listIterator != null) {
+            return listIterator.nextIndex();
+        }
+        return currentIndex;
+    }
+
+    /**
+     * Returns the previous element.
+     *
+     * @return the previous element
+     * @throws NoSuchElementException if there are no previous elements
+     */
+    @Override
+    public E previous() throws NoSuchElementException {
+        if (listIterator != null) {
+            return listIterator.previous();
+        }
+
+        if (currentIndex == 0) {
+            throw new NoSuchElementException();
+        }
+
+        removeState = wrappedIteratorIndex == currentIndex;
+        return list.get(--currentIndex);
+    }
+
+    /**
+     * Returns the index of the previous element.
+     *
+     * @return the index of the previous element
+     */
+    @Override
+    public int previousIndex() {
+        if (listIterator != null) {
+            return listIterator.previousIndex();
+        }
+        return currentIndex - 1;
+    }
+
+    /**
+     * Removes the last element returned by the wrapped iterator when the
+     * iterator state permits the operation.
+     *
+     * @throws UnsupportedOperationException if removal is unsupported by the
+     *         underlying iterator
+     * @throws IllegalStateException if removal is not valid in the current
+     *         iterator state
+     */
+    @Override
+    public void remove() throws UnsupportedOperationException {
+        if (listIterator != null) {
+            listIterator.remove();
+            return;
+        }
+
+        final int removeIndex =
+            currentIndex == wrappedIteratorIndex
+                ? currentIndex - 1
+                : currentIndex;
+
+        if (!removeState || wrappedIteratorIndex - currentIndex > 1) {
+            throw new IllegalStateException(
+                MessageFormat.format(CANNOT_REMOVE_MESSAGE, removeIndex));
+        }
+
+        iterator.remove();
+        list.remove(removeIndex);
+        currentIndex = removeIndex;
+        wrappedIteratorIndex--;
+        removeState = false;
+    }
+
+    /**
+     * Throws {@link UnsupportedOperationException}
+     * unless the underlying <code>Iterator</code> is a <code>ListIterator</code>.
+     *
+     * @param obj the object to set
+     * @throws UnsupportedOperationException if the underlying iterator is not
+     *         of type {@link ListIterator}
+     */
+    @Override
+    public void set(final E obj) throws UnsupportedOperationException {
+        if (listIterator == null) {
+            throw new UnsupportedOperationException(
+                UNSUPPORTED_OPERATION_MESSAGE);
+        }
+        listIterator.set(obj);
+    }
+
+    /**
+     * Resets this iterator back to the position at which the iterator
+     * was created.
+     *
+     * @since 3.2
+     */
+    @Override
+    public void reset() {
+        if (listIterator != null) {
+            while (listIterator.previousIndex() >= 0) {
+                listIterator.previous();
+            }
+            return;
+        }
+
+        currentIndex = 0;
+    }
+}
+
+## Principali refactoring effettuati
+
+- Il controllo ripetuto `iterator instanceof ListIterator` e i relativi cast sono stati centralizzati nel metodo privato `asListIterator`. Il riferimento risultante viene conservato nel campo privato e finale `listIterator`.
+- I cast unchecked presenti in più metodi sono stati ridotti a un singolo punto, isolato e documentato.
+- `hasNext()` è stato espresso direttamente in termini dei due modi in cui può esistere un elemento successivo: elemento già memorizzato nella cache oppure elemento disponibile nell’iteratore sottostante.
+- Il recupero di un elemento dalla cache in `next()` è stato semplificato da incremento seguito da accesso con sottrazione a `list.get(currentIndex++)`.
+- Il calcolo di `removeIndex` è stato reso dichiarativo tramite un’espressione condizionale, senza modificarne il valore.
+- Sono stati migliorati nomi locali, commenti e documentazione dello stato interno, senza cambiare API pubbliche o protected.
+
+## Miglioramenti di manutenibilità
+
+La distinzione tra le due modalità operative è ora più esplicita:
+
+1. delega diretta quando l’oggetto originario implementa `ListIterator`;
+2. navigazione tramite cache quando l’oggetto originario è un semplice `Iterator`.
+
+Questo riduce duplicazioni, rende più evidente il ruolo di `currentIndex`, `wrappedIteratorIndex` e `removeState`, e limita la gestione non verificabile dei generics a un solo metodo privato.
+
+## Relazione con i test forniti
+
+Sono stati mantenuti i comportamenti verificati dai test T_BB: rifiuto dell’iteratore nullo, limiti iniziali, eccezioni di navigazione, ordine forward e backward, navigazione alternata, indici, reset e operazioni opzionali non supportate per un semplice `Iterator`.
+
+Il baseline Sonar fornito riporta già zero smell per la classe C0. Il refactoring C2 è stato quindi deliberatamente contenuto e orientato soprattutto a ridurre cast e ramificazioni ripetute, senza introdurre modifiche aggressive non giustificate.
+
+## Modifiche deliberatamente evitate
+
+- Non è stata sostituita la gestione manuale dello stato con una nuova struttura dati o con un’implementazione differente dell’iteratore.
+- Non è stata modificata la semantica particolare di `removeState`, anche nei casi di navigazione all’indietro.
+- Non sono stati alterati tipo o testo delle eccezioni.
+- Non sono state cambiate firme, visibilità, package, nome della classe o interfacce implementate.
+- Non è stato corretto o reinterpretato alcun comportamento potenzialmente insolito della classe originale, perché ciò avrebbe potuto compromettere la compatibilità con i componenti di OpenJPA non rappresentati nei test forniti. La struttura comportamentale resta pertanto aderente alla classe C0 allegata.

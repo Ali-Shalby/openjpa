@@ -1,0 +1,141 @@
+﻿**********************
+Inizio trascrizione Windows PowerShell
+Ora di inizio: 20260828175401
+Nome utente: LAPTOP-503ELF8J\marco
+Esegui come utente: LAPTOP-503ELF8J\marco
+Nome configurazione: 
+Computer LAPTOP-503ELF8J (Microsoft Windows NT 10.0.26200.0)
+Applicazione host: powershell.exe
+ID processo: 68548
+PSVersion: 5.1.26100.9168
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9168
+BuildVersion: 10.0.26100.9168
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+===== M4 PCENHANCER SONAR C0 =====
+
+===== PRECONDITIONS =====
+
+Branch       : main
+Local HEAD   : 9a3db3eb463ab40a45485eec284d5e107a6a1f34
+Remote HEAD  : 9a3db3eb463ab40a45485eec284d5e107a6a1f34
+Local=Remote : True
+C0 SHA256    : F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A
+
+===== CREATE C0 ANALYSIS REVISION =====
+
+C0 auxiliary revision: 1e480cc257c776f0c82bdff1af1e82b3ec72065d
+
+
+===== WAIT FOR SONAR ANALYSIS =====
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+Latest visible: 9a3db3eb463ab40a45485eec284d5e107a6a1f34 | 2026-08-21T17:53:54+0000
+
+Exact Sonar analysis found.
+Analysis key : 2dd8b359-6c3b-4319-b6cd-84292bc62e14
+Revision     : 1e480cc257c776f0c82bdff1af1e82b3ec72065d
+Date         : 2026-08-28T15:54:14+0000
+
+===== WAIT FOR ISSUE INDEX =====
+OPEN maintainability: 8499 | stable: 1/3
+OPEN maintainability: 8499 | stable: 2/3
+OPEN maintainability: 8499 | stable: 3/3
+
+===== EXTRACT ISSUES =====
+Expected issues : 8499
+Pages           : 17
+Page 1/17 | collected=500
+Page 2/17 | collected=1000
+Page 3/17 | collected=1500
+Page 4/17 | collected=2000
+Page 5/17 | collected=2500
+Page 6/17 | collected=3000
+Page 7/17 | collected=3500
+Page 8/17 | collected=4000
+Page 9/17 | collected=4500
+Page 10/17 | collected=5000
+Page 11/17 | collected=5500
+Page 12/17 | collected=6000
+Page 13/17 | collected=6500
+Page 14/17 | collected=7000
+Page 15/17 | collected=7500
+Page 16/17 | collected=8000
+Page 17/17 | collected=8499
+
+===== FILTER PCENHANCER =====
+PCEnhancer OPEN code smells: 190
+
+===== RULE SUMMARY =====
+
+========================================
+===== C0 SONAR RESULT =====
+========================================
+Source SHA256   : F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A
+Analysis key    : 2dd8b359-6c3b-4319-b6cd-84292bc62e14
+Revision        : 1e480cc257c776f0c82bdff1af1e82b3ec72065d
+Analysis date   : 2026-08-28T15:54:14+0000
+NSmells         : 190
+Distinct rules  : 28
+
+
+Rule       Count
+----       -----
+java:S125     75
+java:S1192    26
+java:S116     18
+java:S3776    14
+java:S128      7
+java:S1199     6
+java:S1168     5
+java:S1181     4
+java:S3878     4
+java:S108      3
+java:S1659     3
+java:S1155     2
+java:S131      2
+java:S135      2
+java:S1488     2
+java:S1905     2
+java:S2447     2
+java:S6213     2
+java:S6355     2
+java:S106      1
+java:S1066     1
+java:S112      1
+java:S1123     1
+java:S1133     1
+java:S1135     1
+java:S1172     1
+java:S1845     1
+java:S1940     1
+
+
+
+Artifacts:
+C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c0\run.txt
+C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c0\smells.csv
+C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c0\rules-summary.csv
+C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c0\summary.txt
+**********************
+Fine trascrizione Windows PowerShell
+Ora di fine: 20260828175848
+**********************

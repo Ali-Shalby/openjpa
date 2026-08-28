@@ -1,0 +1,115 @@
+ListIteratorWrapper M4 - C2 compilation check
+Date: 2026-08-28 19:51:09
+HEAD: b4ccb3a77ba38d43ddd57edeec0feb8c3e3a0419
+C0 SHA256: 44CE059F3834F781ECE28CFA0253E8EA17F6298B9632E0F79B44DFD2CC09EE44
+C2 SHA256: 1280FB36A0CD4E40B9B99FEAA23B6939D72B3D75DB18D0B700D0D79D34F51065
+
+===== MAVEN OUTPUT =====
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] OpenJPA Parent POM                                                 [pom]
+[INFO] OpenJPA Utilities Library                                          [jar]
+[INFO] 
+[INFO] -----------------< org.apache.openjpa:openjpa-parent >------------------
+[INFO] Building OpenJPA Parent POM 4.1.1                                  [1/2]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (default) @ openjpa-parent ---
+[INFO] Storing buildNumber: 28 agosto 2026 at 19:50 at timestamp: 1787939456734
+[INFO] Executing: cmd.exe /X /C "git symbolic-ref HEAD"
+[INFO] Working directory: C:\ISW2\openjpa
+[INFO] Storing scmBranch: isw2-project
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (default) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:checkstyle (default) @ openjpa-parent ---
+[INFO] Skipping org.apache.maven.plugins:maven-checkstyle-plugin:3.6.0:checkstyle report goal
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ openjpa-parent ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] -------------------< org.apache.openjpa:openjpa-lib >-------------------
+[INFO] Building OpenJPA Utilities Library 4.1.1                           [2/2]
+[INFO]   from openjpa-lib\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (default) @ openjpa-lib ---
+[INFO] Storing buildNumber: 28 agosto 2026 at 19:50 at timestamp: 1787939458845
+[INFO] Executing: cmd.exe /X /C "git symbolic-ref HEAD"
+[INFO] Working directory: C:\ISW2\openjpa\openjpa-lib
+[INFO] Storing scmBranch: isw2-project
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ openjpa-lib ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ openjpa-lib ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (default) @ openjpa-lib ---
+[INFO] 
+[INFO] --- checkstyle:3.6.0:checkstyle (default) @ openjpa-lib ---
+[WARNING] Site model of 'org.apache.openjpa:openjpa-parent:pom:4.1.1' for default locale is still using the old pre-version 2.0.0 model. You MUST migrate to the new model as soon as possible otherwise your build will break in the future!
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.1.0 skin
+[INFO] Starting audit...
+Audit done.
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[WARNING] Unable to locate Test Source XRef to link to -- DISABLED
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ openjpa-lib ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-lib ---
+[INFO] Copying 9 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ openjpa-lib ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 226 source files with javac [debug release 11] to target\classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] /C:/ISW2/openjpa/openjpa-lib/src/main/java/org/apache/openjpa/lib/meta/ClassMetaDataIterator.java: Some input files use or override a deprecated API.
+[INFO] /C:/ISW2/openjpa/openjpa-lib/src/main/java/org/apache/openjpa/lib/meta/ClassMetaDataIterator.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/ISW2/openjpa/openjpa-lib/src/main/java/org/apache/openjpa/lib/conf/ConfigurationImpl.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/ISW2/openjpa/openjpa-lib/src/main/java/org/apache/openjpa/lib/conf/ConfigurationImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- antrun:3.1.0:run (set git version) @ openjpa-lib ---
+[INFO] Executing tasks
+[WARNING]      [echo] Determining if there are uncommitted changes...
+[ERROR]      [exec] Result: 1
+[WARNING]      [echo] Getting the 'GIT' revision value
+[WARNING]      [echo] Revision: b4ccb3aM
+[WARNING]      [echo] Getting the 'PCEnhancer' revision value
+[WARNING]      [echo] openjpa.enhancer.revision=f413b63M
+[WARNING]      [echo] OpenJPA version: 4.1.1
+[INFO] Executed tasks
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for OpenJPA Parent POM 4.1.1:
+[INFO] 
+[INFO] OpenJPA Parent POM ................................. SUCCESS [  2.701 s]
+[INFO] OpenJPA Utilities Library .......................... SUCCESS [ 10.452 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.788 s
+[INFO] Finished at: 2026-08-28T19:51:09+02:00
+[INFO] ------------------------------------------------------------------------
+
+===== RESULT =====
+Maven exit code: 0
+Compilation: PASS

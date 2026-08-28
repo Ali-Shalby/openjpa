@@ -1,0 +1,2 @@
+﻿"Variant","SourceSHA256","SonarAnalysisKey","SonarRevision","SonarAnalysisDate","IssueKey","Rule","Type","IssueStatus","Severity","MaintainabilitySeverity","Line","Message"
+"C3","31E6F2F681A141B8973D9C1E36E5BD7EB00938AFBB52ADD5F87B70216EF28A44","eb010eb4-3407-4e6b-86b8-457effa13fbf","8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed","2026-08-28T18:29:39+0000","AaBJpc4OvNIS2tTOV9Kf","java:S1125","CODE_SMELL","OPEN","MINOR","LOW","136","Remove the unnecessary boolean literal."

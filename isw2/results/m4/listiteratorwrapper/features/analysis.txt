@@ -1,0 +1,36 @@
+===== LISTITERATORWRAPPER M4 - BUGGINESS FEATURE ANALYSIS =====
+
+Correlation method=Pearson with BUGGY NO=0 / YES=1
+Equivalent interpretation=point-biserial correlation
+DatasetRows=12836
+BUGGY_YES=2010
+BUGGY_NO=10826
+
+SnapshotMutableFeatures=LOC, NSmells
+HistoryDependentHeldInvariant=LOC_TOUCHED, NR, NAUTH, LOC_ADDED, MAX_LOC_ADDED, AVG_LOC_ADDED, CHURN, MAX_CHURN, AVG_CHURN, CHANGE_SET_SIZE, MAX_CHANGE_SET, AVG_CHANGE_SET, AGE_WEEKS, WEIGHTED_AGE_WEEKS, IGNORED_ZERO_LOC_REVS, NFIX
+
+LOC_Correlation=0.374815228649
+NSmells_Correlation=0.352745614334
+
+===== VARIANT FEATURE VALUES =====
+C0: LOC=134; NSmells=0
+C1: LOC=134; NSmells=1
+C2: LOC=134; NSmells=0
+C3: LOC=132; NSmells=1
+C4: LOC=139; NSmells=0
+
+===== QUESTION 3 =====
+Any positively-correlated snapshot feature higher in Cx than C0?
+C1: YES - NSmells 0 -> 1 (delta=1)
+C2: NO
+C3: YES - NSmells 0 -> 1 (delta=1)
+C4: YES - LOC 134 -> 139 (delta=5)
+
+===== QUESTION 4 =====
+Any negatively-correlated snapshot feature higher in Cx than C0?
+C1: NO
+C2: NO
+C3: NO
+C4: NO
+
+Historical/process metrics are held invariant because C1-C4 are source-level counterfactual refactorings, not new historical releases.

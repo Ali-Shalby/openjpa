@@ -1,0 +1,3524 @@
+﻿PCEnhancer - suite congelate T_BB + T_CF
+Classi T_BB: 10
+Classi T_CF: 5
+Totale classi: 15
+
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxConstructorTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.MetaDataModes;
+import org.apache.openjpa.meta.MetaDataRepository;
+import org.apache.openjpa.util.asm.ClassNodeTracker;
+import org.apache.openjpa.util.asm.EnhancementProject;
+import org.apache.xbean.asm9.tree.MethodNode;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Manual black-box tests for the documented PCEnhancer
+ * no-argument constructor policy.
+ *
+ * Category Partition frames: TBB-008..TBB-011.
+ */
+class PCEnhancerBlackBoxConstructorTest {
+
+    static class WithNoArgConstructor {
+
+        private String persistentValue;
+
+        protected WithNoArgConstructor() {
+        }
+
+        WithNoArgConstructor(String persistentValue) {
+            this.persistentValue = persistentValue;
+        }
+    }
+
+    static class WithoutNoArgConstructor {
+
+        private String persistentValue;
+
+        WithoutNoArgConstructor(String persistentValue) {
+            this.persistentValue = persistentValue;
+        }
+    }
+
+    @Test
+    void tbb008ExistingNoArgConstructorWithAdditionEnabledSucceeds() {
+
+        try (EnhancerContext context =
+                     createEnhancer(WithNoArgConstructor.class, true)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertTrue(enhancer.getAddDefaultConstructor());
+
+            assertNotNull(
+                    findNoArgConstructor(enhancer),
+                    "The fixture must initially contain a no-arg constructor"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result
+            );
+
+            assertNotNull(
+                    findNoArgConstructor(enhancer),
+                    "The existing no-arg constructor must remain available"
+            );
+        }
+    }
+
+    @Test
+    void tbb009ExistingNoArgConstructorWithAdditionDisabledSucceeds() {
+
+        try (EnhancerContext context =
+                     createEnhancer(WithNoArgConstructor.class, false)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertFalse(enhancer.getAddDefaultConstructor());
+
+            assertNotNull(
+                    findNoArgConstructor(enhancer),
+                    "The fixture must initially contain a no-arg constructor"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result
+            );
+
+            assertNotNull(
+                    findNoArgConstructor(enhancer),
+                    "Disabling constructor generation must not remove an existing constructor"
+            );
+        }
+    }
+
+    @Test
+    void tbb010MissingNoArgConstructorWithAdditionEnabledIsRepaired() {
+
+        try (EnhancerContext context =
+                     createEnhancer(WithoutNoArgConstructor.class, true)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertTrue(enhancer.getAddDefaultConstructor());
+
+            assertNull(
+                    findNoArgConstructor(enhancer),
+                    "The fixture must initially have no no-arg constructor"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result
+            );
+
+            assertNotNull(
+                    findNoArgConstructor(enhancer),
+                    "PCEnhancer must add the missing no-arg constructor"
+            );
+        }
+    }
+
+    @Test
+    void tbb011MissingNoArgConstructorWithAdditionDisabledIsRejected() {
+
+        try (EnhancerContext context =
+                     createEnhancer(WithoutNoArgConstructor.class, false)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertFalse(enhancer.getAddDefaultConstructor());
+
+            assertNull(
+                    findNoArgConstructor(enhancer),
+                    "The fixture must initially have no no-arg constructor"
+            );
+
+            assertThrows(
+                    RuntimeException.class,
+                    enhancer::run
+            );
+        }
+    }
+
+    private static EnhancerContext createEnhancer(
+            Class<?> type,
+            boolean addDefaultConstructor) {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        /*
+         * Keep OpenJPA warnings visible, but route them to stdout.
+         * This prevents PowerShell from presenting normal WARN messages
+         * as NativeCommandError entries.
+         */
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN"
+        );
+
+        configuration.setMetaDataFactory("jpa");
+
+        MetaDataRepository repository =
+                configuration.newMetaDataRepositoryInstance();
+
+        repository.setSourceMode(
+                MetaDataModes.MODE_META
+        );
+
+        ClassMetaData metaData =
+                repository.addMetaData(type);
+
+        metaData.addDeclaredField(
+                "persistentValue",
+                String.class
+        );
+
+        EnhancementProject project =
+                new EnhancementProject();
+
+        ClassNodeTracker typeBytecode =
+                project.loadClass(type);
+
+        PCEnhancer enhancer =
+                new PCEnhancer(
+                        repository,
+                        typeBytecode,
+                        metaData
+                );
+
+        enhancer.setAddDefaultConstructor(
+                addDefaultConstructor
+        );
+
+        return new EnhancerContext(
+                configuration,
+                enhancer
+        );
+    }
+
+    private static MethodNode findNoArgConstructor(
+            PCEnhancer enhancer) {
+
+        return enhancer
+                .getPCBytecode()
+                .getClassNode()
+                .methods
+                .stream()
+                .filter(method ->
+                        "<init>".equals(method.name)
+                                && "()V".equals(method.desc))
+                .findFirst()
+                .orElse(null);
+    }
+
+    private record EnhancerContext(
+            OpenJPAConfigurationImpl configuration,
+            PCEnhancer enhancer)
+            implements AutoCloseable {
+
+        @Override
+        public void close() {
+            configuration.close();
+        }
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxEnhancementLevelTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.openjpa.enhance.FieldConsumer;
+import org.apache.openjpa.enhance.FieldSupplier;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.enhance.PCRegistry;
+import org.apache.openjpa.enhance.PersistenceCapable;
+import org.apache.openjpa.enhance.StateManager;
+import org.apache.openjpa.lib.log.Log;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Manual black-box tests for the documented enhancement-contract
+ * level boundary exposed by PCEnhancer.checkEnhancementLevel(...).
+ *
+ * Category Partition frames: TBB-029..TBB-030.
+ */
+class PCEnhancerBlackBoxEnhancementLevelTest {
+
+    @Test
+    void tbb029CurrentEnhancementContractVersionIsNotDownLevel() {
+
+        CurrentLevelPersistenceCapable prototype =
+                new CurrentLevelPersistenceCapable();
+
+        register(
+                CurrentLevelPersistenceCapable.class,
+                prototype
+        );
+
+        CapturingLog log =
+                new CapturingLog();
+
+        boolean result =
+                PCEnhancer.checkEnhancementLevel(
+                        CurrentLevelPersistenceCapable.class,
+                        log
+                );
+
+        assertFalse(
+                result,
+                "A class enhanced at the current contract version "
+                        + "must not be reported as down-level"
+        );
+
+        assertTrue(
+                log.infoMessages().isEmpty(),
+                "No down-level message must be logged for the current version"
+        );
+    }
+
+    @Test
+    void tbb030ImmediatelyOlderEnhancementContractVersionIsDownLevel() {
+
+        OlderLevelPersistenceCapable prototype =
+                new OlderLevelPersistenceCapable();
+
+        register(
+                OlderLevelPersistenceCapable.class,
+                prototype
+        );
+
+        CapturingLog log =
+                new CapturingLog();
+
+        boolean result =
+                PCEnhancer.checkEnhancementLevel(
+                        OlderLevelPersistenceCapable.class,
+                        log
+                );
+
+        assertTrue(
+                result,
+                "A contract version immediately below ENHANCER_VERSION "
+                        + "must be reported as down-level"
+        );
+
+        assertFalse(
+                log.infoMessages().isEmpty(),
+                "The down-level condition must be logged"
+        );
+    }
+
+    private static void register(
+            Class<?> type,
+            PersistenceCapable prototype) {
+
+        PCRegistry.register(
+                type,
+                new String[0],
+                new Class<?>[0],
+                new byte[0],
+                null,
+                type.getName(),
+                prototype
+        );
+
+        assertTrue(
+                PCRegistry.isRegistered(type),
+                "The purpose-built PersistenceCapable fixture must be registered"
+        );
+    }
+
+    /**
+     * Minimal PersistenceCapable implementation used only to control the
+     * enhancement-contract version returned to PCEnhancer.
+     *
+     * Methods unrelated to F10 return neutral values or perform no action.
+     */
+    private abstract static class VersionedPersistenceCapable
+            implements PersistenceCapable {
+
+        private final int enhancementContractVersion;
+
+        VersionedPersistenceCapable(
+                int enhancementContractVersion) {
+
+            this.enhancementContractVersion =
+                    enhancementContractVersion;
+        }
+
+        @Override
+        public int pcGetEnhancementContractVersion() {
+            return enhancementContractVersion;
+        }
+
+        @Override
+        public Object pcGetGenericContext() {
+            return null;
+        }
+
+        @Override
+        public StateManager pcGetStateManager() {
+            return null;
+        }
+
+        @Override
+        public void pcReplaceStateManager(
+                StateManager sm) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void pcProvideField(
+                int fieldIndex) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void pcProvideFields(
+                int[] fieldIndices) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void pcReplaceField(
+                int fieldIndex) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void pcReplaceFields(
+                int[] fieldIndices) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void pcCopyFields(
+                Object fromObject,
+                int[] fields) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void pcDirty(
+                String fieldName) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public Object pcFetchObjectId() {
+            return null;
+        }
+
+        @Override
+        public Object pcGetVersion() {
+            return null;
+        }
+
+        @Override
+        public boolean pcIsDirty() {
+            return false;
+        }
+
+        @Override
+        public boolean pcIsTransactional() {
+            return false;
+        }
+
+        @Override
+        public boolean pcIsPersistent() {
+            return false;
+        }
+
+        @Override
+        public boolean pcIsNew() {
+            return false;
+        }
+
+        @Override
+        public boolean pcIsDeleted() {
+            return false;
+        }
+
+        @Override
+        public Boolean pcIsDetached() {
+            return null;
+        }
+
+        @Override
+        public PersistenceCapable pcNewInstance(
+                StateManager sm,
+                boolean clear) {
+
+            /*
+             * PCRegistry.newInstance(...) is used by
+             * PCEnhancer.checkEnhancementLevel(...).
+             *
+             * Returning this prototype is sufficient because F10
+             * observes only pcGetEnhancementContractVersion().
+             */
+            return this;
+        }
+
+        @Override
+        public PersistenceCapable pcNewInstance(
+                StateManager sm,
+                Object objectId,
+                boolean clear) {
+
+            return this;
+        }
+
+        @Override
+        public Object pcNewObjectIdInstance() {
+            return null;
+        }
+
+        @Override
+        public Object pcNewObjectIdInstance(
+                Object object) {
+            return null;
+        }
+
+        @Override
+        public void pcCopyKeyFieldsToObjectId(
+                Object objectId) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void pcCopyKeyFieldsToObjectId(
+                FieldSupplier supplier,
+                Object objectId) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void pcCopyKeyFieldsFromObjectId(
+                FieldConsumer consumer,
+                Object objectId) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public Object pcGetDetachedState() {
+            return null;
+        }
+
+        @Override
+        public void pcSetDetachedState(
+                Object state) {
+            // Not relevant to F10.
+        }
+    }
+
+    /**
+     * Exact boundary value:
+     *
+     * version == PCEnhancer.ENHANCER_VERSION
+     */
+    private static final class CurrentLevelPersistenceCapable
+            extends VersionedPersistenceCapable {
+
+        CurrentLevelPersistenceCapable() {
+            super(
+                    PCEnhancer.ENHANCER_VERSION
+            );
+        }
+    }
+
+    /**
+     * Immediately lower boundary value:
+     *
+     * version == PCEnhancer.ENHANCER_VERSION - 1
+     */
+    private static final class OlderLevelPersistenceCapable
+            extends VersionedPersistenceCapable {
+
+        OlderLevelPersistenceCapable() {
+            super(
+                    PCEnhancer.ENHANCER_VERSION - 1
+            );
+        }
+    }
+
+    /**
+     * Minimal Log implementation used to observe whether
+     * checkEnhancementLevel emits the documented informational message.
+     */
+    private static final class CapturingLog
+            implements Log {
+
+        private final List<String> infoMessages =
+                new ArrayList<>();
+
+        List<String> infoMessages() {
+            return infoMessages;
+        }
+
+        @Override
+        public boolean isTraceEnabled() {
+            return false;
+        }
+
+        @Override
+        public boolean isInfoEnabled() {
+            return true;
+        }
+
+        @Override
+        public boolean isWarnEnabled() {
+            return true;
+        }
+
+        @Override
+        public boolean isErrorEnabled() {
+            return true;
+        }
+
+        @Override
+        public boolean isFatalEnabled() {
+            return true;
+        }
+
+        @Override
+        public void trace(Object message) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void trace(
+                Object message,
+                Throwable throwable) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void info(Object message) {
+            infoMessages.add(
+                    String.valueOf(message)
+            );
+        }
+
+        @Override
+        public void info(
+                Object message,
+                Throwable throwable) {
+
+            info(message);
+        }
+
+        @Override
+        public void warn(Object message) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void warn(
+                Object message,
+                Throwable throwable) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void error(Object message) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void error(
+                Object message,
+                Throwable throwable) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void fatal(Object message) {
+            // Not relevant to F10.
+        }
+
+        @Override
+        public void fatal(
+                Object message,
+                Throwable throwable) {
+            // Not relevant to F10.
+        }
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxFlagsTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Black-box test for the documented default PCEnhancer tool flags.
+ *
+ * <p>Category Partition frame: TBB-005.</p>
+ */
+class PCEnhancerBlackBoxFlagsTest {
+
+    @Test
+    void tbb005NewFlagsUseDocumentedDefaults() {
+        PCEnhancer.Flags flags = new PCEnhancer.Flags();
+
+        assertNull(flags.directory);
+        assertTrue(flags.addDefaultConstructor);
+        assertTrue(flags.tmpClassLoader);
+        assertFalse(flags.enforcePropertyRestrictions);
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxInvalidOptionsTest.java
+======================================================================
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.nio.file.Path;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.lib.util.Options;
+import org.apache.openjpa.lib.util.ParseException;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+/**
+ * Manual black-box test for invalid PCEnhancer tool options.
+ *
+ * Category Partition frame: TBB-026.
+ *
+ * F8 - Tool invocation validity:
+ * invalid value for a documented configuration option.
+ */
+class PCEnhancerBlackBoxInvalidOptionsTest {
+
+    @Test
+    void tbb026InvalidRuntimeUnenhancedClassesValueIsRejected(
+            @TempDir Path outputDirectory) {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        try {
+            configuration.setLog(
+                    "File=stdout, DefaultLevel=WARN"
+            );
+
+            configuration.setMetaDataFactory("jpa");
+
+            Options options =
+                    new Options();
+
+            /*
+             * Valid support options keep the invocation isolated.
+             */
+            options.setProperty(
+                    "directory",
+                    outputDirectory.toString()
+            );
+
+            options.setProperty(
+                    "tmpClassLoader",
+                    "false"
+            );
+
+            /*
+             * RuntimeUnenhancedClasses is a documented OpenJPA
+             * configuration option. "definitely-invalid" lies
+             * outside its documented value domain.
+             */
+            options.setProperty(
+                    "RuntimeUnenhancedClasses",
+                    "definitely-invalid"
+            );
+
+            assertThrows(
+                    ParseException.class,
+                    () -> PCEnhancer.run(
+                            configuration,
+                            new String[]{
+                                    PCEnhancerBlackBoxInvalidOptionsTarget.class
+                                            .getName()
+                            },
+                            options
+                    ),
+                    "An invalid value for a documented configuration "
+                            + "option must be rejected"
+            );
+
+        } finally {
+            configuration.close();
+        }
+    }
+}
+
+/**
+ * Disposable purpose-built target for TBB-026.
+ */
+class PCEnhancerBlackBoxInvalidOptionsTarget {
+
+    private String value;
+
+    protected PCEnhancerBlackBoxInvalidOptionsTarget() {
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxNamingTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Black-box tests for the public PCEnhancer subclass-name operations.
+ *
+ * <p>Category Partition frames:
+ * TBB-001..TBB-004 and TBB-006..TBB-007.</p>
+ */
+class PCEnhancerBlackBoxNamingTest {
+
+    private static final String MANAGED_TYPE_NAME = "com.example.Customer";
+
+    /*
+     * The functional category "generated persistence-capable subclass name"
+     * was frozen before source inspection.
+     *
+     * Minimal inspection of the OpenJPA 4.1.1 C0 implementation was used only
+     * to instantiate a concrete value for that already-defined category.
+     */
+    private static final String GENERATED_SUBCLASS_NAME =
+            "org.apache.openjpa.enhance.com$example$Customer$pcsubclass";
+
+    @Test
+    void tbb001GeneratedSubclassNameIsRecognized() {
+        assertTrue(PCEnhancer.isPCSubclassName(GENERATED_SUBCLASS_NAME));
+    }
+
+    @Test
+    void tbb002OrdinaryClassNameIsNotRecognized() {
+        assertFalse(PCEnhancer.isPCSubclassName(MANAGED_TYPE_NAME));
+    }
+
+    @Test
+    void tbb003GeneratedSubclassNameConvertsToManagedTypeName() {
+        assertEquals(
+                MANAGED_TYPE_NAME,
+                PCEnhancer.toManagedTypeName(GENERATED_SUBCLASS_NAME));
+    }
+
+    @Test
+    void tbb004OrdinaryClassNameRemainsUnchanged() {
+        assertEquals(
+                MANAGED_TYPE_NAME,
+                PCEnhancer.toManagedTypeName(MANAGED_TYPE_NAME));
+    }
+
+    @Test
+    void tbb006EmptyNameIsNotRecognizedAsGeneratedSubclass() {
+        assertFalse(PCEnhancer.isPCSubclassName(""));
+    }
+
+    @Test
+    void tbb007EmptyNameRemainsUnchangedOnConversion() {
+        assertEquals("", PCEnhancer.toManagedTypeName(""));
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxOutcomeTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.enhance.PersistenceCapable;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.MetaDataModes;
+import org.apache.openjpa.meta.MetaDataRepository;
+import org.apache.openjpa.persistence.ManagedInterface;
+import org.apache.openjpa.util.asm.ClassNodeTracker;
+import org.apache.openjpa.util.asm.EnhancementProject;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Manual black-box tests for the documented PCEnhancer
+ * enhancement outcome according to target state.
+ *
+ * Category Partition frames: TBB-012..TBB-015.
+ */
+class PCEnhancerBlackBoxOutcomeTest {
+
+    static class PersistentTarget {
+
+        private String persistentValue;
+
+        protected PersistentTarget() {
+        }
+    }
+
+    static class PersistenceAwareTarget {
+
+        protected PersistenceAwareTarget() {
+        }
+    }
+
+    abstract static class AlreadyPersistenceCapable
+            implements PersistenceCapable {
+    }
+
+    @ManagedInterface
+    interface ManagedContract {
+
+        String getName();
+
+        void setName(String name);
+    }
+
+    @Test
+    void tbb012TargetWithMetadataIsEnhancedAsPersistenceCapable() {
+
+        try (EnhancerContext context =
+                     createEnhancer(PersistentTarget.class, true)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertNotNull(
+                    enhancer.getMetaData(),
+                    "The fixture must have persistence metadata"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result
+            );
+        }
+    }
+
+    @Test
+    void tbb013TargetWithoutMetadataIsTreatedAsPersistenceAware() {
+
+        try (EnhancerContext context =
+                     createEnhancer(PersistenceAwareTarget.class, false)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertNull(
+                    enhancer.getMetaData(),
+                    "The fixture must not have persistence metadata"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_AWARE,
+                    result
+            );
+        }
+    }
+
+    @Test
+    void tbb014AlreadyPersistenceCapableTargetIsNotEnhancedAgain() {
+
+        assertTrue(
+                PersistenceCapable.class.isAssignableFrom(
+                        AlreadyPersistenceCapable.class
+                ),
+                "The fixture must explicitly implement PersistenceCapable"
+        );
+
+        try (EnhancerContext context =
+                     createEnhancer(
+                             AlreadyPersistenceCapable.class,
+                             false
+                     )) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_NONE,
+                    result
+            );
+        }
+    }
+
+    @Test
+    void tbb015ManagedInterfaceReturnsEnhanceInterface() {
+
+        assertTrue(
+                ManagedContract.class.isInterface(),
+                "The fixture must be an interface"
+        );
+
+        assertTrue(
+                ManagedContract.class.isAnnotationPresent(
+                        ManagedInterface.class
+                ),
+                "The fixture must be declared as an OpenJPA managed interface"
+        );
+
+        try (EnhancerContext context =
+                     createEnhancer(ManagedContract.class, false)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_INTERFACE,
+                    result
+            );
+        }
+    }
+
+    private static EnhancerContext createEnhancer(
+            Class<?> type,
+            boolean withMetaData) {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        /*
+         * Keep OpenJPA warnings visible, but route them to stdout.
+         * This avoids PowerShell converting ordinary WARN messages
+         * written to stderr into NativeCommandError output.
+         */
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN"
+        );
+
+        configuration.setMetaDataFactory("jpa");
+
+        MetaDataRepository repository =
+                configuration.newMetaDataRepositoryInstance();
+
+        repository.setSourceMode(
+                MetaDataModes.MODE_META
+        );
+
+        ClassMetaData metaData = null;
+
+        if (withMetaData) {
+
+            metaData = repository.addMetaData(type);
+
+            metaData.addDeclaredField(
+                    "persistentValue",
+                    String.class
+            );
+        }
+
+        EnhancementProject project =
+                new EnhancementProject();
+
+        ClassNodeTracker typeBytecode =
+                project.loadClass(type);
+
+        PCEnhancer enhancer =
+                new PCEnhancer(
+                        repository,
+                        typeBytecode,
+                        metaData
+                );
+
+        return new EnhancerContext(
+                configuration,
+                enhancer
+        );
+    }
+
+    private record EnhancerContext(
+            OpenJPAConfigurationImpl configuration,
+            PCEnhancer enhancer)
+            implements AutoCloseable {
+
+        @Override
+        public void close() {
+            configuration.close();
+        }
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxPropertyAccessTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.MetaDataModes;
+import org.apache.openjpa.meta.MetaDataRepository;
+import org.apache.openjpa.util.asm.ClassNodeTracker;
+import org.apache.openjpa.util.asm.EnhancementProject;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Manual black-box tests for the documented PCEnhancer
+ * property-access restriction enforcement.
+ *
+ * Category Partition frames: TBB-016..TBB-018.
+ */
+class PCEnhancerBlackBoxPropertyAccessTest {
+
+    /**
+     * PROPERTY-access fixture that respects the documented restriction:
+     * only getValue() and setValue() directly access the backing field.
+     */
+    static class CompliantPropertyTarget {
+
+        private String value;
+
+        protected CompliantPropertyTarget() {
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public String readValue() {
+            return getValue();
+        }
+    }
+
+    /**
+     * PROPERTY-access fixture that deliberately violates the documented
+     * restriction: readValueDirectly() accesses the backing field instead
+     * of invoking getValue().
+     */
+    static class ViolatingPropertyTarget {
+
+        private String value;
+
+        protected ViolatingPropertyTarget() {
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public String readValueDirectly() {
+            return value;
+        }
+    }
+
+    @Test
+    void tbb016CompliantPropertyAccessWithEnforcementEnabledIsAccepted() {
+
+        try (EnhancerContext context =
+                     createEnhancer(CompliantPropertyTarget.class, true)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertTrue(
+                    enhancer.getEnforcePropertyRestrictions(),
+                    "Property restriction enforcement must be enabled"
+            );
+
+            assertEquals(
+                    ClassMetaData.ACCESS_PROPERTY,
+                    enhancer.getMetaData().getAccessType(),
+                    "The fixture must use PROPERTY access"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result
+            );
+        }
+    }
+
+    @Test
+    void tbb017ViolatingPropertyAccessWithEnforcementDisabledIsNotRejected() {
+
+        try (EnhancerContext context =
+                     createEnhancer(ViolatingPropertyTarget.class, false)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertFalse(
+                    enhancer.getEnforcePropertyRestrictions(),
+                    "Property restriction enforcement must be disabled"
+            );
+
+            assertEquals(
+                    ClassMetaData.ACCESS_PROPERTY,
+                    enhancer.getMetaData().getAccessType(),
+                    "The fixture must use PROPERTY access"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result,
+                    "The documented property violation must not reject enhancement when enforcement is disabled"
+            );
+        }
+    }
+
+    @Test
+    void tbb018ViolatingPropertyAccessWithEnforcementEnabledIsRejected() {
+
+        try (EnhancerContext context =
+                     createEnhancer(ViolatingPropertyTarget.class, true)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertTrue(
+                    enhancer.getEnforcePropertyRestrictions(),
+                    "Property restriction enforcement must be enabled"
+            );
+
+            assertEquals(
+                    ClassMetaData.ACCESS_PROPERTY,
+                    enhancer.getMetaData().getAccessType(),
+                    "The fixture must use PROPERTY access"
+            );
+
+            assertThrows(
+                    RuntimeException.class,
+                    enhancer::run,
+                    "A documented property-access violation must reject enhancement when enforcement is enabled"
+            );
+        }
+    }
+
+    private static EnhancerContext createEnhancer(
+            Class<?> type,
+            boolean enforcePropertyRestrictions) {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        /*
+         * Keep OpenJPA warnings visible while routing them to stdout,
+         * avoiding PowerShell NativeCommandError output for normal WARNs.
+         */
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN"
+        );
+
+        configuration.setMetaDataFactory("jpa");
+
+        MetaDataRepository repository =
+                configuration.newMetaDataRepositoryInstance();
+
+        repository.setSourceMode(
+                MetaDataModes.MODE_META
+        );
+
+        /*
+         * Explicitly populate metadata using PROPERTY access.
+         *
+         * The public MetaDataRepository API accepts the access strategy
+         * to use when populating metadata. This ensures that getValue()
+         * is the persistent backing member rather than the field itself.
+         */
+        ClassMetaData metaData =
+                repository.addMetaData(
+                        type,
+                        ClassMetaData.ACCESS_PROPERTY
+                );
+
+        EnhancementProject project =
+                new EnhancementProject();
+
+        ClassNodeTracker typeBytecode =
+                project.loadClass(type);
+
+        PCEnhancer enhancer =
+                new PCEnhancer(
+                        repository,
+                        typeBytecode,
+                        metaData
+                );
+
+        enhancer.setEnforcePropertyRestrictions(
+                enforcePropertyRestrictions
+        );
+
+        return new EnhancerContext(
+                configuration,
+                enhancer
+        );
+    }
+
+    private record EnhancerContext(
+            OpenJPAConfigurationImpl configuration,
+            PCEnhancer enhancer)
+            implements AutoCloseable {
+
+        @Override
+        public void close() {
+            configuration.close();
+        }
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxRecordingTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.MetaDataModes;
+import org.apache.openjpa.meta.MetaDataRepository;
+import org.apache.openjpa.util.asm.ClassNodeTracker;
+import org.apache.openjpa.util.asm.EnhancementProject;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+/**
+ * Manual black-box tests for the documented PCEnhancer
+ * bytecode recording destination.
+ *
+ * Category Partition frames: TBB-019..TBB-020.
+ */
+class PCEnhancerBlackBoxRecordingTest {
+
+    private static final String FIXTURE_CLASS_NAME =
+            PCEnhancerBlackBoxRecordingTarget.class.getName();
+
+    @Test
+    void tbb019NullDirectoryOverwritesOnlyDisposableOriginal(
+            @TempDir Path tempDirectory) throws Exception {
+
+        /*
+         * Create an isolated copy of the fixture bytecode.
+         *
+         * The original class under target/test-classes is never passed to
+         * record() with directory == null.
+         */
+        Path isolatedRoot =
+                Files.createDirectory(tempDirectory.resolve("isolated-input"));
+
+        Path disposableClassFile =
+                copyFixtureClass(isolatedRoot);
+
+        byte[] originalBytes =
+                Files.readAllBytes(disposableClassFile);
+
+        /*
+         * Use a class loader whose class path contains only the disposable
+         * fixture copy. The platform loader is used as parent so that the
+         * system copy of the fixture cannot be selected parent-first.
+         */
+        URL[] urls = {
+                isolatedRoot.toUri().toURL()
+        };
+
+        try (URLClassLoader isolatedLoader =
+                     new URLClassLoader(
+                             urls,
+                             ClassLoader.getPlatformClassLoader()
+                     )) {
+
+            Class<?> isolatedType =
+                    Class.forName(
+                            FIXTURE_CLASS_NAME,
+                            true,
+                            isolatedLoader
+                    );
+
+            assertSame(
+                    isolatedLoader,
+                    isolatedType.getClassLoader(),
+                    "The target must be loaded from the disposable location"
+            );
+
+            try (EnhancerContext context =
+                         createEnhancer(isolatedType)) {
+
+                PCEnhancer enhancer = context.enhancer();
+
+                assertNull(
+                        enhancer.getDirectory(),
+                        "The default recording destination must be null"
+                );
+
+                int result = enhancer.run();
+
+                assertEquals(
+                        PCEnhancer.ENHANCE_PC,
+                        result
+                );
+
+                enhancer.record();
+            }
+        }
+
+        byte[] recordedBytes =
+                Files.readAllBytes(disposableClassFile);
+
+        assertFalse(
+                Arrays.equals(originalBytes, recordedBytes),
+                "record() with directory == null must replace the disposable original class file"
+        );
+
+        assertTrue(
+                recordedBytes.length > 0,
+                "The recorded class file must contain bytecode"
+        );
+    }
+
+    @Test
+    void tbb020ExplicitDirectoryWritesClassBelowPackageTree(
+            @TempDir Path tempDirectory) throws Exception {
+
+        Path outputDirectory =
+                Files.createDirectory(
+                        tempDirectory.resolve("enhanced-output")
+                );
+
+        /*
+         * Preserve a copy of the normal fixture bytecode so that the test
+         * also verifies that an explicit output directory does not modify
+         * the source fixture.
+         */
+        byte[] originalFixtureBytes =
+                readOriginalFixtureBytes();
+
+        try (EnhancerContext context =
+                     createEnhancer(
+                             PCEnhancerBlackBoxRecordingTarget.class
+                     )) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            enhancer.setDirectory(
+                    outputDirectory.toFile()
+            );
+
+            assertEquals(
+                    outputDirectory.toFile(),
+                    enhancer.getDirectory()
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result
+            );
+
+            enhancer.record();
+        }
+
+        Path expectedOutput =
+                outputDirectory.resolve(
+                        FIXTURE_CLASS_NAME.replace('.', '/')
+                                + ".class"
+                );
+
+        assertTrue(
+                Files.isRegularFile(expectedOutput),
+                "The enhanced class must be written below the explicit directory using the package structure"
+        );
+
+        assertTrue(
+                Files.size(expectedOutput) > 0,
+                "The generated class file must contain bytecode"
+        );
+
+        assertArrayEquals(
+                originalFixtureBytes,
+                readOriginalFixtureBytes(),
+                "Using an explicit output directory must not overwrite the original fixture class"
+        );
+    }
+
+    private static EnhancerContext createEnhancer(
+            Class<?> type) {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN"
+        );
+
+        configuration.setMetaDataFactory("jpa");
+
+        MetaDataRepository repository =
+                configuration.newMetaDataRepositoryInstance();
+
+        repository.setSourceMode(
+                MetaDataModes.MODE_META
+        );
+
+        ClassMetaData metaData =
+                repository.addMetaData(type);
+
+        metaData.addDeclaredField(
+                "persistentValue",
+                String.class
+        );
+
+        EnhancementProject project =
+                new EnhancementProject();
+
+        ClassNodeTracker typeBytecode =
+                project.loadClass(type);
+
+        PCEnhancer enhancer =
+                new PCEnhancer(
+                        repository,
+                        typeBytecode,
+                        metaData
+                );
+
+        return new EnhancerContext(
+                configuration,
+                enhancer
+        );
+    }
+
+    private static Path copyFixtureClass(
+            Path root) throws IOException {
+
+        String resourceName =
+                FIXTURE_CLASS_NAME.replace('.', '/')
+                        + ".class";
+
+        Path target =
+                root.resolve(resourceName);
+
+        Files.createDirectories(
+                target.getParent()
+        );
+
+        try (InputStream input =
+                     PCEnhancerBlackBoxRecordingTarget.class
+                             .getClassLoader()
+                             .getResourceAsStream(resourceName)) {
+
+            if (input == null) {
+                throw new IOException(
+                        "Unable to locate fixture bytecode: "
+                                + resourceName
+                );
+            }
+
+            Files.copy(
+                    input,
+                    target
+            );
+        }
+
+        return target;
+    }
+
+    private static byte[] readOriginalFixtureBytes()
+            throws IOException {
+
+        String resourceName =
+                FIXTURE_CLASS_NAME.replace('.', '/')
+                        + ".class";
+
+        try (InputStream input =
+                     PCEnhancerBlackBoxRecordingTarget.class
+                             .getClassLoader()
+                             .getResourceAsStream(resourceName)) {
+
+            assertNotNull(
+                    input,
+                    "The original fixture bytecode must be available"
+            );
+
+            return input.readAllBytes();
+        }
+    }
+
+    private record EnhancerContext(
+            OpenJPAConfigurationImpl configuration,
+            PCEnhancer enhancer)
+            implements AutoCloseable {
+
+        @Override
+        public void close() {
+            configuration.close();
+        }
+    }
+}
+
+/**
+ * Purpose-built persistent fixture used by F6.
+ *
+ * It is deliberately declared as a separate top-level class so that TBB-019
+ * can copy and load its bytecode through an isolated ClassLoader without
+ * introducing an enclosing-class dependency.
+ */
+class PCEnhancerBlackBoxRecordingTarget {
+
+    private String persistentValue;
+
+    protected PCEnhancerBlackBoxRecordingTarget() {
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxStrategyTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.MetaDataModes;
+import org.apache.openjpa.meta.MetaDataRepository;
+import org.apache.openjpa.util.asm.ClassNodeTracker;
+import org.apache.openjpa.util.asm.EnhancementProject;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Manual black-box tests for the documented PCEnhancer
+ * direct-enhancement and generated-subclass strategies.
+ *
+ * Category Partition frames: TBB-027..TBB-028.
+ */
+class PCEnhancerBlackBoxStrategyTest {
+
+    /**
+     * Purpose-built fixture valid for both direct enhancement and
+     * runtime subclass generation.
+     *
+     * PROPERTY access is deliberately used with public non-final
+     * getter/setter methods so that the fixture satisfies the public
+     * subclassing requirements independently of the strategy under test.
+     */
+    public static class StrategyTarget {
+
+        private String value;
+
+        protected StrategyTarget() {
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+    }
+
+    @Test
+    void tbb027DirectEnhancementUsesManagedTypeAsPersistenceCapableType() {
+
+        try (EnhancerContext context =
+                     createEnhancer(false, false)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertFalse(
+                    enhancer.getRedefine(),
+                    "Direct-enhancement frame requires redefine=false"
+            );
+
+            assertFalse(
+                    enhancer.getCreateSubclass(),
+                    "Direct-enhancement frame requires createSubclass=false"
+            );
+
+            String managedTypeBefore =
+                    className(
+                            enhancer.getManagedTypeBytecode()
+                    );
+
+            String pcTypeBefore =
+                    className(
+                            enhancer.getPCBytecode()
+                    );
+
+            assertEquals(
+                    managedTypeBefore,
+                    pcTypeBefore,
+                    "Before direct enhancement, managed and PC bytecode must refer to the same type"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result
+            );
+
+            String managedTypeAfter =
+                    className(
+                            enhancer.getManagedTypeBytecode()
+                    );
+
+            String pcTypeAfter =
+                    className(
+                            enhancer.getPCBytecode()
+                    );
+
+            assertEquals(
+                    StrategyTarget.class.getName(),
+                    managedTypeAfter
+            );
+
+            assertEquals(
+                    managedTypeAfter,
+                    pcTypeAfter,
+                    "Direct enhancement must make the managed type itself persistence-capable"
+            );
+
+            assertFalse(
+                    PCEnhancer.isPCSubclassName(pcTypeAfter),
+                    "Direct enhancement must not replace the target with a generated PC subclass"
+            );
+        }
+    }
+
+    @Test
+    void tbb028RedefineAndCreateSubclassGenerateSeparatePersistenceCapableSubclass() {
+
+        try (EnhancerContext context =
+                     createEnhancer(true, true)) {
+
+            PCEnhancer enhancer = context.enhancer();
+
+            assertTrue(
+                    enhancer.getRedefine(),
+                    "Subclass frame requires redefine=true"
+            );
+
+            assertTrue(
+                    enhancer.getCreateSubclass(),
+                    "Subclass frame requires createSubclass=true"
+            );
+
+            int result = enhancer.run();
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    result
+            );
+
+            String managedTypeName =
+                    className(
+                            enhancer.getManagedTypeBytecode()
+                    );
+
+            String pcTypeName =
+                    className(
+                            enhancer.getPCBytecode()
+                    );
+
+            assertEquals(
+                    StrategyTarget.class.getName(),
+                    managedTypeName,
+                    "The managed type must remain identifiable as the original target"
+            );
+
+            assertNotEquals(
+                    managedTypeName,
+                    pcTypeName,
+                    "Subclass mode must produce separate persistence-capable bytecode"
+            );
+
+            assertTrue(
+                    PCEnhancer.isPCSubclassName(pcTypeName),
+                    "The generated persistence-capable type must use the public PC-subclass naming contract"
+            );
+
+            assertEquals(
+                    enhancer.getManagedTypeBytecode()
+                            .getClassNode()
+                            .name,
+                    enhancer.getPCBytecode()
+                            .getClassNode()
+                            .superName,
+                    "The generated persistence-capable bytecode must subclass the managed type"
+            );
+        }
+    }
+
+    private static EnhancerContext createEnhancer(
+            boolean redefine,
+            boolean createSubclass) {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN"
+        );
+
+        configuration.setMetaDataFactory("jpa");
+
+        MetaDataRepository repository =
+                configuration.newMetaDataRepositoryInstance();
+
+        repository.setSourceMode(
+                MetaDataModes.MODE_META
+        );
+
+        /*
+         * PROPERTY access gives the subclass validator a conventional,
+         * externally meaningful getter/setter contract.
+         */
+        ClassMetaData metaData =
+                repository.addMetaData(
+                        StrategyTarget.class,
+                        ClassMetaData.ACCESS_PROPERTY
+                );
+
+        EnhancementProject project =
+                new EnhancementProject();
+
+        ClassNodeTracker typeBytecode =
+                project.loadClass(
+                        StrategyTarget.class
+                );
+
+        PCEnhancer enhancer =
+                new PCEnhancer(
+                        repository,
+                        typeBytecode,
+                        metaData
+                );
+
+        enhancer.setRedefine(
+                redefine
+        );
+
+        enhancer.setCreateSubclass(
+                createSubclass
+        );
+
+        return new EnhancerContext(
+                configuration,
+                enhancer
+        );
+    }
+
+    private static String className(
+            ClassNodeTracker bytecode) {
+
+        return bytecode
+                .getClassNode()
+                .name
+                .replace('/', '.');
+    }
+
+    private record EnhancerContext(
+            OpenJPAConfigurationImpl configuration,
+            PCEnhancer enhancer)
+            implements AutoCloseable {
+
+        @Override
+        public void close() {
+            configuration.close();
+        }
+    }
+}
+
+======================================================================
+STAGE: T_BB
+FILE: PCEnhancerBlackBoxTargetRepresentationTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.bb;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.AbstractMetaDataFactory;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.MetaDataModes;
+import org.apache.openjpa.meta.MetaDataRepository;
+import org.apache.openjpa.util.asm.BytecodeWriter;
+import org.apache.openjpa.util.asm.ClassNodeTracker;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+/**
+ * Manual black-box tests for the documented PCEnhancer
+ * target representations and target cardinality.
+ *
+ * Category Partition frames: TBB-021..TBB-025.
+ */
+class PCEnhancerBlackBoxTargetRepresentationTest {
+
+    private static final Class<?> TARGET_TYPE =
+            PCEnhancerBlackBoxToolTarget.class;
+
+    private static final String TARGET_NAME =
+            TARGET_TYPE.getName();
+
+    private static final String TARGET_SIMPLE_NAME =
+            TARGET_TYPE.getSimpleName();
+
+    private static final String TARGET_PACKAGE =
+            TARGET_TYPE.getPackageName();
+
+    @Test
+    void tbb021FullyQualifiedClassNameSelectsTarget()
+            throws Exception {
+
+        try (EnhancerContext context = createEnhancerContext()) {
+
+            CaptureWriter writer = new CaptureWriter();
+
+            boolean result = runEnhancer(
+                    context,
+                    new String[]{TARGET_NAME},
+                    writer
+            );
+
+            assertTrue(
+                    result,
+                    "PCEnhancer must accept a fully-qualified class name"
+            );
+
+            assertExactlyTargetWasEnhanced(writer);
+        }
+    }
+
+    @Test
+    void tbb022JavaFilePathSelectsTarget(
+            @TempDir Path tempDirectory)
+            throws Exception {
+
+        Path javaFile =
+                tempDirectory.resolve(
+                        TARGET_SIMPLE_NAME + ".java"
+                );
+
+        String source =
+                "package " + TARGET_PACKAGE + ";"
+                        + System.lineSeparator()
+                        + "class " + TARGET_SIMPLE_NAME + " {"
+                        + System.lineSeparator()
+                        + "}"
+                        + System.lineSeparator();
+
+        Files.writeString(
+                javaFile,
+                source,
+                StandardCharsets.UTF_8
+        );
+
+        try (EnhancerContext context = createEnhancerContext()) {
+
+            CaptureWriter writer = new CaptureWriter();
+
+            boolean result = runEnhancer(
+                    context,
+                    new String[]{javaFile.toString()},
+                    writer
+            );
+
+            assertTrue(
+                    result,
+                    "PCEnhancer must accept a .java target path"
+            );
+
+            assertExactlyTargetWasEnhanced(writer);
+        }
+    }
+
+    @Test
+    void tbb023ClassFilePathSelectsTarget(
+            @TempDir Path tempDirectory)
+            throws Exception {
+
+        Path classFile =
+                copyTargetClass(
+                        tempDirectory.resolve(
+                                TARGET_SIMPLE_NAME + ".class"
+                        )
+                );
+
+        try (EnhancerContext context = createEnhancerContext()) {
+
+            CaptureWriter writer = new CaptureWriter();
+
+            boolean result = runEnhancer(
+                    context,
+                    new String[]{classFile.toString()},
+                    writer
+            );
+
+            assertTrue(
+                    result,
+                    "PCEnhancer must accept a .class target path"
+            );
+
+            assertExactlyTargetWasEnhanced(writer);
+        }
+    }
+
+    @Test
+    void tbb024JdoMetadataFileSelectsListedTarget(
+            @TempDir Path tempDirectory)
+            throws Exception {
+
+        Path jdoFile =
+                tempDirectory.resolve("targets.jdo");
+
+        /*
+         * PCEnhancer documents .jdo as an accepted metadata-file argument.
+         *
+         * ClassArgParser treats an existing non-.java/.class argument as
+         * a metadata file. Under the JPA metadata factory used by this
+         * isolated harness, "entity" is the public metadata element used
+         * to list a managed class.
+         *
+         * The frame verifies the documented .jdo target representation;
+         * it is not intended to validate a JDO XML schema.
+         */
+        String metadata =
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                        + System.lineSeparator()
+                        + "<entity-mappings>"
+                        + System.lineSeparator()
+                        + "    <entity class=\""
+                        + TARGET_NAME
+                        + "\"/>"
+                        + System.lineSeparator()
+                        + "</entity-mappings>"
+                        + System.lineSeparator();
+
+        Files.writeString(
+                jdoFile,
+                metadata,
+                StandardCharsets.UTF_8
+        );
+
+        try (EnhancerContext context = createEnhancerContext()) {
+
+            CaptureWriter writer = new CaptureWriter();
+
+            boolean result = runEnhancer(
+                    context,
+                    new String[]{jdoFile.toString()},
+                    writer
+            );
+
+            assertTrue(
+                    result,
+                    "PCEnhancer must accept a .jdo metadata-file target"
+            );
+
+            assertExactlyTargetWasEnhanced(writer);
+        }
+    }
+
+    @Test
+    void tbb025ZeroExplicitTargetsUsesConfiguredPersistentTypeList()
+            throws Exception {
+
+        try (EnhancerContext context = createEnhancerContext()) {
+
+            /*
+             * Configure the repository with one persistent type.
+             *
+             * This represents the documented boundary:
+             *
+             * explicit target count = 0
+             */
+            AbstractMetaDataFactory metaDataFactory =
+                    (AbstractMetaDataFactory)
+                            context.repository()
+                                    .getMetaDataFactory();
+
+            metaDataFactory.setTypes(
+                    Set.of(TARGET_NAME)
+            );
+
+            CaptureWriter writer = new CaptureWriter();
+
+            boolean result = runEnhancer(
+                    context,
+                    new String[0],
+                    writer
+            );
+
+            assertTrue(
+                    result,
+                    "With no explicit targets, PCEnhancer must use the configured persistent-type list"
+            );
+
+            assertExactlyTargetWasEnhanced(writer);
+        }
+    }
+
+    private static EnhancerContext createEnhancerContext() {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN"
+        );
+
+        configuration.setMetaDataFactory("jpa");
+
+        MetaDataRepository repository =
+                configuration.newMetaDataRepositoryInstance();
+
+        repository.setSourceMode(
+                MetaDataModes.MODE_META
+        );
+
+        ClassMetaData metaData =
+                repository.addMetaData(TARGET_TYPE);
+
+        metaData.addDeclaredField(
+                "persistentValue",
+                String.class
+        );
+
+        return new EnhancerContext(
+                configuration,
+                repository
+        );
+    }
+
+    private static boolean runEnhancer(
+            EnhancerContext context,
+            String[] arguments,
+            CaptureWriter writer)
+            throws IOException {
+
+        PCEnhancer.Flags flags =
+                new PCEnhancer.Flags();
+
+        /*
+         * Keep the same Class object and ClassLoader used by the
+         * purpose-built repository metadata.
+         *
+         * Temporary-classloader behavior belongs to a different
+         * configuration dimension and is not under test in F7.
+         */
+        flags.tmpClassLoader = false;
+
+        return PCEnhancer.run(
+                context.configuration(),
+                arguments,
+                flags,
+                context.repository(),
+                writer,
+                TARGET_TYPE.getClassLoader()
+        );
+    }
+
+    private static Path copyTargetClass(
+            Path destination)
+            throws IOException {
+
+        String resourceName =
+                TARGET_NAME.replace('.', '/')
+                        + ".class";
+
+        try (InputStream input =
+                     TARGET_TYPE.getClassLoader()
+                             .getResourceAsStream(resourceName)) {
+
+            if (input == null) {
+                throw new IOException(
+                        "Unable to locate target bytecode: "
+                                + resourceName
+                );
+            }
+
+            Files.copy(
+                    input,
+                    destination
+            );
+        }
+
+        return destination;
+    }
+
+    private static void assertExactlyTargetWasEnhanced(
+            CaptureWriter writer) {
+
+        assertEquals(
+                1,
+                writer.getWrittenTypes().size(),
+                "Exactly one target must be enhanced"
+        );
+
+        assertEquals(
+                TARGET_NAME,
+                writer.getWrittenTypes().get(0),
+                "The selected target must be the frozen F7 fixture"
+        );
+    }
+
+    /**
+     * Captures the class that PCEnhancer would normally record.
+     *
+     * No production or test bytecode is written to disk.
+     */
+    private static final class CaptureWriter
+            implements BytecodeWriter {
+
+        private final List<String> writtenTypes =
+                new ArrayList<>();
+
+        @Override
+        public void write(ClassNodeTracker type) {
+
+            writtenTypes.add(
+                    type.getClassNode()
+                            .name
+                            .replace('/', '.')
+            );
+        }
+
+        List<String> getWrittenTypes() {
+            return writtenTypes;
+        }
+    }
+
+    private record EnhancerContext(
+            OpenJPAConfigurationImpl configuration,
+            MetaDataRepository repository)
+            implements AutoCloseable {
+
+        @Override
+        public void close() {
+            configuration.close();
+        }
+    }
+}
+
+/**
+ * Purpose-built persistent fixture for F7.
+ *
+ * It is a separate top-level class so that its FQCN, .java representation
+ * and .class representation all refer to one unambiguous target.
+ */
+class PCEnhancerBlackBoxToolTarget {
+
+    private String persistentValue;
+
+    protected PCEnhancerBlackBoxToolTarget() {
+    }
+}
+
+======================================================================
+STAGE: T_CF
+FILE: PCEnhancerControlFlowApplicationIdentityTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements. See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership. The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.cf;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Coverage-guided control-flow test for the application-identity
+ * enhancement cluster of PCEnhancer.
+ *
+ * <p>This test belongs to T_CF. The scenario was selected after the
+ * frozen T_BB suite from the JaCoCo coverage-gap analysis.</p>
+ */
+class PCEnhancerControlFlowApplicationIdentityTest {
+
+    /**
+     * TCF-001
+     *
+     * Exercises the application-identity enhancement path using a
+     * composite IdClass target.
+     *
+     * The purpose is to reach the cluster responsible for generating:
+     *
+     * - pcCopyKeyFieldsToObjectId(...)
+     * - pcCopyKeyFieldsFromObjectId(...)
+     * - pcNewObjectIdInstance(...)
+     */
+    @Test
+    void tcf001CompositeApplicationIdentityGeneratesIdentitySupportMethods() {
+
+        OpenJPAConfigurationImpl configuration =
+                newConfiguration();
+
+        try {
+
+            PCEnhancer enhancer =
+                    new PCEnhancer(
+                            configuration,
+                            PCEnhancerControlFlowApplicationIdentityTarget.class);
+
+            ClassMetaData metadata =
+                    enhancer.getMetaData();
+
+            assertNotNull(metadata);
+
+            assertEquals(
+                    ClassMetaData.ID_APPLICATION,
+                    metadata.getIdentityType());
+
+            assertEquals(
+                    PCEnhancerControlFlowApplicationIdentityTarget
+                            .ApplicationIdentityId.class,
+                    metadata.getObjectIdType());
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    enhancer.run());
+
+            long copyToObjectId =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "pcCopyKeyFieldsToObjectId"))
+                            .count();
+
+            long copyFromObjectId =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "pcCopyKeyFieldsFromObjectId"))
+                            .count();
+
+            long newObjectIdInstance =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "pcNewObjectIdInstance"))
+                            .count();
+
+            assertEquals(
+                    2L,
+                    copyToObjectId);
+
+            assertEquals(
+                    2L,
+                    copyFromObjectId);
+
+            assertEquals(
+                    2L,
+                    newObjectIdInstance);
+
+        } finally {
+            configuration.close();
+        }
+    }
+
+    private static OpenJPAConfigurationImpl newConfiguration() {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN");
+
+        configuration.setMetaDataFactory(
+                "jpa");
+
+        return configuration;
+    }
+}
+
+======================================================================
+STAGE: T_CF
+FILE: PCEnhancerControlFlowExternalizationTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.cf;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.Externalizable;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.xbean.asm9.Type;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Coverage-guided test for the detached externalization cluster.
+ */
+class PCEnhancerControlFlowExternalizationTest {
+
+    /**
+     * TCF-002
+     *
+     * Exercises detached-state externalization for a Serializable entity
+     * using a non-transient synthetic detached-state field.
+     */
+    @Test
+    void tcf002SerializableSyntheticDetachedStateGeneratesExternalizationCode() {
+
+        OpenJPAConfigurationImpl configuration =
+                newConfiguration();
+
+        try {
+
+            PCEnhancer enhancer =
+                    new PCEnhancer(
+                            configuration,
+                            PCEnhancerControlFlowExternalizationTarget.class);
+
+            ClassMetaData metadata =
+                    enhancer.getMetaData();
+
+            assertNotNull(metadata);
+
+            /*
+             * Feasibility guard: if this is not SYNTHETIC, the scenario would
+             * not reach the externalizeDetached() path selected by the audit.
+             */
+            assertEquals(
+                    ClassMetaData.SYNTHETIC,
+                    metadata.getDetachedState());
+
+            assertFalse(
+                    configuration
+                            .getDetachStateInstance()
+                            .isDetachedStateTransient());
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    enhancer.run());
+
+            String externalizable =
+                    Type.getInternalName(
+                            Externalizable.class);
+
+            assertTrue(
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .interfaces
+                            .contains(externalizable));
+
+            long readExternalMethods =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "readExternal"))
+                            .count();
+
+            long writeExternalMethods =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "writeExternal"))
+                            .count();
+
+            assertEquals(
+                    1L,
+                    readExternalMethods);
+
+            assertEquals(
+                    1L,
+                    writeExternalMethods);
+
+        } finally {
+            configuration.close();
+        }
+    }
+
+    private static OpenJPAConfigurationImpl newConfiguration() {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN");
+
+        configuration.setMetaDataFactory(
+                "jpa");
+
+        /*
+         * DetachedStateField=true means that the synthetic detached-state
+         * field is retained across serialization rather than being transient.
+         */
+        configuration.setDetachState(
+                "fetch-groups(DetachedStateField=true)");
+
+        return configuration;
+    }
+}
+
+======================================================================
+STAGE: T_CF
+FILE: PCEnhancerControlFlowOptimizedIdentityTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.cf;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.FieldMetaData;
+import org.apache.openjpa.meta.JavaTypes;
+import org.apache.xbean.asm9.Opcodes;
+import org.apache.xbean.asm9.Type;
+import org.apache.xbean.asm9.tree.AbstractInsnNode;
+import org.apache.xbean.asm9.tree.ClassNode;
+import org.apache.xbean.asm9.tree.MethodInsnNode;
+import org.apache.xbean.asm9.tree.MethodNode;
+import org.apache.xbean.asm9.tree.TypeInsnNode;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Coverage-guided control-flow test for optimized application-identity
+ * copying through an IdClass constructor.
+ *
+ * <p>The scenario was selected from the post-TCF-003 coverage-gap analysis.
+ * A dedicated feasibility preflight confirmed execution of both
+ * optimizeIdCopy and getIdClassConstructorParmOrder.</p>
+ */
+class PCEnhancerControlFlowOptimizedIdentityTest {
+
+    /**
+     * TCF-005
+     *
+     * Exercises the optimized IdClass-copy path when:
+     *
+     * - OptimizeIdCopy is enabled;
+     * - all primary-key attributes are non-PC values;
+     * - IdClass fields are private;
+     * - no public setters are available;
+     * - a compatible public IdClass constructor is available.
+     */
+    @Test
+    void tcf005OptimizedIdClassConstructorIsUsed() {
+
+        OpenJPAConfigurationImpl configuration =
+                newConfiguration();
+
+        try {
+
+            assertTrue(
+                    enableOptimizeIdCopy(
+                            configuration));
+
+            assertTrue(
+                    configuration.getOptimizeIdCopy());
+
+            Class<?> target =
+                    PCEnhancerControlFlowOptimizedIdentityTarget.class;
+
+            Class<?> idClass =
+                    PCEnhancerControlFlowOptimizedIdentityTarget
+                            .OptimizedIdentityId.class;
+
+            PCEnhancer enhancer =
+                    new PCEnhancer(
+                            configuration,
+                            target);
+
+            ClassMetaData metadata =
+                    enhancer.getMetaData();
+
+            assertNotNull(metadata);
+
+            assertEquals(
+                    ClassMetaData.ID_APPLICATION,
+                    metadata.getIdentityType());
+
+            assertFalse(
+                    metadata.isOpenJPAIdentity());
+
+            assertEquals(
+                    idClass,
+                    metadata.getObjectIdType());
+
+            FieldMetaData[] primaryKeyFields =
+                    metadata.getPrimaryKeyFields();
+
+            assertEquals(
+                    3,
+                    primaryKeyFields.length);
+
+            for (FieldMetaData field : primaryKeyFields) {
+
+                assertFalse(
+                        field.getDeclaredTypeCode()
+                                == JavaTypes.PC);
+            }
+
+            assertFalse(
+                    enhancer.getCreateSubclass());
+
+            assertFalse(
+                    enhancer.getRedefine());
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    enhancer.run());
+
+            ClassNode enhanced =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode();
+
+            long copyToMethods =
+                    enhanced
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "pcCopyKeyFieldsToObjectId"))
+                            .count();
+
+            long copyFromMethods =
+                    enhanced
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "pcCopyKeyFieldsFromObjectId"))
+                            .count();
+
+            assertEquals(
+                    2L,
+                    copyToMethods);
+
+            assertEquals(
+                    2L,
+                    copyFromMethods);
+
+            String idInternalName =
+                    Type.getInternalName(
+                            idClass);
+
+            String optimizedConstructorDescriptor =
+                    Type.getMethodDescriptor(
+                            Type.VOID_TYPE,
+                            Type.getType(String.class),
+                            Type.LONG_TYPE,
+                            Type.INT_TYPE);
+
+            int idClassNewInstructions =
+                    0;
+
+            int optimizedConstructorCalls =
+                    0;
+
+            for (MethodNode method : enhanced.methods) {
+
+                if (!method.name.equals(
+                        "pcCopyKeyFieldsToObjectId")) {
+                    continue;
+                }
+
+                for (AbstractInsnNode instruction
+                        : method.instructions) {
+
+                    if (instruction
+                            instanceof TypeInsnNode typeInsn
+                            && typeInsn.getOpcode()
+                            == Opcodes.NEW
+                            && typeInsn.desc.equals(
+                            idInternalName)) {
+
+                        idClassNewInstructions++;
+                    }
+
+                    if (instruction
+                            instanceof MethodInsnNode methodInsn
+                            && methodInsn.getOpcode()
+                            == Opcodes.INVOKESPECIAL
+                            && methodInsn.owner.equals(
+                            idInternalName)
+                            && methodInsn.name.equals(
+                            "<init>")
+                            && methodInsn.desc.equals(
+                            optimizedConstructorDescriptor)) {
+
+                        optimizedConstructorCalls++;
+                    }
+                }
+            }
+
+            assertEquals(
+                    2,
+                    idClassNewInstructions);
+
+            assertEquals(
+                    2,
+                    optimizedConstructorCalls);
+
+        } finally {
+
+            configuration.close();
+        }
+    }
+
+    private static OpenJPAConfigurationImpl newConfiguration() {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN");
+
+        configuration.setMetaDataFactory(
+                "jpa");
+
+        return configuration;
+    }
+
+    /**
+     * Uses the same configuration mechanism already validated by the
+     * TCF-005 feasibility preflight without assuming a concrete setter
+     * parameter type.
+     */
+    private static boolean enableOptimizeIdCopy(
+            OpenJPAConfigurationImpl configuration) {
+
+        Method setter =
+                Arrays.stream(
+                                configuration
+                                        .getClass()
+                                        .getMethods())
+                        .filter(method ->
+                                method.getName()
+                                        .equals(
+                                                "setOptimizeIdCopy"))
+                        .filter(method ->
+                                method.getParameterCount()
+                                        == 1)
+                        .findFirst()
+                        .orElse(null);
+
+        if (setter == null) {
+            return false;
+        }
+
+        try {
+
+            Class<?> parameter =
+                    setter.getParameterTypes()[0];
+
+            if (parameter == boolean.class
+                    || parameter == Boolean.class) {
+
+                setter.invoke(
+                        configuration,
+                        true);
+
+                return true;
+            }
+
+            if (parameter == String.class) {
+
+                setter.invoke(
+                        configuration,
+                        "true");
+
+                return true;
+            }
+
+            return false;
+
+        } catch (ReflectiveOperationException exception) {
+
+            throw new IllegalStateException(
+                    "Cannot enable OptimizeIdCopy.",
+                    exception);
+        }
+    }
+}
+
+======================================================================
+STAGE: T_CF
+FILE: PCEnhancerControlFlowRelationshipIdentityTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.cf;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.openjpa.meta.FieldMetaData;
+import org.apache.openjpa.meta.JavaTypes;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Coverage-guided control-flow test for application identity containing
+ * a relationship-valued primary-key field.
+ *
+ * <p>The scenario was selected from the post-TCF-003 coverage-gap analysis.
+ * A dedicated feasibility preflight confirmed that it reaches
+ * addExtractObjectIdFieldValueCode.</p>
+ */
+class PCEnhancerControlFlowRelationshipIdentityTest {
+
+    /**
+     * TCF-004
+     *
+     * Exercises application-identity enhancement when one primary-key
+     * attribute is itself a persistent relationship.
+     */
+    @Test
+    void tcf004RelationshipValuedPrimaryKeyGeneratesIdentitySupport() {
+
+        OpenJPAConfigurationImpl configuration =
+                newConfiguration();
+
+        try {
+
+            PCEnhancer enhancer =
+                    new PCEnhancer(
+                            configuration,
+                            PCEnhancerControlFlowRelationshipIdentityTarget.class);
+
+            ClassMetaData metadata =
+                    enhancer.getMetaData();
+
+            assertNotNull(metadata);
+
+            assertEquals(
+                    ClassMetaData.ID_APPLICATION,
+                    metadata.getIdentityType());
+
+            assertFalse(
+                    metadata.isOpenJPAIdentity());
+
+            assertEquals(
+                    PCEnhancerControlFlowRelationshipIdentityTarget
+                            .RelationshipIdentityId.class,
+                    metadata.getObjectIdType());
+
+            FieldMetaData[] primaryKeyFields =
+                    metadata.getPrimaryKeyFields();
+
+            assertEquals(
+                    2,
+                    primaryKeyFields.length);
+
+            FieldMetaData relationshipField =
+                    findPrimaryKeyField(
+                            primaryKeyFields,
+                            "parent");
+
+            assertNotNull(
+                    relationshipField);
+
+            assertEquals(
+                    JavaTypes.PC,
+                    relationshipField.getDeclaredTypeCode());
+
+            assertEquals(
+                    PCEnhancerControlFlowRelationshipIdentityParentTarget.class,
+                    relationshipField.getDeclaredType());
+
+            assertEquals(
+                    long.class,
+                    relationshipField.getObjectIdFieldType());
+
+            assertNotNull(
+                    relationshipField.getTypeMetaData());
+
+            assertTrue(
+                    relationshipField
+                            .getTypeMetaData()
+                            .isOpenJPAIdentity());
+
+            assertFalse(
+                    enhancer.getCreateSubclass());
+
+            assertFalse(
+                    enhancer.getRedefine());
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    enhancer.run());
+
+            long copyToMethods =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "pcCopyKeyFieldsToObjectId"))
+                            .count();
+
+            long copyFromMethods =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "pcCopyKeyFieldsFromObjectId"))
+                            .count();
+
+            long newObjectIdMethods =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode()
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "pcNewObjectIdInstance"))
+                            .count();
+
+            assertEquals(
+                    2L,
+                    copyToMethods);
+
+            assertEquals(
+                    2L,
+                    copyFromMethods);
+
+            assertEquals(
+                    2L,
+                    newObjectIdMethods);
+
+        } finally {
+
+            configuration.close();
+        }
+    }
+
+    private static FieldMetaData findPrimaryKeyField(
+            FieldMetaData[] fields,
+            String name) {
+
+        for (FieldMetaData field : fields) {
+
+            if (field.getName().equals(name)) {
+                return field;
+            }
+        }
+
+        return null;
+    }
+
+    private static OpenJPAConfigurationImpl newConfiguration() {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN");
+
+        configuration.setMetaDataFactory(
+                "jpa");
+
+        return configuration;
+    }
+}
+
+======================================================================
+STAGE: T_CF
+FILE: PCEnhancerControlFlowSerializationTest.java
+======================================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package it.uniroma2.isw2.openjpa.testing.pcenhancer.cf;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.Externalizable;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+import org.apache.openjpa.conf.OpenJPAConfigurationImpl;
+import org.apache.openjpa.enhance.PCEnhancer;
+import org.apache.openjpa.meta.ClassMetaData;
+import org.apache.xbean.asm9.Type;
+import org.apache.xbean.asm9.tree.ClassNode;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Coverage-guided control-flow test for the standard Java serialization
+ * enhancement cluster of PCEnhancer.
+ *
+ * <p>This scenario was selected from the post-TCF-002 coverage-gap
+ * analysis and validated by a dedicated feasibility diagnostic before
+ * being admitted to the definitive T_CF suite.</p>
+ */
+class PCEnhancerControlFlowSerializationTest {
+
+    /**
+     * TCF-003
+     *
+     * Exercises the standard Serializable enhancement path while detached
+     * externalization and subclass enhancement are not active.
+     *
+     * The expected enhancement generates:
+     *
+     * - serialVersionUID
+     * - writeObject(ObjectOutputStream)
+     * - readObject(ObjectInputStream)
+     *
+     * without generating Externalizable support.
+     */
+    @Test
+    void tcf003SerializableTargetGeneratesSerializationSupport() {
+
+        OpenJPAConfigurationImpl configuration =
+                newConfiguration();
+
+        try {
+
+            Class<?> target =
+                    PCEnhancerControlFlowSerializationTarget.class;
+
+            PCEnhancer enhancer =
+                    new PCEnhancer(
+                            configuration,
+                            target);
+
+            ClassMetaData metadata =
+                    enhancer.getMetaData();
+
+            assertNotNull(metadata);
+
+            assertTrue(
+                    Serializable.class.isAssignableFrom(
+                            target));
+
+            assertFalse(
+                    Externalizable.class.isAssignableFrom(
+                            target));
+
+            boolean externalizeDetached =
+                    ClassMetaData.SYNTHETIC.equals(
+                            metadata.getDetachedState())
+                            && Serializable.class.isAssignableFrom(
+                            target)
+                            && !configuration
+                            .getDetachStateInstance()
+                            .isDetachedStateTransient();
+
+            assertFalse(
+                    externalizeDetached);
+
+            assertFalse(
+                    enhancer.getCreateSubclass());
+
+            assertFalse(
+                    enhancer.getRedefine());
+
+            assertEquals(
+                    PCEnhancer.ENHANCE_PC,
+                    enhancer.run());
+
+            ClassNode enhanced =
+                    enhancer
+                            .getPCBytecode()
+                            .getClassNode();
+
+            String writeObjectDescriptor =
+                    Type.getMethodDescriptor(
+                            Type.VOID_TYPE,
+                            Type.getType(
+                                    ObjectOutputStream.class));
+
+            String readObjectDescriptor =
+                    Type.getMethodDescriptor(
+                            Type.VOID_TYPE,
+                            Type.getType(
+                                    ObjectInputStream.class));
+
+            long serialVersionUidFields =
+                    enhanced
+                            .fields
+                            .stream()
+                            .filter(field ->
+                                    field.name.equals(
+                                            "serialVersionUID"))
+                            .count();
+
+            long writeObjectMethods =
+                    enhanced
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "writeObject")
+                                            && method.desc.equals(
+                                            writeObjectDescriptor))
+                            .count();
+
+            long readObjectMethods =
+                    enhanced
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "readObject")
+                                            && method.desc.equals(
+                                            readObjectDescriptor))
+                            .count();
+
+            long readExternalMethods =
+                    enhanced
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "readExternal"))
+                            .count();
+
+            long writeExternalMethods =
+                    enhanced
+                            .methods
+                            .stream()
+                            .filter(method ->
+                                    method.name.equals(
+                                            "writeExternal"))
+                            .count();
+
+            assertEquals(
+                    1L,
+                    serialVersionUidFields);
+
+            assertEquals(
+                    1L,
+                    writeObjectMethods);
+
+            assertEquals(
+                    1L,
+                    readObjectMethods);
+
+            assertEquals(
+                    0L,
+                    readExternalMethods);
+
+            assertEquals(
+                    0L,
+                    writeExternalMethods);
+
+            assertFalse(
+                    enhanced
+                            .interfaces
+                            .contains(
+                                    Type.getInternalName(
+                                            Externalizable.class)));
+
+        } finally {
+
+            configuration.close();
+        }
+    }
+
+    private static OpenJPAConfigurationImpl newConfiguration() {
+
+        OpenJPAConfigurationImpl configuration =
+                new OpenJPAConfigurationImpl();
+
+        configuration.setLog(
+                "File=stdout, DefaultLevel=WARN");
+
+        configuration.setMetaDataFactory(
+                "jpa");
+
+        configuration.setDetachState(
+                "fetch-groups(DetachedStateField=false)");
+
+        return configuration;
+    }
+}

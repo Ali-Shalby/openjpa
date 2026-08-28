@@ -1,0 +1,93 @@
+뽌楳瑉瑥牡瑯牗牡灰敲⁍㐠ⴠ䌱⁣潭灩污瑩潮⁣桥捫ഊ䑡瑥㨠㈰㈶ⴰ㠭㈸‱㤺㌹㨴㤍ੈ䕁䐺⁢㑣换㍡㜷扡㌸搴㍤摤㔷敤敥挰晥戸挳攳愰㐱㤍੃〠午䄲㔶㨠㐴䍅〵㥆㌸㌴䘷㠱䕃䔲㡃䙁〲㔳䔸䕁ㄷ䘶㈹㡂㤶㌲䔰䘷㥂㐴䑆䐲䍃〹䕅㐴ഊ䌱⁓䡁㈵㘺⁅ㅆ㔶㈳ㅅ䕆䍆㠳䕄䉅䕂䈷㔱䅂䄱㘲䍃䅄䔵㜷㑅ㅆ㤷㌹㌲䉃㉆㘸㘸䑁㘸㔷㤍਍਽㴽㴽⁍䅖䕎⁏啔偕吠㴽㴽㴍ਜ਼INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] OpenJPA Parent POM                                                 [pom]
+[INFO] OpenJPA Utilities Library                                          [jar]
+[INFO] 
+[INFO] -----------------< org.apache.openjpa:openjpa-parent >------------------
+[INFO] Building OpenJPA Parent POM 4.1.1                                  [1/2]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (default) @ openjpa-parent ---
+[INFO] Storing buildNumber: 28 agosto 2026 at 19:39 at timestamp: 1787938795137
+[INFO] Executing: cmd.exe /X /C "git symbolic-ref HEAD"
+[INFO] Working directory: C:\ISW2\openjpa
+[INFO] Storing scmBranch: isw2-project
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (default) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:checkstyle (default) @ openjpa-parent ---
+[INFO] Skipping org.apache.maven.plugins:maven-checkstyle-plugin:3.6.0:checkstyle report goal
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ openjpa-parent ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] -------------------< org.apache.openjpa:openjpa-lib >-------------------
+[INFO] Building OpenJPA Utilities Library 4.1.1                           [2/2]
+[INFO]   from openjpa-lib\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (default) @ openjpa-lib ---
+[INFO] Storing buildNumber: 28 agosto 2026 at 19:39 at timestamp: 1787938797578
+[INFO] Executing: cmd.exe /X /C "git symbolic-ref HEAD"
+[INFO] Working directory: C:\ISW2\openjpa\openjpa-lib
+[INFO] Storing scmBranch: isw2-project
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ openjpa-lib ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ openjpa-lib ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (default) @ openjpa-lib ---
+[INFO] 
+[INFO] --- checkstyle:3.6.0:checkstyle (default) @ openjpa-lib ---
+[WARNING] Site model of 'org.apache.openjpa:openjpa-parent:pom:4.1.1' for default locale is still using the old pre-version 2.0.0 model. You MUST migrate to the new model as soon as possible otherwise your build will break in the future!
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.1.0 skin
+[INFO] Starting audit...
+Audit done.
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[WARNING] Unable to locate Test Source XRef to link to -- DISABLED
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ openjpa-lib ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-lib ---
+[INFO] Copying 9 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ openjpa-lib ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- antrun:3.1.0:run (set git version) @ openjpa-lib ---
+[INFO] Executing tasks
+[WARNING]      [echo] Determining if there are uncommitted changes...
+[ERROR]      [exec] Result: 1
+[WARNING]      [echo] Getting the 'GIT' revision value
+[WARNING]      [echo] Revision: b4ccb3aM
+[WARNING]      [echo] Getting the 'PCEnhancer' revision value
+[WARNING]      [echo] openjpa.enhancer.revision=f413b63M
+[WARNING]      [echo] OpenJPA version: 4.1.1
+[INFO] Executed tasks
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for OpenJPA Parent POM 4.1.1:
+[INFO] 
+[INFO] OpenJPA Parent POM ................................. SUCCESS [  3.137 s]
+[INFO] OpenJPA Utilities Library .......................... SUCCESS [  2.672 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.042 s
+[INFO] Finished at: 2026-08-28T19:40:00+02:00
+[INFO] ------------------------------------------------------------------------
+਽㴽㴽⁒䕓啌吠㴽㴽㴍੍慶敮⁥硩琠捯摥㨠」੃潭灩污瑩潮㨠偁卓ഊ

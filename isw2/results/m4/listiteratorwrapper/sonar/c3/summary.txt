@@ -1,0 +1,14 @@
+﻿ListIteratorWrapper M4 Sonar analysis
+Variant=C3
+Compilation=PASS
+PostHocTests=19/19 PASS
+SourceSHA256=31E6F2F681A141B8973D9C1E36E5BD7EB00938AFBB52ADD5F87B70216EF28A44
+SonarProjectKey=Ali-Shalby_openjpa-isw2-sonar
+SonarAnalysisKey=eb010eb4-3407-4e6b-86b8-457effa13fbf
+SonarRevision=8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed
+SonarAnalysisDate=2026-08-28T18:29:39+0000
+IssueStatus=OPEN
+SoftwareQuality=MAINTAINABILITY
+Type=CODE_SMELL
+NSmells=1
+DistinctRules=1

@@ -1,0 +1,52 @@
+ListIteratorWrapper M4 - C2 post-hoc manual tests
+Date: 2026-08-28 19:52:25
+HEAD: b4ccb3a77ba38d43ddd57edeec0feb8c3e3a0419
+C0 SHA256: 44CE059F3834F781ECE28CFA0253E8EA17F6298B9632E0F79B44DFD2CC09EE44
+C2 SHA256: 1280FB36A0CD4E40B9B99FEAA23B6939D72B3D75DB18D0B700D0D79D34F51065
+C2 bytecode SHA256: 2BF045E749F9D3A557556E51783063649E1A04FB3AE94692C171FB3DBA487922
+T_BB: 12
+T_CF: 5
+T_MT: 2
+Expected total: 19
+
+===== MAVEN OUTPUT =====
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< it.uniroma2.isw2.openjpa:openjpa-isw2-testing >------------
+[INFO] Building Apache OpenJPA ISW2 Testing 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-cli) @ openjpa-isw2-testing ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb.ListIteratorWrapperBlackBoxConstructionTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.106 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb.ListIteratorWrapperBlackBoxConstructionTest
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb.ListIteratorWrapperBlackBoxNavigationTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb.ListIteratorWrapperBlackBoxNavigationTest
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb.ListIteratorWrapperBlackBoxOptionalOperationsTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb.ListIteratorWrapperBlackBoxOptionalOperationsTest
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb.ListIteratorWrapperBlackBoxResetTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb.ListIteratorWrapperBlackBoxResetTest
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.cf.ListIteratorWrapperControlFlowTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.cf.ListIteratorWrapperControlFlowTest
+[INFO] Running it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.mt.ListIteratorWrapperMutationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.mt.ListIteratorWrapperMutationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.480 s
+[INFO] Finished at: 2026-08-28T19:52:29+02:00
+[INFO] ------------------------------------------------------------------------
+
+===== RESULT =====
+Maven exit code: 0
+Tests: PASS

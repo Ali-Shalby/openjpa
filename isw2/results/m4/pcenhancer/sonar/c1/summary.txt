@@ -1,0 +1,15 @@
+﻿PCEnhancer M4 Sonar analysis
+Variant=C1
+Compilation=FAIL
+SourceSHA256=5675A2AB26EDAF7E340A765F8459815DB5DD8F38B1F38ED80F161C35D379C1F5
+SonarProjectKey=Ali-Shalby_openjpa-isw2-sonar
+SonarAnalysisKey=cf9a49ec-a0d9-4c7c-a1a8-43352452f5a5
+SonarRevision=3711b85ca3a61d4d0635b86676f925e8a79ca1fe
+SonarAnalysisDate=2026-08-28T16:02:27+0000
+IssueStatus=OPEN
+SoftwareQuality=MAINTAINABILITY
+Type=CODE_SMELL
+NSmells=138
+DistinctRules=24
+C0_NSmells=190
+DeltaVsC0=-52

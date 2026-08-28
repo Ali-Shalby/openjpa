@@ -1,0 +1,28 @@
+===== LISTITERATORWRAPPER M4 - SONAR COMPARISON =====
+
+Issue identity: Sonar IssueKey, case-sensitive ordinal comparison.
+Filter: OPEN + MAINTAINABILITY + CODE_SMELL.
+
+C0: Compile=PASS; Tests=BASELINE; NSmells=0; Rules=0; DeltaVsC0=0
+C1: Compile=PASS; Tests=19/19 PASS; NSmells=1; Rules=1; DeltaVsC0=1
+C2: Compile=PASS; Tests=19/19 PASS; NSmells=0; Rules=0; DeltaVsC0=0
+C3: Compile=PASS; Tests=19/19 PASS; NSmells=1; Rules=1; DeltaVsC0=1
+C4: Compile=PASS; Tests=19/19 PASS; NSmells=0; Rules=0; DeltaVsC0=0
+
+===== ISSUE TRANSITIONS VS C0 =====
+C1: retained=0; resolved=0; new=1; delta=1
+C2: retained=0; resolved=0; new=0; delta=0
+C3: retained=0; resolved=0; new=1; delta=1
+C4: retained=0; resolved=0; new=0; delta=0
+
+C0 contains 0 Sonar code-smell issues; therefore no old issue can be retained or resolved.
+
+===== RULE CATEGORY TRANSITIONS VS C0 =====
+C1: NEW_RULE_CATEGORY=java:S1125
+C3: NEW_RULE_CATEGORY=java:S1125
+
+===== OBSERVED RESULT =====
+C1: 1 new Sonar code smell(s) relative to C0.
+C2: no new Sonar code smell relative to C0.
+C3: 1 new Sonar code smell(s) relative to C0.
+C4: no new Sonar code smell relative to C0.

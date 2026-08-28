@@ -1,0 +1,82 @@
+Ho adottato un refactoring volutamente conservativo: la priorità è preservare bytecode generation, identity handling, serializzazione e control flow coperto dalle suite congelate, evitando interventi strutturali estesi sui metodi più complessi.
+
+## File completo
+
+[Scarica PCEnhancer.java completo](blob\:https://copilot.cloud.microsoft/ea0c60f2-a27a-43a1-825f-61999aa9ee09)
+
+Il file contiene l’intera classe, senza placeholder o sezioni omesse, e mantiene:
+
+- package `org.apache.openjpa.enhance`;
+- nome classe `PCEnhancer`;
+- firme e visibilità delle API pubbliche e protected;
+- costruttori e overload originali;
+- logica ASM/XBean;
+- gestione metadata, identity, serialization ed externalization;
+- dipendenze originali di Apache OpenJPA 4.1.1.
+
+## Principali refactoring effettuati
+
+- Rinominati i campi interni segnalati dalla regola Sonar `java:S116`, eliminando il prefisso `_`, tra cui:
+  - `_repos` → `repos`
+  - `_meta` → `meta`
+  - `_log` → `log`
+  - `_defCons` → `addDefaultConstructor`
+  - `_redefine` → `redefine`
+  - `_subclass` → `subclass`
+  - `_fail` → `failOnPropertyViolation`
+  - `_violations` → `violations`
+  - `_dir` → `directory`
+  - `_writer` → `bytecodeWriter`
+  - `_backingFields` → `backingFields`
+  - `_attrsToFields` → `attributesToFields`
+  - `_fieldsToAttrs` → `fieldsToAttributes`
+  - `_isAlreadyRedefined` → `alreadyRedefined`
+  - `_isAlreadySubclassed` → `alreadySubclassed`
+  - `_bcsConfigured` → `bytecodeConfigured`
+  - `_optimizeIdCopy` → `optimizeIdCopy`
+  - `_addVersionInitFlag` → `addVersionInitFlag`
+- Separate le dichiarazioni multiple indicate da `java:S1659`, in particolare:
+  - `getter` e `setter`;
+  - `returned` e `assigned`;
+  - `prevInsn` e `earlierInsn`.
+- Sostituito il confronto `size() == 0` con `isEmpty()` nel punto indicato da `java:S1155`.
+- Documentati i blocchi catch intenzionalmente vuoti, affrontando `java:S108` senza alterare il fallback storico:
+  - caricamento degli auxiliary enhancer opzionali;
+  - lettura delle proprietà di revisione.
+- Corretti alcuni refusi esclusivamente documentali.
+
+## Controlli di compatibilità effettuati
+
+È stato verificato specificamente che le rinomine non abbiano introdotto setter con auto-assegnazioni. In particolare, i setter con parametro omonimo usano esplicitamente `this`, per esempio:
+
+this.addDefaultConstructor = addDefaultConstructor;
+this.redefine = redefine;
+this.subclass = subclass;
+
+Sono stati inoltre controllati:
+
+- assenza dei vecchi identificatori rinominati;
+- bilanciamento di parentesi e blocchi;
+- presenza di un solo package corretto;
+- presenza di una sola dichiarazione `public class PCEnhancer`;
+- conservazione delle firme pubbliche;
+- nessuna modifica ai test;
+- nessuna nuova dipendenza;
+- nessuna modifica ai nomi dei metodi generati `pc*`;
+- nessuna modifica alle sequenze di istruzioni ASM che governano application identity, derived identity, serializzazione ed externalization.
+
+La strategia è compatibile con i comportamenti esercitati da T_BB, T_CF e T_MT, inclusi constructor handling, property access validation, recording, subclass strategy, application identity, optimized IdClass construction, relationship-valued identity, StateManager, serialization ed externalization.
+
+## Smell lasciati intenzionalmente invariati
+
+Alcuni smell sono stati conservati per ridurre il rischio di regressioni:
+
+- `catch (Throwable)` nei punti in cui la classe originale deve tollerare anche errori di linkage o inizializzazione di plugin opzionali;
+- metodi ad alta complessità cognitiva che generano bytecode ASM;
+- fall-through intenzionali negli switch relativi ai tipi identity;
+- ritorni `null` che fanno parte dei contratti interni esistenti;
+- metodi o codice deprecated, per mantenere la compatibilità binaria e sorgente;
+- nomi di helper interni quando la rinomina avrebbe potuto interferire con test package-private o assunzioni del progetto;
+- blocchi annidati legati alla generazione dei metodi identity, poiché l’estrazione avrebbe richiesto il passaggio di numeroso stato ASM mutabile.
+
+Queste scelte privilegiano compilabilità e compatibilità comportamentale rispetto alla rimozione puramente numerica di tutti gli smell Sonar.

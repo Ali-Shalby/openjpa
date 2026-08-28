@@ -1,0 +1,4 @@
+﻿"ReleaseIndex","Version","CommitId","SonarAnalysisKey","SonarRevision","FQCN","Class","NSmells"
+"36","4.1.1","9d2f5f8c35691c3542606bea1d23b916bcbeda8d","1881d68c-2c8f-452b-8c6e-ee46e0c4e2cc","9a3db3eb463ab40a45485eec284d5e107a6a1f34","org.apache.openjpa.ant.PCEnhancerTask","openjpa-kernel/src/main/java/org/apache/openjpa/ant/PCEnhancerTask.java","0"
+"36","4.1.1","9d2f5f8c35691c3542606bea1d23b916bcbeda8d","1881d68c-2c8f-452b-8c6e-ee46e0c4e2cc","9a3db3eb463ab40a45485eec284d5e107a6a1f34","org.apache.openjpa.enhance.PCEnhancer","openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java","190"
+"36","4.1.1","9d2f5f8c35691c3542606bea1d23b916bcbeda8d","1881d68c-2c8f-452b-8c6e-ee46e0c4e2cc","9a3db3eb463ab40a45485eec284d5e107a6a1f34","org.apache.openjpa.enhance.PCEnhancerAgent","openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancerAgent.java","1"

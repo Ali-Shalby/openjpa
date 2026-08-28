@@ -1,0 +1,192 @@
+믯傿䕃桮湡散⁲㑍ⴠ䌠‱潣灭汩瑡潩⁮档捥൫䐊瑡㩥㈠㈰ⴶ㠰㈭‸㘱㔺㨹㐴਍䕈䑁›㑢捣㍢㝡户㍡搸㌴摤㕤攷敤捥昰扥挸攳愳㐰㤱਍ぃ匠䅈㔲㨶䘠䐷㔸㥆㘶䈳㠶㌴㔰ㄲ䉆䑅㡅㐲㉃㌷㜹䈱䕁㝆〹㍁㕃㤲䄱䘹䔸䈰䈷㙃䄴㝃ു䌊‱䡓㉁㘵›㘵㔷㉁䉁㘲䑅䙁䔷㐳䄰㘷䘵㐸㤵ㄸ䐵㕂䑄䘸㠳ㅂ㍆䔸㡄䘰㘱䌱㔳㍄㤷ㅃ㕆਍਍㴽㴽‽䅍䕖⁎問偔呕㴠㴽㴽਍[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] OpenJPA Parent POM                                                 [pom]
+[INFO] OpenJPA Utilities Library                                          [jar]
+[INFO] OpenJPA Kernel                                                     [jar]
+[INFO] 
+[INFO] -----------------< org.apache.openjpa:openjpa-parent >------------------
+[INFO] Building OpenJPA Parent POM 4.1.1                                  [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (default) @ openjpa-parent ---
+[INFO] Storing buildNumber: 28 agosto 2026 at 16:59 at timestamp: 1787929189950
+[INFO] Executing: cmd.exe /X /C "git symbolic-ref HEAD"
+[INFO] Working directory: C:\ISW2\openjpa
+[INFO] Storing scmBranch: isw2-project
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (default) @ openjpa-parent ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- checkstyle:3.6.0:checkstyle (default) @ openjpa-parent ---
+[INFO] Skipping org.apache.maven.plugins:maven-checkstyle-plugin:3.6.0:checkstyle report goal
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ openjpa-parent ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] -------------------< org.apache.openjpa:openjpa-lib >-------------------
+[INFO] Building OpenJPA Utilities Library 4.1.1                           [2/3]
+[INFO]   from openjpa-lib\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (default) @ openjpa-lib ---
+[INFO] Storing buildNumber: 28 agosto 2026 at 16:59 at timestamp: 1787929192565
+[INFO] Executing: cmd.exe /X /C "git symbolic-ref HEAD"
+[INFO] Working directory: C:\ISW2\openjpa\openjpa-lib
+[INFO] Storing scmBranch: isw2-project
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ openjpa-lib ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ openjpa-lib ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (default) @ openjpa-lib ---
+[INFO] 
+[INFO] --- checkstyle:3.6.0:checkstyle (default) @ openjpa-lib ---
+[WARNING] Site model of 'org.apache.openjpa:openjpa-parent:pom:4.1.1' for default locale is still using the old pre-version 2.0.0 model. You MUST migrate to the new model as soon as possible otherwise your build will break in the future!
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/34/apache-34-site.xml
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.1.0 skin
+[INFO] Starting audit...
+Audit done.
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[WARNING] Unable to locate Test Source XRef to link to -- DISABLED
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ openjpa-lib ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-lib ---
+[INFO] Copying 9 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ openjpa-lib ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- antrun:3.1.0:run (set git version) @ openjpa-lib ---
+[INFO] Executing tasks
+[WARNING]      [echo] Determining if there are uncommitted changes...
+[ERROR]      [exec] Result: 1
+[WARNING]      [echo] Getting the 'GIT' revision value
+[WARNING]      [echo] Revision: b4ccb3aM
+[WARNING]      [echo] Getting the 'PCEnhancer' revision value
+[WARNING]      [echo] openjpa.enhancer.revision=f413b63M
+[WARNING]      [echo] OpenJPA version: 4.1.1
+[INFO] Executed tasks
+[INFO] 
+[INFO] -----------------< org.apache.openjpa:openjpa-kernel >------------------
+[INFO] Building OpenJPA Kernel 4.1.1                                      [3/3]
+[INFO]   from openjpa-kernel\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (default) @ openjpa-kernel ---
+[INFO] Storing buildNumber: 28 agosto 2026 at 16:59 at timestamp: 1787929195995
+[INFO] Executing: cmd.exe /X /C "git symbolic-ref HEAD"
+[INFO] Working directory: C:\ISW2\openjpa\openjpa-kernel
+[INFO] Storing scmBranch: isw2-project
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ openjpa-kernel ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ openjpa-kernel ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (default) @ openjpa-kernel ---
+[INFO] 
+[INFO] --- javacc:2.6:jjtree-javacc (jjtree-javacc-jpql) @ openjpa-kernel ---
+[INFO] Skipping - all parsers are up to date
+[INFO] 
+[INFO] --- checkstyle:3.6.0:checkstyle (default) @ openjpa-kernel ---
+[WARNING] Site model of 'org.apache.openjpa:openjpa-parent:pom:4.1.1' for default locale is still using the old pre-version 2.0.0 model. You MUST migrate to the new model as soon as possible otherwise your build will break in the future!
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.1.0 skin
+[INFO] Starting audit...
+Audit done.
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[WARNING] Unable to locate Test Source XRef to link to -- DISABLED
+[INFO] 
+[INFO] --- remote-resources:3.3.0:process (process-resource-bundles) @ openjpa-kernel ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.7
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] Filtering appended resource: META-INF/NOTICE.vm
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ openjpa-kernel ---
+[INFO] Copying 15 resources from src\main\resources to target\classes
+[INFO] Copying 3 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ openjpa-kernel ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 531 source files with javac [debug release 11] to target\classes
+[INFO] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/kernel/AbstractStoreQuery.java: Some input files use or override a deprecated API.
+[INFO] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/kernel/AbstractStoreQuery.java: Recompile with -Xlint:deprecation for details.
+[INFO] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/kernel/AbstractBrokerFactory.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/kernel/AbstractBrokerFactory.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING : 
+[INFO] -------------------------------------------------------------
+[WARNING] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/ee/WLSManagedRuntime.java:[42,68] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Class for a varargs call
+  cast to java.lang.Class[] for a non-varargs call and to suppress this warning
+[WARNING] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/ee/WLSManagedRuntime.java:[43,70] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Class for a varargs call
+  cast to java.lang.Class[] for a non-varargs call and to suppress this warning
+[WARNING] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/ee/WLSManagedRuntime.java:[51,47] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/ee/WLSManagedRuntime.java:[52,62] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/ee/InvocationManagedRuntime.java:[70,41] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Class<?> for a varargs call
+  cast to java.lang.Class<?>[] for a non-varargs call and to suppress this warning
+[WARNING] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/ee/InvocationManagedRuntime.java:[72,58] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[INFO] 6 warnings 
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java:[1084,41] cannot find symbol
+  symbol:   method isEmpty()
+  location: variable instructions of type org.apache.xbean.asm9.tree.InsnList
+[ERROR] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java:[1216,36] cannot find symbol
+  symbol:   method isEmpty()
+  location: variable instructions of type org.apache.xbean.asm9.tree.InsnList
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for OpenJPA Parent POM 4.1.1:
+[INFO] 
+[INFO] OpenJPA Parent POM ................................. SUCCESS [  3.478 s]
+[INFO] OpenJPA Utilities Library .......................... SUCCESS [  3.661 s]
+[INFO] OpenJPA Kernel ..................................... FAILURE [ 14.722 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  23.913 s
+[INFO] Finished at: 2026-08-28T17:00:10+02:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.14.0:compile (default-compile) on project openjpa-kernel: Compilation failure: Compilation failure: 
+[ERROR] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java:[1084,41] cannot find symbol
+[ERROR]   symbol:   method isEmpty()
+[ERROR]   location: variable instructions of type org.apache.xbean.asm9.tree.InsnList
+[ERROR] /C:/ISW2/openjpa/openjpa-kernel/src/main/java/org/apache/openjpa/enhance/PCEnhancer.java:[1216,36] cannot find symbol
+[ERROR]   symbol:   method isEmpty()
+[ERROR]   location: variable instructions of type org.apache.xbean.asm9.tree.InsnList
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :openjpa-kernel
+਍㴽㴽‽䕒啓呌㴠㴽㴽਍慍敶⁮硥瑩挠摯㩥ㄠ਍潃灭汩瑡潩㩮䘠䥁ൌ�

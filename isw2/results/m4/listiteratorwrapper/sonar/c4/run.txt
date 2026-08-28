@@ -1,0 +1,73 @@
+﻿**********************
+Inizio trascrizione Windows PowerShell
+Ora di inizio: 20260828203408
+Nome utente: LAPTOP-503ELF8J\marco
+Esegui come utente: LAPTOP-503ELF8J\marco
+Nome configurazione: 
+Computer LAPTOP-503ELF8J (Microsoft Windows NT 10.0.26200.0)
+Applicazione host: powershell.exe
+ID processo: 68548
+PSVersion: 5.1.26100.9168
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9168
+BuildVersion: 10.0.26100.9168
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+======================================================
+===== LISTITERATORWRAPPER M4 SONAR C4 ==============
+======================================================
+
+Aux local HEAD : 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed
+Aux remote HEAD: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed
+
+C4 SHA256: C9506C2C0BC998434D2BA33B48F653959B5B29ED56C342FD6E59594F854FAB3D
+Aux target SHA256: C9506C2C0BC998434D2BA33B48F653959B5B29ED56C342FD6E59594F854FAB3D
+
+
+
+Auxiliary revision: d0f32eecee19fb2d56b2f125029173b6f67bb57b
+
+
+Waiting for exact Sonar revision...
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+Latest visible: 8815e9d1b9dc27bd9e036b71b97cff9371e1b5ed | 2026-08-28T18:29:39+0000
+
+Exact analysis found.
+Analysis key: f73af8a2-0cda-4af2-b95b-3f664f0f0107
+Revision    : d0f32eecee19fb2d56b2f125029173b6f67bb57b
+Date        : 2026-08-28T18:34:19+0000
+
+Waiting for issue index stabilization...
+OPEN maintainability: 8499 | stable: 1 / 3
+OPEN maintainability: 8499 | stable: 2 / 3
+OPEN maintainability: 8499 | stable: 3 / 3
+
+==============================================
+===== C4 SONAR RESULT ======================
+==============================================
+Revision      : d0f32eecee19fb2d56b2f125029173b6f67bb57b
+Analysis key  : f73af8a2-0cda-4af2-b95b-3f664f0f0107
+NSmells       : 0
+Distinct rules: 0
+**********************
+Fine trascrizione Windows PowerShell
+Ora di fine: 20260828203847
+**********************

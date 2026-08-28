@@ -1,0 +1,252 @@
+============================================================
+FILE: ListIteratorWrapperBlackBoxConstructionTest.java
+============================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0.
+ */
+package it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb;
+
+import org.apache.openjpa.lib.util.collections.ListIteratorWrapper;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class ListIteratorWrapperBlackBoxConstructionTest {
+
+    @Test
+    void tbb001NullIteratorIsRejected() {
+        assertThrows(
+                NullPointerException.class,
+                () -> new ListIteratorWrapper<String>(null)
+        );
+    }
+}
+
+
+============================================================
+FILE: ListIteratorWrapperBlackBoxNavigationTest.java
+============================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0.
+ */
+package it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+
+import org.apache.openjpa.lib.util.collections.ListIteratorWrapper;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class ListIteratorWrapperBlackBoxNavigationTest {
+
+    @Test
+    void tbb002EmptyIteratorExposesInitialBoundaries() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(new ArrayList<String>().iterator());
+
+        assertFalse(wrapper.hasNext());
+        assertFalse(wrapper.hasPrevious());
+        assertEquals(0, wrapper.nextIndex());
+        assertEquals(-1, wrapper.previousIndex());
+    }
+
+    @Test
+    void tbb003NextPastEndIsRejected() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(new ArrayList<String>().iterator());
+
+        assertThrows(NoSuchElementException.class, wrapper::next);
+    }
+
+    @Test
+    void tbb004PreviousBeforeBeginningIsRejected() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A")).iterator()
+                );
+
+        assertThrows(NoSuchElementException.class, wrapper::previous);
+    }
+
+    @Test
+    void tbb005SingleElementSupportsForwardAndBackwardNavigation() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A")).iterator()
+                );
+
+        assertEquals("A", wrapper.next());
+        assertEquals(1, wrapper.nextIndex());
+        assertEquals(0, wrapper.previousIndex());
+
+        assertEquals("A", wrapper.previous());
+        assertEquals(0, wrapper.nextIndex());
+        assertEquals(-1, wrapper.previousIndex());
+    }
+
+    @Test
+    void tbb006MultipleElementsAreTraversedForwardInOrder() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A", "B", "C")).iterator()
+                );
+
+        assertEquals("A", wrapper.next());
+        assertEquals("B", wrapper.next());
+        assertEquals("C", wrapper.next());
+        assertFalse(wrapper.hasNext());
+    }
+
+    @Test
+    void tbb007MultipleElementsAreTraversedBackwardInReverseOrder() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A", "B", "C")).iterator()
+                );
+
+        wrapper.next();
+        wrapper.next();
+        wrapper.next();
+
+        assertEquals("C", wrapper.previous());
+        assertEquals("B", wrapper.previous());
+        assertEquals("A", wrapper.previous());
+        assertFalse(wrapper.hasPrevious());
+    }
+
+    @Test
+    void tbb008AlternatingNavigationReturnsTheSameElement() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A", "B", "C")).iterator()
+                );
+
+        assertEquals("A", wrapper.next());
+        assertEquals("A", wrapper.previous());
+        assertEquals("A", wrapper.next());
+    }
+}
+
+
+============================================================
+FILE: ListIteratorWrapperBlackBoxOptionalOperationsTest.java
+============================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0.
+ */
+package it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.openjpa.lib.util.collections.ListIteratorWrapper;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+class ListIteratorWrapperBlackBoxOptionalOperationsTest {
+
+    @Test
+    void tbb011AddIsUnsupportedForPlainIterator() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A", "B", "C")).iterator()
+                );
+
+        assertThrows(
+                UnsupportedOperationException.class,
+                () -> wrapper.add("X")
+        );
+    }
+
+    @Test
+    void tbb012SetIsUnsupportedForPlainIterator() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A", "B", "C")).iterator()
+                );
+
+        assertThrows(
+                UnsupportedOperationException.class,
+                () -> wrapper.set("X")
+        );
+    }
+}
+
+
+============================================================
+FILE: ListIteratorWrapperBlackBoxResetTest.java
+============================================================
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0.
+ */
+package it.uniroma2.isw2.openjpa.testing.listiteratorwrapper.bb;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.openjpa.lib.util.collections.ListIteratorWrapper;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class ListIteratorWrapperBlackBoxResetTest {
+
+    @Test
+    void tbb009ResetAfterPartialTraversalReturnsToInitialPosition() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A", "B", "C")).iterator()
+                );
+
+        assertEquals("A", wrapper.next());
+        assertEquals("B", wrapper.next());
+
+        wrapper.reset();
+
+        assertEquals(0, wrapper.nextIndex());
+        assertEquals(-1, wrapper.previousIndex());
+        assertEquals("A", wrapper.next());
+    }
+
+    @Test
+    void tbb010ResetAfterCompleteTraversalAllowsCompleteReuse() {
+        ListIteratorWrapper<String> wrapper =
+                new ListIteratorWrapper<>(
+                        new ArrayList<>(List.of("A", "B", "C")).iterator()
+                );
+
+        assertEquals("A", wrapper.next());
+        assertEquals("B", wrapper.next());
+        assertEquals("C", wrapper.next());
+
+        wrapper.reset();
+
+        assertEquals("A", wrapper.next());
+        assertEquals("B", wrapper.next());
+        assertEquals("C", wrapper.next());
+    }
+}
+
+

@@ -1,0 +1,29 @@
+﻿===== PCENHANCER M4 - BUGGINESS FEATURE ANALYSIS =====
+
+Correlation method : Pearson with BUGGY NO=0 / YES=1
+Equivalent         : point-biserial correlation
+Dataset rows       : 12836
+BUGGY YES / NO     : 2010 / 10826
+
+Snapshot-mutable features compared C0 -> Cx:
+LOC
+NSmells
+
+History-dependent features held invariant:
+LOC_TOUCHED, NR, NAUTH, LOC_ADDED, MAX_LOC_ADDED, AVG_LOC_ADDED, CHURN, MAX_CHURN, AVG_CHURN, CHANGE_SET_SIZE, MAX_CHANGE_SET, AVG_CHANGE_SET, AGE_WEEKS, WEIGHTED_AGE_WEEKS, IGNORED_ZERO_LOC_REVS, NFIX
+
+QUESTION 3
+Any positively-correlated feature higher in Cx than C0: YES
+C1: LOC 3958 -> 3986 (delta=28)
+C2: LOC 3958 -> 3986 (delta=28)
+C3: LOC 3958 -> 3961 (delta=3)
+C4: LOC 3958 -> 3961 (delta=3)
+
+QUESTION 4
+Any negatively-correlated feature higher in Cx than C0: NO
+No negative-correlated snapshot feature increased.
+
+NOTE:
+Historical/process metrics are not synthetically recomputed for C1-C4.
+The variants are source-level counterfactual replacements of C0, not new historical releases.
+=========================================================
