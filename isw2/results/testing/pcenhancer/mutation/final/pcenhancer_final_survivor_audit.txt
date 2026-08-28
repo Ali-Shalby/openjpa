@@ -3,12 +3,12 @@ PCEnhancer - Final Survivor Audit
 Final mutation state
 --------------------
 Population              : 1700
-KILLED                  : 827
+KILLED                  : 828
 SURVIVED                : 355
-NO_COVERAGE             : 516
+NO_COVERAGE             : 515
 TIMED_OUT               : 2
-Mutation Score          : 48.65%
-Test Strength           : 69.97%
+Mutation Score          : 48.71%
+Test Strength           : 69.99%
 
 Top remaining survivor methods
 ------------------------------

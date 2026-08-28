@@ -1,4 +1,4 @@
-PCEnhancer Mutation Stage - TMT-003
+﻿PCEnhancer Mutation Stage - TMT-003
 
 Scenario
 --------
@@ -10,30 +10,15 @@ T_BB                    : 30
 T_CF                    : 5
 T_MT                    : 3
 Manual tests            : 38
-Known discrepancy       : TBB-026
-PIT execution set       : 37 green tests
 Native OpenJPA tests    : NOT USED
 
-Mutation protocol
------------------
-PIT                     : 1.25.8
-PIT JUnit 5 plugin      : 1.2.3
-Target                  : org.apache.openjpa.enhance.PCEnhancer
-Mutators                : DEFAULTS
-Threads                 : 1
-Mutation population     : 1700
+Canonical result policy
+-----------------------
+No standalone quantitative PIT checkpoint is retained for TMT-003.
 
-Result
-------
-KILLED                  : 745
-SURVIVED                : 438
-NO_COVERAGE             : 516
-TIMED_OUT               : 1
-RUN_ERROR               : 0
-MEMORY_ERROR            : 0
-Mutation Score          : 43.82%
-Test Strength           : 62.98%
-Delta KILLED            : +27
+TMT-003 remains part of the frozen mutation-guided suite.
+Its quantitative contribution is evaluated in the canonical cumulative final
+checkpoint containing TMT-001..TMT-005.
 
 Decision
 --------

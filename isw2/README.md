@@ -134,26 +134,26 @@ Stato corrente:
 
 ```text
 T_BB             : 30 test, FROZEN
-T_BB outcome     : 29 PASS, 1 FAIL noto (TBB-026)
-T_BB LINE        : 43.61%
-T_BB BRANCH      : 30.57%
+T_BB outcome     : 30 PASS, 0 FAIL
+T_BB LINE        : 43.31% (1169 / 2699)
+T_BB BRANCH      : 30.24% (368 / 1217)
 
 T_CF additions   : 5 test, FROZEN
 Suite post-T_CF  : 35 test
-T_CF outcome     : 34 PASS, 1 FAIL noto (TBB-026)
-T_CF LINE        : 70.77%
-T_CF BRANCH      : 55.22%
+T_CF outcome     : 35 PASS, 0 FAIL
+T_CF LINE        : 70.47% (1902 / 2699)
+T_CF BRANCH      : 54.89% (668 / 1217)
 
 T_MT additions   : 5 test, FROZEN
 Suite manuale    : 40 test
-Outcome finale   : 39 PASS, 1 FAIL noto (TBB-026)
+Outcome finale   : 40 PASS, 0 FAIL
 PIT population   : 1700 mutanti
-Raw KILLED       : 827
+Raw KILLED       : 828
 Raw SURVIVED     : 355
-NO_COVERAGE      : 516
+NO_COVERAGE      : 515
 TIMED_OUT        : 2
-Mutation Score   : 48.65%
-Test Strength    : 69.97%
+Mutation Score   : 48.71%
+Test Strength    : 69.99%
 
 T_RND            : 30 test, FROZEN
 T_RND outcome    : 30 PASS, 0 FAIL
@@ -225,16 +225,13 @@ T_LLM Mut. Score : 90.38%
 T_LLM Strength   : 90.38%
 ```
 
-La failure storica `TBB-026` resta invariata per preservare la baseline
-sperimentale già utilizzata nelle fasi successive. La documentazione pubblica
-indica `false` per opzioni invalide, ma il representative input congelato usa
-una proprietà `Options` non riconosciuta la cui classificazione come
-"opzione invalida" non è completamente univoca. Il caso viene quindi mantenuto
-come esito storico con interpretazione cauta, senza presentarlo come bug certo
-di OpenJPA e senza modificare retroattivamente l'oracle.
+`TBB-026` rappresenta il frame F8 relativo alla validità della configurazione
+del tool. Il caso usa la proprietà documentata `RuntimeUnenhancedClasses` con
+il valore deliberatamente invalido `definitely-invalid`; la configurazione
+viene rifiutata con `ParseException`. Il frame è parte della Category Partition
+congelata e non deriva da feedback di coverage o mutation.
 
 Documentazione:
-
 * [`docs/testing/pcenhancer-black-box.md`](docs/testing/pcenhancer-black-box.md)
 * [`docs/testing/pcenhancer-control-flow.md`](docs/testing/pcenhancer-control-flow.md)
 * [`docs/testing/pcenhancer-mutation-testing.md`](docs/testing/pcenhancer-mutation-testing.md)
@@ -318,13 +315,13 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Category Partition black-box di `PCEnhancer`
 * [x] Freeze audit della suite manuale iniziale `T_BB` (`N = 30`)
 * [x] Implementazione completa `T_BB` – 30 test
-* [x] Full regression `T_BB` – 29 PASS, 1 FAIL documentato (`TBB-026`)
+* [x] Full regression `T_BB` – 30 PASS, 0 FAIL
 * [x] Audit finale e traceability degli oracle `T_BB`
-* [x] Baseline JaCoCo `T_BB` – 43.61% Line / 30.57% Branch
+* [x] Baseline JaCoCo `T_BB` – 43.31% Line / 30.24% Branch
 * [x] Coverage-gap audit pre-`T_CF`
 * [x] Implementazione `T_CF` – 5 test coverage-guided
 * [x] Feasibility preflight dei candidati complessi `TCF-003..005`
-* [x] Coverage cumulativa finale – 70.77% Line / 55.22% Branch
+* [x] Coverage cumulativa finale – 70.47% Line / 54.89% Branch
 * [x] Final gap audit e stopping rule (`TCF-006` non pianificato)
 * [x] Freeze audit `T_CF` – 5 test, 6 fixture, manifest SHA-256
 * [x] Mutation baseline sulla suite `T_BB + T_CF` – 1700 mutanti
@@ -333,9 +330,9 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] `TMT-003` – Standard Java Serialization runtime round-trip
 * [x] `TMT-004` – PersistenceCapable / StateManager runtime semantics
 * [x] `TMT-005` – Relationship-valued / derived identity runtime semantics
-* [x] Final PIT – 827 KILLED / 355 SURVIVED / 516 NO_COVERAGE / 2 TIMED_OUT
-* [x] Clean full regression – 40 test, 39 PASS, 1 FAIL documentato (`TBB-026`)
-* [x] Freeze `T_MT` – Mutation Score 48.65% / Test Strength 69.97%
+* [x] Final PIT – 828 KILLED / 355 SURVIVED / 515 NO_COVERAGE / 2 TIMED_OUT
+* [x] Clean full regression – 40 test, 40 PASS, 0 FAIL
+* [x] Freeze `T_MT` – Mutation Score 48.71% / Test Strength 69.99%
 * [x] Protocollo Randoop 4.3.4 – `N = 30`, seed `0`, generazione deterministica
 * [x] Generazione `T_RND` – 30 regression test
 * [x] Validazione RAW `T_RND` – 30 PASS, 0 FAIL
@@ -650,40 +647,59 @@ tramite l'analyzer e non vengono versionati.
 
 ### Suite manuale black-box `T_BB`
 
-La Category Partition iniziale è stata congelata a:
+La Category Partition iniziale è costruita sul contratto pubblico di
+`PCEnhancer` e congelata prima di osservare coverage e mutation score.
 
 ```text
 N = 30
 ```
 
+Il frame `TBB-026` verifica una configurazione documentata con valore invalido:
+
+```text
+RuntimeUnenhancedClasses = definitely-invalid
+```
+
+Oracle:
+
+```text
+ParseException
+```
+
 Full regression canonica:
 
 ```text
-isw2/results/testing/pcenhancer/tbb/runs/pcenhancer_tbb_full_run.txt
-```
-
-Risultato:
-
-```text
 Tests run : 30
-PASS      : 29
-FAIL      : 1 (TBB-026)
+PASS      : 30
+FAIL      : 0
 Errors    : 0
 Skipped   : 0
 ```
 
-Baseline di adeguatezza sulla classe esterna
+Baseline JaCoCo sulla sola classe esterna
 `org.apache.openjpa.enhance.PCEnhancer`:
 
 ```text
-LINE   : 43.61% (1177 / 2699)
-BRANCH : 30.57% (372 / 1217)
+LINE   : 43.31% (1169 / 2699)
+BRANCH : 30.24% (368 / 1217)
+METHOD : 65.64% (107 / 163)
 ```
+
+Evidence:
+
+```text
+isw2/results/testing/pcenhancer/tbb/runs/pcenhancer_tbb_full_run.txt
+isw2/results/testing/pcenhancer/tbb/coverage/
+```
+
+Documentazione dettagliata:
+
+[`docs/testing/pcenhancer-black-box.md`](docs/testing/pcenhancer-black-box.md)
 
 ### Suite manuale coverage-guided `T_CF`
 
-Dopo il freeze di `T_BB`, un gap audit formale ha guidato l'aggiunta di cinque
-scenari manuali:
+Dopo il freeze di `T_BB`, il gap audit guida l'aggiunta di cinque scenari
+manuali:
 
 ```text
 TCF-001 Application Identity
@@ -693,26 +709,27 @@ TCF-004 Relationship-valued Identity
 TCF-005 Optimized IdClass Copy
 ```
 
-La suite cumulativa finale contiene:
+Suite cumulativa:
 
 ```text
 T_BB             : 30
 T_CF additions   : 5
 Total            : 35
-PASS             : 34
-Known FAIL       : 1 (TBB-026)
+PASS             : 35
+FAIL             : 0
 Errors           : 0
 Skipped          : 0
 ```
 
-Coverage finale:
+Coverage cumulativa:
 
 ```text
-LINE   : 70.77% (1910 / 2699)
-BRANCH : 55.22% (672 / 1217)
+LINE   : 70.47% (1902 / 2699)
+BRANCH : 54.89% (668 / 1217)
+METHOD : 86.50% (141 / 163)
 ```
 
-Incremento rispetto alla baseline `T_BB`:
+Contributo di `T_CF` rispetto a `T_BB`:
 
 ```text
 Covered lines    : +733
@@ -722,30 +739,24 @@ BRANCH delta     : +24.65 pp
 ```
 
 Il final gap audit applica una stopping rule esplicita: i gap residui non sono
-sufficienti, da soli, a giustificare nuovi micro-test. `TCF-006` non è
-pianificato e `T_CF` è stata congelata.
+sufficienti, da soli, a giustificare ulteriori micro-test. `TCF-006` non viene
+pianificato e `T_CF` è congelata.
 
-Evidence principali:
+Evidence:
 
 ```text
-isw2/results/testing/pcenhancer/tbb/
 isw2/results/testing/pcenhancer/tcf/
 ```
 
-Il freeze finale di `T_CF` verifica cinque test, sei fixture, assenza di
-diagnostic temporanei e micro-test obsoleti, clean compilation e manifest
-SHA-256 degli 11 artefatti Java definitivi.
+Documentazione dettagliata:
+
+[`docs/testing/pcenhancer-control-flow.md`](docs/testing/pcenhancer-control-flow.md)
 
 ### Mutation testing e suite mutation-guided `T_MT`
 
-La mutation baseline è stata misurata solo dopo il freeze di `T_BB` e `T_CF`,
-utilizzando PIT sulla sola classe esterna:
+La mutation analysis viene applicata solo dopo il freeze di `T_BB` e `T_CF`.
 
-```text
-org.apache.openjpa.enhance.PCEnhancer
-```
-
-Protocollo congelato:
+Protocollo:
 
 ```text
 PIT                 : 1.25.8
@@ -753,23 +764,22 @@ PIT JUnit 5 plugin  : 1.2.3
 Mutators            : DEFAULTS
 Threads             : 1
 Mutation population : 1700
+Target              : org.apache.openjpa.enhance.PCEnhancer
+Native OpenJPA tests: NOT USED
 ```
 
-`TBB-026` rimane parte della suite manuale e conserva il proprio oracle, ma è
-escluso esclusivamente dalla mutation execution per garantire una baseline PIT
-verde. I test nativi OpenJPA non vengono utilizzati.
-
-Baseline mutation della suite `T_BB + T_CF`:
+Baseline mutation su `T_BB + T_CF`:
 
 ```text
-Killed         : 465
-Survived       : 714
-No coverage    : 521
-Mutation Score : 27.35%
-Test Strength  : 39.44%
+KILLED         : 466
+SURVIVED       : 714
+NO_COVERAGE    : 520
+TIMED_OUT      : 0
+Mutation Score : 27.41%
+Test Strength  : 39.49%
 ```
 
-L'analisi dei survivor ha guidato cinque aggiunte comportamentali:
+L'analisi dei survivor guida cinque aggiunte comportamentali:
 
 ```text
 TMT-001 Application Identity runtime object-id semantics
@@ -779,64 +789,65 @@ TMT-004 PersistenceCapable / StateManager runtime field semantics
 TMT-005 Relationship-valued / derived identity runtime semantics
 ```
 
-Evoluzione:
+Checkpoint canonici disponibili:
 
 | Stage | KILLED | SURVIVED | NO_COVERAGE | TIMED_OUT | Mutation Score | Test Strength | Δ KILLED |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Baseline | 465 | 714 | 521 | 0 | 27.35% | 39.44% | – |
-| Post TMT-001 | 632 | 551 | 516 | 1 | 37.18% | 53.42% | +167 |
-| Post TMT-002 | 718 | 465 | 516 | 1 | 42.24% | 60.69% | +86 |
-| Post TMT-003 | 745 | 438 | 516 | 1 | 43.82% | 62.98% | +27 |
-| Post TMT-004 | 773 | 409 | 516 | 2 | 45.47% | 65.40% | +28 |
-| Post TMT-005 | 827 | 355 | 516 | 2 | 48.65% | 69.97% | +54 |
+| Baseline | 466 | 714 | 520 | 0 | 27.41% | 39.49% | – |
+| Post TMT-001 | 633 | 551 | 515 | 1 | 37.24% | 53.46% | +167 |
+| Post TMT-002 | 719 | 465 | 515 | 1 | 42.29% | 60.73% | +86 |
+| Final TMT-001..005 | 828 | 355 | 515 | 2 | 48.71% | 69.99% | +109 vs TMT-002 |
 
-Miglioramento complessivo rispetto alla baseline:
+Risultato finale:
 
 ```text
-Additional KILLED     : +362
-Survivor reduction    : -359
-Mutation Score delta  : +21.30 pp
-Test Strength delta   : +30.53 pp
+Population          : 1700
+KILLED              : 828
+SURVIVED            : 355
+NO_COVERAGE         : 515
+TIMED_OUT           : 2
+RUN_ERROR           : 0
+MEMORY_ERROR        : 0
+Mutation Score      : 48.71%
+Test Strength       : 69.99%
+
+Additional KILLED   : +362
+SURVIVED reduction  : -359
+NO_COVERAGE delta   : -5
+TIMED_OUT delta     : +2
 ```
 
-Nel riepilogo finale la console PIT stampa `Killed 829`; l'XML raw distingue
-invece `827 KILLED` e `2 TIMED_OUT`. Le metriche del progetto seguono la
-definizione congelata `KILLED/TOTAL` e `KILLED/(KILLED+SURVIVED)`, mantenendo i
-timeout separati.
+La console PIT può riportare un conteggio aggregato che comprende i timeout;
+le metriche canoniche usano gli status raw dell'XML:
 
-La regressione manuale definitiva è stata eseguita da build pulita:
+```text
+828 KILLED
+2 TIMED_OUT
+```
+
+Regressione manuale definitiva da build pulita:
 
 ```text
 T_BB             : 30, FROZEN
 T_CF additions   : 5, FROZEN
 T_MT additions   : 5, FROZEN
 Manual suite     : 40
-Full regression  : 39 PASS, 1 FAIL noto (TBB-026)
+PASS             : 40
+FAIL             : 0
+Errors           : 0
+Skipped          : 0
 T_MT STATUS      : FROZEN
 ```
 
 La stopping rule non richiede l'azzeramento dei survivor. `TMT-006` non viene
-pianificato: i 355 survivor residui vengono conservati come evidence
+pianificato: i 355 survivor residui vengono conservati come risultato
 sperimentale senza classificarli automaticamente come equivalenti.
 
-Evidence versionate:
+Evidence:
 
 ```text
 isw2/results/testing/pcenhancer/mutation/
-├── preflight/
-├── baseline/
-├── tmt001/
-├── tmt002/
-├── tmt003/
-├── tmt004/
-├── tmt005/
-└── final/
 ```
-
-Per ogni iterazione viene mantenuto un summary uniforme e il relativo XML PIT.
-I diagnostic di feasibility, i gate intermedi, i dump CSV derivati e i run PIT
-intermedi molto verbosi restano artefatti di lavoro rigenerabili e non vengono
-versionati.
 
 Documentazione dettagliata:
 

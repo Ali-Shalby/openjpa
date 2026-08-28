@@ -1,40 +1,54 @@
-PCEnhancer Mutation Stage - TMT-001
+============================================================
+ PCENHANCER - REVISED POST TMT-001
+============================================================
+
+Suite
+-----
+T_BB                     : 30
+T_CF                     : 5
+T_MT                     : 1
+Manual/PIT execution set : 36 green tests
 
 Scenario
 --------
-Application Identity runtime object-id semantics
+TMT-001                  : Application Identity runtime object-id semantics
 
-Cumulative suite
-----------------
-T_BB                    : 30
-T_CF                    : 5
-T_MT                    : 1
-Manual tests            : 36
-Known discrepancy       : TBB-026
-PIT execution set       : 35 green tests
-Native OpenJPA tests    : NOT USED
+Protocol
+--------
+PIT                      : 1.25.8
+PIT JUnit 5 plugin       : 1.2.3
+Mutators                 : DEFAULTS
+Threads                  : 1
+Target                   : org.apache.openjpa.enhance.PCEnhancer
 
-Mutation protocol
------------------
-PIT                     : 1.25.8
-PIT JUnit 5 plugin      : 1.2.3
-Target                  : org.apache.openjpa.enhance.PCEnhancer
-Mutators                : DEFAULTS
-Threads                 : 1
-Mutation population     : 1700
+Production SHA-256       : 3C825DF257CC2FCF6550448E177A602495600A0470B742457AFC46BF4D788911
 
 Result
 ------
-KILLED                  : 632
-SURVIVED                : 551
-NO_COVERAGE             : 516
-TIMED_OUT               : 1
-RUN_ERROR               : 0
-MEMORY_ERROR            : 0
-Mutation Score          : 37.18%
-Test Strength           : 53.42%
-Delta KILLED            : +167
+TOTAL                    : 1700
+KILLED                   : 633
+SURVIVED                 : 551
+NO_COVERAGE              : 515
+TIMED_OUT                : 1
+RUN_ERROR                : 0
+MEMORY_ERROR             : 0
 
-Decision
---------
-TMT-001                 : KEEP
+Mutation Score           : 37.24%
+Test Strength            : 53.46%
+
+Delta vs revised baseline
+-------------------------
+KILLED                   : +167
+
+Expected revised result
+-----------------------
+KILLED                   : 633
+SURVIVED                 : 551
+NO_COVERAGE              : 515
+TIMED_OUT                : 1
+Expected match           : True
+
+JUnit 5 PIT support      : PASS
+Population count         : PASS 1700/1700
+
+============================================================

@@ -1,40 +1,64 @@
-PCEnhancer Mutation Stage - TMT-002
+============================================================
+ PCENHANCER - REVISED POST TMT-002
+============================================================
 
-Scenario
+Suite
+-----
+T_BB                     : 30
+T_CF                     : 5
+T_MT                     : 2
+Manual/PIT execution set : 37 green tests
+
+Scenarios
+---------
+TMT-001                  : Application Identity runtime object-id semantics
+TMT-002                  : Detached-state Externalization runtime round-trip
+
+Protocol
 --------
-Detached-state Externalization runtime round-trip
+PIT                      : 1.25.8
+PIT JUnit 5 plugin       : 1.2.3
+Mutators                 : DEFAULTS
+Threads                  : 1
+Target                   : org.apache.openjpa.enhance.PCEnhancer
 
-Cumulative suite
-----------------
-T_BB                    : 30
-T_CF                    : 5
-T_MT                    : 2
-Manual tests            : 37
-Known discrepancy       : TBB-026
-PIT execution set       : 36 green tests
-Native OpenJPA tests    : NOT USED
-
-Mutation protocol
------------------
-PIT                     : 1.25.8
-PIT JUnit 5 plugin      : 1.2.3
-Target                  : org.apache.openjpa.enhance.PCEnhancer
-Mutators                : DEFAULTS
-Threads                 : 1
-Mutation population     : 1700
+Production SHA-256       : 3C825DF257CC2FCF6550448E177A602495600A0470B742457AFC46BF4D788911
 
 Result
 ------
-KILLED                  : 718
-SURVIVED                : 465
-NO_COVERAGE             : 516
-TIMED_OUT               : 1
-RUN_ERROR               : 0
-MEMORY_ERROR            : 0
-Mutation Score          : 42.24%
-Test Strength           : 60.69%
-Delta KILLED            : +86
+TOTAL                    : 1700
+KILLED                   : 719
+SURVIVED                 : 465
+NO_COVERAGE              : 515
+TIMED_OUT                : 1
+RUN_ERROR                : 0
+MEMORY_ERROR             : 0
 
-Decision
---------
-TMT-002                 : KEEP
+Mutation Score           : 42.29%
+Test Strength            : 60.73%
+
+Delta vs revised TMT-001
+-------------------------
+KILLED                   : 86
+SURVIVED                 : -86
+NO_COVERAGE              : 0
+TIMED_OUT                : 0
+
+Expected revised result
+-----------------------
+KILLED                   : 719
+SURVIVED                 : 465
+NO_COVERAGE              : 515
+TIMED_OUT                : 1
+
+Expected incremental contribution
+---------------------------------
+KILLED                   : +86
+SURVIVED                 : -86
+
+Expected match           : True
+
+JUnit 5 PIT support      : PASS
+Population count         : PASS 1700/1700
+
+============================================================

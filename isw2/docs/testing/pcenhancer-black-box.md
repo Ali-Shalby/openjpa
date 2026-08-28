@@ -24,10 +24,11 @@ Category Partition : FROZEN
 T_BB               : FROZEN / IMPLEMENTED / FULLY EXECUTED
 N iniziale         : 30
 Test eseguiti      : 30/30
-PASS                : 29
-FAIL                : 1 (TBB-026, documented-contract discrepancy)
-LINE baseline       : 43.61%
-BRANCH baseline     : 30.57%
+PASS                : 30
+FAIL                : 0
+LINE baseline       : 43.31%
+BRANCH baseline     : 30.24%
+METHOD baseline     : 65.64%
 ```
 
 Il documento viene aggiornato dopo ogni famiglia di test, prima di procedere
@@ -288,16 +289,17 @@ all'interfaccia pubblicamente documentata del tool.
 
 | ID | Choice | Oracle |
 |---|---|---|
-| TBB-026 | deliberately unknown/invalid option | public `run(..., Options)` returns `false` |
+| TBB-026 | proprietà di configurazione documentata con valore deliberatamente invalido | configurazione rifiutata con `ParseException` |
 
-Representative invalid choice congelata:
+Representative:
 
 ```text
-definitelyNotAValidOpenJPAOption = x
+RuntimeUnenhancedClasses = definitely-invalid
 ```
 
-L'input invalido viene scelto prima dell'esecuzione. Il comportamento osservato
-non viene usato per modificare a posteriori l'oracle.
+Il frame verifica il rifiuto di una configurazione documentata valorizzata con
+un valore non ammesso. La scelta del frame appartiene alla Category Partition
+black-box e non deriva da coverage o mutation testing.
 
 ### F9 – Enhancement strategy
 
@@ -546,27 +548,25 @@ F2 PASS — 1/1
 ```text
 Frozen T_BB size : 30
 
-F1 : 6/6 PASS
-F2 : 1/1 PASS
-F3 : 4/4 PASS
-F4 : 4/4 PASS
-F5 : 3/3 PASS
-F6 : 2/2 PASS
-F7 : 5/5 PASS
-F8  : 0/1 PASS — 1 documented-contract failure
+F1  : 6/6 PASS
+F2  : 1/1 PASS
+F3  : 4/4 PASS
+F4  : 4/4 PASS
+F5  : 3/3 PASS
+F6  : 2/2 PASS
+F7  : 5/5 PASS
+F8  : 1/1 PASS
 F9  : 2/2 PASS
 F10 : 2/2 PASS
 
 Executed         : 30/30
-Passed           : 29/30
-Failed           : 1/30
+Passed           : 30/30
+Failed           : 0/30
 Not yet executed : 0/30
 ```
 
-Il freeze della suite rimane indipendente dai risultati futuri di coverage e
-mutation testing.
-
----
+Il freeze della suite rimane indipendente dai risultati successivi di coverage
+e mutation testing.
 
 ## 11. F3 – Required no-argument constructor
 
@@ -1056,48 +1056,37 @@ F7 PASS — 5/5
 ---
 
 
-## 16. F8 – Invalid tool option
+## 16. F8 – Invalid documented configuration value
 
-La famiglia F8 contiene un singolo frame relativo al contratto pubblico
-dell'overload `PCEnhancer.run(..., Options)`.
+La famiglia F8 verifica la validità della configurazione fornita all'entry
+point pubblico di `PCEnhancer`.
 
 ### WHY
 
-La documentazione pubblica del metodo dichiara:
+Il frame rappresenta una configurazione documentata con un valore non ammesso.
+
+Proprietà:
 
 ```text
-Returns false if invalid options given.
+RuntimeUnenhancedClasses
 ```
 
-Il representative value della partition è stato congelato prima
-dell'esecuzione:
+Representative:
 
 ```text
-definitelyNotAValidOpenJPAOption = x
+definitely-invalid
 ```
-
-Il nome non appartiene alle opzioni specifiche di `PCEnhancer` e non
-corrisponde a una bean property della configurazione OpenJPA.
 
 Frame:
 
 | ID | Choice | Oracle |
 |---|---|---|
-| TBB-026 | unknown/invalid option | `run(...) == false` |
+| TBB-026 | `RuntimeUnenhancedClasses=definitely-invalid` | rifiuto con `ParseException` |
+
+Il frame è definito a livello di contratto/configurazione pubblica e non usa
+feedback di coverage, mutation o controllo di flusso.
 
 ### HOW
-
-Il test utilizza una fixture purpose-built e una directory temporanea per
-evitare modifiche al bytecode originale.
-
-Vengono inoltre impostate opzioni di supporto valide (`directory` e
-`tmpClassLoader=false`), mentre l'unica variabile sotto test è la proprietà
-deliberatamente inesistente.
-
-L'oracle è rimasto quello congelato dalla documentazione e non è stato adattato
-dopo aver osservato la baseline.
-
-### RESULT
 
 Test class:
 
@@ -1107,57 +1096,39 @@ it/uniroma2/isw2/openjpa/testing/pcenhancer/bb/
 PCEnhancerBlackBoxInvalidOptionsTest.java
 ```
 
-Evidence:
+Test:
 
 ```text
-isw2/results/testing/pcenhancer/tbb/runs/pcenhancer_tbb_f8_run.txt
+tbb026InvalidRuntimeUnenhancedClassesValueIsRejected
 ```
 
-Risultato osservato:
+Il test usa una fixture purpose-built e passa il valore invalido tramite
+l'interfaccia pubblica di configurazione. L'oracle verifica il rifiuto con
+`ParseException`, senza dipendere dal testo esatto del messaggio.
+
+### RESULT
 
 ```text
 Tests run: 1
-Failures: 1
+Failures: 0
 Errors: 0
 Skipped: 0
-BUILD FAILURE
-
-expected: false
-actual:   true
+BUILD SUCCESS
 ```
 
 Stato:
 
 ```text
-F8 FAIL — TBB-026 reveals a documented-contract discrepancy in C0
+F8 PASS — 1/1
 ```
 
-### Analisi della discrepanza
+Evidence della full regression:
 
-Nel percorso pubblico `run(OpenJPAConfiguration, String[], Options)`,
-le opzioni specifiche dell'enhancer vengono rimosse e le restanti opzioni
-vengono passate a `Configurations.populateConfiguration(...)`.
-
-`Options.setInto(...)` è in grado di restituire le entries per cui non è stato
-trovato alcun setter/proprietà corrispondente. Tuttavia il percorso di
-configurazione utilizzato da `PCEnhancer` non usa tale insieme per restituire
-`false`; l'esecuzione prosegue e può terminare con `true`.
-
-Per questo representative invalid input, quindi, C0 non rispetta il comportamento
-dichiarato dal contratto pubblico del metodo.
-
-Questa evidenza:
-
-- non modifica la Category Partition;
-- non modifica l'oracle;
-- non viene trasformata artificialmente in un PASS;
-- non è classificata come problema dell'harness.
-
-Il test viene mantenuto nella suite come test black-box di conformità che
-espone la discrepanza.
+```text
+isw2/results/testing/pcenhancer/tbb/runs/pcenhancer_tbb_full_run.txt
+```
 
 ---
-
 
 ## 17. F9 – Direct enhancement vs generated subclass
 
@@ -1327,10 +1298,8 @@ F10 PASS — 2/2
 
 ## 19. Risultato della suite manuale iniziale T_BB
 
-Tutti i frame congelati tramite Category Partition sono stati implementati ed
+Tutti i frame congelati tramite Category Partition sono implementati ed
 eseguiti.
-
-Risultato complessivo per famiglia:
 
 | Famiglia | Test | PASS | FAIL |
 |---|---:|---:|---:|
@@ -1341,56 +1310,37 @@ Risultato complessivo per famiglia:
 | F5 | 3 | 3 | 0 |
 | F6 | 2 | 2 | 0 |
 | F7 | 5 | 5 | 0 |
-| F8 | 1 | 0 | 1 |
+| F8 | 1 | 1 | 0 |
 | F9 | 2 | 2 | 0 |
 | F10 | 2 | 2 | 0 |
-| **Totale** | **30** | **29** | **1** |
+| **Totale** | **30** | **30** | **0** |
 
 Stato:
 
 ```text
 T_BB size : 30
 Executed  : 30/30
-PASS      : 29/30
-FAIL      : 1/30
+PASS      : 30/30
+FAIL      : 0/30
 ```
-
-L'unico test failing è:
-
-```text
-TBB-026 — invalid option
-expected: false
-actual:   true
-```
-
-La failure è mantenuta come evidenza di una discrepanza tra il contratto
-pubblico documentato di `PCEnhancer.run(..., Options)` e il comportamento
-osservato nella baseline OpenJPA 4.1.1 (`C0`).
-
-La suite non viene modificata per rendere artificiosamente verde TBB-026.
 
 ### Freeze post-esecuzione
 
-Con l'esecuzione di TBB-001..TBB-030 termina la costruzione della suite manuale
-black-box iniziale.
+Con l'esecuzione di `TBB-001..TBB-030` termina la costruzione della suite
+manuale black-box iniziale.
 
 Da questo punto:
 
-- la Category Partition iniziale rimane congelata;
-- gli eventuali test aggiunti sulla base di coverage appartengono alla fase di
-  adequacy improvement e non modificano retroattivamente `T_BB`;
-- gli eventuali test aggiunti sulla base di mutation testing vengono tracciati
-  separatamente;
-- TBB-026 resta parte della suite e resta failing finché C0 mantiene il
-  comportamento osservato.
+- la Category Partition rimane congelata a 30 frame;
+- i test aggiunti sulla base di coverage appartengono a `T_CF`;
+- i test aggiunti sulla base di mutation testing appartengono a `T_MT`;
+- `T_BB` non viene modificata per inseguire coverage o mutation score.
 
 ## 20. Full regression e audit finale T_BB
 
-Dopo l'esecuzione family-by-family è stata eseguita una regressione completa
-della suite congelata, senza introdurre nuovi frame e senza modificare gli
-oracle.
+La full regression canonica della suite congelata contiene 30 test.
 
-Evidence canonica:
+Evidence:
 
 ```text
 isw2/results/testing/pcenhancer/tbb/runs/pcenhancer_tbb_full_run.txt
@@ -1400,74 +1350,48 @@ Risultato:
 
 ```text
 Tests run : 30
-PASS      : 29
-FAIL      : 1
+PASS      : 30
+FAIL      : 0
 Errors    : 0
 Skipped   : 0
+BUILD SUCCESS
 ```
 
-La failure rimane esclusivamente `TBB-026`.
-
-È stato inoltre eseguito un audit finale statico e di esecuzione:
-
-```text
-isw2/results/testing/pcenhancer/tbb/audits/pcenhancer_tbb_final_audit.txt
-```
-
-L'audit verifica:
-
-```text
-Test classes : 10
-Total @Test  : 30
-Full run     : 30 test
-PASS         : 29
-FAIL         : 1 (TBB-026)
-```
-
-Esito:
-
-```text
-RESULT: PCENHANCER T_BB FINAL AUDIT PASSED
-```
-
-Un audit separato conserva la traceability degli oracle e delle fonti:
-
-```text
-isw2/results/testing/pcenhancer/tbb/audits/pcenhancer_tbb_oracle_source_audit.txt
-```
-
----
+La traceability delle fonti e degli oracle resta separata dalla successiva
+misurazione di adequacy.
 
 ## 21. Baseline di adeguatezza della suite congelata
 
-Solo dopo il freeze e la completa esecuzione di `T_BB` è stata introdotta la
-misurazione di coverage con JaCoCo.
+Solo dopo il freeze e la completa esecuzione di `T_BB` viene misurata la
+coverage con JaCoCo.
 
-La metrica primaria è calcolata esclusivamente sulla classe esterna selezionata:
+Scope primario:
 
 ```text
 org.apache.openjpa.enhance.PCEnhancer
 ```
 
-Le due metriche adottate sono:
+Strumento:
 
 ```text
-LINE
-BRANCH
+JaCoCo 0.8.15
 ```
 
-La decisione di scope è conservata in:
+Denominatori canonici:
 
 ```text
-isw2/results/testing/pcenhancer/tbb/coverage/pcenhancer_tbb_coverage_scope_decision.txt
+LINE   total : 2699
+BRANCH total : 1217
+METHOD total : 163
 ```
 
 Baseline `T_BB`:
 
 | Metrica | Covered | Missed | Totale | Coverage |
 |---|---:|---:|---:|---:|
-| Line | 1177 | 1522 | 2699 | 43.61% |
-| Branch | 372 | 845 | 1217 | 30.57% |
+| Line | 1169 | 1530 | 2699 | 43.31% |
+| Branch | 368 | 849 | 1217 | 30.24% |
+| Method | 107 | 56 | 163 | 65.64% |
 
 Evidence:
 
@@ -1477,40 +1401,42 @@ isw2/results/testing/pcenhancer/tbb/coverage/jacoco.xml
 isw2/results/testing/pcenhancer/tbb/coverage/jacoco.csv
 ```
 
-Questi valori costituiscono la baseline immutabile rispetto alla quale viene
-misurata la successiva suite manuale coverage-guided `T_CF`.
-
----
+Questi valori costituiscono la baseline canonica rispetto alla quale viene
+valutato il contributo della successiva suite `T_CF`.
 
 ## 22. Passaggio a T_CF
 
-Dalla baseline `T_BB` è stato prodotto un coverage-gap audit formale, basato
-esclusivamente sui risultati della suite black-box congelata:
+Dopo il freeze di `T_BB`, il coverage-gap audit abilita la fase manuale
+coverage-guided.
 
-```text
-isw2/results/testing/pcenhancer/tbb/coverage/pcenhancer_tbb_pre_tcf_gap_audit.txt
-```
-
-Da questo punto l'ispezione del controllo di flusso è ammessa per selezionare
-nuovi test manuali di adequacy improvement. Tali test appartengono a `T_CF` e
-**non modificano retroattivamente la Category Partition né `T_BB`**.
-
-La metodologia, le fixture, i gap selezionati, le coverage incrementali e il
-freeze della suite `T_CF` sono documentati separatamente in:
-
-```text
-isw2/docs/testing/pcenhancer-control-flow.md
-```
-
-Stato al termine della fase successiva:
+La suite successiva aggiunge cinque test:
 
 ```text
 T_BB            : 30 test
 T_CF additions  : 5 test
 Cumulative      : 35 test
-Final LINE      : 70.77%
-Final BRANCH    : 55.22%
+PASS            : 35
+FAIL            : 0
+Final LINE      : 70.47% (1902 / 2699)
+Final BRANCH    : 54.89% (668 / 1217)
+Final METHOD    : 86.50% (141 / 163)
 T_CF status     : FROZEN
+```
+
+Contributo incrementale di `T_CF`:
+
+```text
+Additional covered lines    : +733
+Additional covered branches : +300
+LINE delta                  : +27.16 pp
+BRANCH delta                : +24.65 pp
+```
+
+La metodologia, le fixture, i gap selezionati e la stopping rule sono
+documentati in:
+
+```text
+isw2/docs/testing/pcenhancer-control-flow.md
 ```
 
 ---

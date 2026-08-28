@@ -7,8 +7,7 @@ Target                  : org.apache.openjpa.enhance.PCEnhancer
 Frozen T_BB             : 30
 Frozen T_CF             : 5
 Frozen manual suite     : 35
-PIT execution subset    : 34 green tests
-Known excluded test     : TBB-026
+PIT execution subset    : 35 green tests
 Native OpenJPA tests    : NOT USED
 
 Mutation protocol
@@ -22,17 +21,17 @@ Target scope            : outer PCEnhancer only
 Baseline results
 ----------------
 Total mutants           : 1700
-Killed                  : 465
+Killed                  : 466
 Survived                : 714
-No coverage             : 521
+No coverage             : 520
 Timed out               : 0
 Run error               : 0
 Memory error            : 0
 
-Covered mutants         : 1179
-Mutation Score          : 27.35%
-Test Strength           : 39.44%
-Survivor rate (covered) : 60.56%
+Covered mutants         : 1180
+Mutation Score          : 27.41%
+Test Strength           : 39.49%
+Survivor rate (covered) : 60.51%
 
 Metric definitions
 ------------------

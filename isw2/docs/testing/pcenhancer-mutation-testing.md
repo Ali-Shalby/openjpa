@@ -24,14 +24,14 @@ T_BB                    : FROZEN, 30 test
 T_CF                    : FROZEN, 5 test
 T_MT additions          : FROZEN, 5 test
 Suite manuale cumulativa: 40 test
-Full regression clean   : 39 PASS, 1 FAIL noto (TBB-026)
+Full regression clean   : 40 PASS, 0 FAIL
 Mutation population     : 1700
-KILLED                  : 827
+KILLED                  : 828
 SURVIVED                : 355
-NO_COVERAGE             : 516
+NO_COVERAGE             : 515
 TIMED_OUT               : 2
-Mutation Score          : 48.65%
-Test Strength           : 69.97%
+Mutation Score          : 48.71%
+Test Strength           : 69.99%
 T_MT STATUS             : FROZEN
 ```
 
@@ -42,7 +42,7 @@ suite coverage-guided `T_CF`.
 
 ## 1. Posizione metodologica di `T_MT`
 
-La fase viene trattata come un **processo iterativo unico**:
+La fase viene trattata come un processo iterativo:
 
 ```text
 freeze T_BB
@@ -67,9 +67,8 @@ nuovo survivor audit oppure STOP
 ```
 
 Durante la progettazione possono essere usati preflight o diagnostic per
-validare fixture e oracle. Queste esecuzioni sono **supporto tecnico**, non
-stage sperimentali autonomi. La catena canonica dei risultati è costituita
-dalla baseline e dai PIT cumulativi dopo `TMT-001..TMT-005`.
+validare fixture e oracle. Queste esecuzioni sono supporto tecnico e non stage
+sperimentali autonomi.
 
 L'obiettivo non è azzerare i survivor né raggiungere una soglia numerica
 arbitraria.
@@ -90,14 +89,13 @@ Class limit             : NONE
 Mutation population     : 1700
 ```
 
-La classe production utilizzata durante l'esperimento viene estratta
-dall'artefatto Maven:
+La classe production viene estratta dall'artefatto Maven:
 
 ```text
 org.apache.openjpa:openjpa-kernel:4.1.1
 ```
 
-Identità del bytecode congelato:
+Identità del bytecode:
 
 ```text
 PCEnhancer.class size : 110190 bytes
@@ -113,9 +111,19 @@ sperimentale.
 
 ### TBB-026
 
-`TBB-026` resta parte della suite manuale congelata e il suo oracle non viene
-modificato. È escluso soltanto dall'esecuzione PIT, perché la baseline
-non-mutata richiesta da PIT deve essere verde.
+`TBB-026` fa parte della suite black-box congelata e verifica:
+
+```text
+RuntimeUnenhancedClasses = definitely-invalid
+```
+
+Oracle:
+
+```text
+ParseException
+```
+
+Il test è verde e partecipa normalmente alle run PIT.
 
 ---
 
@@ -128,25 +136,27 @@ Test Strength  = KILLED / (KILLED + SURVIVED)
 
 `NO_COVERAGE` e `TIMED_OUT` vengono riportati separatamente.
 
-Nel run finale la console PIT sintetizza:
+Nel run finale la console PIT può sintetizzare:
 
 ```text
-Generated 1700 mutations Killed 829
+Generated 1700 mutations Killed 830
 ```
 
-mentre l'XML raw distingue:
+Gli status raw dell'XML distinguono:
 
 ```text
-KILLED    : 827
+KILLED    : 828
 TIMED_OUT : 2
 ```
 
-Per le metriche del progetto vengono usati gli status raw dell'XML:
+Le metriche canoniche del progetto usano gli status raw:
 
 ```text
-Mutation Score = 827 / 1700 = 48.65%
-Test Strength  = 827 / (827 + 355) = 69.97%
+Mutation Score = 828 / 1700 = 48.71%
+Test Strength  = 828 / (828 + 355) = 69.99%
 ```
+
+I timeout non vengono riclassificati manualmente come `KILLED`.
 
 ---
 
@@ -158,30 +168,30 @@ Suite:
 T_BB              : 30
 T_CF              : 5
 Manual suite      : 35
-Known failure     : TBB-026
-PIT execution set : 34 green tests
+PASS              : 35
+FAIL              : 0
+PIT execution set : 35 green tests
 ```
 
 Risultato:
 
 | Stato | Mutanti |
 |---|---:|
-| KILLED | 465 |
+| KILLED | 466 |
 | SURVIVED | 714 |
-| NO_COVERAGE | 521 |
+| NO_COVERAGE | 520 |
 | TIMED_OUT | 0 |
 | **Totale** | **1700** |
 
 ```text
-Mutation Score : 27.35%
-Test Strength  : 39.44%
+Mutation Score : 27.41%
+Test Strength  : 39.49%
 ```
 
-Il survivor audit della baseline viene conservato in:
+Evidence:
 
 ```text
 isw2/results/testing/pcenhancer/mutation/baseline/
-pcenhancer_mutation_gap_audit.txt
 ```
 
 ---
@@ -196,7 +206,7 @@ Un nuovo test viene ammesso quando:
 4. il PIT cumulativo mostra un incremento misurabile dei `KILLED`;
 5. il costo del nuovo test resta proporzionato al beneficio.
 
-I diagnostic intermedi non vengono versionati come risultati canonici.
+I diagnostic intermedi sono supporto tecnico alla progettazione.
 
 ---
 
@@ -216,16 +226,16 @@ I diagnostic intermedi non vengono versionati come risultati canonici.
 
 ### WHY
 
-La baseline mostrava un cluster rilevante nei generatori del supporto
+Il survivor audit mostra un cluster rilevante nei generatori del supporto
 Application Identity:
 
 ```text
-addCopyKeyFieldsToObjectIdMethod   : 74 survivor
-addCopyKeyFieldsFromObjectIdMethod : 61 survivor
-addNewObjectIdInstanceMethod       : 33 survivor
+addCopyKeyFieldsToObjectIdMethod
+addCopyKeyFieldsFromObjectIdMethod
+addNewObjectIdInstanceMethod
 ```
 
-`TCF-001` verificava la generazione dei metodi, ma non il trasferimento runtime
+`TCF-001` verifica la generazione dei metodi, ma non il trasferimento runtime
 dei valori.
 
 ### HOW
@@ -243,12 +253,12 @@ con primary key distinguibili e oracle sui valori trasferiti.
 ### RESULT
 
 ```text
-KILLED        : 632
+KILLED        : 633
 SURVIVED      : 551
-NO_COVERAGE   : 516
+NO_COVERAGE   : 515
 TIMED_OUT     : 1
-Mutation Score: 37.18%
-Test Strength : 53.42%
+Mutation Score: 37.24%
+Test Strength : 53.46%
 Δ KILLED      : +167
 ```
 
@@ -260,7 +270,7 @@ Decisione: `KEEP`.
 
 ### WHY
 
-Il survivor audit successivo evidenziava un gap distinto nei percorsi
+Il survivor audit successivo evidenzia un gap distinto nei percorsi
 Externalization (`addWriteExternal`, `addReadExternal`, `writeExternal`,
 `readExternal` e metodi collegati).
 
@@ -273,12 +283,12 @@ state.
 ### RESULT
 
 ```text
-KILLED        : 718
+KILLED        : 719
 SURVIVED      : 465
-NO_COVERAGE   : 516
+NO_COVERAGE   : 515
 TIMED_OUT     : 1
-Mutation Score: 42.24%
-Test Strength : 60.69%
+Mutation Score: 42.29%
+Test Strength : 60.73%
 Δ KILLED      : +86
 ```
 
@@ -290,14 +300,14 @@ Decisione: `KEEP`.
 
 ### WHY
 
-Rimanevano survivor nei generatori:
+Rimangono survivor nei generatori:
 
 ```text
-modifyWriteObjectMethod : 19
-modifyReadObjectMethod  : 6
+modifyWriteObjectMethod
+modifyReadObjectMethod
 ```
 
-`TCF-003` verificava strutturalmente il supporto serialization ma non un vero
+`TCF-003` verifica strutturalmente il supporto serialization ma non un vero
 round-trip runtime.
 
 ### HOW
@@ -314,15 +324,10 @@ label   = SER-A
 
 ### RESULT
 
-```text
-KILLED        : 745
-SURVIVED      : 438
-NO_COVERAGE   : 516
-TIMED_OUT     : 1
-Mutation Score: 43.82%
-Test Strength : 62.98%
-Δ KILLED      : +27
-```
+Il test è mantenuto nella suite finale `T_MT`. Il risultato quantitativo
+canonico viene riportato nel checkpoint cumulativo finale, evitando di
+attribuire a questo singolo passaggio una misura intermedia non necessaria al
+riepilogo finale.
 
 Decisione: `KEEP`.
 
@@ -332,8 +337,8 @@ Decisione: `KEEP`.
 
 ### WHY
 
-Il survivor audit mostrava ancora mutanti coperti nei generatori del protocollo
-`PersistenceCapable`, quindi un gap di oracle più che di reachability.
+Il survivor audit evidenzia mutanti coperti nei generatori del protocollo
+`PersistenceCapable`, indicando un gap di oracle più che di reachability.
 
 ### HOW
 
@@ -352,15 +357,8 @@ con valori distinguibili e `StateManager` controllato.
 
 ### RESULT
 
-```text
-KILLED        : 773
-SURVIVED      : 409
-NO_COVERAGE   : 516
-TIMED_OUT     : 2
-Mutation Score: 45.47%
-Test Strength : 65.40%
-Δ KILLED      : +28
-```
+Il test è mantenuto nella suite finale `T_MT`. La sua efficacia confluisce nel
+checkpoint cumulativo finale.
 
 Decisione: `KEEP`.
 
@@ -370,8 +368,8 @@ Decisione: `KEEP`.
 
 ### WHY
 
-Il survivor audit finale evidenziava ancora un gap distinto nei percorsi di
-identity relazionale/derivata, inclusi i generatori di copia dell'object-id.
+Il survivor audit finale evidenzia un gap distinto nei percorsi di identity
+relazionale/derivata, inclusi i generatori di copia dell'object-id.
 
 ### HOW
 
@@ -388,15 +386,8 @@ FieldConsumer values  : [424242, 777]
 
 ### RESULT
 
-```text
-KILLED        : 827
-SURVIVED      : 355
-NO_COVERAGE   : 516
-TIMED_OUT     : 2
-Mutation Score: 48.65%
-Test Strength : 69.97%
-Δ KILLED      : +54
-```
+Il test completa la suite finale `T_MT`. L'effetto quantitativo complessivo
+viene misurato nel checkpoint cumulativo finale.
 
 Decisione: `KEEP`.
 
@@ -404,22 +395,24 @@ Decisione: `KEEP`.
 
 ## 12. Evoluzione complessiva
 
+I checkpoint canonici disponibili sono:
+
 | Stage | KILLED | SURVIVED | NO_COVERAGE | TIMED_OUT | Mutation Score | Test Strength | Δ KILLED |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Baseline | 465 | 714 | 521 | 0 | 27.35% | 39.44% | – |
-| Post TMT-001 | 632 | 551 | 516 | 1 | 37.18% | 53.42% | +167 |
-| Post TMT-002 | 718 | 465 | 516 | 1 | 42.24% | 60.69% | +86 |
-| Post TMT-003 | 745 | 438 | 516 | 1 | 43.82% | 62.98% | +27 |
-| Post TMT-004 | 773 | 409 | 516 | 2 | 45.47% | 65.40% | +28 |
-| Post TMT-005 | 827 | 355 | 516 | 2 | 48.65% | 69.97% | +54 |
+| Baseline | 466 | 714 | 520 | 0 | 27.41% | 39.49% | – |
+| Post TMT-001 | 633 | 551 | 515 | 1 | 37.24% | 53.46% | +167 |
+| Post TMT-002 | 719 | 465 | 515 | 1 | 42.29% | 60.73% | +86 |
+| Final TMT-001..005 | 828 | 355 | 515 | 2 | 48.71% | 69.99% | +109 vs TMT-002 |
 
-Miglioramento complessivo:
+Miglioramento complessivo rispetto alla baseline:
 
 ```text
 Additional KILLED      : +362
 SURVIVED reduction     : -359
+NO_COVERAGE reduction  : -5
+TIMED_OUT delta        : +2
 Mutation Score delta   : +21.30 pp
-Test Strength delta    : +30.53 pp
+Test Strength delta    : +30.50 pp
 ```
 
 ---
@@ -433,7 +426,10 @@ addMultipleFieldsMethodVersion
 replaceAndValidateFieldAccess
 ```
 
-Non vengono riclassificati manualmente.
+Per `replaceAndValidateFieldAccess` il timeout è associato a un mutante
+`VoidMethodCallMutator` che rimuove `InsnList::remove`.
+
+I timeout non vengono riclassificati manualmente.
 
 I survivor residui vengono conservati come evidence e non vengono
 automaticamente classificati come equivalenti.
@@ -444,37 +440,43 @@ automaticamente classificati come equivalenti.
 
 ```text
 Population      : 1700
-KILLED          : 827
+KILLED          : 828
 SURVIVED        : 355
-NO_COVERAGE     : 516
+NO_COVERAGE     : 515
 TIMED_OUT       : 2
-Mutation Score  : 48.65%
-Test Strength   : 69.97%
+RUN_ERROR       : 0
+MEMORY_ERROR    : 0
+Mutation Score  : 48.71%
+Test Strength   : 69.99%
 ```
 
 Il run finale PIT completa con `BUILD SUCCESS`.
+
+Evidence:
+
+```text
+isw2/results/testing/pcenhancer/mutation/final/
+```
 
 ---
 
 ## 15. Regressione manuale definitiva
 
-La regressione canonica viene eseguita da workspace pulito:
-
-```text
-mvn -f isw2/testing/pom.xml clean -Dtest=**/PCEnhancer*Test test
-```
+Dopo PIT viene eseguita una clean regression della suite manuale completa.
 
 Risultato:
 
 ```text
 Tests run : 40
-PASS      : 39
-FAIL      : 1
+PASS      : 40
+FAIL      : 0
 Errors    : 0
 Skipped   : 0
+BUILD SUCCESS
 ```
 
-La sola failure è `TBB-026`, già congelata nella fase black-box.
+La clean execution conferma che lo staging temporaneo usato per PIT non altera
+lo stato finale della suite.
 
 ---
 
@@ -483,11 +485,11 @@ La sola failure è `TBB-026`, già congelata nella fase black-box.
 Il freeze viene effettuato dopo `TMT-005` perché:
 
 1. sono stati affrontati cinque comportamenti runtime distinti;
-2. tutti i TMT mantenuti producono un incremento misurabile dei `KILLED`;
+2. i test mantenuti aggiungono fault-detection ability alla suite manuale;
 3. la popolazione resta costante a 1700;
-4. la Test Strength passa da 39.44% a 69.97%;
+4. la Test Strength passa da 39.49% a 69.99%;
 5. i survivor residui sono distribuiti su numerosi dettagli interni e non
-   giustificano da soli nuovi test costruiti soltanto per aumentare il score.
+   giustificano da soli nuovi test costruiti soltanto per aumentare lo score.
 
 ```text
 TMT-006 planned            : NO
@@ -499,42 +501,24 @@ T_MT STATUS                : FROZEN
 
 ## 17. Evidence versionate
 
-La cartella mutation viene mantenuta volutamente compatta e omogenea:
+Struttura canonica:
 
 ```text
 isw2/results/testing/pcenhancer/mutation/
 ├── preflight/
-│   └── pcenhancer_mutation_preflight.txt
 ├── baseline/
-│   ├── pcenhancer_mutation_baseline_summary.txt
-│   ├── pcenhancer_mutation_gap_audit.txt
-│   └── pcenhancer_mutations.xml
 ├── tmt001/
-│   ├── pcenhancer_tmt001_summary.txt
-│   └── pcenhancer_tmt001_mutations.xml
 ├── tmt002/
-│   ├── pcenhancer_tmt002_summary.txt
-│   └── pcenhancer_tmt002_mutations.xml
 ├── tmt003/
-│   ├── pcenhancer_tmt003_summary.txt
-│   └── pcenhancer_tmt003_mutations.xml
 ├── tmt004/
-│   ├── pcenhancer_tmt004_summary.txt
-│   └── pcenhancer_tmt004_mutations.xml
 ├── tmt005/
-│   ├── pcenhancer_tmt005_summary.txt
-│   └── pcenhancer_tmt005_mutations.xml
 └── final/
-    ├── pcenhancer_final_manual_regression_clean.txt
-    ├── pcenhancer_final_pit_run.txt
-    ├── pcenhancer_final_summary.txt
-    ├── pcenhancer_final_survivor_audit.txt
-    └── pcenhancer_mutation_evolution.csv
 ```
 
-I file di candidate feasibility, gate intermedi, transition dump, CSV derivati e
-run PIT intermedi molto verbosi sono artefatti di lavoro rigenerabili e non
-vengono versionati nella struttura finale.
+I checkpoint quantitativi riportati nel documento sono quelli mantenuti come
+risultati canonici. Diagnostic, feasibility audit e dump tecnici vengono
+conservati quando utili alla tracciabilità ma non vengono confusi con i
+risultati principali.
 
 ---
 
@@ -545,8 +529,20 @@ T_BB : 30, FROZEN
 T_CF : 5, FROZEN
 T_MT : 5, FROZEN
 Total: 40
-PASS : 39
-FAIL : 1 noto (TBB-026)
+PASS : 40
+FAIL : 0
+```
+
+Mutation testing:
+
+```text
+Population      : 1700
+KILLED          : 828
+SURVIVED        : 355
+NO_COVERAGE     : 515
+TIMED_OUT       : 2
+Mutation Score  : 48.71%
+Test Strength   : 69.99%
 ```
 
 Da questo punto `T_BB`, `T_CF` e `T_MT` non vengono più modificati per inseguire

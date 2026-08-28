@@ -273,8 +273,8 @@ significativa:
 
 | Suite | Test | Line | Branch |
 |---|---:|---:|---:|
-| `T_BB` | 30 | 43.61% | 30.57% |
-| post-`T_CF` | 35 | 70.77% | 55.22% |
+| `T_BB` | 30 | 43.31% | 30.24% |
+| post-`T_CF` | 35 | 70.47% | 54.89% |
 | `T_RND` | 30 | 1.96% | 0.82% |
 
 Nel caso di `PCEnhancer`, la generazione random riesce quindi a

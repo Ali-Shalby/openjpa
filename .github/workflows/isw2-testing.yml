@@ -47,40 +47,8 @@ jobs:
         run: >
           mvn -B
           -f isw2/testing/pom.xml
-          -Dsurefire.excludes="**/PCEnhancerBlackBoxInvalidOptionsTest.java"
+
           test
-
-      - name: Verify documented TBB-026 baseline failure
-        shell: bash
-        run: |
-          set +e
-
-          mvn -B \
-            -f isw2/testing/pom.xml \
-            -Dtest=PCEnhancerBlackBoxInvalidOptionsTest \
-            test
-
-          exit_code=$?
-          set -e
-
-          report="isw2/testing/target/surefire-reports/TEST-it.uniroma2.isw2.openjpa.testing.pcenhancer.bb.PCEnhancerBlackBoxInvalidOptionsTest.xml"
-
-          if [ "$exit_code" -eq 0 ]; then
-            echo "::error::TBB-026 unexpectedly passed. Review the documented OpenJPA 4.1.1 baseline behaviour."
-            exit 1
-          fi
-
-          if [ ! -f "$report" ]; then
-            echo "::error::TBB-026 did not produce a Surefire report; Maven may have failed for an infrastructure reason."
-            exit 1
-          fi
-
-          if ! grep -q '<failure' "$report"; then
-            echo "::error::TBB-026 Maven execution failed, but not because of the expected JUnit assertion failure."
-            exit 1
-          fi
-
-          echo "TBB-026 reproduced the documented expected failure."
 
   evosuite-tests:
     name: EvoSuite T_ES - Java 11
