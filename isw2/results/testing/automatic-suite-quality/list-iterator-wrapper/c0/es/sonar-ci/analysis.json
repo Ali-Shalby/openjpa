@@ -1,0 +1,13 @@
+﻿{
+    "key":  "688afd4d-4a5d-42d1-83f3-1f9052b7043f",
+    "date":  "2026-08-30T09:51:05+0000",
+    "events":  [
+                   {
+                       "key":  "AaBSFKgsd-NM1uSas8-3",
+                       "category":  "VERSION",
+                       "name":  "quality-list-iterator-wrapper-c0-es"
+                   }
+               ],
+    "projectVersion":  "quality-list-iterator-wrapper-c0-es",
+    "manualNewCodePeriodBaseline":  false
+}

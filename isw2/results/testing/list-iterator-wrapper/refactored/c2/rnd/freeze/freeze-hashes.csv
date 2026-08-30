@@ -1,0 +1,5 @@
+﻿"Role","Path","SHA256","Tests"
+"RAW_SEED0","C:\ISW2\openjpa\isw2\testing\generated\listiteratorwrapper\refactored\c2\randoop\raw\seed-0\ListIteratorWrapperC2RandoopSeed0Regression0.java","CE4327B8BCB954BF638D2F351A05E053CF7C8905F583E5C8EBB3B31339AB56B4","7"
+"RAW_SEED1","C:\ISW2\openjpa\isw2\testing\generated\listiteratorwrapper\refactored\c2\randoop\raw\seed-1\ListIteratorWrapperC2RandoopSeed1Regression0.java","2BB818C0D97DDC25C58F6C749DA648BBD363C8ADED77B638D1C1E3A5A0930460","9"
+"CANONICAL_SEED0","C:\ISW2\openjpa\isw2\testing\generated\listiteratorwrapper\refactored\c2\randoop\canonical\ListIteratorWrapperC2RandoopRegression0.java","96D799E140F281691AFE2435E62EEEF1A6E52CDC0C1BF3F9D6C0664909982512","7"
+"CANONICAL_SEED1","C:\ISW2\openjpa\isw2\testing\generated\listiteratorwrapper\refactored\c2\randoop\canonical\ListIteratorWrapperC2RandoopSeed1Regression0.java","44AE45E969F4B935A674DF77A101FC1048E91454D615F62D1620E53E78E86544","5"

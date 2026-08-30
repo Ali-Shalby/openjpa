@@ -1,0 +1,43 @@
+# ListIteratorWrapper C4 / T_LLM — Repair R1
+
+La suite T_LLM generata per:
+
+org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+
+contiene esattamente 12 scenari TLLM-001 ... TLLM-012.
+
+La prima validazione runtime ha prodotto i seguenti problemi:
+
+- TLLM-002: `hasPrevious()` termina con `UnsupportedOperationException`
+- TLLM-003: `hasPrevious()` termina con `UnsupportedOperationException`
+- TLLM-004: `previous()` genera `UnsupportedOperationException` invece di `NoSuchElementException`
+- TLLM-005: `previous()` termina con `UnsupportedOperationException`
+- TLLM-006: `reset()` termina con `UnsupportedOperationException`
+- TLLM-008: l'eccezione di `add()` / `set()` non ha il messaggio atteso
+
+Dallo stack trace risulta che i setup basati su:
+
+`List.of(...).iterator()`
+
+stanno producendo a runtime un oggetto della famiglia `ImmutableCollections$ListItr`, che viene quindi trattato dal production code come `ListIterator` invece che come semplice `Iterator`.
+
+Correggi esclusivamente questo problema tecnico di setup.
+
+Vincoli del repair
+------------------
+
+- Mantieni ESATTAMENTE 12 test case/scenari.
+- Mantieni gli identificativi TLLM-001 ... TLLM-012.
+- Non aggiungere nuovi scenari.
+- Non eliminare scenari.
+- Non sostituire gli scenari esistenti.
+- Non modificare gli oracle o i comportamenti verificati.
+- Non modificare il codice production.
+- Non usare risultati JaCoCo, PIT, mutation survivor o altre metriche di adequacy.
+- Non usare altre suite di test o fonti esterne.
+- Non modificare TLLM-001 e TLLM-009 ... TLLM-012, che non sono coinvolti nel problema.
+- Correggi soltanto i setup dei test TLLM-002 ... TLLM-008 che devono esercitare il ramo relativo a un semplice `Iterator`.
+
+Puoi introdurre un helper/fixture condiviso che garantisca a runtime un oggetto che implementi `Iterator<E>` ma NON `ListIterator<E>`, delegando internamente a un iteratore reale.
+
+Restituisci la classe Java completa corretta, mantenendo invariata la tracciabilità TLLM-001 ... TLLM-012.

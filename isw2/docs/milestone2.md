@@ -2146,13 +2146,12 @@ massimizza Recall, AUC e Kappa.
 L'experimental design è stato definito prima dell'implementazione del runner.
 
 La struttura prende come riferimento i requisiti espliciti del professore e,
-per le scelte non specificate nel materiale, mantiene la stessa impostazione
-sperimentale già adottata nel precedente progetto Apache Storm dello stesso
-corso.
+per le scelte non specificate nel materiale, adotta decisioni progettuali
+documentate e validate nel contesto di OpenJPA.
 
-Il precedente Storm viene utilizzato come blueprint implementativo e non come
-fonte normativa: i requisiti ufficiali rimangono quelli indicati dal materiale
-della Milestone 2.
+I requisiti ufficiali rimangono quelli indicati dal materiale della Milestone 2;
+le scelte implementative aggiuntive sono motivate e registrate nella
+documentazione del progetto.
 
 ---
 
@@ -2215,8 +2214,9 @@ R1-R3
 R1-R12
 ```
 
-La scelta mantiene la stessa impostazione sperimentale utilizzata nel progetto
-Apache Storm, nel quale la Milestone 2 è stata eseguita sull'intero Dataset A.
+La scelta utilizza l'intero Dataset A finale e validato della Milestone 1,
+mantenendo un unico insieme di osservazioni per il confronto delle configurazioni
+sperimentali.
 
 La frase del materiale relativa al possibile cambiamento del miglior
 classificatore in funzione del "numeroRelease" viene quindi trattata come
@@ -2423,7 +2423,7 @@ Feature Selection -> riduzione/rilevanza dei predictor
 SMOTE             -> correzione dello sbilanciamento della classe
 ```
 
-L'ordine coincide con quello già utilizzato nel precedente esperimento Storm.
+L'ordine viene mantenuto fisso per garantire coerenza e confrontabilità tra le configurazioni sperimentali.
 
 ---
 
@@ -2909,7 +2909,7 @@ Motivazione:
 
 ```text
 il materiale non prescrive esplicitamente la costruzione di dataset cumulativi
-per numero di release e il precedente Storm utilizza l'intero Dataset A.
+per numero di release; viene quindi utilizzato l'intero Dataset A finale e validato.
 ```
 
 Impatto sull'esperimento:

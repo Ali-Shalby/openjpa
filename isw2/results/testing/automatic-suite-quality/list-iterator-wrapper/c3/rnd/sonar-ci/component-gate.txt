@@ -1,0 +1,5 @@
+﻿
+Role  File                                                                                       IndexedBySonar
+----  ----                                                                                       --------------
+LOGIC src/test/java/__sonar_stage__/liw/c3/rnd/ListIteratorWrapperC3RandoopRegression0.java                True
+LOGIC src/test/java/__sonar_stage__/liw/c3/rnd/ListIteratorWrapperC3RandoopSeed1Regression0.java           True

@@ -1,0 +1,42 @@
+ListIteratorWrapper C1 T_LLM - Environment
+===========================================
+
+Project              : Apache OpenJPA
+Baseline             : 4.1.1
+Variant              : C1
+Target               : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Suite                : T_LLM
+Target cardinality   : 12
+
+Runtime              : Java 21
+Test framework       : JUnit Jupiter
+
+LLM client           : Microsoft Copilot Web
+Interaction mode     : browser chat
+Model                : TO BE RECORDED AT GENERATION TIME
+
+Production context SHA-256:
+E1F56231EEFCF83EDBEEBB751ABA162CCADE5774E1F973932BC2F6868DA68579
+
+Experimental constraints
+------------------------
+Native OpenJPA tests : NOT PROVIDED
+T_BB                 : NOT PROVIDED
+T_CF                 : NOT PROVIDED
+T_MT                 : NOT PROVIDED
+T_RND                : NOT PROVIDED
+T_ES                 : NOT PROVIDED
+C0 T_LLM             : NOT PROVIDED
+JaCoCo results       : NOT PROVIDED
+PIT results          : NOT PROVIDED
+Mutation survivors   : NOT PROVIDED
+Web/external sources : NOT PROVIDED
+
+Freeze policy
+-------------
+The suite must be validated and frozen before any JaCoCo or PIT measurement.
+
+Runtime/compilation repairs are allowed only before freeze and only when
+required to make the originally generated scenarios executable.
+
+Post-freeze adequacy results must not be used to modify or regenerate T_LLM.

@@ -1,0 +1,7 @@
+﻿
+Role    File                                                                                                 IndexedBySonar
+----    ----                                                                                                 --------------
+LOGIC   src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/es/PCEnhancerEvoSuiteSeed0Test.java                  True
+SUPPORT src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/es/PCEnhancerEvoSuiteSeed0Scaffolding.java           True
+LOGIC   src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/es/PCEnhancerEvoSuiteSeed1Test.java                  True
+SUPPORT src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/es/PCEnhancerEvoSuiteSeed1Scaffolding.java           True

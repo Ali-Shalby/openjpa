@@ -1,0 +1,65 @@
+﻿Automatic Suite Static-Quality Protocol
+=======================================
+
+Scope
+-----
+Automatic test suites only:
+- T_RND
+- T_ES
+- T_LLM
+
+Required comparison dimensions
+------------------------------
+1. Coverage
+2. Mutation Score / Test Strength
+3. Clarity
+4. Maintainability
+5. SonarCloud smells/issues
+6. SonarCloud smell categories/rules
+
+Structural evidence
+-------------------
+For each frozen suite:
+- Logic LOC
+- Support/scaffolding LOC
+- Total LOC
+- Test count
+- Assertion-like statement count
+- Assertions per test
+- Opaque generated test names
+- Descriptive test-name percentage
+
+SonarCloud evidence
+-------------------
+For each frozen suite:
+- Total issues
+- Distinct rules
+- Issue count by rule
+- Severity / impact
+- Software quality category
+- Maintainability classification where applicable
+
+Qualitative interpretation
+--------------------------
+No arbitrary numeric clarity or maintainability score is assigned.
+
+Clarity and maintainability are discussed from:
+- naming;
+- explicitness of oracle;
+- amount of generated/support code;
+- duplication/redundancy;
+- readability of test flow;
+- SonarCloud findings.
+
+EvoSuite policy
+---------------
+Generated scaffolding is included in SonarCloud analysis because it
+is part of the generated test artifact.
+
+Logic LOC and support LOC remain separated in structural reporting.
+
+PCEnhancer C1-C4
+----------------
+Automatic-suite comparison is BLOCKED BY VARIANT COMPILATION.
+
+No artificial RND/ES runtime comparison is created for those variants.

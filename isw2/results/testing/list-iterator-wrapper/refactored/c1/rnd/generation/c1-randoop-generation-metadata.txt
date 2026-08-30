@@ -1,0 +1,33 @@
+ListIteratorWrapper C1 - Randoop generation metadata
+=====================================================
+
+Variant                 : C1
+Technique               : T_RND
+Generator               : Randoop 4.3.4
+Seed                    : 0
+
+C0 source SHA-256       : 44CE059F3834F781ECE28CFA0253E8EA17F6298B9632E0F79B44DFD2CC09EE44
+C1 source SHA-256       : E1F56231EEFCF83EDBEEBB751ABA162CCADE5774E1F973932BC2F6868DA68579
+Run bytecode SHA-256    : B6B4EE8C092730C30DD1C1DFE51397F7E00EB61022C4FAD9B72559BA846F765E
+
+Bytecode identity note  : run-specific build artifact; source SHA + clean compile define variant identity
+
+Target                  : org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Producer                : java.util.ArrayList
+
+Target N                : 12
+Time limit              : 60 s
+Generated limit         : 20000
+Output limit            : 12
+Only public members     : YES
+Error-revealing tests   : DISABLED
+
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+Manual oracle editing   : NONE
+Native OpenJPA tests    : NOT USED
+
+Seed-0 Java files       : 2
+Seed-0 @Test count      : 9
+
+Status                  : RAW GENERATED / NOT FROZEN

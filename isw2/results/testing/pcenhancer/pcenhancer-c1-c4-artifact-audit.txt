@@ -1,0 +1,451 @@
+﻿======================================================
+ PCENHANCER C1-C4 ARTIFACT AUDIT
+======================================================
+Repo : C:\ISW2\openjpa
+Date : 2026-08-30 16:50:34
+
+===== REPOSITORY =====
+Branch : isw2-project
+HEAD   : 3c8aa0161dc4a8a7a5468d75625059c14c5b9529
+Clean  : False
+
+===== ALL PCENHANCER-RELATED FILES UNDER isw2 =====
+Count: 301
+- C:\ISW2\openjpa\isw2\docs\m4\pcenhancer-m4-analysis.md
+- C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-black-box.md
+- C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-control-flow.md
+- C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-evosuite-testing.md
+- C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-llm-testing.md
+- C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-mutation-testing.md
+- C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-random-testing.md
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\PCEnhancer.java
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\compile.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\PCEnhancer-C0.java
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\PCEnhancer-C0.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\pcenhancer-sonar-metrics.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\pcenhancer-sonar-smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\README.md
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\PCEnhancer.java
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\compile.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\copilot-response.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\PCEnhancer-C0.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\pcenhancer-sonar-metrics.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\pcenhancer-sonar-smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\pcenhancer-tbb-tests.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\README.md
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\PCEnhancer.java
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\compile.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\copilot-response-c3.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\PCEnhancer-C0.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\pcenhancer-sonar-metrics.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\pcenhancer-sonar-smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\pcenhancer-tbb-tcf-tests.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\README.md
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\PCEnhancer.java
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\compile.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\copilot-response-c4.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\PCEnhancer-C0.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\pcenhancer-sonar-metrics.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\pcenhancer-sonar-smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\pcenhancer-tbb-tcf-tmt-tests.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\README.md
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\features\analysis.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\features\bugginess-correlation.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\features\feature-comparison-vs-c0.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\features\variant-feature-values.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c0\rules-summary.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c0\run.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c0\smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c0\summary.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c1\rules-summary.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c1\run.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c1\smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c1\summary.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\rules-summary.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\run.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\summary.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\rules-summary.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\run.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\summary.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\rules-summary.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\run.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\smells.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\summary.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\comparison\comparison.txt
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\comparison\comparison-summary.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\comparison\issue-transition-summary.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\comparison\issue-transitions-vs-c0.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\comparison\rule-category-transitions.csv
+- C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\comparison\rule-comparison.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\automatic-suite-comparison-c0-c4.md
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\automatic-suite-comparison.md
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\es\sonar-ci\analysis.json
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\es\sonar-ci\analyzed-files.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\es\sonar-ci\component-gate.txt
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\es\sonar-ci\maven-sonar-run.txt
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\es\sonar-ci\open-maintainability-evidence.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\es\sonar-ci\rule-category-summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\es\sonar-ci\sonar-smell-evidence.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\es\sonar-ci\summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\llm\sonar-ci\analysis.json
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\llm\sonar-ci\analyzed-files.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\llm\sonar-ci\component-gate.txt
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\llm\sonar-ci\maven-sonar-run.txt
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\llm\sonar-ci\open-maintainability-evidence.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\llm\sonar-ci\rule-category-summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\llm\sonar-ci\sonar-smell-evidence.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\llm\sonar-ci\summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar\run.txt
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar-ci\analysis.json
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar-ci\analyzed-files.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar-ci\maven-sonar-run.txt
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar-ci\open-maintainability-evidence.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar-ci\rule-category-summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar-ci\sonar-smell-evidence.csv
+- C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar-ci\summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\pcenhancer_revised_coverage_comparison.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tbb\jacoco.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tbb\jacoco.exec
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tbb\jacoco.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tbb\pcenhancer_TBB_coverage_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tbb\pcenhancer_TBB_coverage_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tcf-final\jacoco.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tcf-final\jacoco.exec
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tcf-final\jacoco.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tcf-final\pcenhancer_TCF_FINAL_coverage_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\coverage-revalidation\tcf-final\pcenhancer_TCF_FINAL_coverage_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\coverage\jacoco.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\coverage\pcenhancer_tes_coverage_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\coverage\pcenhancer_tes_jacoco.exec
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\coverage\pcenhancer_tes_jacoco_execution.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\generation\pcenhancer_evosuite_raw_manifest.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\generation\pcenhancer_evosuite_seed0_result.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\generation\pcenhancer_evosuite_seed1_result.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\mutation\pcenhancer_tes_mutation_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\mutation\pcenhancer_tes_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\mutation\pcenhancer_tes_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\mutation\pcenhancer_tes_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\mutation\pcenhancer_tes_pre_pit_validation.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\es\validation\pcenhancer_tes_java11_validation.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\llm\coverage\jacoco.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\llm\coverage\jacoco.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\llm\coverage\pcenhancer-tllm-coverage-summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\llm\coverage\pcenhancer-tllm-jacoco-measurement-note.md
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\llm\mutation\pcenhancer_tllm_mutation_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\llm\mutation\pcenhancer_tllm_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\llm\mutation\pcenhancer_tllm_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\llm\mutation\pcenhancer_tllm_pit_launcherfix_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline\pcenhancer_mutation_baseline_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline\pcenhancer_mutation_baseline_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline\pcenhancer_mutation_gap_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline\pcenhancer_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline\pcenhancer_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline-revised\pcenhancer_revised_baseline_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline-revised\pcenhancer_revised_baseline_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline-revised\pcenhancer_revised_baseline_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline-revised\pcenhancer_revised_baseline_pre_pit_validation.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\baseline-revised\pcenhancer_revised_baseline_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\final\pcenhancer_final_manual_regression_clean.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\final\pcenhancer_final_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\final\pcenhancer_final_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\final\pcenhancer_final_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\final\pcenhancer_final_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\final\pcenhancer_final_survivor_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\final\pcenhancer_mutation_evolution.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\preflight\pcenhancer_mutation_preflight.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\final\pcenhancer_revised_final_manual_regression.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\final\pcenhancer_revised_final_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\final\pcenhancer_revised_final_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\final\pcenhancer_revised_final_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\final\pcenhancer_revised_final_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\tmt001\pcenhancer_revised_tmt001_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\tmt001\pcenhancer_revised_tmt001_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\tmt001\pcenhancer_revised_tmt001_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\tmt001\pcenhancer_revised_tmt001_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\tmt002\pcenhancer_revised_tmt002_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\tmt002\pcenhancer_revised_tmt002_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\tmt002\pcenhancer_revised_tmt002_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\revised\tmt002\pcenhancer_revised_tmt002_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt001\pcenhancer_tmt001_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt001\pcenhancer_tmt001_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt001\pcenhancer_tmt001_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt001\pcenhancer_tmt001_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt002\pcenhancer_tmt002_mutations.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt002\pcenhancer_tmt002_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt002\pcenhancer_tmt002_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt002\pcenhancer_tmt002_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt003\pcenhancer_tmt003_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt004\pcenhancer_tmt004_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\mutation\tmt005\pcenhancer_tmt005_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\preflight\pcenhancer_jacoco_preflight.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\preflight\pcenhancer_public_api_preflight.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\reliability\operational-profile.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\reliability\reliability.md
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\reliability\reliability-summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\revised-audit\pcenhancer_revised_stage1_postpatch.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\revised-audit\pcenhancer_revised_stale_reference_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\revised-audit\pcenhancer_revised_tracked_tree_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\revised-audit\prepatch-stage1\.github\workflows\isw2-testing.yml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\revised-audit\prepatch-stage1\isw2\docs\testing\pcenhancer-random-testing.md
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\revised-audit\prepatch-stage1\isw2\README.md
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\audit\pcenhancer_randoop_freeze_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\coverage\jacoco.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\coverage\pcenhancer_randoop_coverage_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\coverage\pcenhancer_randoop_jacoco.exec
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\generation\pcenhancer_randoop_generation_metadata.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\generation\pcenhancer_randoop_generation_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\mutation\pcenhancer_randoop_mutation_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\mutation\pcenhancer_randoop_mutations.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\mutation\pcenhancer_randoop_pit_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\pcenhancer_randoop_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\runs\pcenhancer_randoop_integrated_test_result.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\validation\pcenhancer_randoop_raw_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\rnd\validation\pcenhancer_randoop_raw_validation_summary.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\audits\pcenhancer_tbb_final_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\audits\pcenhancer_tbb_oracle_source_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\coverage\jacoco.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\coverage\jacoco.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\coverage\pcenhancer_tbb_coverage_baseline_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\coverage\pcenhancer_tbb_coverage_scope_decision.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\coverage\pcenhancer_tbb_coverage_summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\coverage\pcenhancer_tbb_jacoco.exec
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\coverage\pcenhancer_tbb_jacoco_execution.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\coverage\pcenhancer_tbb_pre_tcf_gap_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f1_boundary_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f10_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f2_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f3_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f4_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f5_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f6_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f7_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f8_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_f9_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tbb\runs\pcenhancer_tbb_full_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_post_tcf001_gap_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_post_tcf002_gap_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_post_tcf003_gap_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_tcf_cleanup_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_tcf_final_gap_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_tcf_freeze_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_tcf_freeze_manifest.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_tcf003_serialization_feasibility.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_tcf004_relationship_identity_feasibility.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\audits\pcenhancer_tcf005_optimized_identity_feasibility.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\jacoco.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\jacoco.xml
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\pcenhancer_tcf_coverage_summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\pcenhancer_tcf_final_coverage_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\pcenhancer_tcf_final_coverage_summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\pcenhancer_tcf001_coverage_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\pcenhancer_tcf001_coverage_summary.csv
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\pcenhancer_tcf002_coverage_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\pcenhancer_tcf003_coverage_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\coverage\pcenhancer_tcf004_coverage_audit.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\runs\pcenhancer_tcf_final_cumulative_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\runs\pcenhancer_tcf001_application_identity_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\runs\pcenhancer_tcf002_externalization_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\runs\pcenhancer_tcf003_serialization_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\runs\pcenhancer_tcf004_relationship_identity_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\pcenhancer\tcf\runs\pcenhancer_tcf005_optimized_identity_run.txt
+- C:\ISW2\openjpa\isw2\results\testing\selected_classes_source\PCEnhancer.java
+- C:\ISW2\openjpa\isw2\testing\generated\pcenhancer\evosuite\raw\seed-0\PCEnhancer_ESTest.java
+- C:\ISW2\openjpa\isw2\testing\generated\pcenhancer\evosuite\raw\seed-0\PCEnhancer_ESTest_scaffolding.java
+- C:\ISW2\openjpa\isw2\testing\generated\pcenhancer\evosuite\raw\seed-1\PCEnhancer_ESTest.java
+- C:\ISW2\openjpa\isw2\testing\generated\pcenhancer\evosuite\raw\seed-1\PCEnhancer_ESTest_scaffolding.java
+- C:\ISW2\openjpa\isw2\testing\generated\pcenhancer\randoop\raw\PCEnhancerRandoopRegression.java
+- C:\ISW2\openjpa\isw2\testing\generated\pcenhancer\randoop\raw\PCEnhancerRandoopRegression0.java
+- C:\ISW2\openjpa\isw2\testing\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxRecordingTarget.class
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\evidence\context-manifest.md
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\evidence\generation-interaction-log.md
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\evidence\pcenhancer-tllm-freeze-manifest.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\evidence\T_LLM-environment.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\llm-test-generation-protocol.md
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\prompts\PCEnhancer-LLM-single-prompt.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\prompts\R1-output-rendering-repair.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\prompts\R2-rendering-repair-with-attached-output.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\prompts\R3-output-completion-repair.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\prompts\R4-mockito-compilation-repair.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\responses\main-response.md
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\responses\main-response-code-corrupted.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\responses\R1-output-rendering-repair-response.md
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\responses\R2-rendering-repair-response-partial.java.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\responses\R3-output-completion-repair-response.java.txt
+- C:\ISW2\openjpa\isw2\testing\llm\pcenhancer\responses\R4-mockito-compilation-repair-response.java.txt
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxConstructorTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxEnhancementLevelTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxFlagsTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxInvalidOptionsTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxNamingTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxOutcomeTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxPropertyAccessTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxRecordingTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxStrategyTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\bb\PCEnhancerBlackBoxTargetRepresentationTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowApplicationIdentityTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowApplicationIdentityTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowExternalizationTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowExternalizationTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowOptimizedIdentityTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowOptimizedIdentityTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowRelationshipIdentityParentTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowRelationshipIdentityTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowRelationshipIdentityTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowSerializationTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\cf\PCEnhancerControlFlowSerializationTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed0Scaffolding.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed0Test.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed1Scaffolding.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\es\PCEnhancerEvoSuiteSeed1Test.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationDerivedIdentityTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationExternalizationTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationExternalizationTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationIdentityTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationIdentityTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationSerializationTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationSerializationTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationStateManagerTarget.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\mt\PCEnhancerMutationStateManagerTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\rnd\PCEnhancerRandoopRegression0.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\rnd\PCEnhancerRandoopRegressionTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\org\apache\openjpa\enhance\PCEnhancerLLMTest.java
+- C:\ISW2\openjpa\isw2\testing\src\test\java\org\apache\openjpa\enhance\PCEnhancerTestAccess.java
+
+======================================================
+ VARIANT C1
+======================================================
+Variant-related PCEnhancer files: 11
+Java/source candidates : 2
+  SOURCE   C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\PCEnhancer.java
+           SHA256=5675A2AB26EDAF7E340A765F8459815DB5DD8F38B1F38ED80F161C35D379C1F5
+  SOURCE   C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\PCEnhancer-C0.java
+           SHA256=F7D85F9663B68430521FBEDE824C273971BAEF790A3C5291A9F8E0B7BC64AC7A
+Evidence/doc candidates: 9
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\compile.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\PCEnhancer-C0.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\pcenhancer-sonar-metrics.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\pcenhancer-sonar-smells.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\README.md
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c1\rules-summary.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c1\run.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c1\smells.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c1\summary.txt
+Compilation-failure evidence files: 4
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\compile.txt  (matches=11)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\PCEnhancer-C0.txt  (matches=5)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\raw\pcenhancer-sonar-smells.csv  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c1\README.md  (matches=1)
+
+======================================================
+ VARIANT C2
+======================================================
+Variant-related PCEnhancer files: 12
+Java/source candidates : 1
+  SOURCE   C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\PCEnhancer.java
+           SHA256=1503A8F2291221E5E55B02803695AC91B245BEC449467A7DDA4389EA2B8FCE13
+Evidence/doc candidates: 11
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\compile.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\copilot-response.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\PCEnhancer-C0.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\pcenhancer-sonar-metrics.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\pcenhancer-sonar-smells.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\pcenhancer-tbb-tests.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\README.md
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\rules-summary.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\run.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\smells.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\summary.txt
+Compilation-failure evidence files: 7
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\compile.txt  (matches=7)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\copilot-response.txt  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\PCEnhancer-C0.txt  (matches=5)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\pcenhancer-sonar-smells.csv  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\raw\pcenhancer-tbb-tests.txt  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c2\README.md  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c2\smells.csv  (matches=1)
+
+======================================================
+ VARIANT C3
+======================================================
+Variant-related PCEnhancer files: 12
+Java/source candidates : 1
+  SOURCE   C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\PCEnhancer.java
+           SHA256=767BE6FEE45068C5B11BF692669136281EE9F2A568EC8A8CA275C0F181A02E36
+Evidence/doc candidates: 11
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\compile.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\copilot-response-c3.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\PCEnhancer-C0.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\pcenhancer-sonar-metrics.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\pcenhancer-sonar-smells.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\pcenhancer-tbb-tcf-tests.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\README.md
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\rules-summary.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\run.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\smells.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\summary.txt
+Compilation-failure evidence files: 7
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\compile.txt  (matches=5)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\copilot-response-c3.txt  (matches=1)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\PCEnhancer-C0.txt  (matches=5)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\pcenhancer-sonar-smells.csv  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\raw\pcenhancer-tbb-tcf-tests.txt  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c3\README.md  (matches=1)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c3\smells.csv  (matches=1)
+
+======================================================
+ VARIANT C4
+======================================================
+Variant-related PCEnhancer files: 13
+Java/source candidates : 1
+  SOURCE   C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\PCEnhancer.java
+           SHA256=B2DD3CF39FE3BB9B41F6DBE796DF573345B4571F842E1F316EDBA13BDD973DE4
+Evidence/doc candidates: 12
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\compile.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\copilot-response-c4.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\PCEnhancer-C0.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\pcenhancer-sonar-metrics.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\pcenhancer-sonar-smells.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\pcenhancer-tbb-tcf-tmt-tests.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\README.md
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\rules-summary.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\run.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\smells.csv
+  EVIDENCE C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\summary.txt
+  EVIDENCE C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\automatic-suite-comparison-c0-c4.md
+Compilation-failure evidence files: 8
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\compile.txt  (matches=7)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\copilot-response-c4.txt  (matches=1)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\PCEnhancer-C0.txt  (matches=5)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\pcenhancer-sonar-smells.csv  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\raw\pcenhancer-tbb-tcf-tmt-tests.txt  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\c4\README.md  (matches=2)
+  HIT      C:\ISW2\openjpa\isw2\results\m4\pcenhancer\sonar\c4\smells.csv  (matches=1)
+  HIT      C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\automatic-suite-comparison-c0-c4.md  (matches=2)
+
+======================================================
+ M4 REPORT
+======================================================
+PASS - C:\ISW2\openjpa\isw2\docs\m4\pcenhancer-m4-analysis.md
+C1 mentions: 27
+C2 mentions: 17
+C3 mentions: 18
+C4 mentions: 26
+
+======================================================
+ SUMMARY
+======================================================
+Variant  SourceCandidates   CompileEvidenceFiles  SourcePresent CompileEvidencePresent
+C1                      2                      4           True                 True
+C2                      1                      7           True                 True
+C3                      1                      7           True                 True
+C4                      1                      8           True                 True
+
+Interpretation:
+- SourcePresent=True means at least one saved PCEnhancer Java artifact was found for that variant.
+- CompileEvidencePresent=True means textual evidence of compilation failure was found for that variant.
+- Zero counts are NOT auto-filled or inferred: they mean the audit did not find matching files.
+
+Audit saved to: C:\ISW2\openjpa\isw2\results\testing\pcenhancer\pcenhancer-c1-c4-artifact-audit.txt
+======================================================

@@ -1,0 +1,26 @@
+﻿Automatic Test Suite - Sonar Static Quality
+===========================================
+
+Class=PCEnhancer
+Variant=C0
+Technique=ES
+
+SonarProjectKey=Ali-Shalby_openjpa-isw2-sonar
+SonarAnalysisKey=3f10d5ac-c722-48fb-8fb8-6d1141e276d1
+SonarAnalysisDate=2026-08-30T09:41:13+0000
+
+ExpectedUTS=4
+AnalyzedUTS=4
+UTSGate=PASS
+
+OpenMaintainabilityIssues=0
+OpenCodeSmells=0
+
+LogicCodeSmells=0
+SupportCodeSmells=0
+DistinctRules=0
+
+MaintainabilitySeverityCounts=
+CleanCodeCategoryCounts=
+
+Validation=PASS

@@ -389,6 +389,14 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Reliability `ListIteratorWrapper` – 19/19 PASS, `R_hat = 1.000000`, `Q_hat = 0.000000`
 * [x] Milestone 4 – Automated Refactoring su `PCEnhancer`
 * [x] Milestone 4 – Automated Refactoring su `ListIteratorWrapper`
+* [x] Generazione automatica post-refactoring `ListIteratorWrapper C1–C4` – `T_RND`, `T_ES`, `T_LLM`, `N = 12` per suite
+* [x] Freeze e validazione delle suite automatiche `ListIteratorWrapper C1–C4`
+* [x] JaCoCo e PIT post-freeze sulle suite automatiche `ListIteratorWrapper C0–C4`
+* [x] Analisi C0–C4 di coverage, Mutation Score, Test Strength, chiarezza e manutenibilità
+* [x] Analisi Sonar delle suite automatiche C0–C4 con regole e categorie Clean Code
+* [x] Confronto globale automatico `ListIteratorWrapper C0–C4`
+* [x] Registrazione `PCEnhancer C1–C4` come `NOT RUN / BLOCKED BY VARIANT COMPILATION` per la fase automatica post-refactoring
+* [x] Confronto globale automatico `PCEnhancer C0–C4`
 
 ### In corso
 
@@ -742,6 +750,270 @@ inferenze causali sull'effetto della quantità di test forniti al modello.
 Report completo:
 
 [`docs/m4/listiteratorwrapper-m4-analysis.md`](docs/m4/listiteratorwrapper-m4-analysis.md)
+
+
+### Generazione automatica post-refactoring e confronto C0–C4
+
+Dopo il freeze delle varianti M4 viene eseguita una seconda fase sperimentale
+dedicata alla **generazione automatica di nuove suite di test sulle varianti
+refactored**. Le suite `T_RND`, `T_ES` e `T_LLM` usate su `C0` non vengono
+riutilizzate come suite delle varianti: per ogni configurazione compilabile
+vengono generate, validate e congelate nuove suite indipendenti.
+
+Il protocollo di valutazione considera:
+
+```text
+T_RND : Randoop
+T_ES  : EvoSuite
+T_LLM : Microsoft Copilot Web
+```
+
+e confronta:
+
+```text
+Line / Branch / Method Coverage
+Mutation Score
+Test Strength
+chiarezza del naming
+LOC di logica e supporto/scaffolding
+code smell Sonar
+regole e categorie Clean Code osservate
+```
+
+Le metriche di adequacy vengono osservate **solo dopo il freeze** della suite
+della singola variante, senza usare JaCoCo o PIT come feedback di
+rigenerazione.
+
+#### PCEnhancer
+
+Per `PCEnhancer` la fase automatica post-refactoring è bloccata dal gate di
+compilazione già osservato in M4:
+
+| Variante | Compile | `T_RND` | `T_ES` | `T_LLM` |
+|---|---|---|---|---|
+| `C0` | PASS | misurata | misurata | misurata |
+| `C1` | FAIL | BLOCKED | BLOCKED | BLOCKED |
+| `C2` | FAIL | BLOCKED | BLOCKED | BLOCKED |
+| `C3` | FAIL | BLOCKED | BLOCKED | BLOCKED |
+| `C4` | FAIL | BLOCKED | BLOCKED | BLOCKED |
+
+`BLOCKED` significa:
+
+```text
+NOT RUN / BLOCKED BY VARIANT COMPILATION
+```
+
+Randoop ed EvoSuite richiedono bytecode valido della classe target; una suite
+LLM potrebbe essere prodotta testualmente, ma non potrebbe essere compilata,
+validata runtime, sottoposta a stability check o misurata con JaCoCo e PIT
+contro la variante. Per evitare pseudo-delta non verificabili, non viene quindi
+generata una matrice numerica C0–C4 per `PCEnhancer`.
+
+Sulla sola `C0`, a parità di `N = 30`, il confronto automatico rimane:
+
+| Metrica | `T_RND` | `T_ES` | `T_LLM` |
+|---|---:|---:|---:|
+| Line Coverage | 1.96% | 3.00% | **4.41%** |
+| Branch Coverage | 0.82% | 1.56% | **3.53%** |
+| Mutation Score | 0.12% | 0.59% | **2.29%** |
+| Test Strength | 40.00% | 71.43% | **86.67%** |
+| Total LOC | 498 | 1404 | **458** |
+| Naming descrittivo | 0% | 0% | **100%** |
+| Sonar code smell | 57 | **0** | 6 |
+
+L'ordine osservato sull'adequacy di `C0` è quindi:
+
+```text
+T_LLM > T_ES > T_RND
+```
+
+mentre sul solo backlog Sonar statico `T_ES` è la suite migliore; `T_LLM`
+combina invece la miglior adequacy, naming completamente descrittivo e assenza
+di scaffolding separato.
+
+Evidence:
+
+```text
+isw2/results/testing/automatic-suite-quality/pcenhancer/
+└── automatic-suite-comparison-c0-c4.md
+```
+
+#### ListIteratorWrapper
+
+Per `ListIteratorWrapper` tutte le varianti `C1`–`C4` compilano, quindi la fase
+post-hoc viene completata integralmente.
+
+Per ogni `C_X` vengono generate e congelate tre nuove suite automatiche con
+cardinalità uniforme:
+
+```text
+N = 12
+```
+
+pari alla cardinalità della `T_BB` originale. Le popolazioni PIT cambiano con
+la struttura della variante production:
+
+```text
+C0 : 52 mutanti
+C1 : 51 mutanti
+C2 : 55 mutanti
+C3 : 47 mutanti
+C4 : 53 mutanti
+```
+
+Per questo il confronto tra varianti usa principalmente **percentuali** e non
+conteggi assoluti di mutanti uccisi.
+
+##### `T_RND` — Randoop
+
+| Variante | Line | Branch | Method | Mutation Score | Test Strength | Total LOC | Sonar Smell |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `C0` | 58.33% | 47.50% | 100.00% | 11.54% | 24.00% | 397 | 65 |
+| `C1` | 58.82% | 40.48% | 91.67% | 17.65% | 32.14% | 695 | 154 |
+| `C2` | 58.21% | 52.27% | 100.00% | **20.00%** | **37.93%** | 394 | 69 |
+| `C3` | 57.97% | 52.38% | 100.00% | 19.15% | 34.62% | 394 | 69 |
+| `C4` | **61.84%** | 50.00% | 100.00% | 13.21% | 26.92% | 394 | 69 |
+
+Randoop mantiene un profilo relativamente stabile su `C0`, `C2`, `C3` e `C4`.
+`C1` costituisce l'anomalia principale: la suite cresce a 695 LOC, raggiunge
+154 smell e perde method coverage. Il mutation score migliora rispetto a `C0`
+su tutte le varianti, ma senza andamento monotono; il massimo viene raggiunto
+su `C2` con 20.00%.
+
+Il naming rimane completamente generato/opaco in tutte le configurazioni:
+
+```text
+0% nomi descrittivi
+```
+
+##### `T_ES` — EvoSuite
+
+| Variante | Line | Branch | Method | Mutation Score | Test Strength | Total LOC | Sonar Smell |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `C0` | 83.33% | 82.50% | 81.82% | 55.77% | 65.91% | 286 | 1 |
+| `C1` | 88.24% | 88.10% | 91.67% | 64.71% | **68.75%** | 292 | **0** |
+| `C2` | 92.54% | 93.18% | 100.00% | **67.27%** | 67.27% | 300 | 7 |
+| `C3` | 82.61% | 80.95% | 83.33% | 55.32% | 63.41% | 286 | 8 |
+| `C4` | **94.74%** | **97.62%** | 100.00% | 66.04% | 66.04% | 304 | 10 |
+
+EvoSuite è più sensibile alla variante production. `C2` ottiene il mutation
+score migliore, mentre `C4` raggiunge la coverage più alta. `C3` torna invece
+vicino ai valori della baseline. Anche in questo caso non emerge una
+progressione monotona `C1 -> C4`.
+
+Il naming resta opaco in tutte le varianti e lo scaffolding rimane una parte
+costante dell'infrastruttura della suite.
+
+##### `T_LLM` — Copilot Web
+
+| Variante | Line | Branch | Method | Mutation Score | Test Strength | Total LOC | Sonar Smell |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `C0` | 100.00% | 92.50% | 100.00% | 90.38% | 90.38% | 344 | 0 |
+| `C1` | 100.00% | **97.62%** | 100.00% | **96.08%** | **96.08%** | 289 | 1 |
+| `C2` | 100.00% | 95.45% | 100.00% | 89.09% | 89.09% | 298 | 1 |
+| `C3` | 100.00% | **97.62%** | 100.00% | 87.23% | 87.23% | 324 | 1 |
+| `C4` | 100.00% | 95.24% | 100.00% | 86.79% | 86.79% | 321 | 0 |
+
+`T_LLM` mantiene:
+
+```text
+100% Line Coverage   su C0–C4
+100% Method Coverage su C0–C4
+Branch Coverage      sempre > 92%
+Mutation Score       tra 86.79% e 96.08%
+Naming descrittivo   100%
+Scaffolding separato 0
+Sonar code smell     0–1
+```
+
+`C1` ottiene il miglior mutation score dell'intera serie LLM con 96.08%.
+`C2`–`C4` rimangono molto forti, ma non migliorano progressivamente rispetto a
+`C0`.
+
+`C1` e `C4` hanno richiesto un repair tecnico pre-freeze per garantire il
+corretto ramo runtime di scenari basati su plain `Iterator`; il repair è stato
+effettuato prima di JaCoCo/PIT e non ha usato feedback di adequacy. Tutte le
+suite LLM congelate risultano stabili `5/5 PASS`.
+
+#### Confronto trasversale e interpretazione
+
+Sul target `ListIteratorWrapper` il pattern complessivo è stabile:
+
+```text
+Mutation adequacy : T_LLM > T_ES > T_RND
+Naming            : T_LLM descrittivo; T_ES/T_RND opaco
+Sonar backlog     : minimo in T_LLM, intermedio in T_ES, massimo in T_RND
+```
+
+Un caso utile a distinguere coverage da fault-detection è `C4`:
+
+```text
+T_ES Branch Coverage : 97.62%
+T_ES Mutation Score  : 66.04%
+
+T_LLM Branch Coverage: 95.24%
+T_LLM Mutation Score : 86.79%
+```
+
+Una branch coverage più alta non implica quindi automaticamente oracle più
+forti.
+
+Le categorie Clean Code osservate sulle suite automatiche sono:
+
+```text
+ADAPTABLE
+INTENTIONAL
+CONSISTENT
+```
+
+`T_RND` concentra il backlog Sonar maggiore; `T_ES` mantiene una qualità
+statica generalmente buona ma con scaffolding dedicato; `T_LLM` presenta il
+profilo multidimensionale più forte, con naming descrittivo, nessuno
+scaffolding e 0–1 smell per variante.
+
+La conclusione sperimentale principale è che **non emerge un effetto monotono
+della quantità di test fornita durante il refactoring sulla qualità delle nuove
+suite automatiche**. La tecnica di generazione influenza il risultato più
+fortemente della progressione `C1 -> C4`:
+
+```text
+Randoop  : massimo mutation score su C2
+EvoSuite : massimo mutation score su C2, massima coverage su C4
+LLM      : massimo mutation score su C1
+```
+
+Il risultato è specifico delle configurazioni e dei target analizzati e non
+viene generalizzato oltre l'esperimento.
+
+Evidence principali:
+
+```text
+isw2/results/testing/automatic-suite-quality/list-iterator-wrapper/
+├── c0/
+├── c1/
+├── c2/
+├── c3/
+├── c4/
+└── automatic-suite-comparison-c0-c4.md
+
+isw2/results/testing/list-iterator-wrapper/refactored/
+├── c1/
+├── c2/
+├── c3/
+└── c4/
+
+isw2/testing/generated/listiteratorwrapper/refactored/
+├── c1/
+├── c2/
+├── c3/
+└── c4/
+
+isw2/testing/llm/listiteratorwrapper/refactored/
+├── c1/
+├── c2/
+├── c3/
+└── c4/
+```
 
 ### Feature correlate alla bugginess
 
@@ -1776,6 +2048,8 @@ isw2/results/testing/list-iterator-wrapper/reliability/
 * [Milestone 3 – What-if Analysis](docs/milestone3.md)
 * [Milestone 4 – PCEnhancer Automated Refactoring](docs/m4/pcenhancer-m4-analysis.md)
 * [Milestone 4 – ListIteratorWrapper Automated Refactoring](docs/m4/listiteratorwrapper-m4-analysis.md)
+* [M4 – PCEnhancer automatic suites C0–C4](results/testing/automatic-suite-quality/pcenhancer/automatic-suite-comparison-c0-c4.md)
+* [M4 – ListIteratorWrapper automatic suites C0–C4](results/testing/automatic-suite-quality/list-iterator-wrapper/automatic-suite-comparison-c0-c4.md)
 * [Testing – PCEnhancer black-box](docs/testing/pcenhancer-black-box.md)
 * [Testing – PCEnhancer control-flow](docs/testing/pcenhancer-control-flow.md)
 * [Testing – PCEnhancer mutation testing](docs/testing/pcenhancer-mutation-testing.md)
@@ -1818,4 +2092,9 @@ Durante il progetto:
 19. in M4 ogni variante `C1`–`C4` viene generata indipendentemente dalla stessa `C0`, in una nuova conversazione, senza usare come input le varianti precedenti e senza fornire le suite automatiche `T_RND`, `T_ES` o `T_LLM`;
 20. un fallimento sostanziale di compilazione di una variante M4 viene conservato come risultato sperimentale e non corretto iterativamente; in tale caso i test dinamici sono `NOT RUN / BLOCKED BY COMPILATION`;
 21. il confronto Sonar M4 usa analisi uniformi sulla stessa configurazione corrente e distingue le issue tramite `IssueKey` con confronto case-sensitive ordinal;
-22. per il confronto controfattuale M4, `LOC` e `NSmells` sono trattate come feature snapshot modificabili dal refactoring, mentre le metriche storico/processuali vengono mantenute invarianti perché le varianti non rappresentano nuove release storiche.
+22. per il confronto controfattuale M4, `LOC` e `NSmells` sono trattate come feature snapshot modificabili dal refactoring, mentre le metriche storico/processuali vengono mantenute invarianti perché le varianti non rappresentano nuove release storiche;
+23. dopo il freeze delle varianti M4, le suite automatiche `T_RND`, `T_ES` e `T_LLM` vengono rigenerate indipendentemente per ogni variante compilabile e non vengono riutilizzate come suite delle altre configurazioni;
+24. le suite automatiche delle varianti vengono congelate prima di JaCoCo e PIT; le metriche di adequacy sono usate soltanto per la valutazione post-hoc e non come feedback di rigenerazione;
+25. per `ListIteratorWrapper`, il confronto automatico C0–C4 mantiene `N = 12` per tecnica e variante, così da evitare che la cardinalità della suite diventi un confondente diretto;
+26. quando la popolazione PIT cambia tra varianti production, il confronto C0–C4 privilegia Mutation Score e Test Strength rispetto ai soli conteggi assoluti di mutanti uccisi;
+27. la qualità delle suite automatiche C0–C4 viene valutata in modo multidimensionale tramite coverage, mutation testing, chiarezza del naming, LOC/scaffolding e code smell/categorie Sonar; un aumento di coverage non viene interpretato automaticamente come un aumento della capacità di fault detection.

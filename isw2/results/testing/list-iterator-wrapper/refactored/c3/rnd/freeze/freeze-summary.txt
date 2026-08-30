@@ -1,0 +1,21 @@
+﻿ListIteratorWrapper C3 - T_RND Freeze
+=====================================
+
+SelectionPolicy=All seed-0 tests, then first positional seed-1 tests until N=12
+Seed0Raw=7
+Seed1Raw=9
+Seed0Selected=7
+Seed1Selected=5
+CanonicalTotal=12
+
+RuntimeValidation=12/12 PASS
+
+CoverageFeedbackBeforeFreeze=NONE
+MutationFeedbackBeforeFreeze=NONE
+OracleEditing=NONE
+
+FrozenC3SourceSHA256=31E6F2F681A141B8973D9C1E36E5BD7EB00938AFBB52ADD5F87B70216EF28A44
+CanonicalSeed0SHA256=39E12D07BDF0D72E537C9B626A06DB57D8627D0055D5E7050EC6A04D745BEE8E
+CanonicalSeed1SHA256=A90E2CABF37B95BE8311DDFD3FC2C728E2F95C548C360E499F00773D68CF8329
+
+Status=FROZEN

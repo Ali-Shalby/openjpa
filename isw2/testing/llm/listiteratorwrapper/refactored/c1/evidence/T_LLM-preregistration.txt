@@ -1,0 +1,15 @@
+ListIteratorWrapper C1 - T_LLM preregistration
+===============================================
+
+C1 production SHA-256 : E1F56231EEFCF83EDBEEBB751ABA162CCADE5774E1F973932BC2F6868DA68579
+Prompt SHA-256        : EBDACC677CAEAA5943AB8DD126440D4ECEDB31C304B7E1E9314444F26A46958A
+Environment SHA-256   : 789019AA0D2E8EBBAECAE81EBEA587C9DEB33510ECE29AA6010B71AADA649CB7
+
+Target N              : 12
+Runtime               : Java 21
+Framework             : JUnit Jupiter
+Client                : Microsoft Copilot Web
+Strategy              : single prompt
+
+Adequacy feedback     : NONE
+Status                : PREREGISTERED / READY FOR GENERATION

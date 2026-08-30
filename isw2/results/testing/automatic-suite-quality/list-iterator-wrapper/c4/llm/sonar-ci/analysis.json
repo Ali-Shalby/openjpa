@@ -1,0 +1,13 @@
+﻿{
+    "key":  "af5def5f-1b46-41b7-954f-ed7c097db13b",
+    "date":  "2026-08-30T14:33:58+0000",
+    "events":  [
+                   {
+                       "key":  "AaBTF6meVskNNOoGPh8l",
+                       "category":  "VERSION",
+                       "name":  "quality-list-iterator-wrapper-c4-llm"
+                   }
+               ],
+    "projectVersion":  "quality-list-iterator-wrapper-c4-llm",
+    "manualNewCodePeriodBaseline":  false
+}

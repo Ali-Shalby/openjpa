@@ -1,0 +1,23 @@
+ListIteratorWrapper C1 - Randoop seed 1 metadata
+=================================================
+
+Variant                 : C1
+Technique               : T_RND
+Generator               : Randoop 4.3.4
+Seed                    : 1
+
+C0 source SHA-256       : 44CE059F3834F781ECE28CFA0253E8EA17F6298B9632E0F79B44DFD2CC09EE44
+C1 source SHA-256       : E1F56231EEFCF83EDBEEBB751ABA162CCADE5774E1F973932BC2F6868DA68579
+Run bytecode SHA-256    : B6B4EE8C092730C30DD1C1DFE51397F7E00EB61022C4FAD9B72559BA846F765E
+
+Target N                : 12
+Seed-0 test count       : 9
+Seed-1 test count       : 8
+Needed from seed 1      : 3
+
+Selection policy        : positional, before JaCoCo/PIT
+Coverage feedback       : NONE
+Mutation feedback       : NONE
+Manual oracle editing   : NONE
+
+Status                  : RAW GENERATED / NOT YET FROZEN

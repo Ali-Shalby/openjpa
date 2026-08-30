@@ -1,0 +1,33 @@
+﻿ListIteratorWrapper C3 - T_ES Final Summary
+===========================================
+
+FrozenC3SourceSHA256=31E6F2F681A141B8973D9C1E36E5BD7EB00938AFBB52ADD5F87B70216EF28A44
+CanonicalTestSHA256=FF4764265A28028976CF49954590B3EB347F2F57073143233489E57570FF5834
+CanonicalScaffoldingSHA256=554726811E0E9FCAED9FFF1540B7A3D16F204CDBB48948931BFC11E26142810D
+
+Tests=12
+PASS=12
+FAIL=0
+ERRORS=0
+SKIPPED=0
+
+LINE=82.61%
+BRANCH=80.95%
+METHOD=83.33%
+
+Mutants=47
+Killed=26
+Survived=15
+NoCoverage=6
+MutationScore=55.32%
+TestStrength=63.41%
+
+Java=Zulu JDK 11
+EvoSuiteRuntime=1.2.0
+JaCoCo=0.8.15
+PIT=1.25.8
+PITJUnitIntegration=built-in JUnit4
+
+CanonicalUnchangedAfterAdequacy=YES
+ProductionWorktreeFinal=C0
+Status=FROZEN_COMPLETE

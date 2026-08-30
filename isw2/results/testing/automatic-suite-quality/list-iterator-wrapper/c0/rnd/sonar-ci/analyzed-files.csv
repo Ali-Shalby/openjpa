@@ -1,0 +1,3 @@
+﻿"Class","Variant","Technique","Role","SonarPath","ComponentKey","Qualifier","Language"
+"ListIteratorWrapper","C0","RND","LOGIC","src/test/java/it/uniroma2/isw2/openjpa/testing/listiteratorwrapper/rnd/ListIteratorWrapperRandoopSeed0Test.java","Ali-Shalby_openjpa-isw2-sonar:src/test/java/it/uniroma2/isw2/openjpa/testing/listiteratorwrapper/rnd/ListIteratorWrapperRandoopSeed0Test.java","UTS","java"
+"ListIteratorWrapper","C0","RND","LOGIC","src/test/java/it/uniroma2/isw2/openjpa/testing/listiteratorwrapper/rnd/ListIteratorWrapperRandoopSeed1Test.java","Ali-Shalby_openjpa-isw2-sonar:src/test/java/it/uniroma2/isw2/openjpa/testing/listiteratorwrapper/rnd/ListIteratorWrapperRandoopSeed1Test.java","UTS","java"

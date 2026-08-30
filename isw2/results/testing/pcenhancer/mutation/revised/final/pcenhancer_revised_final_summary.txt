@@ -1,0 +1,98 @@
+============================================================
+ PCENHANCER - REVISED FINAL CUMULATIVE PIT
+============================================================
+
+Suite
+-----
+T_BB                     : 30
+T_CF                     : 5
+T_MT                     : 5
+Manual/PIT execution set : 40 green tests
+
+Mutation-guided scenarios
+-------------------------
+TMT-001                  : Application Identity runtime object-id semantics
+TMT-002                  : Detached-state Externalization runtime round-trip
+TMT-003                  : Standard Java Serialization runtime round-trip
+TMT-004                  : PersistenceCapable / StateManager runtime semantics
+TMT-005                  : Relationship-valued / derived identity runtime semantics
+
+Protocol
+--------
+PIT                      : 1.25.8
+PIT JUnit 5 plugin       : 1.2.3
+Mutators                 : DEFAULTS
+Threads                  : 1
+Target                   : org.apache.openjpa.enhance.PCEnhancer
+
+Production SHA-256       : 3C825DF257CC2FCF6550448E177A602495600A0470B742457AFC46BF4D788911
+
+Result
+------
+TOTAL                    : 1700
+KILLED                   : 828
+SURVIVED                 : 355
+NO_COVERAGE              : 515
+TIMED_OUT                : 2
+RUN_ERROR                : 0
+MEMORY_ERROR             : 0
+
+Mutation Score           : 48.71%
+Test Strength            : 69.99%
+
+Delta vs revised baseline
+-------------------------
+KILLED                   : 362
+SURVIVED                 : -359
+NO_COVERAGE              : -5
+TIMED_OUT                : 2
+
+Delta vs revised TMT-002
+-------------------------
+KILLED                   : 109
+SURVIVED                 : -110
+NO_COVERAGE              : 0
+TIMED_OUT                : 1
+
+Delta vs historical final
+-------------------------
+KILLED                   : 1
+SURVIVED                 : 0
+NO_COVERAGE              : -1
+TIMED_OUT                : 0
+
+Expected revised final
+----------------------
+KILLED                   : 828
+SURVIVED                 : 355
+NO_COVERAGE              : 515
+TIMED_OUT                : 2
+RUN_ERROR                : 0
+MEMORY_ERROR             : 0
+
+Expected final metrics
+----------------------
+Mutation Score           : 48.71%
+Test Strength            : 69.99%
+
+Expected delta vs historical final
+----------------------------------
+KILLED                   : +1
+SURVIVED                 : 0
+NO_COVERAGE              : -1
+TIMED_OUT                : 0
+
+Expected net T_MT contribution
+------------------------------
+KILLED                   : +362
+SURVIVED                 : -359
+NO_COVERAGE              : -5
+TIMED_OUT                : +2
+
+Expected match           : True
+
+JUnit 5 PIT support      : PASS
+BUILD SUCCESS            : PASS
+Population count         : PASS 1700/1700
+
+============================================================

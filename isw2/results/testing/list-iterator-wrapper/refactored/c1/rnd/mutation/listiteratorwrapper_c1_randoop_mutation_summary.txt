@@ -1,0 +1,32 @@
+ListIteratorWrapper C1 - T_RND PIT summary
+===========================================
+
+Variant                  : C1
+Technique                : T_RND
+Suite status             : FROZEN
+Tests                    : 12
+Validation               : 12/12 PASS
+
+Runtime Java             : 21
+Compiled target release  : 11
+
+PIT                      : 1.25.8
+pitest-junit5-plugin     : 1.2.3
+JUnit Vintage            : 6.1.1
+Mutators                 : DEFAULTS
+Threads                  : 1
+
+TOTAL                    : 51
+KILLED                   : 9
+SURVIVED                 : 19
+NO_COVERAGE              : 23
+TIMED_OUT                : 0
+RUN_ERROR                : 0
+MEMORY_ERROR             : 0
+
+Mutation Score           : 17,65%
+Test Strength            : 32,14%
+
+Coverage feedback        : NONE
+Mutation feedback        : NONE
+Post-freeze modification : NONE

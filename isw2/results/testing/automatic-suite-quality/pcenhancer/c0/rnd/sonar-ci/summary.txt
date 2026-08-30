@@ -1,0 +1,27 @@
+﻿Automatic Test Suite - Sonar Static Quality
+===========================================
+
+Class=PCEnhancer
+Variant=C0
+Technique=RND
+
+SonarProjectKey=Ali-Shalby_openjpa-isw2-sonar
+SonarAnalysisKey=65eca662-f1e5-4709-9ba7-ce808510f21f
+SonarAnalysisDate=2026-08-30T09:26:50+0000
+
+ExpectedUTS=2
+AnalyzedUTS=2
+UTSGate=PASS
+
+OpenMaintainabilityIssues=57
+OpenCodeSmells=57
+
+LogicCodeSmells=57
+SupportCodeSmells=0
+
+DistinctRules=6
+
+MaintainabilitySeverityCounts=LOW=18;MEDIUM=39
+CleanCodeCategoryCounts=CONSISTENT=2;INTENTIONAL=55
+
+Validation=PASS

@@ -1,0 +1,26 @@
+﻿Automatic Test Suite - Sonar Static Quality
+===========================================
+
+Class=ListIteratorWrapper
+Variant=C0
+Technique=RND
+
+SonarProjectKey=Ali-Shalby_openjpa-isw2-sonar
+SonarAnalysisKey=a8b762a6-a902-4989-9127-da9e4daef47e
+SonarAnalysisDate=2026-08-30T09:49:31+0000
+
+ExpectedUTS=2
+AnalyzedUTS=2
+UTSGate=PASS
+
+OpenMaintainabilityIssues=65
+OpenCodeSmells=65
+
+LogicCodeSmells=65
+SupportCodeSmells=0
+DistinctRules=4
+
+MaintainabilitySeverityCounts=LOW=5;MEDIUM=60
+CleanCodeCategoryCounts=INTENTIONAL=65
+
+Validation=PASS

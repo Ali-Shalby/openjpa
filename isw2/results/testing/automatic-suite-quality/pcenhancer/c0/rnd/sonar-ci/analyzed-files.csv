@@ -1,0 +1,3 @@
+﻿"Class","Variant","Technique","Role","SonarPath","ComponentKey","Qualifier","Language"
+"PCEnhancer","C0","RND","LOGIC","src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/rnd/PCEnhancerRandoopRegression0.java","Ali-Shalby_openjpa-isw2-sonar:src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/rnd/PCEnhancerRandoopRegression0.java","UTS","java"
+"PCEnhancer","C0","RND","SUPPORT","src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/rnd/PCEnhancerRandoopRegressionTest.java","Ali-Shalby_openjpa-isw2-sonar:src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/rnd/PCEnhancerRandoopRegressionTest.java","UTS","java"

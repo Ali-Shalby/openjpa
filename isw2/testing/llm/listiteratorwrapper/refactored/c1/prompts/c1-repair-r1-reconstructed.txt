@@ -1,0 +1,50 @@
+# ListIteratorWrapper C1 / T_LLM — Repair R1
+
+Repair request
+==============
+
+La suite T_LLM generata per:
+
+org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+
+contiene esattamente 12 scenari TLLM-001 ... TLLM-012.
+
+La prima validazione runtime ha mostrato che alcuni scenari progettati per
+esercitare il ramo relativo a un semplice Iterator non stanno usando a runtime
+un collaboratore che sia sicuramente soltanto Iterator.
+
+Il problema riguarda i setup basati su iteratori ottenuti direttamente da
+collezioni immutabili: il tipo concreto può essere riconosciuto anche come
+ListIterator e ListIteratorWrapper percorre quindi il ramo di delega invece
+del ramo di caching previsto dallo scenario.
+
+Correggi esclusivamente il problema tecnico di setup nei seguenti casi:
+
+TLLM-002
+TLLM-003
+TLLM-004
+TLLM-005
+TLLM-006
+TLLM-010
+
+Vincoli del repair
+------------------
+
+- Mantieni ESATTAMENTE 12 test case/scenari.
+- Mantieni gli identificativi TLLM-001 ... TLLM-012.
+- Non aggiungere nuovi scenari.
+- Non eliminare scenari.
+- Non sostituire gli scenari esistenti.
+- Non modificare gli oracle o i comportamenti verificati.
+- Non modificare TLLM-001, TLLM-007, TLLM-008, TLLM-009, TLLM-011 o TLLM-012.
+- Non modificare il codice production.
+- Non utilizzare mocking se non necessario.
+- Non utilizzare risultati JaCoCo, PIT, survivor mutation o altre metriche di adequacy.
+- Non utilizzare altre suite di test o fonti esterne.
+
+Per i sei casi interessati puoi introdurre un solo helper/fixture condiviso che
+garantisca a runtime un oggetto che implementi Iterator<E> ma NON
+ListIterator<E>, delegando internamente a un iterator reale.
+
+Restituisci la classe Java completa corretta, mantenendo invariata la
+tracciabilità TLLM-001 ... TLLM-012.

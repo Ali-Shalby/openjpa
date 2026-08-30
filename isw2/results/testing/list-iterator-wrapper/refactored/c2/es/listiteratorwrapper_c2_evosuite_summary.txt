@@ -1,0 +1,33 @@
+﻿ListIteratorWrapper C2 - T_ES Final Summary
+===========================================
+
+FrozenC2SourceSHA256=1280FB36A0CD4E40B9B99FEAA23B6939D72B3D75DB18D0B700D0D79D34F51065
+CanonicalTestSHA256=DDEDFDE72824C9FDB8839C087C68E90AB5B3BB0C0C188A95AA47BC85C8DBE448
+CanonicalScaffoldingSHA256=E85428795C80DC92836719155798BCF47C7D36F9F8E38CCCE77520C08DCED65F
+
+Tests=12
+PASS=12
+FAIL=0
+ERRORS=0
+SKIPPED=0
+
+LINE=92.54%
+BRANCH=93.18%
+METHOD=100%
+
+Mutants=55
+Killed=37
+Survived=18
+NoCoverage=0
+MutationScore=67.27%
+TestStrength=67.27%
+
+Java=Zulu JDK 11
+EvoSuiteRuntime=1.2.0
+JaCoCo=0.8.15
+PIT=1.25.8
+PITJUnitIntegration=built-in JUnit4
+
+CanonicalUnchangedAfterAdequacy=YES
+ProductionWorktreeFinal=C0
+Status=FROZEN_COMPLETE

@@ -1,0 +1,38 @@
+ListIteratorWrapper C1 - T_LLM R1 validation
+=============================================
+
+Stage                   : pre-freeze repair R1
+Generator               : Microsoft Copilot Web
+Runtime                 : Java 21
+Framework               : JUnit Jupiter
+
+Original RAW SHA-256    : E4A0D490B7CC8D4C3E7FB61ED435DDC6EF8763291AEACE2BBB4634F720EDEC7A
+R1 SHA-256              : C58C1F4E69781E38EECF8BC4CF1CA75260E079F5B7C1C668F62F8F1AE2715F03
+
+Original scenarios      : 12
+R1 scenarios            : 12
+Validation              : 12/12 PASS
+
+Repair:
+- added plainIterator(List<E>) fixture helper
+- TLLM-002 switched to plainIterator
+- TLLM-003 switched to plainIterator
+- TLLM-004 switched to plainIterator
+- TLLM-005 switched to plainIterator
+- TLLM-006 switched to plainIterator
+- TLLM-010 switched to plainIterator
+
+Unchanged scenarios:
+TLLM-001
+TLLM-007
+TLLM-008
+TLLM-009
+TLLM-011
+TLLM-012
+
+Coverage feedback used  : NONE
+Mutation feedback used  : NONE
+Scenario changes        : NONE
+Oracle changes          : NONE
+
+Status                  : R1 VALIDATED / NOT YET FROZEN

@@ -1,0 +1,22 @@
+﻿ListIteratorWrapper C3 - T_LLM Mutation Testing
+===============================================
+
+Tests=12
+Result=12/12 PASS
+
+TOTAL=47
+KILLED=41
+SURVIVED=6
+NO_COVERAGE=0
+TIMED_OUT=0
+RUN_ERROR=0
+MEMORY_ERROR=0
+
+MutationScore=87.23%
+TestStrength=87.23%
+
+PIT=1.25.8
+PITJUnit5Plugin=1.2.3
+Mutators=DEFAULTS
+Threads=1
+Measurement=POST-FREEZE

@@ -1,0 +1,22 @@
+﻿ListIteratorWrapper C2 - T_ES Mutation Testing
+==============================================
+
+Tests=12
+Result=12/12 PASS
+
+TOTAL=55
+KILLED=37
+SURVIVED=18
+NO_COVERAGE=0
+TIMED_OUT=0
+RUN_ERROR=0
+MEMORY_ERROR=0
+
+MutationScore=67.27%
+TestStrength=67.27%
+
+PIT=1.25.8
+Mutators=DEFAULTS
+Threads=1
+JUnitIntegration=built-in JUnit4
+Measurement=POST-FREEZE

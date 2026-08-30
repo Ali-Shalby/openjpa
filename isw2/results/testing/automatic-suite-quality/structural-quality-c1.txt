@@ -1,0 +1,15 @@
+﻿ListIteratorWrapper C1 - Structural Quality REVALIDATION
+========================================================
+Deterministic static re-measurement of the already frozen canonical suites.
+No tests, JaCoCo or PIT were rerun.
+
+
+Class               Variant Technique LogicLOC SupportLOC TotalLOC Tests AssertionLike AssertionsPerTest OpaqueNames
+-----               ------- --------- -------- ---------- -------- ----- ------------- ----------------- -----------
+ListIteratorWrapper C1      RND            695          0      695    12           231             19,25          12
+ListIteratorWrapper C1      ES             191        101      292    12            16              1,33          12
+ListIteratorWrapper C1      LLM            289          0      289    12            79              6,58           0
+
+
+
+Validation against previously recorded C1 metrics: PASS

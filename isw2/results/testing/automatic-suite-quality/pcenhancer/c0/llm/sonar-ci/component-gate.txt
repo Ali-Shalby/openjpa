@@ -1,0 +1,4 @@
+﻿
+Role  File                                                            IndexedBySonar
+----  ----                                                            --------------
+LOGIC src/test/java/org/apache/openjpa/enhance/PCEnhancerLLMTest.java           True

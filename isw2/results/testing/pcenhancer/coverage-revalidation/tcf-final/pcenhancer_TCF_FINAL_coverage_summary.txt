@@ -1,0 +1,43 @@
+============================================================
+ PCENHANCER - REVISED TCF_FINAL COVERAGE
+============================================================
+
+Target
+------
+Class                    : org.apache.openjpa.enhance.PCEnhancer
+OpenJPA                  : 4.1.1
+Production SHA-256       : 3C825DF257CC2FCF6550448E177A602495600A0470B742457AFC46BF4D788911
+JaCoCo                   : 0.8.15
+
+Execution
+---------
+Tests                    : 35
+Failures                 : 0
+Errors                   : 0
+Skipped                  : 0
+
+LINE
+----
+Covered                  : 1902
+Missed                   : 797
+Total                    : 2699
+Coverage                 : 70.47%
+
+BRANCH
+------
+Covered                  : 668
+Missed                   : 549
+Total                    : 1217
+Coverage                 : 54.89%
+
+METHOD
+------
+Covered                  : 141
+Missed                   : 22
+Total                    : 163
+Coverage                 : 86.5%
+
+Canonical LINE universe  : PASS 2699/2699
+Canonical BRANCH universe: PASS 1217/1217
+
+============================================================

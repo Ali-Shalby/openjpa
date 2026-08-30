@@ -1,0 +1,2 @@
+﻿"Class","Variant","Technique","Role","CanonicalPath","CanonicalSHA256","SonarPath","ComponentKey","Qualifier","Language"
+"ListIteratorWrapper","C2","LLM","LOGIC","C:\ISW2\openjpa\isw2\testing\generated\listiteratorwrapper\refactored\c2\llm\canonical\ListIteratorWrapperTest.java","94380D26FE52BBDD8BE51C74643B693E30DABADE904B8DCE72A0DD8B16AA09E5","src/test/java/__sonar_stage__/liw/c2/llm/ListIteratorWrapperTest.java","Ali-Shalby_openjpa-isw2-sonar:src/test/java/__sonar_stage__/liw/c2/llm/ListIteratorWrapperTest.java","UTS","java"

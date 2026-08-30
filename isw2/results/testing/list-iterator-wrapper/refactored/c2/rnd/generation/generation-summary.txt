@@ -1,0 +1,25 @@
+﻿ListIteratorWrapper C2 - T_RND RAW generation
+=============================================
+
+Target=org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Producer=java.util.ArrayList
+TargetN=12
+
+Randoop=4.3.4
+OnlyPublicMembers=true
+ErrorRevealingTests=false
+GeneratedLimit=20000
+OutputLimit=12
+TimeLimitPerSeed=60
+DeterministicConsecutiveSeeds=true
+
+FrozenC2SourceSHA256=1280FB36A0CD4E40B9B99FEAA23B6939D72B3D75DB18D0B700D0D79D34F51065
+RunBytecodeSHA256=2BF045E749F9D3A557556E51783063649E1A04FB3AE94692C171FB3DBA487922
+
+RawTestsAvailable=16
+
+CoverageFeedback=NONE
+MutationFeedback=NONE
+ManualOracleEditing=NONE
+
+Status=RAW_GENERATED_NOT_YET_FROZEN

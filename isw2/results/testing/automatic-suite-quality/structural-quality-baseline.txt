@@ -1,0 +1,45 @@
+﻿Automatic Test Suites - Structural Quality Baseline
+====================================================
+
+
+Class               Variant Technique LogicLOC SupportLOC TotalLOC Tests Assertions AssertionsPerTest OpaqueNames DescriptivePct
+-----               ------- --------- -------- ---------- -------- ----- ---------- ----------------- ----------- --------------
+PCEnhancer          C0      RND            473         25      498    30         63               2,1          30              0
+PCEnhancer          C0      ES             512        892     1404    30         30                 1          30              0
+PCEnhancer          C0      LLM            458          0      458    30         30                 1           0            100
+ListIteratorWrapper C0      RND            397          0      397    12         92              7,67          12              0
+ListIteratorWrapper C0      ES             186        100      286    12         14              1,17          12              0
+ListIteratorWrapper C0      LLM            344          0      344    12         74              6,17           0            100
+ListIteratorWrapper C1      RND            695          0      695    12        231             19,25          12              0
+ListIteratorWrapper C1      ES             191        101      292    12         16              1,33          12              0
+ListIteratorWrapper C1      LLM            289          0      289    12         79              6,58           0            100
+
+
+
+
+Interpretation policy
+---------------------
+These metrics are descriptive evidence.
+
+They are NOT converted into arbitrary numeric clarity or
+maintainability scores.
+
+The following are measured:
+- test logic LOC;
+- support/scaffolding LOC;
+- total LOC;
+- number of test methods;
+- number of assertion-like statements;
+- assertions per test;
+- opaque generated test names;
+- descriptive test-name percentage.
+
+SonarCloud issue/smell analysis is measured separately.
+
+Comparison rule
+---------------
+Like-for-like comparisons are performed by technique:
+
+C0 T_RND vs Cx T_RND
+C0 T_ES  vs Cx T_ES
+C0 T_LLM vs Cx T_LLM

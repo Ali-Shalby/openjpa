@@ -1,0 +1,15 @@
+﻿ListIteratorWrapper C2 - Structural Quality
+===========================================
+
+Counting protocol:
+- LOC = all physical source lines (Get-Content)
+- LOGIC and SUPPORT counted separately by file role
+- Tests = methods immediately associated with @Test
+- Assertion-like regex = assert*(...), fail(...), verify(...)
+- Opaque generated name regex = ^test\d+$
+- Descriptive names = Tests - OpaqueNames
+
+Class|Variant|Technique|LogicLOC|SupportLOC|TotalLOC|Tests|AssertionLike|AssertionsPerTest|OpaqueNames|DescriptivePercent
+ListIteratorWrapper|C2|RND|394|0|394|12|92|7,67|12|0
+ListIteratorWrapper|C2|ES|199|101|300|12|15|1,25|12|0
+ListIteratorWrapper|C2|LLM|298|0|298|12|73|6,08|0|100

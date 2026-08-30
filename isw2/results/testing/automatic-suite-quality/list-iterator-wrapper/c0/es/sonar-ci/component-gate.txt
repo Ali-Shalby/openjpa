@@ -1,0 +1,5 @@
+﻿
+Role    File                                                                                                                   IndexedBySonar
+----    ----                                                                                                                   --------------
+LOGIC   src/test/java/it/uniroma2/isw2/openjpa/testing/listiteratorwrapper/es/ListIteratorWrapperEvoSuiteSeed0Test.java                  True
+SUPPORT src/test/java/it/uniroma2/isw2/openjpa/testing/listiteratorwrapper/es/ListIteratorWrapperEvoSuiteSeed0Scaffolding.java           True

@@ -1,0 +1,13 @@
+﻿{
+    "key":  "a769d863-e732-47e1-8283-809d60b217f6",
+    "date":  "2026-08-30T12:39:22+0000",
+    "events":  [
+                   {
+                       "key":  "AaBSrrd_rRk3NI63tWPF",
+                       "category":  "VERSION",
+                       "name":  "quality-list-iterator-wrapper-c3-es"
+                   }
+               ],
+    "projectVersion":  "quality-list-iterator-wrapper-c3-es",
+    "manualNewCodePeriodBaseline":  false
+}

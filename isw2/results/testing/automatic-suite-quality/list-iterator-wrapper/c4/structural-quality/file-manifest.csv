@@ -1,0 +1,6 @@
+﻿"Class","Variant","Technique","Role","RelativePath","PhysicalLOC","SHA256","HashGate"
+"ListIteratorWrapper","C4","RND","LOGIC","isw2\testing\generated\listiteratorwrapper\refactored\c4\randoop\canonical\ListIteratorWrapperC4RandoopRegression0.java","164","8FCDE9FD4DEA51E64E859AF8D21DA558C5973D51D36F4844659B5BF7E29E95B0","PASS"
+"ListIteratorWrapper","C4","RND","LOGIC","isw2\testing\generated\listiteratorwrapper\refactored\c4\randoop\canonical\ListIteratorWrapperC4RandoopSeed1Regression0.java","230","2A3529A5FD299F3794FBE5653A93BA0A0F9D798197253ADABF8749029500DF2A","PASS"
+"ListIteratorWrapper","C4","ES","LOGIC","isw2\testing\generated\listiteratorwrapper\refactored\c4\evosuite\canonical\ListIteratorWrapper_ESTest.java","203","59FB2F1569949167A5B85B021F2E8C5DCB567FF790AE536DB215C00C63D6FB3D","PASS"
+"ListIteratorWrapper","C4","ES","SUPPORT","isw2\testing\generated\listiteratorwrapper\refactored\c4\evosuite\canonical\ListIteratorWrapper_ESTest_scaffolding.java","101","D7AB77F3F0B64BE4AB58B00E6F04E077650F8A0DC0EB64AC7D4FD8487B82A088","PASS"
+"ListIteratorWrapper","C4","LLM","LOGIC","isw2\testing\generated\listiteratorwrapper\refactored\c4\llm\canonical\ListIteratorWrapperTest.java","321","5E34C971C9CE3690D43FC3FB9888BE8D4604D94B81DD4D399F26D7FEAA3D2AF8","PASS"

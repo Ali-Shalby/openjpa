@@ -1,0 +1,31 @@
+﻿ListIteratorWrapper C3 - T_ES Pre-Adequacy Freeze
+=================================================
+
+Generator=EvoSuite 1.2.0
+Runtime=Zulu JDK 11
+Target=org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Criterion=LINE:BRANCH
+SearchBudget=120s
+StoppingCondition=MAXTIME
+Minimize=true
+Seed=0
+
+RAWSeed0Tests=16
+RAWValidation=16/16 PASS
+AdditionalSeeds=NOT REQUIRED
+
+CanonicalSelection=first 12 positional tests from seed 0
+CanonicalTests=12
+CanonicalValidation=12/12 PASS
+
+InfrastructureAdaptation=separateClassLoader false
+OracleEditing=NONE
+CoverageFeedbackBeforeFreeze=NONE
+MutationFeedbackBeforeFreeze=NONE
+
+FrozenC3SourceSHA256=31E6F2F681A141B8973D9C1E36E5BD7EB00938AFBB52ADD5F87B70216EF28A44
+RunBytecodeSHA256=6A347AF3CDFF287C7E90AC43885367EC1F9883BF834EBF9403C49C229A1465DC
+CanonicalTestSHA256=FF4764265A28028976CF49954590B3EB347F2F57073143233489E57570FF5834
+CanonicalScaffoldingSHA256=554726811E0E9FCAED9FFF1540B7A3D16F204CDBB48948931BFC11E26142810D
+
+Status=FROZEN

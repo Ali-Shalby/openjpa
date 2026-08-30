@@ -1,0 +1,13 @@
+﻿{
+    "key":  "a8b762a6-a902-4989-9127-da9e4daef47e",
+    "date":  "2026-08-30T09:49:31+0000",
+    "events":  [
+                   {
+                       "key":  "AaBSEzmBacH2g16C_uJU",
+                       "category":  "VERSION",
+                       "name":  "quality-list-iterator-wrapper-c0-rnd"
+                   }
+               ],
+    "projectVersion":  "quality-list-iterator-wrapper-c0-rnd",
+    "manualNewCodePeriodBaseline":  false
+}

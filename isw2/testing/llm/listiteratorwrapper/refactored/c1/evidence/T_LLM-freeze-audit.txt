@@ -1,0 +1,41 @@
+ListIteratorWrapper C1 - T_LLM final freeze audit
+==================================================
+
+Variant                    : C1
+Technique                  : T_LLM
+Generator                  : Microsoft Copilot Web
+Runtime                    : Java 21
+Framework                  : JUnit Jupiter
+Target N                   : 12
+
+Initial RAW SHA-256        : E4A0D490B7CC8D4C3E7FB61ED435DDC6EF8763291AEACE2BBB4634F720EDEC7A
+Final R1 SHA-256           : C58C1F4E69781E38EECF8BC4CF1CA75260E079F5B7C1C668F62F8F1AE2715F03
+Canonical SHA-256          : C58C1F4E69781E38EECF8BC4CF1CA75260E079F5B7C1C668F62F8F1AE2715F03
+
+Initial RAW validation:
+Tests                     : 12
+Failures                  : 2
+Errors                    : 4
+Status                    : PRE-FREEZE RUNTIME FAILURE
+
+Repair R1:
+- plainIterator(List<E>) helper added
+- TLLM-002 setup repaired
+- TLLM-003 setup repaired
+- TLLM-004 setup repaired
+- TLLM-005 setup repaired
+- TLLM-006 setup repaired
+- TLLM-010 setup repaired
+- no scenario changed
+- no oracle changed
+- no test added or removed
+
+R1 validation             : 12/12 PASS
+Stability                 : 5/5 PASS
+Canonical tests           : 12
+
+Coverage feedback used    : NONE
+Mutation feedback used    : NONE
+Post-freeze modification  : NONE
+
+Status                    : FINAL FROZEN

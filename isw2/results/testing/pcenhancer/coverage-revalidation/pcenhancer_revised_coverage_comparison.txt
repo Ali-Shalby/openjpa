@@ -1,0 +1,37 @@
+============================================================
+ PCENHANCER - REVISED COVERAGE COMPARISON
+============================================================
+
+T_BB
+----
+Tests           : 30
+LINE            : 1169 / 2699
+LINE %          : 43.31%
+BRANCH          : 368 / 1217
+BRANCH %        : 30.24%
+
+T_BB + T_CF
+------------
+Tests           : 35
+LINE            : 1902 / 2699
+LINE %          : 70.47%
+BRANCH          : 668 / 1217
+BRANCH %        : 54.89%
+
+T_CF incremental contribution
+------------------------------
+Additional lines    : 733
+Additional branches : 300
+LINE delta          : 27.16 pp
+BRANCH delta        : 24.65 pp
+
+Historical values before TBB-026 correction
+-------------------------------------------
+T_BB LINE        : 1177 / 2699 = 43.61%
+T_BB BRANCH      : 372 / 1217 = 30.57%
+
+T_BB + T_CF LINE : 1910 / 2699 = 70.77%
+T_BB + T_CF BRANCH:
+                   672 / 1217 = 55.22%
+
+============================================================

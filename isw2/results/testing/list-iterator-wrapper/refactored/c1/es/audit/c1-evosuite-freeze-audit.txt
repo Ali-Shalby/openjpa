@@ -1,0 +1,35 @@
+ListIteratorWrapper C1 - T_ES final freeze audit
+=================================================
+
+Variant                      : C1
+Technique                    : T_ES
+Generator                    : EvoSuite 1.2.0
+Runtime                      : Java 11
+
+RAW seed 0                   : 15 tests
+RAW validation               : 15/15 PASS
+Selection                    : first 12/15, positional
+Selection timing             : before adequacy measurement
+
+Initial canonical tests      : 12/12 PASS
+Initial canonical SHA-256    : 4AC88C2CFE6821A48A7E3ED0F03D0B8A893CF095323BAF1873208166BBB6BEA4
+
+Initial JaCoCo attempt       : INVALID TECHNICAL MEASUREMENT
+Observed                     : LINE 0/68, BRANCH 0/42, METHOD 0/12
+Cause                        : separateClassLoader=true
+
+Infrastructure adaptation    : separateClassLoader true -> false
+Test bodies changed          : NO
+Assertions changed           : NO
+Inputs/oracles changed       : NO
+Test order changed           : NO
+Test cardinality changed     : NO
+
+Final canonical tests        : 12/12 PASS
+Final canonical SHA-256      : AF70FA8DFD9A80399E47FCEDA1BC05CB5809D65352E45EA071F8E76C20B5CBCF
+Scaffolding SHA-256          : 92677F1125E987201D31792E3A018E5687B061C001E0552CAC375712CFCFE127
+
+Valid JaCoCo feedback before final freeze : NONE
+PIT feedback before final freeze          : NONE
+
+Status                       : FINAL FROZEN

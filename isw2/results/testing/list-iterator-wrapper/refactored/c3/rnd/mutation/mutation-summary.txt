@@ -1,0 +1,21 @@
+﻿ListIteratorWrapper C3 - T_RND Mutation Testing
+===============================================
+
+Tests=12
+Result=12/12 PASS
+
+TOTAL=47
+KILLED=9
+SURVIVED=17
+NO_COVERAGE=21
+TIMED_OUT=0
+RUN_ERROR=0
+MEMORY_ERROR=0
+
+MutationScore=19.15%
+TestStrength=34.62%
+
+PIT=1.25.8
+Mutators=DEFAULTS
+Threads=1
+Measurement=POST-FREEZE

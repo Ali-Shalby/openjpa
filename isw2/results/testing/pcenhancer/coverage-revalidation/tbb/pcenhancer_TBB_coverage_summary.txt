@@ -1,0 +1,43 @@
+============================================================
+ PCENHANCER - REVISED TBB COVERAGE
+============================================================
+
+Target
+------
+Class                    : org.apache.openjpa.enhance.PCEnhancer
+OpenJPA                  : 4.1.1
+Production SHA-256       : 3C825DF257CC2FCF6550448E177A602495600A0470B742457AFC46BF4D788911
+JaCoCo                   : 0.8.15
+
+Execution
+---------
+Tests                    : 30
+Failures                 : 0
+Errors                   : 0
+Skipped                  : 0
+
+LINE
+----
+Covered                  : 1169
+Missed                   : 1530
+Total                    : 2699
+Coverage                 : 43.31%
+
+BRANCH
+------
+Covered                  : 368
+Missed                   : 849
+Total                    : 1217
+Coverage                 : 30.24%
+
+METHOD
+------
+Covered                  : 107
+Missed                   : 56
+Total                    : 163
+Coverage                 : 65.64%
+
+Canonical LINE universe  : PASS 2699/2699
+Canonical BRANCH universe: PASS 1217/1217
+
+============================================================

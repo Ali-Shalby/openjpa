@@ -1,0 +1,5 @@
+﻿
+Role    File                                                                                IndexedBySonar
+----    ----                                                                                --------------
+LOGIC   src/test/java/__sonar_stage__/liw/c4/es/ListIteratorWrapper_ESTest.java                       True
+SUPPORT src/test/java/__sonar_stage__/liw/c4/es/ListIteratorWrapper_ESTest_scaffolding.java           True

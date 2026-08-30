@@ -1,0 +1,82 @@
+﻿**********************
+Inizio trascrizione Windows PowerShell
+Ora di inizio: 20260830110733
+Nome utente: LAPTOP-503ELF8J\marco
+Esegui come utente: LAPTOP-503ELF8J\marco
+Nome configurazione:
+Computer LAPTOP-503ELF8J (Microsoft Windows NT 10.0.26200.0)
+Applicazione host: powershell.exe
+ID processo: 16588
+PSVersion: 5.1.26100.9278
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9278
+BuildVersion: 10.0.26100.9278
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+======================================================
+ AUTOMATIC SUITE SONAR QUALITY ANALYSIS
+======================================================
+Class      : PCEnhancer
+Variant    : C0
+Technique  : RND
+Files      : 2
+Prod ctx   : 07806120846f87d864caa9669c5a8fc5331cfe3c
+Output     : C:\ISW2\openjpa\isw2\results\testing\automatic-suite-quality\pcenhancer\c0\rnd\sonar
+======================================================
+
+Sonar authentication : VALID
+
+Auxiliary repository : CLEAN / main / synchronized
+
+Fixed production context restored: 1495 Java files
+Production context revision        : 07806120846f87d864caa9669c5a8fc5331cfe3c
+
+Frozen suite materialized byte-for-byte:
+
+Role    OriginalPath                                                                                                    SonarPath
+----    ------------                                                                                                    ---------
+LOGIC   isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\rnd\PCEnhancerRandoopRegression0.java    src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/rn...
+SUPPORT isw2\testing\src\test\java\it\uniroma2\isw2\openjpa\testing\pcenhancer\rnd\PCEnhancerRandoopRegressionTest.java src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/rn...
+
+
+
+
+
+Auxiliary commit : 298e68ade690fb12c5d9047c4ce68b7dedfd8141
+Pushing main...
+
+
+Waiting for SonarQube Cloud analysis of exact revision...
+Revision: 298e68ade690fb12c5d9047c4ce68b7dedfd8141
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+Latest visible revision: 004d0eb622e32f9a1476590f62f99fffd6baed01 | 2026-08-30T08:21:23+0000
+
+Sonar analysis matched exact auxiliary revision.
+Analysis key  : 734a8fe6-1b42-4fbf-8329-afdec1a224c3
+Analysis date : 2026-08-30T09:07:51+0000
+Revision      : 298e68ade690fb12c5d9047c4ce68b7dedfd8141
+
+Files missing from Sonar component tree:
+  src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/rnd/PCEnhancerRandoopRegression0.java
+  src/test/java/it/uniroma2/isw2/openjpa/testing/pcenhancer/rnd/PCEnhancerRandoopRegressionTest.java
+**********************
+Fine trascrizione Windows PowerShell
+Ora di fine: 20260830111130
+**********************

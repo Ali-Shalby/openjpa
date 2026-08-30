@@ -1,0 +1,4 @@
+﻿"Rule","IssueCount","Roles","MaintainabilitySeverities","CleanCodeAttributes","CleanCodeCategories"
+"java:S1068","1","LOGIC","MEDIUM","CLEAR","INTENTIONAL"
+"java:S1128","1","LOGIC","LOW","CLEAR","INTENTIONAL"
+"java:S8924","4","LOGIC","LOW","CLEAR","INTENTIONAL"

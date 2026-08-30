@@ -1,0 +1,12 @@
+﻿ListIteratorWrapper C2 - T_LLM Coverage
+=======================================
+
+Tests=12
+Result=12/12 PASS
+
+LINE=100% (67/67)
+BRANCH=95.45% (42/44)
+METHOD=100% (12/12)
+
+Tool=JaCoCo 0.8.15
+Measurement=POST-FREEZE

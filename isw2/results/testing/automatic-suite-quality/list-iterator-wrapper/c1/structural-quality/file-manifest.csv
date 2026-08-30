@@ -1,0 +1,6 @@
+﻿"Technique","Role","Path","SHA256","LOC"
+"RND","LOGIC","isw2\testing\generated\listiteratorwrapper\refactored\c1\randoop\canonical\ListIteratorWrapperC1RandoopRegression0.java","B3EE4D2249E16665EFEA49F8F88C49CA1D41180483611EAE40CFFAAF12C04335","611"
+"RND","LOGIC","isw2\testing\generated\listiteratorwrapper\refactored\c1\randoop\canonical\ListIteratorWrapperC1RandoopSeed1Regression0.java","6F443467611C82FE04630C1E0D00AC2690FE3C07CBBF447D8322931CC41F1215","84"
+"ES","LOGIC","isw2\testing\generated\listiteratorwrapper\refactored\c1\evosuite\canonical\ListIteratorWrapper_ESTest.java","AF70FA8DFD9A80399E47FCEDA1BC05CB5809D65352E45EA071F8E76C20B5CBCF","191"
+"ES","SUPPORT","isw2\testing\generated\listiteratorwrapper\refactored\c1\evosuite\canonical\ListIteratorWrapper_ESTest_scaffolding.java","92677F1125E987201D31792E3A018E5687B061C001E0552CAC375712CFCFE127","101"
+"LLM","LOGIC","isw2\testing\generated\listiteratorwrapper\refactored\c1\llm\canonical\ListIteratorWrapperTest.java","C58C1F4E69781E38EECF8BC4CF1CA75260E079F5B7C1C668F62F8F1AE2715F03","289"

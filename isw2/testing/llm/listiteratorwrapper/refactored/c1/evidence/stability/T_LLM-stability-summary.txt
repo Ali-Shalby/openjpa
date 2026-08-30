@@ -1,0 +1,16 @@
+ListIteratorWrapper C1 - T_LLM stability summary
+=================================================
+
+Variant        : C1
+Technique      : T_LLM
+Suite SHA-256  : C58C1F4E69781E38EECF8BC4CF1CA75260E079F5B7C1C668F62F8F1AE2715F03
+Tests per run  : 12
+
+Run 1          : PASS 12/12
+Run 2          : PASS 12/12
+Run 3          : PASS 12/12
+Run 4          : PASS 12/12
+Run 5          : PASS 12/12
+
+Stability      : 5/5
+Status         : PASS

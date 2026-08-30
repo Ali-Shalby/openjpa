@@ -1,0 +1,30 @@
+ListIteratorWrapper C1 - T_ES JaCoCo summary
+=============================================
+
+Variant                  : C1
+Technique                : T_ES
+Suite                    : FINAL FROZEN
+Tests                    : 12/12 PASS
+
+Generator                : EvoSuite 1.2.0
+Runtime                  : Java 11
+JaCoCo                   : 0.8.15
+
+C1 source SHA-256        : E1F56231EEFCF83EDBEEBB751ABA162CCADE5774E1F973932BC2F6868DA68579
+Run bytecode SHA-256     : B6B4EE8C092730C30DD1C1DFE51397F7E00EB61022C4FAD9B72559BA846F765E
+
+Initial canonical SHA    : 4AC88C2CFE6821A48A7E3ED0F03D0B8A893CF095323BAF1873208166BBB6BEA4
+Final canonical SHA      : AF70FA8DFD9A80399E47FCEDA1BC05CB5809D65352E45EA071F8E76C20B5CBCF
+Scaffolding SHA          : 92677F1125E987201D31792E3A018E5687B061C001E0552CAC375712CFCFE127
+
+Infrastructure adaptation:
+separateClassLoader=true -> false
+
+LINE                     : 60/68 = 88,24%
+BRANCH                   : 37/42 = 88,10%
+METHOD                   : 11/12 = 91,67%
+
+Initial 0% measurement   : INVALID / NOT USED
+Selection changed        : NO
+Test semantics changed   : NO
+Mutation feedback used   : NO

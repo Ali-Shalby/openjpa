@@ -1,0 +1,12 @@
+﻿ListIteratorWrapper C2 - T_RND Coverage
+=======================================
+
+Tests=12
+Result=12/12 PASS
+
+LINE=58.21% (39/67)
+BRANCH=52.27% (23/44)
+METHOD=100% (12/12)
+
+Tool=JaCoCo 0.8.15
+Measurement=POST-FREEZE

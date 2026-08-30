@@ -1,0 +1,4 @@
+﻿"Class","Variant","Technique","LogicLOC","SupportLOC","TotalLOC","Tests","AssertionLike","AssertionsPerTest","OpaqueNames","DescriptiveNames","DescriptivePercent"
+"ListIteratorWrapper","C2","RND","394","0","394","12","92","7,67","12","0","0"
+"ListIteratorWrapper","C2","ES","199","101","300","12","15","1,25","12","0","0"
+"ListIteratorWrapper","C2","LLM","298","0","298","12","73","6,08","0","12","100"

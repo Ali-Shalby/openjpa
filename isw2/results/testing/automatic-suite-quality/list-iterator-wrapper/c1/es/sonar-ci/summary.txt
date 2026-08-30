@@ -1,0 +1,27 @@
+﻿Automatic Test Suite - Sonar Static Quality
+===========================================
+
+Class=ListIteratorWrapper
+Variant=C1
+Technique=ES
+
+SonarProjectKey=Ali-Shalby_openjpa-isw2-sonar
+SonarAnalysisKey=1ead4122-c4fe-4f73-ad6b-ffc8f9034533
+SonarAnalysisDate=2026-08-30T10:04:45+0000
+
+ExpectedUTS=2
+AnalyzedUTS=2
+UTSGate=PASS
+StagingHashGate=PASS
+
+OpenMaintainabilityIssues=0
+OpenCodeSmells=0
+
+LogicCodeSmells=0
+SupportCodeSmells=0
+DistinctRules=0
+
+MaintainabilitySeverityCounts=
+CleanCodeCategoryCounts=
+
+Validation=PASS

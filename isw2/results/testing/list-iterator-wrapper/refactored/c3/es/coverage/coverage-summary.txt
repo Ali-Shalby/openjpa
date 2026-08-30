@@ -1,0 +1,12 @@
+﻿ListIteratorWrapper C3 - T_ES Coverage
+======================================
+
+Tests=12
+Result=12/12 PASS
+
+LINE=82.61% (57/69)
+BRANCH=80.95% (34/42)
+METHOD=83.33% (10/12)
+
+Tool=JaCoCo 0.8.15
+Measurement=POST-FREEZE

@@ -1,0 +1,25 @@
+﻿ListIteratorWrapper C3 - T_RND RAW generation
+=============================================
+
+Target=org.apache.openjpa.lib.util.collections.ListIteratorWrapper
+Producer=java.util.ArrayList
+TargetN=12
+
+Randoop=4.3.4
+OnlyPublicMembers=true
+ErrorRevealingTests=false
+GeneratedLimit=20000
+OutputLimit=12
+TimeLimitPerSeed=60
+DeterministicConsecutiveSeeds=true
+
+FrozenC3SourceSHA256=31E6F2F681A141B8973D9C1E36E5BD7EB00938AFBB52ADD5F87B70216EF28A44
+RunBytecodeSHA256=B8797F00D7AC74FCA54C8FC297B46993D5864E663360DAB32D049CF30F67E3CC
+
+RawTestsAvailable=16
+
+CoverageFeedback=NONE
+MutationFeedback=NONE
+ManualOracleEditing=NONE
+
+Status=RAW_GENERATED_NOT_YET_FROZEN

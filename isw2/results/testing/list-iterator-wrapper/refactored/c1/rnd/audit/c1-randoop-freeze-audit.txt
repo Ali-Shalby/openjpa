@@ -1,0 +1,31 @@
+ListIteratorWrapper C1 - T_RND freeze audit
+===========================================
+
+Variant                  : C1
+Technique                : T_RND
+Generator                : Randoop 4.3.4
+
+C0 source SHA-256        : 44CE059F3834F781ECE28CFA0253E8EA17F6298B9632E0F79B44DFD2CC09EE44
+C1 source SHA-256        : E1F56231EEFCF83EDBEEBB751ABA162CCADE5774E1F973932BC2F6868DA68579
+Run bytecode SHA-256     : B6B4EE8C092730C30DD1C1DFE51397F7E00EB61022C4FAD9B72559BA846F765E
+
+Target cardinality       : 12
+
+Seed 0 generated         : 9
+Seed 0 selected          : 9
+
+Seed 1 generated         : 8
+Seed 1 selected          : first 3
+
+Selection rule           : positional / pre-adequacy
+Coverage feedback        : NONE
+Mutation feedback        : NONE
+Manual oracle editing    : NONE
+
+Canonical file 1 SHA-256 : B3EE4D2249E16665EFEA49F8F88C49CA1D41180483611EAE40CFFAAF12C04335
+Canonical file 2 SHA-256 : 6F443467611C82FE04630C1E0D00AC2690FE3C07CBBF447D8322931CC41F1215
+Manifest SHA-256         : ECF032C26208FBA13F7796CB776BB01781D45902D35E3977DE944DECBA04DF99
+
+Validation               : 12/12 PASS
+
+Status                   : FROZEN

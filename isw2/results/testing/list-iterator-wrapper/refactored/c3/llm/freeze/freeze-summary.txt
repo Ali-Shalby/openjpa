@@ -1,0 +1,23 @@
+﻿ListIteratorWrapper C3 - T_LLM Freeze
+=====================================
+
+Client=Microsoft Copilot Web
+Framework=JUnit Jupiter
+Java=21
+
+GeneratedScenarios=12
+RAWTests=12
+RAWValidation=12/12 PASS
+RepairRequired=NO
+Stability=5/5 PASS
+
+FrozenC3SourceSHA256=31E6F2F681A141B8973D9C1E36E5BD7EB00938AFBB52ADD5F87B70216EF28A44
+RAWSHA256=C495835AC3E9B5E8AD3EC98F88B6F4AA5B91B6BB398D3E51114F4654C9C85617
+CanonicalSHA256=C495835AC3E9B5E8AD3EC98F88B6F4AA5B91B6BB398D3E51114F4654C9C85617
+CanonicalTests=12
+
+CoverageFeedbackBeforeFreeze=NONE
+MutationFeedbackBeforeFreeze=NONE
+PostGenerationAdequacyFeedback=NONE
+
+Status=FROZEN
