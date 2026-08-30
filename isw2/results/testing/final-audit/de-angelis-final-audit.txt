@@ -1,200 +1,74 @@
-﻿======================================================
- DE ANGELIS / OPENJPA - FINAL ARTIFACT AUDIT
 ======================================================
-Repo : C:\ISW2\openjpa
-Date : 2026-08-30 17:01:11
+ DE ANGELIS FINAL AUDIT V3
+======================================================
+[PASS] Repository branch = isw2-project
+[PASS] HEAD matches upstream
+[PASS] isw2\README.md
+[PASS] isw2\docs\m4\pcenhancer-m4-analysis.md
+[PASS] isw2\docs\m4\listiteratorwrapper-m4-analysis.md
+[PASS] isw2\results\testing\automatic-suite-quality\pcenhancer\automatic-suite-comparison-c0-c4.md
+[PASS] isw2\results\testing\automatic-suite-quality\list-iterator-wrapper\automatic-suite-comparison-c0-c4.md
+[PASS] ListIteratorWrapper C0 automatic comparison
+[PASS] ListIteratorWrapper C1 automatic comparison
+[PASS] ListIteratorWrapper C2 automatic comparison
+[PASS] ListIteratorWrapper C3 automatic comparison
+[PASS] ListIteratorWrapper C4 automatic comparison
+[PASS] ListIteratorWrapper C0 structural baseline
+[PASS] ListIteratorWrapper C1 structural quality
+[PASS] ListIteratorWrapper C2 structural quality
+[PASS] ListIteratorWrapper C3 structural quality
+[PASS] ListIteratorWrapper C4 structural quality
+[PASS] PCEnhancer C0 Sonar rnd
+[PASS] PCEnhancer C0 Sonar es
+[PASS] PCEnhancer C0 Sonar llm
+[PASS] ListIteratorWrapper C0 Sonar rnd
+[PASS] ListIteratorWrapper C0 Sonar es
+[PASS] ListIteratorWrapper C0 Sonar llm
+[PASS] ListIteratorWrapper C1 Sonar rnd
+[PASS] ListIteratorWrapper C1 Sonar es
+[PASS] ListIteratorWrapper C1 Sonar llm
+[PASS] ListIteratorWrapper C2 Sonar rnd
+[PASS] ListIteratorWrapper C2 Sonar es
+[PASS] ListIteratorWrapper C2 Sonar llm
+[PASS] ListIteratorWrapper C3 Sonar rnd
+[PASS] ListIteratorWrapper C3 Sonar es
+[PASS] ListIteratorWrapper C3 Sonar llm
+[PASS] ListIteratorWrapper C4 Sonar rnd
+[PASS] ListIteratorWrapper C4 Sonar es
+[PASS] ListIteratorWrapper C4 Sonar llm
+[PASS] ListIteratorWrapper C1 RND canonical 1
+[PASS] ListIteratorWrapper C1 RND canonical 2
+[PASS] ListIteratorWrapper C1 ES canonical
+[PASS] ListIteratorWrapper C1 LLM canonical
+[PASS] ListIteratorWrapper C2 RND canonical 1
+[PASS] ListIteratorWrapper C2 RND canonical 2
+[PASS] ListIteratorWrapper C2 ES canonical
+[PASS] ListIteratorWrapper C2 LLM canonical
+[PASS] ListIteratorWrapper C3 RND canonical 1
+[PASS] ListIteratorWrapper C3 RND canonical 2
+[PASS] ListIteratorWrapper C3 ES canonical
+[PASS] ListIteratorWrapper C3 LLM canonical
+[PASS] ListIteratorWrapper C4 RND canonical 1
+[PASS] ListIteratorWrapper C4 RND canonical 2
+[PASS] ListIteratorWrapper C4 ES canonical
+[PASS] ListIteratorWrapper C4 LLM canonical
+[PASS] PCEnhancer C1 source saved
+[PASS] PCEnhancer C1 compile evidence saved
+[PASS] PCEnhancer C2 source saved
+[PASS] PCEnhancer C2 compile evidence saved
+[PASS] PCEnhancer C3 source saved
+[PASS] PCEnhancer C3 compile evidence saved
+[PASS] PCEnhancer C4 source saved
+[PASS] PCEnhancer C4 compile evidence saved
+[PASS] No forbidden cross-project references
+[PASS] No real TODO/TBD/FIXME/PLACEHOLDER markers
+[PASS] Working tree clean
 
-===== 1. REPOSITORY =====
-[PASS] Repository / Branch :: Branch=isw2-project
-[PASS] Repository / HEAD :: 3c8aa0161dc4a8a7a5468d75625059c14c5b9529
-[WARN] Repository / Working tree :: Changed/untracked entries=59
-[PASS] Repository / Upstream :: Upstream=origin/isw2-project
-[PASS] Repository / HEAD vs upstream :: upstream HEAD=3c8aa0161dc4a8a7a5468d75625059c14c5b9529
-
-===== 2. CORE DOCUMENTATION =====
-[PASS] Docs / ISW2 README :: isw2\README.md
-[PASS] Docs / PCEnhancer / pcenhancer-black-box.md :: isw2\docs\testing\pcenhancer-black-box.md
-[PASS] Docs / PCEnhancer / pcenhancer-control-flow.md :: isw2\docs\testing\pcenhancer-control-flow.md
-[PASS] Docs / PCEnhancer / pcenhancer-mutation-testing.md :: isw2\docs\testing\pcenhancer-mutation-testing.md
-[PASS] Docs / PCEnhancer / pcenhancer-random-testing.md :: isw2\docs\testing\pcenhancer-random-testing.md
-[PASS] Docs / PCEnhancer / pcenhancer-evosuite-testing.md :: isw2\docs\testing\pcenhancer-evosuite-testing.md
-[PASS] Docs / PCEnhancer / pcenhancer-llm-testing.md :: isw2\docs\testing\pcenhancer-llm-testing.md
-[PASS] Docs / ListIteratorWrapper / Testing documentation files :: Found 6 item(s)
-[PASS] Docs / ListIteratorWrapper / black-box :: Found 1 item(s)
-[PASS] Docs / ListIteratorWrapper / control-flow :: Found 1 item(s)
-[PASS] Docs / ListIteratorWrapper / mutation :: Found 1 item(s)
-[PASS] Docs / ListIteratorWrapper / random :: Found 1 item(s)
-[PASS] Docs / ListIteratorWrapper / randoop :: Found 1 item(s)
-[PASS] Docs / ListIteratorWrapper / evosuite :: Found 1 item(s)
-[PASS] Docs / ListIteratorWrapper / llm :: Found 1 item(s)
-[PASS] Docs / M4 / PCEnhancer M4 analysis :: isw2\docs\m4\pcenhancer-m4-analysis.md
-[PASS] Docs / M4 / ListIteratorWrapper M4 analysis :: isw2\docs\m4\listiteratorwrapper-m4-analysis.md
-
-===== 3. M4 VARIANT SOURCES / COMPILE EVIDENCE =====
-[PASS] M4 / PCEnhancer / C1 source saved :: Found 1 item(s)
-[PASS] M4 / PCEnhancer / C1 compile evidence :: Found 1 item(s)
-[PASS] M4 / PCEnhancer / C2 source saved :: Found 1 item(s)
-[PASS] M4 / PCEnhancer / C2 compile evidence :: Found 1 item(s)
-[PASS] M4 / PCEnhancer / C3 source saved :: Found 1 item(s)
-[PASS] M4 / PCEnhancer / C3 compile evidence :: Found 1 item(s)
-[PASS] M4 / PCEnhancer / C4 source saved :: Found 1 item(s)
-[PASS] M4 / PCEnhancer / C4 compile evidence :: Found 1 item(s)
-[PASS] M4 / ListIteratorWrapper / C1 source saved :: Found 4 item(s)
-[PASS] M4 / ListIteratorWrapper / C1 compile evidence :: Found 4 item(s)
-[PASS] M4 / ListIteratorWrapper / C2 source saved :: Found 4 item(s)
-[PASS] M4 / ListIteratorWrapper / C2 compile evidence :: Found 4 item(s)
-[PASS] M4 / ListIteratorWrapper / C3 source saved :: Found 4 item(s)
-[PASS] M4 / ListIteratorWrapper / C3 compile evidence :: Found 4 item(s)
-[PASS] M4 / ListIteratorWrapper / C4 source saved :: Found 4 item(s)
-[PASS] M4 / ListIteratorWrapper / C4 compile evidence :: Found 4 item(s)
-[PASS] M4 / PCEnhancer / Blocked variants documented :: Contains required markers: C1, C2, C3, C4
-[PASS] M4 / ListIteratorWrapper / All variants documented :: Contains required markers: C1, C2, C3, C4
-
-===== 4. FINAL AUTOMATIC-SUITE COMPARISONS =====
-[PASS] Automatic quality / PCEnhancer / Global C0-C4 comparison :: isw2\results\testing\automatic-suite-quality\pcenhancer\automatic-suite-comparison-c0-c4.md
-[PASS] Automatic quality / ListIteratorWrapper / Global C0-C4 comparison :: isw2\results\testing\automatic-suite-quality\list-iterator-wrapper\automatic-suite-comparison-c0-c4.md
-[PASS] Automatic quality / PCEnhancer / Blocked status explicit :: Contains required markers: NOT RUN / BLOCKED BY VARIANT COMPILATION, T_RND, T_ES, T_LLM
-[PASS] Automatic quality / ListIteratorWrapper / C0-C4 + techniques present :: Contains required markers: C0, C1, C2, C3, C4, T_RND, T_ES, T_LLM
-
-===== 5. PER-VARIANT AUTOMATIC QUALITY =====
-[PASS] Automatic quality / PCEnhancer / C0 comparison :: isw2\results\testing\automatic-suite-quality\pcenhancer\c0\automatic-suite-comparison.md
-[FAIL] Automatic quality / ListIteratorWrapper / C0 comparison :: Missing: isw2\results\testing\automatic-suite-quality\list-iterator-wrapper\c0\automatic-suite-comparison.md
-[FAIL] Automatic quality / ListIteratorWrapper / C1 comparison :: Missing: isw2\results\testing\automatic-suite-quality\list-iterator-wrapper\c1\automatic-suite-comparison.md
-[FAIL] Automatic quality / ListIteratorWrapper / C2 comparison :: Missing: isw2\results\testing\automatic-suite-quality\list-iterator-wrapper\c2\automatic-suite-comparison.md
-[PASS] Automatic quality / ListIteratorWrapper / C3 comparison :: isw2\results\testing\automatic-suite-quality\list-iterator-wrapper\c3\automatic-suite-comparison.md
-[PASS] Automatic quality / ListIteratorWrapper / C4 comparison :: isw2\results\testing\automatic-suite-quality\list-iterator-wrapper\c4\automatic-suite-comparison.md
-[FAIL] Structural quality / ListIteratorWrapper / C0 CSV :: Missing: isw2\results\testing\automatic-suite-quality\structural-quality-c0.csv
-[FAIL] Structural quality / ListIteratorWrapper / C1 CSV :: Missing: isw2\results\testing\automatic-suite-quality\structural-quality-c1.csv
-[PASS] Structural quality / ListIteratorWrapper / C2 CSV :: isw2\results\testing\automatic-suite-quality\structural-quality-c2.csv
-[PASS] Structural quality / ListIteratorWrapper / C3 CSV :: isw2\results\testing\automatic-suite-quality\structural-quality-c3.csv
-[PASS] Structural quality / ListIteratorWrapper / C4 CSV :: isw2\results\testing\automatic-suite-quality\structural-quality-c4.csv
-[PASS] Structural quality / PCEnhancer / C0 structural evidence :: Found 1 item(s)
-
-===== 6. SONAR TEST-SUITE QUALITY =====
-[PASS] Sonar / PCEnhancer C0 / rnd :: Found 1 item(s)
-[PASS] Sonar / PCEnhancer C0 / es :: Found 1 item(s)
-[PASS] Sonar / PCEnhancer C0 / llm :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C0 / rnd :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C0 / es :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C0 / llm :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C1 / rnd :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C1 / es :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C1 / llm :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C2 / rnd :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C2 / es :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C2 / llm :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C3 / rnd :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C3 / es :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C3 / llm :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C4 / rnd :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C4 / es :: Found 1 item(s)
-[PASS] Sonar / ListIteratorWrapper C4 / llm :: Found 1 item(s)
-
-===== 7. COVERAGE / MUTATION EVIDENCE =====
-[PASS] Adequacy / PCEnhancer C0 / RND coverage :: Found 3 item(s)
-[PASS] Adequacy / PCEnhancer C0 / RND mutation :: Found 3 item(s)
-[PASS] Adequacy / PCEnhancer C0 / ES coverage :: Found 4 item(s)
-[PASS] Adequacy / PCEnhancer C0 / ES mutation :: Found 5 item(s)
-[PASS] Adequacy / PCEnhancer C0 / LLM coverage :: Found 4 item(s)
-[PASS] Adequacy / PCEnhancer C0 / LLM mutation :: Found 4 item(s)
-[PASS] Adequacy / ListIteratorWrapper C1 / RND coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C1 / RND mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C1 / ES coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C1 / ES mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C1 / LLM coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C1 / LLM mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C2 / RND coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C2 / RND mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C2 / ES coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C2 / ES mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C2 / LLM coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C2 / LLM mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C3 / RND coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C3 / RND mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C3 / ES coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C3 / ES mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C3 / LLM coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C3 / LLM mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C4 / RND coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C4 / RND mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C4 / ES coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C4 / ES mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C4 / LLM coverage :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C4 / LLM mutation :: Found 1 item(s)
-[PASS] Adequacy / ListIteratorWrapper C0 / RND coverage :: Found 4 item(s)
-[PASS] Adequacy / ListIteratorWrapper C0 / RND mutation :: Found 4 item(s)
-[PASS] Adequacy / ListIteratorWrapper C0 / ES coverage :: Found 4 item(s)
-[PASS] Adequacy / ListIteratorWrapper C0 / ES mutation :: Found 4 item(s)
-[PASS] Adequacy / ListIteratorWrapper C0 / LLM coverage :: Found 4 item(s)
-[PASS] Adequacy / ListIteratorWrapper C0 / LLM mutation :: Found 4 item(s)
-
-===== 8. GENERATED / FROZEN SUITES =====
-[PASS] Frozen suites / ListIteratorWrapper C1 / randoop :: Found 1 item(s)
-[PASS] Frozen suites / ListIteratorWrapper C1 / evosuite :: Found 1 item(s)
-[FAIL] Frozen suites / ListIteratorWrapper C1 / llm :: Found 0, expected >= 1
-[PASS] Frozen suites / ListIteratorWrapper C2 / randoop :: Found 1 item(s)
-[PASS] Frozen suites / ListIteratorWrapper C2 / evosuite :: Found 1 item(s)
-[FAIL] Frozen suites / ListIteratorWrapper C2 / llm :: Found 0, expected >= 1
-[PASS] Frozen suites / ListIteratorWrapper C3 / randoop :: Found 1 item(s)
-[PASS] Frozen suites / ListIteratorWrapper C3 / evosuite :: Found 1 item(s)
-[FAIL] Frozen suites / ListIteratorWrapper C3 / llm :: Found 0, expected >= 1
-[PASS] Frozen suites / ListIteratorWrapper C4 / randoop :: Found 1 item(s)
-[PASS] Frozen suites / ListIteratorWrapper C4 / evosuite :: Found 1 item(s)
-[FAIL] Frozen suites / ListIteratorWrapper C4 / llm :: Found 0, expected >= 1
-[PASS] Frozen suites / PCEnhancer C0 / randoop :: Found 2 item(s)
-[PASS] Frozen suites / PCEnhancer C0 / evosuite :: Found 4 item(s)
-[PASS] Frozen suites / PCEnhancer C0 / llm :: Found 1 item(s)
-
-===== 9. PCENHANCER BLOCKED-VARIANT CONSISTENCY =====
-[PASS] PCEnhancer consistency / No fake C1-C4 runtime auto results :: No refactored automatic runtime result directories detected
-
-===== 10. DOCUMENTATION HYGIENE =====
-[FAIL] Documentation hygiene / No forbidden cross-project references :: Found 5 hit(s)
-  C:\ISW2\openjpa\isw2\docs\milestone2.md:2150 [Storm] sperimentale già adottata nel precedente progetto Apache Storm dello stesso
-  C:\ISW2\openjpa\isw2\docs\milestone2.md:2153 [Storm] Il precedente Storm viene utilizzato come blueprint implementativo e non come
-  C:\ISW2\openjpa\isw2\docs\milestone2.md:2219 [Storm] Apache Storm, nel quale la Milestone 2 è stata eseguita sull'intero Dataset A.
-  C:\ISW2\openjpa\isw2\docs\milestone2.md:2426 [Storm] L'ordine coincide con quello già utilizzato nel precedente esperimento Storm.
-  C:\ISW2\openjpa\isw2\docs\milestone2.md:2912 [Storm] per numero di release e il precedente Storm utilizza l'intero Dataset A.
-[WARN] Documentation hygiene / No obvious placeholders :: Found 42 hit(s); inspect whether intentional
-  C:\ISW2\openjpa\isw2\docs\m4\listiteratorwrapper-m4-analysis.md:219 [TODO] ### Metodo
-  C:\ISW2\openjpa\isw2\docs\m4\listiteratorwrapper-m4-analysis.md:458 [TODO] Non è però metodologicamente corretto concludere che fornire esclusivamente `T_BB` al modello causi un refactoring migliore.
-  C:\ISW2\openjpa\isw2\docs\m4\listiteratorwrapper-m4-analysis.md:464 [TODO] ## 15. Limiti metodologici
-  C:\ISW2\openjpa\isw2\docs\m4\pcenhancer-m4-analysis.md:73 [TODO] metodo non disponibile nell'API ASM utilizzata dal progetto.
-  C:\ISW2\openjpa\isw2\docs\m4\pcenhancer-m4-analysis.md:237 [TODO] ### Metodo
-  C:\ISW2\openjpa\isw2\docs\m4\pcenhancer-m4-analysis.md:432 [TODO] ## 15. Limiti metodologici
-  C:\ISW2\openjpa\isw2\docs\milestone1.md:147 [TODO] È stato quindi scelto il metodo:
-  C:\ISW2\openjpa\isw2\docs\milestone1.md:1428 [TODO] Durante il primo FULL SZZ è stato rilevato un caso metodologicamente
-  C:\ISW2\openjpa\isw2\docs\milestone1.md:2270 [TODO] # 21. Decisioni metodologiche
-  C:\ISW2\openjpa\isw2\docs\milestone2.md:98 [TODO] Queste scelte verranno quindi trattate come decisioni metodologiche del progetto
-  C:\ISW2\openjpa\isw2\docs\milestone2.md:2835 [TODO] # 13. Registro delle decisioni metodologiche
-  C:\ISW2\openjpa\isw2\docs\milestone2.md:3245 [TODO] influenzano metodologia o riproducibilità.
-  C:\ISW2\openjpa\isw2\docs\milestone3.md:130 [TODO] metodologiche del progetto;
-  C:\ISW2\openjpa\isw2\docs\milestone3.md:715 [TODO] ## 9. Decisioni metodologiche
-  C:\ISW2\openjpa\isw2\docs\testing\list-iterator-wrapper-black-box.md:11 [TODO] ## 2. Obiettivo metodologico
-  C:\ISW2\openjpa\isw2\docs\testing\list-iterator-wrapper-control-flow.md:40 [TODO] ## 1. Posizione metodologica di T_CF
-  C:\ISW2\openjpa\isw2\docs\testing\list-iterator-wrapper-control-flow.md:298 [TODO] La baseline T_BB lasciava scoperto l'unico metodo non ancora esercitato
-  C:\ISW2\openjpa\isw2\docs\testing\list-iterator-wrapper-mutation-testing.md:49 [TODO] ## 1. Posizione metodologica
-  C:\ISW2\openjpa\isw2\docs\testing\list-iterator-wrapper-mutation-testing.md:82 [TODO] Il suo input metodologico è esclusivamente il risultato della mutation
-  C:\ISW2\openjpa\isw2\docs\testing\list-iterator-wrapper-mutation-testing.md:200 [TODO] | ID audit | Stato baseline | Metodo | Linea PIT | Mutator | Valutazione |
-  C:\ISW2\openjpa\isw2\docs\testing\list-iterator-wrapper-mutation-testing.md:572 [TODO] metodologica sufficientemente forte.
-  C:\ISW2\openjpa\isw2\docs\testing\list-iterator-wrapper-random-testing.md:322 [TODO] Il risultato indica che raggiungere un metodo o una porzione di codice non implica automaticamente disporre di oracle sufficientemente forti da distinguere il programma originale dalle sue versioni mutate.
-  C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-black-box.md:5 [TODO] Questo documento raccoglie le decisioni metodologiche, le scelte implementative
-  C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-black-box.md:39 [TODO] ## 1. Obiettivo metodologico
-  C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-black-box.md:792 [TODO] Nella fixture compliant, un metodo esterno legge la proprietà tramite
-  C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-black-box.md:860 [TODO] Scelta metodologica derivata dalla documentazione / Category Partition.
-  C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-black-box.md:1435 [TODO] La metodologia, le fixture, i gap selezionati e la stopping rule sono
-  C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-control-flow.md:41 [TODO] ## 1. Posizione metodologica di T_CF
-  C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-control-flow.md:731 [TODO] La fase metodologica successiva è:
-  C:\ISW2\openjpa\isw2\docs\testing\pcenhancer-mutation-testing.md:43 [TODO] ## 1. Posizione metodologica di `T_MT`
-
-===== 11. FINAL SUMMARY =====
-PASS : 116
-WARN : 2
-FAIL : 10
-
-FINAL GATE: FAIL
-Resolve FAIL items before considering the De Angelis artifact set complete.
-
-TXT : C:\ISW2\openjpa\isw2\results\testing\final-audit\de-angelis-final-audit.txt
-CSV : C:\ISW2\openjpa\isw2\results\testing\final-audit\de-angelis-final-audit-summary.csv
+======================================================
+ FINAL AUDIT V3 SUMMARY
+======================================================
+PASS : 62
+WARN : 0
+FAIL : 0
+FINAL GATE V3: PASS
 ======================================================
