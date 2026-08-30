@@ -53,6 +53,7 @@ Per maggiori dettagli:
 ```text
 isw2/
 ├── README.md
+├── classes.txt
 ├── analyzer/
 ├── datasets/
 ├── docs/
@@ -124,6 +125,9 @@ Le due classi selezionate per la parte De Angelis sono:
 org.apache.openjpa.enhance.PCEnhancer
 org.apache.openjpa.lib.util.collections.ListIteratorWrapper
 ```
+
+Per comodità, il file `classes.txt` previsto tra i deliverable della parte
+De Angelis è versionato anche in [`classes.txt`](classes.txt).
 
 Per entrambe le classi la suite manuale iniziale `T_BB` viene derivata tramite
 Category Partition e congelata prima di osservare coverage e mutation score.
@@ -398,13 +402,18 @@ Gli strumenti vengono documentati nel dettaglio quando effettivamente introdotti
 * [x] Registrazione `PCEnhancer C1–C4` come `NOT RUN / BLOCKED BY VARIANT COMPILATION` per la fase automatica post-refactoring
 * [x] Confronto globale automatico `PCEnhancer C0–C4`
 
+* [x] Audit finale De Angelis V3 – 62 PASS, 0 WARN, 0 FAIL
+* [x] Preparazione del file `classes.txt`
+
 ### In corso
 
-* [ ] Audit finale, documentazione e packaging della consegna
+* [ ] Redazione del report finale Falessi
+* [ ] Redazione del report finale De Angelis
 
 ### Successivamente
 
-* [ ] Eventuali attività residue della parte De Angelis richieste dal materiale di consegna
+* [ ] Packaging finale della consegna
+* [ ] Presentazione e discussione orale
 
 ---
 
@@ -2042,6 +2051,7 @@ isw2/results/testing/list-iterator-wrapper/reliability/
 
 ## Documentazione
 
+* [Classi considerate – classes.txt](classes.txt)
 * [Setup e baseline](docs/setup.md)
 * [Milestone 1 – Dataset Creation](docs/milestone1.md)
 * [Milestone 2 – Classification](docs/milestone2.md)
