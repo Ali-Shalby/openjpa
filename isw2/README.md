@@ -2108,3 +2108,9 @@ Durante il progetto:
 25. per `ListIteratorWrapper`, il confronto automatico C0–C4 mantiene `N = 12` per tecnica e variante, così da evitare che la cardinalità della suite diventi un confondente diretto;
 26. quando la popolazione PIT cambia tra varianti production, il confronto C0–C4 privilegia Mutation Score e Test Strength rispetto ai soli conteggi assoluti di mutanti uccisi;
 27. la qualità delle suite automatiche C0–C4 viene valutata in modo multidimensionale tramite coverage, mutation testing, chiarezza del naming, LOC/scaffolding e code smell/categorie Sonar; un aumento di coverage non viene interpretato automaticamente come un aumento della capacità di fault detection.
+## Report finali
+
+I report conclusivi del progetto sono disponibili in formato PDF:
+
+- [Report Falessi - M1–M4](reports/Ali_Shalby_IS2.pdf)
+- [Report De Angelis - Software Testing](reports/Ali_Shalby_IS2_ST.pdf)
